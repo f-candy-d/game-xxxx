@@ -130,12 +130,16 @@ endif( WIN32 )
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/HelloWorldScene.cpp
+  Classes/Tm2p5dLib/TiledMap2P5D.cpp
+  Classes/Tm2p5dLib/TM2P5DJsonParser.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/HelloWorldScene.h
+  Classes/Tm2p5dLib/TiledMap2P5D.h
+  Classes/Tm2p5dLib/TM2P5DJsonParser.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 
