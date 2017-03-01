@@ -132,6 +132,7 @@ set(GAME_SRC
   Classes/HelloWorldScene.cpp
   Classes/Tm2p5dLib/TiledMap2P5D.cpp
   Classes/Tm2p5dLib/TM2P5DJsonParser.cpp
+  Classes/Tm2p5dLib/TM2P5DProperty.cpp
   Classes/Tm2p5dLib/InfoClasses.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )

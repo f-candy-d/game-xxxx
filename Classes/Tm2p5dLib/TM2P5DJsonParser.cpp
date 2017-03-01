@@ -28,6 +28,11 @@ namespace {
 	static const std::string KEY_ORIENTATION("orientation");
 	static const std::string KEY_TILE_SIZE("tile_size");
 	static const std::string KEY_ARCHITECTURE("architecture");
+	static const std::string KEY_LAYER_NAME("layer_name");
+	static const std::string KEY_ATLAS_NAME("atlas_name");
+	static const std::string KEY_TERRAIN_SRC("terrain_src");
+	static const std::string KEY_VISIBLE("visible");
+	static const std::string KEY_EDITABLE("editable");
 }
 
 /**
@@ -179,12 +184,12 @@ AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& root)
 	return nullptr;
 }
 
-Orientation TM2P5DJsonParser::comvJsonValueToOrientation(picojson::value& value)
+Orientation::Enum TM2P5DJsonParser::comvJsonValueToOrientation(picojson::value& value)
 {
 	if(value.get<std::string>() == "portrait")
-		return Orientation::PORTRAIT;
+		return Orientation::Enum::PORTRAIT;
 	else
-		return Orientation::LANDSCAPE;
+		return Orientation::Enum::LANDSCAPE;
 }
 
 Size TM2P5DJsonParser::comvJsonValueToCcsize(picojson::value& value)

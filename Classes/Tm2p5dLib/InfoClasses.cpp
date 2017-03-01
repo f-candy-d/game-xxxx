@@ -27,10 +27,7 @@ void MapInfo::debugLog(MapInfo *info)
 	std::cout << "width of chank => " << info->mChankWidth << '\n';
 	std::cout << "height of chank => " << info->mChankHeight << '\n';
 	std::cout << "number of chanks => " << info->mNumOfChank << '\n';
-
-	auto type = info->mOrientation;
-	auto type_str = (type == Orientation::PORTRAIT) ? "portraiot" : "landscape";
-	std::cout << "orientation => " << type_str << '\n';
+	std::cout << "orientation => " << Orientation::toString(info->mOrientation) << '\n';
 
 	auto size = info->mTileSize;
 	std::cout << "tile size => w=" << size.width << " h=" << size.height << '\n';

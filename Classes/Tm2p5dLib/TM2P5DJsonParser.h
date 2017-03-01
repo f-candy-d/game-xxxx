@@ -10,8 +10,8 @@
  */
 namespace TM2P5DComponent {
 
-//Forward declaration
-enum class Orientation;
+//Forward declarations
+namespace Orientation { enum class Enum; }
 
 class TM2P5DJsonParser : public cocos2d::Ref
 {
@@ -84,7 +84,7 @@ private:
 	 * Comvert a value in json to a type that is not supported in 'picojson'.
 	 * @param  value  [A value of the string type in json]
 	 */
-	Orientation comvJsonValueToOrientation(picojson::value& value);
+	Orientation::Enum comvJsonValueToOrientation(picojson::value& value);
 	cocos2d::Size comvJsonValueToCcsize(picojson::value& value);
 	cocos2d::Rect comvJsonValueToCcRect(picojson::value& value);
 };

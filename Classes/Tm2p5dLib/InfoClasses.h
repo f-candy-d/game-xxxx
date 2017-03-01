@@ -11,7 +11,7 @@
 namespace TM2P5DComponent {
 
 //Forward declaration
-enum class Orientation;
+namespace Orientation { enum class Enum; }
 
 /**
  * Map information class
@@ -33,7 +33,7 @@ public:
 	/**
 	 * The orientation of a map.
 	 */
-	Orientation mOrientation;
+	Orientation::Enum mOrientation;
 
 	/**
 	 * The size of a texture of a tile (px).
@@ -54,7 +54,7 @@ public:
 	size_t getChankWidth();
 	size_t getChankHeight();
 	size_t getNumOfChank();
-	Orientation getOrientation();
+	Orientation::Enum getOrientation();
 	cocos2d::Size getTileSize();
 	std::vector<std::string>& getArchitecture();
 
