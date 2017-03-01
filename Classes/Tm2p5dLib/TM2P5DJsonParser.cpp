@@ -56,7 +56,8 @@ void TM2P5DJsonParser::parseOriginJson(std::string origin)
 	std::string path = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + origin);
 	picojson::value root = this->parseJson(path);
 
-	if(!isError())
+	//error check
+	if(!this->isError())
 	{
 		//Parse other information files
 		for(auto& value : root.get<picojson::object>()[IDENTIFIER_INCLUDE].get<picojson::array>())
@@ -65,23 +66,32 @@ void TM2P5DJsonParser::parseOriginJson(std::string origin)
 			parseJson(json);
 		}
 	}
-	else
-	{
-		this->outputLastError();
-	}
 }
 
 bool TM2P5DJsonParser::isError()
 {
-	return !picojson::get_last_error().empty();
+	return mErrorPool.size();
 }
 
 void TM2P5DJsonParser::outputLastError()
 {
 	if(this->isError())
-		std::cout << "picojson : error => " << picojson::get_last_error() << '\n';
+		std::cout << "picojson : error => " << mErrorPool.back() << '\n';
 	else
-		std::cout << "TM2P5DJsonParser : mes => There are no errors for now" << '\n';
+		std::cout << "TM2P5DJsonParser : mess => There are no errors for now" << '\n';
+}
+
+void TM2P5DJsonParser::outputErrors()
+{
+	if(this->isError())
+	{
+		for(auto error : mErrorPool)
+			std::cout << "picojson : error => " << error << '\n';
+	}
+	else
+	{
+		std::cout << "picojson : mess =>  there are no errors for now" << '\n';
+	}
 }
 
 MapInfo* TM2P5DJsonParser::getMapInfo()
@@ -135,8 +145,13 @@ picojson::value TM2P5DJsonParser::parseJson(std::string json)
 	fs >> root;
 	fs.close();
 	//check parse error
-	if(isError())
+	if(!picojson::get_last_error().empty())
+	{
+		mErrorPool.push_back(picojson::get_last_error());
+		//clear last error
+		picojson::set_last_error("");
 		return std::move(root);
+	}
 
 	std::cout << "parse " << json << '\n';
 

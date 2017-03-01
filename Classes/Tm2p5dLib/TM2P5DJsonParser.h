@@ -40,6 +40,12 @@ public:
 	void outputLastError();
 
 	/**
+	 * Show errors in the error-pool.
+	 * @method outputErrors
+	 */
+	void outputErrors();
+
+	/**
 	 * Getter functions that returns information objects.
 	 */
 	MapInfo* getMapInfo();
@@ -61,6 +67,11 @@ private:
 	cocos2d::Map<std::string,LayerInfo*> mLayerInfoMap;
 	cocos2d::Map<std::string,LayerBundlerInfo*> mLayerBundlerInfoMap;
 	cocos2d::Map<std::string,AtlasInfo*> mAtlasInfoMap;
+
+	/**
+	 * Add error messages in this vector if an error appeared.
+	 */
+	std::vector<std::string> mErrorPool;
 
 	/**
 	 * Parse a information file (.json) using 'picojson'.
