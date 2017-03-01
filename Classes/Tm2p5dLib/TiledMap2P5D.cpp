@@ -45,8 +45,7 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 	parser->parseOriginJson("origin.json");
 	if(parser->isError())
 	{
-		parser->outputLastError();
-		return false;
+		parser->outputErrors();
 	}
 
 	return true;
