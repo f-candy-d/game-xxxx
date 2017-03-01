@@ -84,7 +84,6 @@ private:
 	 * Comvert a value in json to a type that is not supported in 'picojson'.
 	 * @param  value  [A value of the string type in json]
 	 */
-	Orientation::Enum comvJsonValueToOrientation(picojson::value& value);
 	cocos2d::Size comvJsonValueToCcsize(picojson::value& value);
 	cocos2d::Rect comvJsonValueToCcRect(picojson::value& value);
 };

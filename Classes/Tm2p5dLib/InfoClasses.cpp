@@ -23,7 +23,7 @@ MapInfo* MapInfo::create()
 
 void MapInfo::debugLog(MapInfo *info)
 {
-	std::cout << "** DEBUG LOG OF MAP-INFO **" << '\n';
+	std::cout << "\n** DEBUG LOG OF MAP-INFO **" << '\n';
 	std::cout << "width of chank => " << info->mChankWidth << '\n';
 	std::cout << "height of chank => " << info->mChankHeight << '\n';
 	std::cout << "number of chanks => " << info->mNumOfChank << '\n';
@@ -107,7 +107,7 @@ LayerInfo* LayerInfo::create()
 
 void LayerInfo::debugLog(LayerInfo *info)
 {
-	std::cout << "** DEBUG LOG OF LAYER-INFO **" << '\n';
+	std::cout << "\n** DEBUG LOG OF LAYER-INFO **" << '\n';
 	std::cout << "layer name => " << info->mLayerName << '\n';
 	std::cout << "tile atlas name => " << info->mAtlasName << '\n';
 	std::cout << "terrain source => " << info->mTerrainSource << '\n';
@@ -179,14 +179,32 @@ LayerBundlerInfo* LayerBundlerInfo::create()
 
 void LayerBundlerInfo::debugLog(LayerBundlerInfo *info)
 {
-	// 	std::cout << "\t** DEBUG LOG OF LAYER-BUNDLER-INFO **" << '\n';
-	// 	std::cout << "\t** END **" << '\n';
+		std::cout << "\n** DEBUG LOG OF LAYER-BUNDLER-INFO **" << '\n';
+		std::cout << "layer name => " << info->getLayerName() << '\n';
+
+		for(auto name : info->mArchitecture)
+		{
+			std::cout << "architecture => " << name << '\n';
+		}
+
+		std::cout << "\t** END **" << "\n\n";
+}
+
+std::string LayerBundlerInfo::getLayerName()
+{
+	return mLayerName;
+}
+
+const std::vector<std::string>& LayerBundlerInfo::getArchitecture()
+{
+	return mArchitecture;
 }
 
 /**
  * LayerBundlerInfo class : protected
  */
 LayerBundlerInfo::LayerBundlerInfo()
+:mLayerName("")
 {}
 
 LayerBundlerInfo::~LayerBundlerInfo()
@@ -216,14 +234,44 @@ AtlasInfo* AtlasInfo::create()
 
 void AtlasInfo::debugLog(AtlasInfo *info)
 {
-	// 	std::cout << "\t** DEBUG LOG OF ATLAS-INFO **" << '\n';
-	// 	std::cout << "\t** END **" << '\n';
+		std::cout << "\n** DEBUG LOG OF ATLAS-INFO **" << '\n';
+		std::cout << "atlas name => " << info->getAtlasName() << '\n';
+		std::cout << "atlas source => " << info->getAtlasSource() << '\n';
+		std::cout << "number of tile type => " << info->getNumOfTileType() << '\n';
+
+		for(auto rect : info->getTextureRects())
+			std::cout << "texture rect => " << rect.origin.x << ", " << rect.origin.y << ", " << rect.size.width << ", " << rect.size.height << '\n';
+
+		std::cout << "\t** END **" << "\n\n";
+}
+
+std::string AtlasInfo::getAtlasName()
+{
+	return mAtlasName;
+}
+
+std::string AtlasInfo::getAtlasSource()
+{
+	return mAtlasSource;
+}
+
+size_t AtlasInfo::getNumOfTileType()
+{
+	return mNumOfTileType;
+}
+
+const std::vector<Rect>& AtlasInfo::getTextureRects()
+{
+	return mTextureRects;
 }
 
 /**
  * AtlasInfo class : protected
  */
 AtlasInfo::AtlasInfo()
+:mAtlasName("")
+,mAtlasSource("")
+,mNumOfTileType(0)
 {}
 
 AtlasInfo::~AtlasInfo()

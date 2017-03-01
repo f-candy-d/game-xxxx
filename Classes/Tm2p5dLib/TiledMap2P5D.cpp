@@ -43,5 +43,11 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 
 	auto parser = TM2P5DComponent::TM2P5DJsonParser::create();
 	parser->parseOriginJson("origin.json");
+	if(parser->isError())
+	{
+		parser->outputLastError();
+		return false;
+	}
+
 	return true;
 }

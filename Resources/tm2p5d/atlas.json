@@ -1,0 +1,27 @@
+{
+	"atlas_info" :
+	[
+		{
+			"atlas_name" : "atlas-A",
+			"atlas_src" : "tile_atlas_a.png",
+			"num_of_tile_type" : 3,
+			"texture_rect" :
+			[
+				[0,0,64,64],
+				[64,0,64,64],
+				[128,0,64,64]
+			]
+		},
+
+		{
+			"atlas_name" : "atlas-B",
+			"atlas_src" : "tile_atlas_b.png",
+			"num_of_tile_type" : 2,
+			"texture_rect" :
+			[
+				[0,0,1024,1024],
+				[64,0,1024,1024]
+			]
+		}
+	]
+}

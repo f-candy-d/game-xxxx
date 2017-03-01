@@ -29,6 +29,9 @@ namespace {
 	static const std::string KEY_TERRAIN_SRC("terrain_src");
 	static const std::string KEY_VISIBLE("visible");
 	static const std::string KEY_EDITABLE("editable");
+	static const std::string KEY_ATLAS_SRC("atlas_src");
+	static const std::string KEY_NUM_OF_TILE_TYPE("num_of_tile_type");
+	static const std::string KEY_TEXTURE_RECT("texture_rect");
 }
 
 /**
@@ -55,8 +58,12 @@ void TM2P5DJsonParser::parseOriginJson(std::string origin)
 
 	if(!isError())
 	{
-		//parse other information files
-		parseJson("Resources/tm2p5d/layer.json");
+		//Parse other information files
+		for(auto& value : root.get<picojson::object>()[IDENTIFIER_INCLUDE].get<picojson::array>())
+		{
+			std::string json = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + value.get<std::string>());
+			parseJson(json);
+		}
 	}
 	else
 	{
@@ -144,7 +151,25 @@ picojson::value TM2P5DJsonParser::parseJson(std::string json)
 			for(auto& value : itr->second.get<picojson::array>())
 			{
 				auto info = this->comvJsonToLayerInfo(value);
-				// mLayerInfoMap.insert
+				mLayerInfoMap.insert(info->getLayerName(),info);
+			}
+		}
+
+		else if(itr->first == IDENTIFIER_LAYER_BUNDLER_INFO)
+		{
+			for(auto& value : itr->second.get<picojson::array>())
+			{
+				auto info = this->comvJsonToLayerBundlerInfo(value);
+				mLayerBundlerInfoMap.insert(info->getLayerName(),info);
+			}
+		}
+
+		else if(itr->first == IDENTIFIER_ATLAS_INFO)
+		{
+			for(auto& value : itr->second.get<picojson::array>())
+			{
+				auto info = this->comvJsonToAtlasInfo(value);
+				mAtlasInfoMap.insert(info->getAtlasName(),info);
 			}
 		}
 	}
@@ -160,13 +185,13 @@ MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& obj)
 	info->mChankWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
 	info->mChankHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
 	info->mNumOfChank = static_cast<size_t>(elements[KEY_NUM_OF_CHANK].get<double>());
-	info->mOrientation = this->comvJsonValueToOrientation(elements[KEY_ORIENTATION]);
+	info->mOrientation = Orientation::toEnum(elements[KEY_ORIENTATION].get<std::string>());
 	info->mTileSize = this->comvJsonValueToCcsize(elements[KEY_TILE_SIZE]);
 
 	for(auto& value : elements[KEY_ARCHITECTURE].get<picojson::array>())
 		info->mArchitecture.push_back(value.get<std::string>());
 
-	MapInfo::debugLog(info);
+	// MapInfo::debugLog(info);
 
 	return info;
 }
@@ -182,27 +207,41 @@ LayerInfo* TM2P5DJsonParser::comvJsonToLayerInfo(picojson::value& obj)
 	info->mIsVisible = elements[KEY_VISIBLE].get<bool>();
 	info->mIsEditable = elements[KEY_EDITABLE].get<bool>();
 
-	LayerInfo::debugLog(info);
+	// LayerInfo::debugLog(info);
 
 	return info;
 }
 
 LayerBundlerInfo* TM2P5DJsonParser::comvJsonToLayerBundlerInfo(picojson::value& obj)
 {
-	return nullptr;
+	auto info = LayerBundlerInfo::create();
+	auto& elements = obj.get<picojson::object>();
+
+	info->mLayerName = elements[KEY_LAYER_NAME].get<std::string>();
+
+	for(auto& value : elements[KEY_ARCHITECTURE].get<picojson::array>())
+		info->mArchitecture.push_back(value.get<std::string>());
+
+	// LayerBundlerInfo::debugLog(info);
+
+	return info;
 }
 
 AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& obj)
 {
-	return nullptr;
-}
+	auto info = AtlasInfo::create();
+	auto& elements = obj.get<picojson::object>();
 
-Orientation::Enum TM2P5DJsonParser::comvJsonValueToOrientation(picojson::value& value)
-{
-	if(value.get<std::string>() == "portrait")
-		return Orientation::Enum::PORTRAIT;
-	else
-		return Orientation::Enum::LANDSCAPE;
+	info->mAtlasName = elements[KEY_ATLAS_NAME].get<std::string>();
+	info->mAtlasSource = elements[KEY_ATLAS_SRC].get<std::string>();
+	info->mNumOfTileType = static_cast<size_t>(elements[KEY_NUM_OF_TILE_TYPE].get<double>());
+
+	for(auto& value : elements[KEY_TEXTURE_RECT].get<picojson::array>())
+		info->mTextureRects.push_back(comvJsonValueToCcRect(value));
+
+	// AtlasInfo::debugLog(info);
+
+	return info;
 }
 
 Size TM2P5DJsonParser::comvJsonValueToCcsize(picojson::value& value)

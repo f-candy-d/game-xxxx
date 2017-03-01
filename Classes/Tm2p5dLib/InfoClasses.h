@@ -119,8 +119,24 @@ protected:
 class LayerBundlerInfo : public cocos2d::Ref
 {
 public:
+	/**
+	 * The name of a layer-bundler.
+	 */
+	std::string mLayerName;
+
+	/**
+	 * The names of layers which are contained by this layer-bundler.
+	 */
+	std::vector<std::string> mArchitecture;
+
 	static LayerBundlerInfo* create();
 	static void debugLog(LayerBundlerInfo* info);
+
+	/**
+	 * Getter functions
+	 */
+	std::string getLayerName();
+	const std::vector<std::string>& getArchitecture();
 
 protected:
 	LayerBundlerInfo();
@@ -134,8 +150,36 @@ protected:
 class AtlasInfo : public cocos2d::Ref
 {
 public:
+	/**
+	 * The name of a tile atlas.
+	 */
+	std::string mAtlasName;
+
+	/**
+	 * The name of a file of tile atlas.
+	 */
+	std::string mAtlasSource;
+
+	/**
+	 * The number of kinds of tiles.
+	 */
+	size_t mNumOfTileType;
+
+	/**
+	 * Rects of a texture of a tile on a tile atlas.
+	 */
+	std::vector<cocos2d::Rect> mTextureRects;
+
 	static AtlasInfo* create();
 	static void debugLog(AtlasInfo* info);
+
+	/**
+	 * Getter functions
+	 */
+	std::string getAtlasName();
+	std::string getAtlasSource();
+	size_t getNumOfTileType();
+	const std::vector<cocos2d::Rect>& getTextureRects();
 
 protected:
 	AtlasInfo();
