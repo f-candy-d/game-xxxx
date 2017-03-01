@@ -75,10 +75,10 @@ private:
 	 * @param  obj               [An object contains information]
 	 * @return                   [An information object]
 	 */
-	MapInfo* comvJsonToMapInfo(picojson::value& root);
-	LayerInfo* comvJsonToLayerInfo(picojson::value& root);
-	LayerBundlerInfo* comvJsonToLayerBundlerInfo(picojson::value& root);
-	AtlasInfo* comvJsonToAtlasInfo(picojson::value& root);
+	MapInfo* comvJsonToMapInfo(picojson::value& obj);
+	LayerInfo* comvJsonToLayerInfo(picojson::value& obj);
+	LayerBundlerInfo* comvJsonToLayerBundlerInfo(picojson::value& obj);
+	AtlasInfo* comvJsonToAtlasInfo(picojson::value& obj);
 
 	/**
 	 * Comvert a value in json to a type that is not supported in 'picojson'.

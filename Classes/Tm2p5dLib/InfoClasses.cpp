@@ -37,7 +37,7 @@ void MapInfo::debugLog(MapInfo *info)
 		std::cout << "architecture => " << name << '\n';
 	}
 
-	std::cout << "\t** END **" << '\n';
+	std::cout << "\t** END **" << "\n\n";
 }
 
 /**
@@ -72,8 +72,13 @@ LayerInfo* LayerInfo::create()
 
 void LayerInfo::debugLog(LayerInfo *info)
 {
-	// 	std::cout << "\t** DEBUG LOG OF LAYER-INFO **" << '\n';
-	// 	std::cout << "\t** END **" << '\n';
+	std::cout << "** DEBUG LOG OF LAYER-INFO **" << '\n';
+	std::cout << "layer name => " << info->mLayerName << '\n';
+	std::cout << "tile atlas name => " << info->mAtlasName << '\n';
+	std::cout << "terrain source => " << info->mTerrainSource << '\n';
+	std::cout << "is visible => " << info->mIsVisible << '\n';
+	std::cout << "is editable => " << info->mIsEditable << '\n';
+	std::cout << "\t** END **" << "\n\n";
 }
 
 /**

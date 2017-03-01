@@ -5,6 +5,11 @@
 
 namespace TM2P5DComponent {
 
+//Directory names
+const std::string DIR_NAME_TM2P5D("tm2p5d/");
+const std::string DIR_NAME_ATLAS("atlas/");
+const std::string DIR_NAME_TERRAIN("terrain/");
+
 //The orientation of a map
 namespace Orientation {
 

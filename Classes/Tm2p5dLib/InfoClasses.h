@@ -70,6 +70,31 @@ protected:
 class LayerInfo : public cocos2d::Ref
 {
 public:
+	/**
+	 * The name of a layer.
+	 */
+	std::string mLayerName;
+
+	/**
+	 * The name of a tile atlas which will be used in this layer.
+	 */
+	std::string mAtlasName;
+
+	/**
+	 * The name of a file that contains data of the terrain of a layer.
+	 */
+	std::string mTerrainSource;
+
+	/**
+	 * Is a layer visible or not.
+	 */
+	bool mIsVisible;
+
+	/**
+	 * Is a layer editable or not.
+	 */
+	bool mIsEditable;
+
 	static LayerInfo* create();
 	static void debugLog(LayerInfo* info);
 

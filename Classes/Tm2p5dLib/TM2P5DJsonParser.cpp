@@ -9,10 +9,6 @@ using namespace TM2P5DComponent;
 
 //The following constant values are only used in TM2P5DJsonParser class
 namespace {
-	//Directory names
-	static const std::string DIR_NAME_TM2P5D("tm2p5d/");
-	static const std::string DIR_NAME_ATLAS("atlas/");
-	static const std::string DIR_NAME_TERRAIN("terrain/");
 
 	//Identifiers that indicate what is info-object or 'include'
 	static const std::string IDENTIFIER_MAP_INFO("map_info");
@@ -60,6 +56,7 @@ void TM2P5DJsonParser::parseOriginJson(std::string origin)
 	if(!isError())
 	{
 		//parse other information files
+		parseJson("Resources/tm2p5d/layer.json");
 	}
 	else
 	{
@@ -134,26 +131,31 @@ picojson::value TM2P5DJsonParser::parseJson(std::string json)
 	if(isError())
 		return std::move(root);
 
+	std::cout << "parse " << json << '\n';
+
 	auto itr_end = root.get<picojson::object>().end();
 	for(auto itr = root.get<picojson::object>().begin(); itr != itr_end; ++itr)
 	{
 		if(itr->first == IDENTIFIER_MAP_INFO)
-			mMapInfo = this->comvJsonToMapInfo(root);
+			mMapInfo = this->comvJsonToMapInfo(itr->second);
 
 		else if(itr->first == IDENTIFIER_LAYER_INFO)
 		{
-			// auto info = this->comvJsonToLayerInfo(root);
-			// mLayerInfoMap.insert(info->get
+			for(auto& value : itr->second.get<picojson::array>())
+			{
+				auto info = this->comvJsonToLayerInfo(value);
+				// mLayerInfoMap.insert
+			}
 		}
 	}
 
 	return std::move(root);
 }
 
-MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& root)
+MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& obj)
 {
 	auto info = MapInfo::create();
-	auto& elements = root.get<picojson::object>()[IDENTIFIER_MAP_INFO].get<picojson::object>();
+	auto& elements = obj.get<picojson::object>();
 
 	info->mChankWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
 	info->mChankHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
@@ -169,17 +171,28 @@ MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& root)
 	return info;
 }
 
-LayerInfo* TM2P5DJsonParser::comvJsonToLayerInfo(picojson::value& root)
+LayerInfo* TM2P5DJsonParser::comvJsonToLayerInfo(picojson::value& obj)
+{
+	auto info = LayerInfo::create();
+	auto& elements = obj.get<picojson::object>();
+
+	info->mLayerName = elements[KEY_LAYER_NAME].get<std::string>();
+	info->mAtlasName = elements[KEY_ATLAS_NAME].get<std::string>();
+	info->mTerrainSource = elements[KEY_TERRAIN_SRC].get<std::string>();
+	info->mIsVisible = elements[KEY_VISIBLE].get<bool>();
+	info->mIsEditable = elements[KEY_EDITABLE].get<bool>();
+
+	LayerInfo::debugLog(info);
+
+	return info;
+}
+
+LayerBundlerInfo* TM2P5DJsonParser::comvJsonToLayerBundlerInfo(picojson::value& obj)
 {
 	return nullptr;
 }
 
-LayerBundlerInfo* TM2P5DJsonParser::comvJsonToLayerBundlerInfo(picojson::value& root)
-{
-	return nullptr;
-}
-
-AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& root)
+AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& obj)
 {
 	return nullptr;
 }
