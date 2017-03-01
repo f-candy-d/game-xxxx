@@ -56,7 +56,7 @@ public:
 	size_t getNumOfChank();
 	Orientation::Enum getOrientation();
 	cocos2d::Size getTileSize();
-	std::vector<std::string>& getArchitecture();
+	const std::vector<std::string>& getArchitecture();
 
 protected:
 	MapInfo();
@@ -97,6 +97,15 @@ public:
 
 	static LayerInfo* create();
 	static void debugLog(LayerInfo* info);
+
+	/**
+	 * Getter functions
+	 */
+	std::string getLayerName();
+	std::string getAtlasName();
+	std::string getTerrainSource();
+	bool isVisible();
+	bool isEditable();
 
 protected:
 	LayerInfo();

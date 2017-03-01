@@ -40,10 +40,45 @@ void MapInfo::debugLog(MapInfo *info)
 	std::cout << "\t** END **" << "\n\n";
 }
 
+size_t MapInfo::getChankWidth()
+{
+	return mChankWidth;
+}
+
+size_t MapInfo::getChankHeight()
+{
+	return mChankHeight;
+}
+
+size_t MapInfo::getNumOfChank()
+{
+	return mNumOfChank;
+}
+
+Orientation::Enum MapInfo::getOrientation()
+{
+	return mOrientation;
+}
+
+cocos2d::Size MapInfo::getTileSize()
+{
+	return mTileSize;
+}
+
+const std::vector<std::string>& MapInfo::getArchitecture()
+{
+	return mArchitecture;
+}
+
 /**
  * MapInfo class : protected
  */
 MapInfo::MapInfo()
+:mChankWidth(0)
+,mChankHeight(0)
+,mNumOfChank(0)
+,mOrientation(Orientation::Enum::NONE)
+,mTileSize(Size(0,0))
 {}
 
 MapInfo::~MapInfo()
@@ -81,10 +116,40 @@ void LayerInfo::debugLog(LayerInfo *info)
 	std::cout << "\t** END **" << "\n\n";
 }
 
+std::string LayerInfo::getLayerName()
+{
+	return mLayerName;
+}
+
+std::string LayerInfo::getAtlasName()
+{
+	return mAtlasName;
+}
+
+std::string LayerInfo::getTerrainSource()
+{
+	return mTerrainSource;
+}
+
+bool LayerInfo::isVisible()
+{
+	return mIsVisible;
+}
+
+bool LayerInfo::isEditable()
+{
+	return mIsEditable;
+}
+
 /**
  * LayerInfo class : protected
  */
 LayerInfo::LayerInfo()
+:mLayerName("")
+,mAtlasName("")
+,mTerrainSource("")
+,mIsVisible(false)
+,mIsEditable(false)
 {}
 
 LayerInfo::~LayerInfo()
