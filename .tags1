@@ -4,3 +4,21 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+layer_info	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^	"layer_info" :$/;"	function	line:2
+layer_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"layer_name" : "layer-A",$/;"	function	line:4
+atlas_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"atlas_name" : "atlas-A",$/;"	function	line:5
+terrain_src	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"terrain_src" : "terrain_A_16x256.bin",$/;"	function	line:6
+visible	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"visible" : true,$/;"	function	line:7
+editable	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"editable" : true$/;"	function	line:8
+layer_info	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^	"layer_info" :$/;"	function	line:11
+layer_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"layer_name" : "layer-B",$/;"	function	line:13
+atlas_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"atlas_name" : "atlas-B",$/;"	function	line:14
+terrain_src	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"terrain_src" : "terrain_B_16x256.bin",$/;"	function	line:15
+visible	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"visible" : false,$/;"	function	line:16
+editable	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"editable" : false$/;"	function	line:17
+layer_info	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^	"layer_info" :$/;"	function	line:20
+layer_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"layer_name" : "layer-C",$/;"	function	line:22
+atlas_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"atlas_name" : "atlas-C",$/;"	function	line:23
+terrain_src	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"terrain_src" : "terrain_C_16x256.bin",$/;"	function	line:24
+visible	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"visible" : true,$/;"	function	line:25
+editable	/home/daichi/dev/cocos-projects/GameXXX/Resources/tm2p5d/layer.json	/^		"editable" : false$/;"	function	line:26

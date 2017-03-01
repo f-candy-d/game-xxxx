@@ -10,6 +10,9 @@
  */
 namespace TM2P5DComponent {
 
+//Forward declaration
+enum class Orientation;
+
 class TM2P5DJsonParser : public cocos2d::Ref
 {
 public:
@@ -44,14 +47,6 @@ public:
 	LayerBundlerInfo* getLayerBundlerInfoByName(std::string name);
 	AtlasInfo* getAtlasInfoByName(std::string name);
 
-	/**
-	 * Show data of information objects.
-	 */
-	static void debugLogOfMapInfo(MapInfo* info);
-	static void debugLogOfLayerInfo(LayerInfo* info);
-	static void debugLogOfLayerBundlerInfo(LayerBundlerInfo* info);
-	static void debugLogOfAtlasInfo(AtlasInfo* info);
-
 protected:
 	TM2P5DJsonParser();
 	~TM2P5DJsonParser();
@@ -71,8 +66,27 @@ private:
 	 * Parse a information file (.json) using 'picojson'.
 	 * @method parseJson
 	 * @param  json      [The name of json file that will be parsed]
+	 * @return           [A root value of the json file]
 	 */
-	void parseJson(std::string json);
+	picojson::value parseJson(std::string json);
+
+	/**
+	 * Create information object from an object of json,and return it.
+	 * @param  obj               [An object contains information]
+	 * @return                   [An information object]
+	 */
+	MapInfo* comvJsonToMapInfo(picojson::value& root);
+	LayerInfo* comvJsonToLayerInfo(picojson::value& root);
+	LayerBundlerInfo* comvJsonToLayerBundlerInfo(picojson::value& root);
+	AtlasInfo* comvJsonToAtlasInfo(picojson::value& root);
+
+	/**
+	 * Comvert a value in json to a type that is not supported in 'picojson'.
+	 * @param  value  [A value of the string type in json]
+	 */
+	Orientation comvJsonValueToOrientation(picojson::value& value);
+	cocos2d::Size comvJsonValueToCcsize(picojson::value& value);
+	cocos2d::Rect comvJsonValueToCcRect(picojson::value& value);
 };
 
 } /* namespace TM2P5DComponent */

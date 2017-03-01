@@ -132,6 +132,7 @@ set(GAME_SRC
   Classes/HelloWorldScene.cpp
   Classes/Tm2p5dLib/TiledMap2P5D.cpp
   Classes/Tm2p5dLib/TM2P5DJsonParser.cpp
+  Classes/Tm2p5dLib/InfoClasses.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -140,6 +141,8 @@ set(GAME_HEADERS
   Classes/HelloWorldScene.h
   Classes/Tm2p5dLib/TiledMap2P5D.h
   Classes/Tm2p5dLib/TM2P5DJsonParser.h
+  Classes/Tm2p5dLib/TM2P5DProperty.h
+  Classes/Tm2p5dLib/InfoClasses.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

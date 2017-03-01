@@ -1,1 +1,13 @@
+{
+	"map_info" :
+	{
+		"chank_width"  :  16,
+		"chank_height" : 256,
+		"num_of_chank" :  20,
+		"orientation"  : "landscape",
+		"tile_size"    : [64, 64],
+		"architecture" : ["layer-bundler-A","layer-bundler-B","layer-bundler-C"]
+	},
 
+	"include" : ["layer.json","layer_bundler.json","atlas.json"]
+}

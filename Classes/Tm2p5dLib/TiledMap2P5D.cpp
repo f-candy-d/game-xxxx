@@ -1,5 +1,6 @@
 #include "TiledMap2P5D.h"
 #include "TM2P5DJsonParser.h"
+#include "InfoClasses.h"
 
 USING_NS_CC;
 
@@ -41,6 +42,6 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 		return false;
 
 	auto parser = TM2P5DComponent::TM2P5DJsonParser::create();
-
+	parser->parseOriginJson("origin.json");
 	return true;
 }

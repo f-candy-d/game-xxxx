@@ -1,13 +1,34 @@
 #include "TM2P5DJsonParser.h"
+#include "TM2P5DProperty.h"
 #include <iostream>
+#include <fstream>
+#include <cassert>
 
 USING_NS_CC;
 using namespace TM2P5DComponent;
 
-//Directory names
-static const std::string DIR_NAME_TM2P5D("tm2p5d/");
-static const std::string DIR_NAME_ATLAS("atlas/");
-static const std::string DIR_NAME_TERRAIN("terrain/");
+//The following constant values are only used in TM2P5DJsonParser class
+namespace {
+	//Directory names
+	static const std::string DIR_NAME_TM2P5D("tm2p5d/");
+	static const std::string DIR_NAME_ATLAS("atlas/");
+	static const std::string DIR_NAME_TERRAIN("terrain/");
+
+	//Identifiers that indicate what is info-object or 'include'
+	static const std::string IDENTIFIER_MAP_INFO("map_info");
+	static const std::string IDENTIFIER_LAYER_INFO("layer_info");
+	static const std::string IDENTIFIER_LAYER_BUNDLER_INFO("layer_bundler_info");
+	static const std::string IDENTIFIER_ATLAS_INFO("atlas_info");
+	static const std::string IDENTIFIER_INCLUDE("include");
+
+	//Keys
+	static const std::string KEY_CHANK_WIDTH("chank_width");
+	static const std::string KEY_CHANK_HEIGHT("chank_height");
+	static const std::string KEY_NUM_OF_CHANK("num_of_chank");
+	static const std::string KEY_ORIENTATION("orientation");
+	static const std::string KEY_TILE_SIZE("tile_size");
+	static const std::string KEY_ARCHITECTURE("architecture");
+}
 
 /**
  * public
@@ -29,15 +50,15 @@ void TM2P5DJsonParser::parseOriginJson(std::string origin)
 {
 	//parse a origin file
 	std::string path = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + origin);
-	parseJson(path);
+	picojson::value root = this->parseJson(path);
 
-	if(!this->isError())
+	if(!isError())
 	{
 		//parse other information files
 	}
 	else
 	{
-		coutLastError();
+		this->outputLastError();
 	}
 }
 
@@ -46,9 +67,9 @@ bool TM2P5DJsonParser::isError()
 	return !picojson::get_last_error().empty();
 }
 
-void outputLastError()
+void TM2P5DJsonParser::outputLastError()
 {
-	if(isError())
+	if(this->isError())
 		std::cout << "picojson : error => " << picojson::get_last_error() << '\n';
 	else
 		std::cout << "TM2P5DJsonParser : mes => There are no errors for now" << '\n';
@@ -74,30 +95,6 @@ AtlasInfo* TM2P5DJsonParser::getAtlasInfoByName(std::string name)
 	return mAtlasInfoMap.at(name);
 }
 
-void TM2P5DJsonParser::debugLogOfMapInfo(MapInfo* info)
-{
-	std::cout << "\t** DEBUG LOG OF MAP-INFO **" << '\n';
-	std::cout << "\t** END **" << '\n';
-}
-
-void TM2P5DJsonParser::debugLogOfLayerInfo(LayerInfo* info)
-{
-	std::cout << "\t** DEBUG LOG OF LAYER-INFO **" << '\n';
-	std::cout << "\t** END **" << '\n';
-}
-
-void TM2P5DJsonParser::debugLogOfLayerBundlerInfo(LayerBundlerInfo* info)
-{
-	std::cout << "\t** DEBUG LOG OF LAYER-BUNDLER-INFO **" << '\n';
-	std::cout << "\t** END **" << '\n';
-}
-
-void TM2P5DJsonParser::debugLogOfAtlasInfo(AtlasInfo* info)
-{
-	std::cout << "\t** DEBUG LOG OF ATLAS-INFO **" << '\n';
-	std::cout << "\t** END **" << '\n';
-}
-
 /**
  * protected
  */
@@ -118,7 +115,102 @@ bool TM2P5DJsonParser::init()
 /**
  * private
  */
-void parseJson(std::string json)
+picojson::value TM2P5DJsonParser::parseJson(std::string json)
 {
+	picojson::value root;
+	std::ifstream fs(json.c_str(),std::ios::binary);
 
+	//check error
+	assert(fs);
+	//parse .json
+	fs >> root;
+	fs.close();
+	//check parse error
+	if(isError())
+		return std::move(root);
+
+	auto itr_end = root.get<picojson::object>().end();
+	for(auto itr = root.get<picojson::object>().begin(); itr != itr_end; ++itr)
+	{
+		if(itr->first == IDENTIFIER_MAP_INFO)
+			mMapInfo = this->comvJsonToMapInfo(root);
+
+		else if(itr->first == IDENTIFIER_LAYER_INFO)
+		{
+			// auto info = this->comvJsonToLayerInfo(root);
+			// mLayerInfoMap.insert(info->get
+		}
+	}
+
+	return std::move(root);
+}
+
+MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& root)
+{
+	auto info = MapInfo::create();
+	auto& elements = root.get<picojson::object>()[IDENTIFIER_MAP_INFO].get<picojson::object>();
+
+	info->mChankWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
+	info->mChankHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
+	info->mNumOfChank = static_cast<size_t>(elements[KEY_NUM_OF_CHANK].get<double>());
+	info->mOrientation = this->comvJsonValueToOrientation(elements[KEY_ORIENTATION]);
+	info->mTileSize = this->comvJsonValueToCcsize(elements[KEY_TILE_SIZE]);
+
+	for(auto& value : elements[KEY_ARCHITECTURE].get<picojson::array>())
+		info->mArchitecture.push_back(value.get<std::string>());
+
+	MapInfo::debugLog(info);
+
+	return info;
+}
+
+LayerInfo* TM2P5DJsonParser::comvJsonToLayerInfo(picojson::value& root)
+{
+	return nullptr;
+}
+
+LayerBundlerInfo* TM2P5DJsonParser::comvJsonToLayerBundlerInfo(picojson::value& root)
+{
+	return nullptr;
+}
+
+AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& root)
+{
+	return nullptr;
+}
+
+Orientation TM2P5DJsonParser::comvJsonValueToOrientation(picojson::value& value)
+{
+	if(value.get<std::string>() == "portrait")
+		return Orientation::PORTRAIT;
+	else
+		return Orientation::LANDSCAPE;
+}
+
+Size TM2P5DJsonParser::comvJsonValueToCcsize(picojson::value& value)
+{
+	auto& array = value.get<picojson::array>();
+	auto size = Size(0,0);
+	if(array.size() < 2)
+		return size;
+
+	size.width = static_cast<float>(array[0].get<double>());
+	size.height = static_cast<float>(array[1].get<double>());
+
+	return size;
+}
+
+Rect TM2P5DJsonParser::comvJsonValueToCcRect(picojson::value& value)
+{
+	auto& array = value.get<picojson::array>();
+	auto rect = Rect(0,0,0,0);
+	if(array.size() < 4)
+		return rect;
+
+	rect.origin.x = static_cast<float>(array[0].get<double>());
+	rect.origin.y = static_cast<float>(array[1].get<double>());
+	rect.size.width = static_cast<float>(array[2].get<double>());
+	rect.size.height = static_cast<float>(array[3].get<double>());
+
+	return rect;
 }

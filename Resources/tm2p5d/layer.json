@@ -1,0 +1,28 @@
+{
+	"layer_info" :
+	{
+		"layer_name" : "layer-A",
+		"atlas_name" : "atlas-A",
+		"terrain_src" : "terrain_A_16x256.bin",
+		"visible" : true,
+		"editable" : true
+	},
+
+	"layer_info" :
+	{
+		"layer_name" : "layer-B",
+		"atlas_name" : "atlas-B",
+		"terrain_src" : "terrain_B_16x256.bin",
+		"visible" : false,
+		"editable" : false
+	},
+
+	"layer_info" :
+	{
+		"layer_name" : "layer-C",
+		"atlas_name" : "atlas-C",
+		"terrain_src" : "terrain_C_16x256.bin",
+		"visible" : true,
+		"editable" : false
+	}
+}
