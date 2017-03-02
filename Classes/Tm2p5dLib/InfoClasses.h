@@ -4,14 +4,11 @@
 #include "../../cocos2d/cocos/cocos2d.h"
 #include <vector>
 #include <string>
-
+#include "TM2P5DProperty.h"
 /**
  * MapInfo, LayerInfo, LayerBundlerInfo, AtlasInfo class are members of the namespace 'TM2P5DComponent'.
  */
 namespace TM2P5DComponent {
-
-//Forward declaration
-namespace Orientation { enum class Enum; }
 
 /**
  * Map information class
@@ -33,7 +30,7 @@ public:
 	/**
 	 * The orientation of a map.
 	 */
-	Orientation::Enum mOrientation;
+	Orientation::Type mOrientation;
 
 	/**
 	 * The size of a texture of a tile (px).
@@ -54,7 +51,7 @@ public:
 	size_t getChankWidth();
 	size_t getChankHeight();
 	size_t getNumOfChank();
-	Orientation::Enum getOrientation();
+	Orientation::Type getOrientation();
 	cocos2d::Size getTileSize();
 	const std::vector<std::string>& getArchitecture();
 

@@ -200,7 +200,7 @@ MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& obj)
 	info->mChankWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
 	info->mChankHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
 	info->mNumOfChank = static_cast<size_t>(elements[KEY_NUM_OF_CHANK].get<double>());
-	info->mOrientation = Orientation::toEnum(elements[KEY_ORIENTATION].get<std::string>());
+	info->mOrientation = Orientation::toType(elements[KEY_ORIENTATION].get<std::string>());
 	info->mTileSize = this->comvJsonValueToCcsize(elements[KEY_TILE_SIZE]);
 
 	for(auto& value : elements[KEY_ARCHITECTURE].get<picojson::array>())

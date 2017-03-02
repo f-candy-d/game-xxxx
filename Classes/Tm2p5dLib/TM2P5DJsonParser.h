@@ -10,9 +10,6 @@
  */
 namespace TM2P5DComponent {
 
-//Forward declarations
-namespace Orientation { enum class Enum; }
-
 class TM2P5DJsonParser : public cocos2d::Ref
 {
 public:

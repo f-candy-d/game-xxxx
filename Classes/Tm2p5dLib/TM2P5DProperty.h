@@ -13,12 +13,12 @@ const std::string DIR_NAME_TERRAIN("terrain/");
 //The orientation of a map
 namespace Orientation {
 
-	enum class Enum
+	typedef enum
 	{
 		PORTRAIT,
 		LANDSCAPE,
 		NONE,
-	};
+	} Type;
 
 	/**
 	 * Comvert an enum type to a string and return it.
@@ -26,15 +26,15 @@ namespace Orientation {
 	 * @param  type     [an enum type]
 	 * @return          [a string made from an enum type]
 	 */
-	std::string toString(Enum type);
+	std::string toString(Type type);
 
 	/**
 	 * Comvert a string to an enum type and return it.
-	 * @method toEnum
+	 * @method toType
 	 * @param  str    [a string that indicate a certain enum type]
 	 * @return        [an enum type]
 	 */
-	Enum toEnum(std::string str);
+	Type toType(std::string str);
 
 } /* namespace Orientation */
 

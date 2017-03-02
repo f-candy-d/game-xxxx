@@ -55,7 +55,7 @@ size_t MapInfo::getNumOfChank()
 	return mNumOfChank;
 }
 
-Orientation::Enum MapInfo::getOrientation()
+Orientation::Type MapInfo::getOrientation()
 {
 	return mOrientation;
 }
@@ -77,7 +77,7 @@ MapInfo::MapInfo()
 :mChankWidth(0)
 ,mChankHeight(0)
 ,mNumOfChank(0)
-,mOrientation(Orientation::Enum::NONE)
+,mOrientation(Orientation::NONE)
 ,mTileSize(Size(0,0))
 {}
 

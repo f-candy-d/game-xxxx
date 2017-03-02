@@ -4,7 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D* TiledMap2P5D::create(std::string origin)$/;"	function	line:10	class:TiledMap2P5D	signature:(std::string origin)
-TiledMap2P5D	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D::TiledMap2P5D()$/;"	function	line:26	class:TiledMap2P5D	signature:()
-~TiledMap2P5D	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D::~TiledMap2P5D()$/;"	function	line:31	class:TiledMap2P5D	signature:()
-initWithOrigin	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^bool TiledMap2P5D::initWithOrigin(std::string origin)$/;"	function	line:39	class:TiledMap2P5D	signature:(std::string origin)
+TM2P5D_PROPERTY_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^#define TM2P5D_PROPERTY_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace TM2P5DComponent {$/;"	namespace	line:6
+Orientation	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace Orientation {$/;"	namespace	line:14	namespace:TM2P5DComponent
+PORTRAIT	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		PORTRAIT,$/;"	enumerator	line:18	enum:TM2P5DComponent::Orientation::__anon1
+LANDSCAPE	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		LANDSCAPE,$/;"	enumerator	line:19	enum:TM2P5DComponent::Orientation::__anon1
+NONE	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		NONE,$/;"	enumerator	line:20	enum:TM2P5DComponent::Orientation::__anon1
+Type	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	} Type;$/;"	typedef	line:21	namespace:TM2P5DComponent::Orientation	typeref:enum:TM2P5DComponent::Orientation::__anon1
