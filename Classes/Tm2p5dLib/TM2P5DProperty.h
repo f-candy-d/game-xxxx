@@ -18,7 +18,8 @@ namespace Orientation {
 		PORTRAIT,
 		LANDSCAPE,
 		NONE,
-	} Type;
+	}
+	Type;
 
 	/**
 	 * Comvert an enum type to a string and return it.

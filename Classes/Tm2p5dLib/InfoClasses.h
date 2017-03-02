@@ -2,9 +2,9 @@
 #define INFO_CLASSES_H
 
 #include "../../cocos2d/cocos/cocos2d.h"
+#include "TM2P5DProperty.h"
 #include <vector>
 #include <string>
-#include "TM2P5DProperty.h"
 /**
  * MapInfo, LayerInfo, LayerBundlerInfo, AtlasInfo class are members of the namespace 'TM2P5DComponent'.
  */

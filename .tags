@@ -21,43 +21,58 @@ comvJsonToLayerBundlerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5
 comvJsonToAtlasInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.cpp	/^AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& obj)$/;"	function	line:245	class:TM2P5DJsonParser	signature:(picojson::value& obj)
 comvJsonValueToCcsize	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.cpp	/^Size TM2P5DJsonParser::comvJsonValueToCcsize(picojson::value& value)$/;"	function	line:262	class:TM2P5DJsonParser	signature:(picojson::value& value)
 comvJsonValueToCcRect	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.cpp	/^Rect TM2P5DJsonParser::comvJsonValueToCcRect(picojson::value& value)$/;"	function	line:275	class:TM2P5DJsonParser	signature:(picojson::value& value)
-create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^MapInfo* MapInfo::create()$/;"	function	line:11	class:MapInfo	signature:()
-debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void MapInfo::debugLog(MapInfo *info)$/;"	function	line:24	class:MapInfo	signature:(MapInfo *info)
-getChankWidth	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t MapInfo::getChankWidth()$/;"	function	line:43	class:MapInfo	signature:()
-getChankHeight	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t MapInfo::getChankHeight()$/;"	function	line:48	class:MapInfo	signature:()
-getNumOfChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t MapInfo::getNumOfChank()$/;"	function	line:53	class:MapInfo	signature:()
-getOrientation	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^Orientation::Type MapInfo::getOrientation()$/;"	function	line:58	class:MapInfo	signature:()
-getTileSize	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^cocos2d::Size MapInfo::getTileSize()$/;"	function	line:63	class:MapInfo	signature:()
-getArchitecture	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^const std::vector<std::string>& MapInfo::getArchitecture()$/;"	function	line:68	class:MapInfo	signature:()
-MapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^MapInfo::MapInfo()$/;"	function	line:76	class:MapInfo	signature:()
-~MapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^MapInfo::~MapInfo()$/;"	function	line:84	class:MapInfo	signature:()
-init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool MapInfo::init()$/;"	function	line:87	class:MapInfo	signature:()
-create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerInfo* LayerInfo::create()$/;"	function	line:95	class:LayerInfo	signature:()
-debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void LayerInfo::debugLog(LayerInfo *info)$/;"	function	line:108	class:LayerInfo	signature:(LayerInfo *info)
-getLayerName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerInfo::getLayerName()$/;"	function	line:119	class:LayerInfo	signature:()
-getAtlasName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerInfo::getAtlasName()$/;"	function	line:124	class:LayerInfo	signature:()
-getTerrainSource	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerInfo::getTerrainSource()$/;"	function	line:129	class:LayerInfo	signature:()
-isVisible	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerInfo::isVisible()$/;"	function	line:134	class:LayerInfo	signature:()
-isEditable	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerInfo::isEditable()$/;"	function	line:139	class:LayerInfo	signature:()
-LayerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerInfo::LayerInfo()$/;"	function	line:147	class:LayerInfo	signature:()
-~LayerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerInfo::~LayerInfo()$/;"	function	line:155	class:LayerInfo	signature:()
-init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerInfo::init()$/;"	function	line:158	class:LayerInfo	signature:()
-create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerBundlerInfo* LayerBundlerInfo::create()$/;"	function	line:167	class:LayerBundlerInfo	signature:()
-debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void LayerBundlerInfo::debugLog(LayerBundlerInfo *info)$/;"	function	line:180	class:LayerBundlerInfo	signature:(LayerBundlerInfo *info)
-getLayerName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerBundlerInfo::getLayerName()$/;"	function	line:193	class:LayerBundlerInfo	signature:()
-getArchitecture	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^const std::vector<std::string>& LayerBundlerInfo::getArchitecture()$/;"	function	line:198	class:LayerBundlerInfo	signature:()
-LayerBundlerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerBundlerInfo::LayerBundlerInfo()$/;"	function	line:206	class:LayerBundlerInfo	signature:()
-~LayerBundlerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerBundlerInfo::~LayerBundlerInfo()$/;"	function	line:210	class:LayerBundlerInfo	signature:()
-init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerBundlerInfo::init()$/;"	function	line:213	class:LayerBundlerInfo	signature:()
-create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo* AtlasInfo::create()$/;"	function	line:222	class:AtlasInfo	signature:()
-debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void AtlasInfo::debugLog(AtlasInfo *info)$/;"	function	line:235	class:AtlasInfo	signature:(AtlasInfo *info)
-getAtlasName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string AtlasInfo::getAtlasName()$/;"	function	line:248	class:AtlasInfo	signature:()
-getAtlasSource	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string AtlasInfo::getAtlasSource()$/;"	function	line:253	class:AtlasInfo	signature:()
-getNumOfTileType	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t AtlasInfo::getNumOfTileType()$/;"	function	line:258	class:AtlasInfo	signature:()
-getTextureRects	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^const std::vector<Rect>& AtlasInfo::getTextureRects()$/;"	function	line:263	class:AtlasInfo	signature:()
-AtlasInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo::AtlasInfo()$/;"	function	line:271	class:AtlasInfo	signature:()
-~AtlasInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo::~AtlasInfo()$/;"	function	line:277	class:AtlasInfo	signature:()
-init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool AtlasInfo::init()$/;"	function	line:280	class:AtlasInfo	signature:()
+TM2P5D_JSON_PARSER_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^#define TM2P5D_JSON_PARSER_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^namespace TM2P5DComponent {$/;"	namespace	line:11
+TM2P5DJsonParser	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^class TM2P5DJsonParser : public cocos2d::Ref$/;"	class	line:13	namespace:TM2P5DComponent
+mMapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	MapInfo* mMapInfo;$/;"	member	line:63	class:TM2P5DComponent::TM2P5DJsonParser
+mLayerInfoMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	cocos2d::Map<std::string,LayerInfo*> mLayerInfoMap;$/;"	member	line:64	class:TM2P5DComponent::TM2P5DJsonParser
+mLayerBundlerInfoMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	cocos2d::Map<std::string,LayerBundlerInfo*> mLayerBundlerInfoMap;$/;"	member	line:65	class:TM2P5DComponent::TM2P5DJsonParser
+mAtlasInfoMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	cocos2d::Map<std::string,AtlasInfo*> mAtlasInfoMap;$/;"	member	line:66	class:TM2P5DComponent::TM2P5DJsonParser
+mErrorPool	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	std::vector<std::string> mErrorPool;$/;"	member	line:71	class:TM2P5DComponent::TM2P5DJsonParser
+create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^MapInfo* MapInfo::create()$/;"	function	line:10	class:MapInfo	signature:()
+debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void MapInfo::debugLog(MapInfo *info)$/;"	function	line:23	class:MapInfo	signature:(MapInfo *info)
+getChankWidth	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t MapInfo::getChankWidth()$/;"	function	line:42	class:MapInfo	signature:()
+getChankHeight	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t MapInfo::getChankHeight()$/;"	function	line:47	class:MapInfo	signature:()
+getNumOfChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t MapInfo::getNumOfChank()$/;"	function	line:52	class:MapInfo	signature:()
+getOrientation	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^Orientation::Type MapInfo::getOrientation()$/;"	function	line:57	class:MapInfo	signature:()
+getTileSize	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^cocos2d::Size MapInfo::getTileSize()$/;"	function	line:62	class:MapInfo	signature:()
+getArchitecture	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^const std::vector<std::string>& MapInfo::getArchitecture()$/;"	function	line:67	class:MapInfo	signature:()
+MapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^MapInfo::MapInfo()$/;"	function	line:75	class:MapInfo	signature:()
+~MapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^MapInfo::~MapInfo()$/;"	function	line:83	class:MapInfo	signature:()
+init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool MapInfo::init()$/;"	function	line:86	class:MapInfo	signature:()
+create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerInfo* LayerInfo::create()$/;"	function	line:94	class:LayerInfo	signature:()
+debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void LayerInfo::debugLog(LayerInfo *info)$/;"	function	line:107	class:LayerInfo	signature:(LayerInfo *info)
+getLayerName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerInfo::getLayerName()$/;"	function	line:118	class:LayerInfo	signature:()
+getAtlasName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerInfo::getAtlasName()$/;"	function	line:123	class:LayerInfo	signature:()
+getTerrainSource	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerInfo::getTerrainSource()$/;"	function	line:128	class:LayerInfo	signature:()
+isVisible	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerInfo::isVisible()$/;"	function	line:133	class:LayerInfo	signature:()
+isEditable	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerInfo::isEditable()$/;"	function	line:138	class:LayerInfo	signature:()
+LayerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerInfo::LayerInfo()$/;"	function	line:146	class:LayerInfo	signature:()
+~LayerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerInfo::~LayerInfo()$/;"	function	line:154	class:LayerInfo	signature:()
+init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerInfo::init()$/;"	function	line:157	class:LayerInfo	signature:()
+create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerBundlerInfo* LayerBundlerInfo::create()$/;"	function	line:166	class:LayerBundlerInfo	signature:()
+debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void LayerBundlerInfo::debugLog(LayerBundlerInfo *info)$/;"	function	line:179	class:LayerBundlerInfo	signature:(LayerBundlerInfo *info)
+getLayerName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string LayerBundlerInfo::getLayerName()$/;"	function	line:192	class:LayerBundlerInfo	signature:()
+getArchitecture	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^const std::vector<std::string>& LayerBundlerInfo::getArchitecture()$/;"	function	line:197	class:LayerBundlerInfo	signature:()
+LayerBundlerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerBundlerInfo::LayerBundlerInfo()$/;"	function	line:205	class:LayerBundlerInfo	signature:()
+~LayerBundlerInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^LayerBundlerInfo::~LayerBundlerInfo()$/;"	function	line:209	class:LayerBundlerInfo	signature:()
+init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool LayerBundlerInfo::init()$/;"	function	line:212	class:LayerBundlerInfo	signature:()
+create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo* AtlasInfo::create()$/;"	function	line:221	class:AtlasInfo	signature:()
+debugLog	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^void AtlasInfo::debugLog(AtlasInfo *info)$/;"	function	line:234	class:AtlasInfo	signature:(AtlasInfo *info)
+getAtlasName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string AtlasInfo::getAtlasName()$/;"	function	line:247	class:AtlasInfo	signature:()
+getAtlasSource	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^std::string AtlasInfo::getAtlasSource()$/;"	function	line:252	class:AtlasInfo	signature:()
+getNumOfTileType	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^size_t AtlasInfo::getNumOfTileType()$/;"	function	line:257	class:AtlasInfo	signature:()
+getTextureRects	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^const std::vector<Rect>& AtlasInfo::getTextureRects()$/;"	function	line:262	class:AtlasInfo	signature:()
+AtlasInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo::AtlasInfo()$/;"	function	line:270	class:AtlasInfo	signature:()
+~AtlasInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo::~AtlasInfo()$/;"	function	line:276	class:AtlasInfo	signature:()
+init	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool AtlasInfo::init()$/;"	function	line:279	class:AtlasInfo	signature:()
+TM2P5D_PROPERTY_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^#define TM2P5D_PROPERTY_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace TM2P5DComponent {$/;"	namespace	line:6
+Orientation	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace Orientation {$/;"	namespace	line:14	namespace:TM2P5DComponent
+PORTRAIT	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		PORTRAIT,$/;"	enumerator	line:18	enum:TM2P5DComponent::Orientation::__anon1
+LANDSCAPE	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		LANDSCAPE,$/;"	enumerator	line:19	enum:TM2P5DComponent::Orientation::__anon1
+NONE	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		NONE,$/;"	enumerator	line:20	enum:TM2P5DComponent::Orientation::__anon1
+Type	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	Type;$/;"	typedef	line:22	namespace:TM2P5DComponent::Orientation	typeref:enum:TM2P5DComponent::Orientation::__anon1
 INFO_CLASSES_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^#define INFO_CLASSES_H$/;"	macro	line:2
 TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^namespace TM2P5DComponent {$/;"	namespace	line:11
 MapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^class MapInfo : public cocos2d::Ref$/;"	class	line:16	namespace:TM2P5DComponent
@@ -81,18 +96,10 @@ mAtlasName	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses
 mAtlasSource	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mAtlasSource;$/;"	member	line:158	class:TM2P5DComponent::AtlasInfo
 mNumOfTileType	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	size_t mNumOfTileType;$/;"	member	line:163	class:TM2P5DComponent::AtlasInfo
 mTextureRects	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::vector<cocos2d::Rect> mTextureRects;$/;"	member	line:168	class:TM2P5DComponent::AtlasInfo
-TM2P5D_JSON_PARSER_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^#define TM2P5D_JSON_PARSER_H$/;"	macro	line:2
-TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^namespace TM2P5DComponent {$/;"	namespace	line:11
-TM2P5DJsonParser	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^class TM2P5DJsonParser : public cocos2d::Ref$/;"	class	line:13	namespace:TM2P5DComponent
-mMapInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	MapInfo* mMapInfo;$/;"	member	line:63	class:TM2P5DComponent::TM2P5DJsonParser
-mLayerInfoMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	cocos2d::Map<std::string,LayerInfo*> mLayerInfoMap;$/;"	member	line:64	class:TM2P5DComponent::TM2P5DJsonParser
-mLayerBundlerInfoMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	cocos2d::Map<std::string,LayerBundlerInfo*> mLayerBundlerInfoMap;$/;"	member	line:65	class:TM2P5DComponent::TM2P5DJsonParser
-mAtlasInfoMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	cocos2d::Map<std::string,AtlasInfo*> mAtlasInfoMap;$/;"	member	line:66	class:TM2P5DComponent::TM2P5DJsonParser
-mErrorPool	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^	std::vector<std::string> mErrorPool;$/;"	member	line:71	class:TM2P5DComponent::TM2P5DJsonParser
-TM2P5D_PROPERTY_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^#define TM2P5D_PROPERTY_H$/;"	macro	line:2
-TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace TM2P5DComponent {$/;"	namespace	line:6
-Orientation	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace Orientation {$/;"	namespace	line:14	namespace:TM2P5DComponent
-PORTRAIT	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		PORTRAIT,$/;"	enumerator	line:18	enum:TM2P5DComponent::Orientation::__anon1
-LANDSCAPE	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		LANDSCAPE,$/;"	enumerator	line:19	enum:TM2P5DComponent::Orientation::__anon1
-NONE	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		NONE,$/;"	enumerator	line:20	enum:TM2P5DComponent::Orientation::__anon1
-Type	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	} Type;$/;"	typedef	line:21	namespace:TM2P5DComponent::Orientation	typeref:enum:TM2P5DComponent::Orientation::__anon1
+CHANK_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.h	/^#define CHANK_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.h	/^namespace TM2P5DComponent {$/;"	namespace	line:9
+Chank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.h	/^class Chank : public cocos2d::Ref$/;"	class	line:11	namespace:TM2P5DComponent
+create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^Chank* Chank::create(size_t width, size_t height, int index,Size tileSize)$/;"	function	line:9	class:Chank	signature:(size_t width, size_t height, int index,Size tileSize)
+Chank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^Chank::Chank()$/;"	function	line:25	class:Chank	signature:()
+~Chank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^Chank::~Chank()$/;"	function	line:28	class:Chank	signature:()
+initWithParam	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^bool Chank::initWithParam(size_t width,size_t height,int index,cocos2d::Size tileSize)$/;"	function	line:31	class:Chank	signature:(size_t width,size_t height,int index,cocos2d::Size tileSize)

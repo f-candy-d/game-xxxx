@@ -1,5 +1,4 @@
 #include "InfoClasses.h"
-#include "TM2P5DProperty.h"
 #include <iostream>
 
 USING_NS_CC;
