@@ -56,9 +56,25 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 		parser->getAtlasInfoByName("atlas-A"),
 		3,
 		0,
-		Director::getInstance()->getWinSize());
+		Director::getInstance()->getWinSize() * 0.5);
+
+	this->addChild(layer);
 
 	parser->release();
+
+	//Touch events
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = [](Touch* touch,Event* event)
+	{
+		return true;
+	};
+	listener->onTouchMoved = [this](Touch* touch,Event* event)
+	{
+		Vec2 delta = touch->getDelta();
+		Vec2 now = this->getPosition();
+		this->setPosition(now.x + delta.x,now.y + delta.y);
+	};
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
 
 	return true;
 }

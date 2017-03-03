@@ -147,7 +147,8 @@ picojson::value TM2P5DJsonParser::parseJson(std::string json)
 	//check parse error
 	if(!picojson::get_last_error().empty())
 	{
-		mErrorPool.push_back(picojson::get_last_error());
+		std::string err_mes(picojson::get_last_error() + " in " + json);
+		mErrorPool.push_back(err_mes);
 		//clear last error
 		picojson::set_last_error("");
 		return std::move(root);

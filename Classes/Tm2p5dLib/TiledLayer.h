@@ -64,7 +64,7 @@ private:
 	/**
 	 * Add tile sprites to this node.
 	 */
-	CC_SYNTHESIZE_RETAIN(cocos2d::SpriteBatchNode*,mBatchNode,BatchNode);
+	cocos2d::SpriteBatchNode* mBatchNode;
 
 	/**
 	 * Z-older of this layer.

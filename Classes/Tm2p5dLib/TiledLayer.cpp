@@ -109,10 +109,13 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 
 	//batch node
 	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
+	mBatchNode->retain();
 	this->addChild(mBatchNode);
 
 	//Stage first chanks
 	this->stageNewChank(capacity,LoadDirection::DIRECTION_END);
+	for(auto chank : mChanks)
+		this->allocateSpriteToChank(chank);
 
 	return true;
 }
@@ -128,7 +131,7 @@ void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 		{
 			//Create new chnak object
 			mChanks.pushBack(Chank::create(mChankWidth,mChankHeight,mChanks.size()));
-			loadTerrain(mChanks.back());
+			this->loadTerrain(mChanks.back());
 		}
 		else
 		{
@@ -136,19 +139,23 @@ void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 				&& 0 < mChanks.front()->getIndex())
 			{
 				auto chank = mChanks.back();
+				if(chank->getIsModified())
+					this->saveTerrain(chank);
 				chank->recycle(mChanks.front()->getIndex() - 1);
 				mChanks.popBack();
 				mChanks.insert(0,chank);
-				loadTerrain(chank);
+				this->loadTerrain(chank);
 			}
 			else if(direction == LoadDirection::DIRECTION_END
 				&& mChanks.back()->getIndex() < static_cast<int>(mNumOfChank - 1))
 			{
 				auto chank = mChanks.front();
+				if(chank->getIsModified())
+					this->saveTerrain(chank);
 				chank->recycle(mChanks.back()->getIndex() + 1);
 				mChanks.erase(0);
 				mChanks.pushBack(chank);
-				loadTerrain(chank);
+				this->loadTerrain(chank);
 			}
 		}
 	}
@@ -216,6 +223,7 @@ void TiledLayer::allocateSpriteToChank(Chank *chank)
 		{
 			auto sprite = Sprite::create(mAtlasSrc);
 			mBatchNode->addChild(sprite);
+			sprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 			chank->addSprite(sprite);
 		}
 	}
@@ -225,13 +233,19 @@ void TiledLayer::allocateSpriteToChank(Chank *chank)
 		//An origin point of a chank
 		Vec2 origin(mChankWidth * mTileSize.width * chank->getIndex(),0);
 		int y = std::max(0, sub_chank_h * (mIndexOfActiveSubChank - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
+		int c = 0;
 		for(; y < sub_chank_h * NUM_OF_DRAWN_SUB_CHANK; ++y)
 		{
 			for(int x = 0; x < sub_chank_w; ++x)
 			{
-				auto sprite = chank->getSprites().at(y * mChankWidth + x);
-				sprite->setTextureRect(mTextureRects[chank->getTypeAt(x,y)]);
-				sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+				// (chank->getTypeAt(x,y) < 0 == true means there is no tile on that point
+				if(!(chank->getTypeAt(x,y) < 0))
+				{
+					auto sprite = chank->getSprites().at(y * mChankWidth + x);
+					sprite->setTextureRect(mTextureRects[chank->getTypeAt(x,y)]);
+					sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+					c++;
+				}
 			}
 		}
 	}
@@ -245,9 +259,13 @@ void TiledLayer::allocateSpriteToChank(Chank *chank)
 		{
 			for(; x < sub_chank_w * NUM_OF_DRAWN_SUB_CHANK; ++x)
 			{
-				auto sprite = chank->getSprites().at(y * mChankWidth + x);
-				sprite->setTextureRect(mTextureRects[chank->getTypeAt(x,y)]);
-				sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+				// (chank->getTypeAt(x,y) < 0 == true means there is no tile on that point
+				if(!(chank->getTypeAt(x,y) < 0))
+				{
+					auto sprite = chank->getSprites().at(y * mChankWidth + x);
+					sprite->setTextureRect(mTextureRects[chank->getTypeAt(x,y)]);
+					sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+				}
 			}
 		}
 	}
