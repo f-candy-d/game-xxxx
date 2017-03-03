@@ -12,7 +12,7 @@
 		{
 			"layer_name" : "layer-B",
 			"atlas_name" : "atlas-B",
-			"terrain_src" : "terrain_B_16x256.bin",
+			"terrain_src" : "terrain_A_16x256.bin",
 			"visible" : false,
 			"editable" : false
 		},
@@ -20,7 +20,7 @@
 		{
 			"layer_name" : "layer-C",
 			"atlas_name" : "atlas-B",
-			"terrain_src" : "terrain_C_16x256.bin",
+			"terrain_src" : "terrain_A_16x256.bin",
 			"visible" : true,
 			"editable" : false
 		}

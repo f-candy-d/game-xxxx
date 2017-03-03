@@ -15,7 +15,7 @@
 
 		{
 			"atlas_name" : "atlas-B",
-			"atlas_src" : "tile_atlas_b.png",
+			"atlas_src" : "tile_atlas_a.png",
 			"num_of_tile_type" : 2,
 			"texture_rect" :
 			[
