@@ -135,6 +135,7 @@ set(GAME_SRC
   Classes/Tm2p5dLib/TM2P5DProperty.cpp
   Classes/Tm2p5dLib/InfoClasses.cpp
   Classes/Tm2p5dLib/Chank.cpp
+  Classes/Tm2p5dLib/TiledLayer.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 

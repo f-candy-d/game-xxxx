@@ -1,4 +1,6 @@
 #include "TiledLayer.h"
+#include "InfoClasses.h"
+#include <iostream>
 
 USING_NS_CC;
 using namespace TM2P5DComponent;
@@ -6,10 +8,10 @@ using namespace TM2P5DComponent;
 /**
  * public
  */
-TiledLayer* TiledLayer::createcreate(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)
+TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
 {
 	auto ret = new TiledLayer();
-	if(ret->initWithInfo(mapInfo,layerInfo,atlasInfo,capacity,zolder))
+	if(ret->initWithInfo(mapInfo,layerInfo,atlasInfo,capacity,zolder,visibleSize))
 	{
 		ret->autorelease();
 		return ret;
@@ -17,6 +19,11 @@ TiledLayer* TiledLayer::createcreate(MapInfo* mapInfo,LayerInfo* layerInfo,Atlas
 
 	CC_SAFE_DELETE(ret);
 	return nullptr;
+}
+
+void TiledLayer::onVisibleRectChanged(Rect visibleRect)
+{
+
 }
 
 /**
@@ -45,19 +52,20 @@ TiledLayer::~TiledLayer()
 	CC_SAFE_RELEASE_NULL(mBatchNode);
 }
 
-bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)
+bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
 {
 	if(!Node::init())
 		return false;
 
-	//check parameters
+	// //check parameters
 	if(mapInfo->getOrientation() == Orientation::NONE
 	|| atlasInfo->getAtlasSource().empty()
-	|| atlasInfo->getNumOfTileType() != atlasInfo->getTextureRects().size())
+	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size())
 		return false;
 
 	mZolder = zolder;
 	mCapacity = capacity;
+	mIndexOfActiveSubChank = 0;
 	mNumOfChank = mapInfo->getNumOfChank();
 	mChankWidth = mapInfo->getChankWidth();
 	mChankHeight = mapInfo->getChankHeight();
@@ -66,14 +74,30 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mTerrainSrc = layerInfo->getTerrainSource();
 	mIsVisible = layerInfo->isVisible();
 	mIsEditable = layerInfo->isEditable();
-	mNumOfTileTypes = atlasInfo->getNumOfTileType();
+	mNumOfTileType = atlasInfo->getNumOfTileType();
 	mAtlasSrc = atlasInfo->getAtlasSource();
 
-	//Decide the number of sub-chanks
-	Size winSize = Director::getInstance()->getWinSize();
+	mChanks.reserve(capacity);
+
+	//copy texture rects
+	mTextureRects.reserve(atlasInfo->getTextureRects().size());
+	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
+
+
+	// Decide the number of sub-chanks
 	Size tileSize = mapInfo->getTileSize();
 	if(mChankHeight > mChankWidth)
-
+		for(size_t i = 1;
+			visibleSize.height < mChankHeight / i * tileSize.height
+			&& i <= mChankHeight;
+			i *= 2)
+			mNumOfSubChank = i;
+	else
+		for(size_t i = 1;
+			visibleSize.width < mChankWidth / i * tileSize.width
+			&& i <= mChankWidth;
+			i *= 2)
+			mNumOfSubChank = i;
 
 	return true;
 }
@@ -81,3 +105,25 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 /**
  * private
  */
+void TiledLayer::stageNewChank(int num, LoadDirection direction)
+{
+	
+}
+
+void TiledLayer::loadTerrain(Chank *chank)
+{
+
+}
+
+void TiledLayer::saveTerrain(Chank *chank)
+{
+
+}
+
+void TiledLayer::saveAllTerrainOfChankStaged()
+{}
+
+void TiledLayer::allocateSpriteToChank(Chank *chank)
+{
+
+}

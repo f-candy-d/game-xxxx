@@ -3,6 +3,7 @@
 
 #include "../../cocos2d/cocos/cocos2d.h"
 #include "TM2P5DProperty.h"
+#include "Chank.h"
 #include <string>
 #include <vector>
 
@@ -31,7 +32,14 @@ public:
 	 * @return           [TiledLayer*]
 	 */
 
-	static TiledLayer* create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder);
+	static TiledLayer* create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize);
+
+	/**
+	 * This function will be called when a visible rect changed.
+	 * @method onVisibleRectChanged
+	 * @param  visibleRect          [description]
+	 */
+	void onVisibleRectChanged(cocos2d::Rect visibleRect);
 
 protected:
 	TiledLayer();
@@ -45,13 +53,13 @@ protected:
 	 * @param  zolder    [An z-older of this layer in a tiled-layer-bundler]
 	 * @return           [description]
 	 */
-	bool initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder);
+	bool initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize);
 
 private:
 	/**
 	 * Add tile sprites to this node.
 	 */
-	CC_SYNTHESIZE_RETAIN(SpriteBatchNode*,mBatchNode,BatchNode);
+	CC_SYNTHESIZE_RETAIN(cocos2d::SpriteBatchNode*,mBatchNode,BatchNode);
 
 	/**
 	 * Z-older of this layer.
@@ -77,7 +85,7 @@ private:
 	/**
 	 * The number of kinds of tile tpyes.
 	 */
-	size_t mNumOfTileTypes;
+	int mNumOfTileType;
 
 	/**
 	 * The number of sub-chanks.
@@ -128,6 +136,36 @@ private:
 	 * An vector that contains staged chanks.
 	 */
 	cocos2d::Vector<Chank*> mChanks;
+
+	/**
+	 * Stage new chanks.Save old terrain data and load new one.
+	 * @method stageNewChank
+	 * @param  num           [the number of chanks that will be staged]
+	 * @param  direction     [the direction of loading terrain data]
+	 */
+	void stageNewChank(int num,LoadDirection direction);
+
+	/**
+	 * Load and Save terrain data to a terrain file.
+	 * @method loadTerrain
+	 * @method saveTerrain
+	 * @param  chank       [chank object]
+	 */
+	void loadTerrain(Chank* chank);
+	void saveTerrain(Chank* chank);
+
+	/**
+	 * Save all terrain date of chanks that is staged.
+	 * @method saveAllTerrainOfChankStaged
+	 */
+	void saveAllTerrainOfChankStaged();
+
+	/**
+	 * Make or move sprites for displayed sub-chanks.
+	 * @method allocateSpriteToChank
+	 * @param  chank                 [chank object]
+	 */
+	void allocateSpriteToChank(Chank* chank);
 };
 
 } /* namespace TM2P5DComponent */

@@ -70,6 +70,7 @@ private:
 
 	/**
 	 * The width and height of a chank.
+	 * These are must be 2^n.
 	 */
 	CC_SYNTHESIZE_READONLY(size_t,mWidth,Width);
 	CC_SYNTHESIZE_READONLY(size_t,mHeight,Height);

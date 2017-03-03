@@ -39,6 +39,13 @@ namespace Orientation {
 
 } /* namespace Orientation */
 
+//The direction of loading chanks.
+enum class LoadDirection
+{
+	DIRECTION_BEGIN,
+	DIRECTION_END,
+};
+
 } /* namespace TM2P5DComponent */
 
 #endif

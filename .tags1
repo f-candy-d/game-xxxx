@@ -4,7 +4,13 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-createcreate	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer* TiledLayer::createcreate(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)$/;"	function	line:9	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)
-TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::TiledLayer()$/;"	function	line:25	class:TiledLayer	signature:()
-~TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::~TiledLayer()$/;"	function	line:43	class:TiledLayer	signature:()
-initWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)$/;"	function	line:48	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)
+create	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)$/;"	function	line:11	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
+onVisibleRectChanged	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::onVisibleRectChanged(Rect visibleRect)$/;"	function	line:24	class:TiledLayer	signature:(Rect visibleRect)
+TiledLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::TiledLayer()$/;"	function	line:32	class:TiledLayer	signature:()
+~TiledLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::~TiledLayer()$/;"	function	line:50	class:TiledLayer	signature:()
+initWithInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)$/;"	function	line:55	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
+stageNewChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::stageNewChank(int num, LoadDirection direction)$/;"	function	line:108	class:TiledLayer	signature:(int num, LoadDirection direction)
+loadTerrain	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::loadTerrain(Chank *chank)$/;"	function	line:113	class:TiledLayer	signature:(Chank *chank)
+saveTerrain	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveTerrain(Chank *chank)$/;"	function	line:118	class:TiledLayer	signature:(Chank *chank)
+saveAllTerrainOfChankStaged	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveAllTerrainOfChankStaged()$/;"	function	line:123	class:TiledLayer	signature:()
+allocateSpriteToChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::allocateSpriteToChank(Chank *chank)$/;"	function	line:126	class:TiledLayer	signature:(Chank *chank)
