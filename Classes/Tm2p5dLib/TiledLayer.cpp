@@ -183,7 +183,13 @@ void TiledLayer::saveTerrain(Chank *chank)
 }
 
 void TiledLayer::saveAllTerrainOfChankStaged()
-{}
+{
+	for(auto itr = mChanks.begin(); itr != mChanks.end(); ++itr)
+	{
+		if((*itr)->getIsModified())
+			this->saveTerrain(*itr);
+	}
+}
 
 void TiledLayer::allocateSpriteToChank(Chank *chank)
 {

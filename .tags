@@ -217,4 +217,4 @@ stageNewChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLay
 loadTerrain	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::loadTerrain(Chank *chank)$/;"	function	line:147	class:TiledLayer	signature:(Chank *chank)
 saveTerrain	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveTerrain(Chank *chank)$/;"	function	line:166	class:TiledLayer	signature:(Chank *chank)
 saveAllTerrainOfChankStaged	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveAllTerrainOfChankStaged()$/;"	function	line:185	class:TiledLayer	signature:()
-allocateSpriteToChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::allocateSpriteToChank(Chank *chank)$/;"	function	line:188	class:TiledLayer	signature:(Chank *chank)
+allocateSpriteToChank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::allocateSpriteToChank(Chank *chank)$/;"	function	line:194	class:TiledLayer	signature:(Chank *chank)
