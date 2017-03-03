@@ -143,7 +143,7 @@ private:
 	 * @param  num           [the number of chanks that will be staged]
 	 * @param  direction     [the direction of loading terrain data]
 	 */
-	void stageNewChank(int num,LoadDirection direction);
+	void stageNewChank(size_t num,LoadDirection direction);
 
 	/**
 	 * Load and Save terrain data to a terrain file.

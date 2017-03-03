@@ -99,15 +99,47 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 			i *= 2)
 			mNumOfSubChank = i;
 
+	//Stage first chanks
+	this->stageNewChank(capacity,LoadDirection::DIRECTION_END);
+
 	return true;
 }
 
 /**
  * private
  */
-void TiledLayer::stageNewChank(int num, LoadDirection direction)
+void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 {
-	
+	for(size_t n = 0; n < num; ++n)
+	{
+		if(static_cast<size_t>(mChanks.size()) < mCapacity)
+		{
+			//Create new chnak object
+			mChanks.pushBack(Chank::create(mChankWidth,mChankHeight,mChanks.size()));
+			loadTerrain(mChanks.back());
+		}
+		else
+		{
+			if(direction == LoadDirection::DIRECTION_BEGIN
+				&& 0 < mChanks.front()->getIndex())
+			{
+				auto chank = mChanks.back();
+				chank->recycle(mChanks.front()->getIndex() - 1);
+				mChanks.popBack();
+				mChanks.insert(0,chank);
+				loadTerrain(chank);
+			}
+			else if(direction == LoadDirection::DIRECTION_END
+				&& mChanks.back()->getIndex() < static_cast<int>(mNumOfChank - 1))
+			{
+				auto chank = mChanks.front();
+				chank->recycle(mChanks.back()->getIndex() + 1);
+				mChanks.erase(0);
+				mChanks.pushBack(chank);
+				loadTerrain(chank);
+			}
+		}
+	}
 }
 
 void TiledLayer::loadTerrain(Chank *chank)
