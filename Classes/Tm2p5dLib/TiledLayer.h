@@ -103,12 +103,12 @@ private:
 	std::string mLayerName;
 
 	/**
-	 * The name of terrain data file.
+	 * The full path to a terrain data file.
 	 */
 	std::string mTerrainSrc;
 
 	/**
-	 * The name of a tile atlas file.
+	 * The full path to a tile atlas file.
 	 */
 	std::string mAtlasSrc;
 

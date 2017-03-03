@@ -1,6 +1,7 @@
 #include "TiledLayer.h"
 #include "InfoClasses.h"
 #include <iostream>
+#include <fstream>
 
 USING_NS_CC;
 using namespace TM2P5DComponent;
@@ -71,18 +72,19 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mChankHeight = mapInfo->getChankHeight();
 	mOrientation = mapInfo->getOrientation();
 	mLayerName = layerInfo->getLayerName();
-	mTerrainSrc = layerInfo->getTerrainSource();
 	mIsVisible = layerInfo->isVisible();
 	mIsEditable = layerInfo->isEditable();
 	mNumOfTileType = atlasInfo->getNumOfTileType();
-	mAtlasSrc = atlasInfo->getAtlasSource();
 
 	mChanks.reserve(capacity);
+
+	//get full path for file name
+	mTerrainSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_TERRAIN + layerInfo->getTerrainSource());
+	mAtlasSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_ATLAS + atlasInfo->getAtlasSource());
 
 	//copy texture rects
 	mTextureRects.reserve(atlasInfo->getTextureRects().size());
 	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
-
 
 	// Decide the number of sub-chanks
 	Size tileSize = mapInfo->getTileSize();
@@ -144,7 +146,20 @@ void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 
 void TiledLayer::loadTerrain(Chank *chank)
 {
+	std::ifstream fs(mTerrainSrc.c_str(),std::ios::binary|std::ios::in);
 
+	if(!fs)
+	{
+		std::cout << "loadTerrain() :: Cannot open " << mTerrainSrc << '\n';
+		return;
+	}
+	std::cout << "/* message */" << '\n';
+	fs.seekg(chank->getIndex() * mChankWidth * mChankHeight * sizeof(int),std::ios::beg);
+	auto tiles = chank->getTiles();
+	for(size_t i = 0, size = mChankWidth * mChankHeight; i < size; ++i)
+	{
+		fs.read((char*)&tiles[i],sizeof(int));
+	}
 }
 
 void TiledLayer::saveTerrain(Chank *chank)
