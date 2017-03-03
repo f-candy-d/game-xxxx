@@ -40,6 +40,11 @@ bool Chank::recycle(int index)
 	return true;
 }
 
+void Chank::addSprite(Sprite* sprite)
+{
+	mSprites.pushBack(sprite);
+}
+
 /**
  * protected
  */

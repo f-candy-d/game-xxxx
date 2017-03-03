@@ -48,6 +48,13 @@ public:
 	 */
 	bool recycle(int index);
 
+	/**
+	 * Add a sprite to the back of a vector.
+	 * @method addSprite
+	 * @param  sprite    [sprite object]
+	 */
+	void addSprite(cocos2d::Sprite* sprite);
+
 protected:
 	Chank();
 	~Chank();
@@ -71,6 +78,7 @@ private:
 	/**
 	 * The width and height of a chank.
 	 * These are must be 2^n.
+	 * If the orientation of a map is portrait,the width must be larger than the height,if it is landscape,the height must be larger than the width.
 	 */
 	CC_SYNTHESIZE_READONLY(size_t,mWidth,Width);
 	CC_SYNTHESIZE_READONLY(size_t,mHeight,Height);

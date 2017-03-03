@@ -57,6 +57,11 @@ protected:
 
 private:
 	/**
+	 * The number of sub-chanks that will be drawn on the screen.
+	 */
+	static const int NUM_OF_DRAWN_SUB_CHANK = 3;
+
+	/**
 	 * Add tile sprites to this node.
 	 */
 	CC_SYNTHESIZE_RETAIN(cocos2d::SpriteBatchNode*,mBatchNode,BatchNode);
@@ -108,7 +113,7 @@ private:
 	std::string mTerrainSrc;
 
 	/**
-	 * The full path to a tile atlas file.
+	 * The path to a tile atlas file.
 	 */
 	std::string mAtlasSrc;
 
@@ -121,6 +126,11 @@ private:
 	 * Is the terrain of alayer editable or not.
 	 */
 	bool mIsEditable;
+
+	/**
+	 * The size of a tile.
+	 */
+	cocos2d::Size mTileSize;
 
 	/**
 	 * The orientation of a map.

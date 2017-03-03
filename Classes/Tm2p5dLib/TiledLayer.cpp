@@ -2,6 +2,7 @@
 #include "InfoClasses.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 USING_NS_CC;
 using namespace TM2P5DComponent;
@@ -45,6 +46,7 @@ TiledLayer::TiledLayer()
 ,mAtlasSrc("")
 ,mIsVisible(false)
 ,mIsEditable(false)
+,mTileSize(0,0)
 ,mOrientation(Orientation::NONE)
 {}
 
@@ -61,7 +63,10 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	// //check parameters
 	if(mapInfo->getOrientation() == Orientation::NONE
 	|| atlasInfo->getAtlasSource().empty()
-	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size())
+	|| layerInfo->getTerrainSource().empty()
+	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size()
+	|| (mapInfo->getOrientation() == Orientation::PORTRAIT && mChankWidth < mChankHeight)
+	|| (mapInfo->getOrientation() == Orientation::LANDSCAPE && mChankWidth > mChankHeight))
 		return false;
 
 	mZolder = zolder;
@@ -70,36 +75,41 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mNumOfChank = mapInfo->getNumOfChank();
 	mChankWidth = mapInfo->getChankWidth();
 	mChankHeight = mapInfo->getChankHeight();
+	mTileSize = mapInfo->getTileSize();
 	mOrientation = mapInfo->getOrientation();
 	mLayerName = layerInfo->getLayerName();
 	mIsVisible = layerInfo->isVisible();
 	mIsEditable = layerInfo->isEditable();
 	mNumOfTileType = atlasInfo->getNumOfTileType();
+	mAtlasSrc = DIR_NAME_TM2P5D + DIR_NAME_ATLAS + atlasInfo->getAtlasSource();
+
+	//get full path for terrain file name
+	mTerrainSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_TERRAIN + layerInfo->getTerrainSource());
 
 	mChanks.reserve(capacity);
-
-	//get full path for file name
-	mTerrainSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_TERRAIN + layerInfo->getTerrainSource());
-	mAtlasSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_ATLAS + atlasInfo->getAtlasSource());
 
 	//copy texture rects
 	mTextureRects.reserve(atlasInfo->getTextureRects().size());
 	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
 
 	// Decide the number of sub-chanks
-	Size tileSize = mapInfo->getTileSize();
-	if(mChankHeight > mChankWidth)
+	if(mOrientation == Orientation::LANDSCAPE)
 		for(size_t i = 1;
-			visibleSize.height < mChankHeight / i * tileSize.height
+			visibleSize.height < mChankHeight / i * mTileSize.height
 			&& i <= mChankHeight;
 			i *= 2)
 			mNumOfSubChank = i;
 	else
+	//If the orientation is portrait...
 		for(size_t i = 1;
-			visibleSize.width < mChankWidth / i * tileSize.width
+			visibleSize.width < mChankWidth / i * mTileSize.width
 			&& i <= mChankWidth;
 			i *= 2)
 			mNumOfSubChank = i;
+
+	//batch node
+	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
+	this->addChild(mBatchNode);
 
 	//Stage first chanks
 	this->stageNewChank(capacity,LoadDirection::DIRECTION_END);
@@ -193,5 +203,53 @@ void TiledLayer::saveAllTerrainOfChankStaged()
 
 void TiledLayer::allocateSpriteToChank(Chank *chank)
 {
+	int sub_chank_w,sub_chank_h,sub_chank_size;
+
+	sub_chank_w = (mChankHeight > mChankWidth) ? mChankWidth : mChankWidth / mNumOfSubChank;
+	sub_chank_h = (mChankHeight > mChankWidth) ? mChankHeight / mNumOfSubChank : mChankHeight;
+	sub_chank_size = sub_chank_w * sub_chank_h;
+
+	//Create new sprite object
+	if(chank->getSprites().empty())
+	{
+		for(int i = 0; i < sub_chank_size * NUM_OF_DRAWN_SUB_CHANK; ++i)
+		{
+			auto sprite = Sprite::create(mAtlasSrc);
+			mBatchNode->addChild(sprite);
+			chank->addSprite(sprite);
+		}
+	}
+
+	if(mOrientation == Orientation::LANDSCAPE)
+	{
+		//An origin point of a chank
+		Vec2 origin(mChankWidth * mTileSize.width * chank->getIndex(),0);
+		int y = std::max(0, sub_chank_h * (mIndexOfActiveSubChank - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
+		for(; y < sub_chank_h * NUM_OF_DRAWN_SUB_CHANK; ++y)
+		{
+			for(int x = 0; x < sub_chank_w; ++x)
+			{
+				auto sprite = chank->getSprites().at(y * mChankWidth + x);
+				sprite->setTextureRect(mTextureRects[chank->getTypeAt(x,y)]);
+				sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+			}
+		}
+	}
+	//if the orientation is PORTRAIT...
+	else
+	{
+		//An origin point of a chank
+		Vec2 origin(0, mChankHeight * mTileSize.height * chank->getIndex());
+		int x = std::max(0,sub_chank_w * (mIndexOfActiveSubChank - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
+		for(int y = 0; y < sub_chank_h; ++y)
+		{
+			for(; x < sub_chank_w * NUM_OF_DRAWN_SUB_CHANK; ++x)
+			{
+				auto sprite = chank->getSprites().at(y * mChankWidth + x);
+				sprite->setTextureRect(mTextureRects[chank->getTypeAt(x,y)]);
+				sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+			}
+		}
+	}
 
 }
