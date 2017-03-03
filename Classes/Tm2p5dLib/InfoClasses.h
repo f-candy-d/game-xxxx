@@ -160,7 +160,7 @@ public:
 	/**
 	 * The number of kinds of tiles.
 	 */
-	size_t mNumOfTileType;
+	int mNumOfTileType;
 
 	/**
 	 * Rects of a texture of a tile on a tile atlas.
@@ -175,7 +175,7 @@ public:
 	 */
 	std::string getAtlasName();
 	std::string getAtlasSource();
-	size_t getNumOfTileType();
+	int getNumOfTileType();
 	const std::vector<cocos2d::Rect>& getTextureRects();
 
 protected:

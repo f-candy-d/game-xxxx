@@ -254,7 +254,7 @@ std::string AtlasInfo::getAtlasSource()
 	return mAtlasSource;
 }
 
-size_t AtlasInfo::getNumOfTileType()
+int AtlasInfo::getNumOfTileType()
 {
 	return mNumOfTileType;
 }

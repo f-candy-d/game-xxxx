@@ -106,3 +106,48 @@ recycle	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^bo
 Chank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^Chank::Chank()$/;"	function	line:46	class:Chank	signature:()
 ~Chank	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^Chank::~Chank()$/;"	function	line:54	class:Chank	signature:()
 initWithSize	/home/daichi/dev/cocos-projects/GameXXX/Classes/Tm2p5dLib/Chank.cpp	/^bool Chank::initWithSize(size_t width,size_t height,int index)$/;"	function	line:60	class:Chank	signature:(size_t width,size_t height,int index)
+INFO_CLASSES_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^#define INFO_CLASSES_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^namespace TM2P5DComponent {$/;"	namespace	line:11
+MapInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^class MapInfo : public cocos2d::Ref$/;"	class	line:16	namespace:TM2P5DComponent
+mChankWidth	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	size_t mChankWidth;$/;"	member	line:22	class:TM2P5DComponent::MapInfo
+mChankHeight	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	size_t mChankHeight;$/;"	member	line:23	class:TM2P5DComponent::MapInfo
+mNumOfChank	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	size_t mNumOfChank;$/;"	member	line:28	class:TM2P5DComponent::MapInfo
+mOrientation	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	Orientation::Type mOrientation;$/;"	member	line:33	class:TM2P5DComponent::MapInfo
+mTileSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	cocos2d::Size mTileSize;$/;"	member	line:38	class:TM2P5DComponent::MapInfo
+mArchitecture	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::vector<std::string> mArchitecture;$/;"	member	line:43	class:TM2P5DComponent::MapInfo
+LayerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^class LayerInfo : public cocos2d::Ref$/;"	class	line:67	namespace:TM2P5DComponent
+mLayerName	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mLayerName;$/;"	member	line:73	class:TM2P5DComponent::LayerInfo
+mAtlasName	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mAtlasName;$/;"	member	line:78	class:TM2P5DComponent::LayerInfo
+mTerrainSource	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mTerrainSource;$/;"	member	line:83	class:TM2P5DComponent::LayerInfo
+mIsVisible	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	bool mIsVisible;$/;"	member	line:88	class:TM2P5DComponent::LayerInfo
+mIsEditable	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	bool mIsEditable;$/;"	member	line:93	class:TM2P5DComponent::LayerInfo
+LayerBundlerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^class LayerBundlerInfo : public cocos2d::Ref$/;"	class	line:116	namespace:TM2P5DComponent
+mLayerName	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mLayerName;$/;"	member	line:122	class:TM2P5DComponent::LayerBundlerInfo
+mArchitecture	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::vector<std::string> mArchitecture;$/;"	member	line:127	class:TM2P5DComponent::LayerBundlerInfo
+AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^class AtlasInfo : public cocos2d::Ref$/;"	class	line:147	namespace:TM2P5DComponent
+mAtlasName	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mAtlasName;$/;"	member	line:153	class:TM2P5DComponent::AtlasInfo
+mAtlasSource	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::string mAtlasSource;$/;"	member	line:158	class:TM2P5DComponent::AtlasInfo
+mNumOfTileType	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	int mNumOfTileType;$/;"	member	line:163	class:TM2P5DComponent::AtlasInfo
+mTextureRects	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.h	/^	std::vector<cocos2d::Rect> mTextureRects;$/;"	member	line:168	class:TM2P5DComponent::AtlasInfo
+TILED_LAYER_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^#define TILED_LAYER_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^namespace TM2P5DComponent {$/;"	namespace	line:12
+TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^class TiledLayer : public cocos2d::Node$/;"	class	line:21	namespace:TM2P5DComponent
+mCapacity	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	size_t mCapacity;$/;"	member	line:64	class:TM2P5DComponent::TiledLayer
+mNumOfChank	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	size_t mNumOfChank;$/;"	member	line:69	class:TM2P5DComponent::TiledLayer
+mChankWidth	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	size_t mChankWidth;$/;"	member	line:74	class:TM2P5DComponent::TiledLayer
+mChankHeight	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	size_t mChankHeight;$/;"	member	line:75	class:TM2P5DComponent::TiledLayer
+mNumOfTileTypes	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	size_t mNumOfTileTypes;$/;"	member	line:80	class:TM2P5DComponent::TiledLayer
+mNumOfSubChank	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	int mNumOfSubChank;$/;"	member	line:85	class:TM2P5DComponent::TiledLayer
+mIndexOfActiveSubChank	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	int mIndexOfActiveSubChank;$/;"	member	line:90	class:TM2P5DComponent::TiledLayer
+mLayerName	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	std::string mLayerName;$/;"	member	line:95	class:TM2P5DComponent::TiledLayer
+mTerrainSrc	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	std::string mTerrainSrc;$/;"	member	line:100	class:TM2P5DComponent::TiledLayer
+mAtlasSrc	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	std::string mAtlasSrc;$/;"	member	line:105	class:TM2P5DComponent::TiledLayer
+mIsVisible	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	bool mIsVisible;$/;"	member	line:110	class:TM2P5DComponent::TiledLayer
+mIsEditable	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	bool mIsEditable;$/;"	member	line:115	class:TM2P5DComponent::TiledLayer
+mOrientation	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	Orientation::Type mOrientation;$/;"	member	line:120	class:TM2P5DComponent::TiledLayer
+mTextureRects	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	std::vector<cocos2d::Rect> mTextureRects;$/;"	member	line:125	class:TM2P5DComponent::TiledLayer
+mChanks	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	cocos2d::Vector<Chank*> mChanks;$/;"	member	line:130	class:TM2P5DComponent::TiledLayer
+createcreate	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer* TiledLayer::createcreate(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)$/;"	function	line:9	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)
+TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::TiledLayer()$/;"	function	line:25	class:TiledLayer	signature:()
+~TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::~TiledLayer()$/;"	function	line:43	class:TiledLayer	signature:()
+initWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)$/;"	function	line:48	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder)

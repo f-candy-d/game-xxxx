@@ -249,7 +249,7 @@ AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& obj)
 
 	info->mAtlasName = elements[KEY_ATLAS_NAME].get<std::string>();
 	info->mAtlasSource = elements[KEY_ATLAS_SRC].get<std::string>();
-	info->mNumOfTileType = static_cast<size_t>(elements[KEY_NUM_OF_TILE_TYPE].get<double>());
+	info->mNumOfTileType = static_cast<int>(elements[KEY_NUM_OF_TILE_TYPE].get<double>());
 
 	for(auto& value : elements[KEY_TEXTURE_RECT].get<picojson::array>())
 		info->mTextureRects.push_back(comvJsonValueToCcRect(value));

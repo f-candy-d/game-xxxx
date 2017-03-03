@@ -146,6 +146,7 @@ set(GAME_HEADERS
   Classes/Tm2p5dLib/TM2P5DProperty.h
   Classes/Tm2p5dLib/InfoClasses.h
   Classes/Tm2p5dLib/Chank.h
+  Classes/Tm2p5dLib/TiledLayer.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 
