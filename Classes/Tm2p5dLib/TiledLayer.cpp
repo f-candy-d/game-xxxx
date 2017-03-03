@@ -153,18 +153,33 @@ void TiledLayer::loadTerrain(Chank *chank)
 		std::cout << "loadTerrain() :: Cannot open " << mTerrainSrc << '\n';
 		return;
 	}
-	std::cout << "/* message */" << '\n';
+
 	fs.seekg(chank->getIndex() * mChankWidth * mChankHeight * sizeof(int),std::ios::beg);
 	auto tiles = chank->getTiles();
 	for(size_t i = 0, size = mChankWidth * mChankHeight; i < size; ++i)
 	{
-		fs.read((char*)&tiles[i],sizeof(int));
+		fs.read((char*)&(*tiles),sizeof(int));
+		tiles++;
 	}
 }
 
 void TiledLayer::saveTerrain(Chank *chank)
 {
+	std::ofstream fs(mTerrainSrc.c_str(),std::ios::in|std::ios::out|std::ios::binary|std::ios::app);
 
+	if(!fs)
+	{
+		std::cout << "saveTerrain() :: Cannot open " << mTerrainSrc << '\n';
+		return;
+	}
+
+	fs.seekp(chank->getIndex() * mChankWidth * mChankHeight * sizeof(int),std::ios::beg);
+	auto tiles = chank->getTiles();
+	for(size_t i = 0,size = mChankWidth * mChankHeight; i < size; ++i)
+	{
+		fs.write((char*)&(*tiles),sizeof(int));
+		tiles++;
+	}
 }
 
 void TiledLayer::saveAllTerrainOfChankStaged()
