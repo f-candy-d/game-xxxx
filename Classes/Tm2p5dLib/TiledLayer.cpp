@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <cmath>
 
 USING_NS_CC;
 using namespace TM2P5DComponent;
@@ -23,9 +24,45 @@ TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* 
 	return nullptr;
 }
 
-void TiledLayer::onVisibleRectChanged(Rect visibleRect)
+void TiledLayer::onOriginChanged(Vec2 newOrigin)
 {
+	mOriginPool += newOrigin;
 
+	if(mOrientation == Orientation::LANDSCAPE)
+	{
+		if(mOriginPool.x < -1.0 * static_cast<float>(mChankWidth * mTileSize.width))
+		{
+			std::cout << "stage new chank :: direc->end" << '\n';
+			// size_t n = static_cast<size_t>(mOriginPool.x / mChankWidth);
+			size_t n = 1;
+			this->stageNewChank(n,LoadDirection::DIRECTION_END);
+			std::cout << "n = " << n << "    mChanks.size() = " << mChanks.size() << '\n';
+
+			size_t i = 0;
+			for(auto itr = mChanks.end() - 1; i < n && itr != mChanks.begin(); ++i,--itr)
+				this->allocateSpriteToChank(*itr);
+
+			mOriginPool.x = 0;
+		}
+		else if(mOriginPool.x > static_cast<float>(mChankWidth * mTileSize.width))
+		{
+			std::cout << "stage new chank :: direc->begin" << '\n';
+			// size_t n = static_cast<size_t>(-1 * mOriginPool.x / mChankWidth);
+			size_t n = 1;
+			this->stageNewChank(n,LoadDirection::DIRECTION_BEGIN);
+
+			size_t i = 0;
+			for(auto itr = mChanks.begin(); i < n && itr != mChanks.end(); ++i,++itr)
+				this->allocateSpriteToChank(*itr);
+
+			mOriginPool.x = 0;
+		}
+	}
+	else
+	//if the orientation is LANDSCAPE...
+	{
+
+	}
 }
 
 /**
@@ -47,6 +84,7 @@ TiledLayer::TiledLayer()
 ,mIsVisible(false)
 ,mIsEditable(false)
 ,mTileSize(0,0)
+,mOriginPool(0,0)
 ,mOrientation(Orientation::NONE)
 {}
 
@@ -112,7 +150,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mBatchNode->retain();
 	this->addChild(mBatchNode);
 
-	//Stage first chanks
+	//Stage first chanks and allocate sprites
 	this->stageNewChank(capacity,LoadDirection::DIRECTION_END);
 	for(auto chank : mChanks)
 		this->allocateSpriteToChank(chank);
@@ -139,23 +177,27 @@ void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 				&& 0 < mChanks.front()->getIndex())
 			{
 				auto chank = mChanks.back();
+				chank->retain();
 				if(chank->getIsModified())
 					this->saveTerrain(chank);
 				chank->recycle(mChanks.front()->getIndex() - 1);
 				mChanks.popBack();
 				mChanks.insert(0,chank);
 				this->loadTerrain(chank);
+				chank->release();
 			}
 			else if(direction == LoadDirection::DIRECTION_END
 				&& mChanks.back()->getIndex() < static_cast<int>(mNumOfChank - 1))
 			{
 				auto chank = mChanks.front();
+				chank->retain();
 				if(chank->getIsModified())
 					this->saveTerrain(chank);
 				chank->recycle(mChanks.back()->getIndex() + 1);
 				mChanks.erase(0);
 				mChanks.pushBack(chank);
 				this->loadTerrain(chank);
+				chank->release();
 			}
 		}
 	}
@@ -171,7 +213,10 @@ void TiledLayer::loadTerrain(Chank *chank)
 		return;
 	}
 
+	std::cout << "seek!!" << '\n';
+	std::cout << "before" << '\n';
 	fs.seekg(chank->getIndex() * mChankWidth * mChankHeight * sizeof(int),std::ios::beg);
+	std::cout << "after" << '\n';
 	auto tiles = chank->getTiles();
 	for(size_t i = 0, size = mChankWidth * mChankHeight; i < size; ++i)
 	{
@@ -248,6 +293,7 @@ void TiledLayer::allocateSpriteToChank(Chank *chank)
 				}
 			}
 		}
+		std::cout << "allocated " << c << " sprites" << '\n';
 	}
 	//if the orientation is PORTRAIT...
 	else

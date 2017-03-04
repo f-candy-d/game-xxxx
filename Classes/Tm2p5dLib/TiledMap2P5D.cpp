@@ -68,11 +68,13 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 	{
 		return true;
 	};
-	listener->onTouchMoved = [this](Touch* touch,Event* event)
+	listener->onTouchMoved = [this,layer](Touch* touch,Event* event)
 	{
 		Vec2 delta = touch->getDelta();
 		Vec2 now = this->getPosition();
 		this->setPosition(now.x + delta.x,now.y + delta.y);
+
+		layer->onOriginChanged(delta);
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
 

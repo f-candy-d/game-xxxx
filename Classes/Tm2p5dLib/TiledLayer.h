@@ -36,10 +36,10 @@ public:
 
 	/**
 	 * This function will be called when a visible rect changed.
-	 * @method onVisibleRectChanged
-	 * @param  visibleRect          [description]
+	 * @method onOriginChanged
+	 * @param  newOrigin          [A new origin point of a layer]
 	 */
-	void onVisibleRectChanged(cocos2d::Rect visibleRect);
+	void onOriginChanged(cocos2d::Vec2 newOrigin);
 
 protected:
 	TiledLayer();
@@ -131,6 +131,11 @@ private:
 	 * The size of a tile.
 	 */
 	cocos2d::Size mTileSize;
+
+	/**
+	 * Pool a delta of the origin movement of a layer.
+	 */
+	cocos2d::Vec2 mOriginPool;
 
 	/**
 	 * The orientation of a map.
