@@ -30,30 +30,54 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 
 	if(mOrientation == Orientation::LANDSCAPE)
 	{
-		if(mOriginPool.x < -1.0 * static_cast<float>(mChankWidth * mTileSize.width))
+		if( static_cast<int>(mOriginPool.x) < -1 * static_cast<int>(mChankWidth * mTileSize.width))
 		{
-			std::cout << "stage new chank :: direc->end" << '\n';
-			// size_t n = static_cast<size_t>(mOriginPool.x / mChankWidth);
-			size_t n = 1;
-			this->stageNewChank(n,LoadDirection::DIRECTION_END);
-			std::cout << "n = " << n << "    mChanks.size() = " << mChanks.size() << '\n';
+			if(mCursoreOfCenterChank < mCapacity / 2)
+			{
+				mCursoreOfCenterChank++;
+			}
+			else
+			{
+				std::cout << "stage new chank :: direc->end" << '\n';
+				size_t n = -1 * mOriginPool.x / (static_cast<int>(mChankWidth) * mTileSize.width);
 
-			size_t i = 0;
-			for(auto itr = mChanks.end() - 1; i < n && itr != mChanks.begin(); ++i,--itr)
-				this->allocateSpriteToChank(*itr);
+				//if some new chanks was staged,allocate tile sprites
+				if(this->stageNewChank(n,LoadDirection::DIRECTION_END))
+				{
+					size_t i = 0;
+					for(auto itr = mChanks.end() - 1; i < n && itr != mChanks.begin(); ++i,--itr)
+						this->allocateSpriteToChank(*itr);
+				}
+				else
+				{
+					mCursoreOfCenterChank = std::min(mCapacity - 1,mCursoreOfCenterChank + 1);
+				}
+			}
 
 			mOriginPool.x = 0;
 		}
-		else if(mOriginPool.x > static_cast<float>(mChankWidth * mTileSize.width))
+		else if( static_cast<int>(mOriginPool.x) > static_cast<int>(mChankWidth * mTileSize.width))
 		{
-			std::cout << "stage new chank :: direc->begin" << '\n';
-			// size_t n = static_cast<size_t>(-1 * mOriginPool.x / mChankWidth);
-			size_t n = 1;
-			this->stageNewChank(n,LoadDirection::DIRECTION_BEGIN);
-
-			size_t i = 0;
-			for(auto itr = mChanks.begin(); i < n && itr != mChanks.end(); ++i,++itr)
-				this->allocateSpriteToChank(*itr);
+			if(mCapacity / 2 < mCursoreOfCenterChank)
+			{
+				mCursoreOfCenterChank--;
+			}
+			else
+			{
+				std::cout << "stage new chank :: direc->begin" << '\n';
+				size_t n = mOriginPool.x / (static_cast<int>(mChankWidth) * mTileSize.width);
+				//if some new chanks was staged,allocate tile sprites
+				if(this->stageNewChank(n,LoadDirection::DIRECTION_BEGIN))
+				{
+					size_t i = 0;
+					for(auto itr = mChanks.begin(); i < n && itr != mChanks.end(); ++i,++itr)
+						this->allocateSpriteToChank(*itr);
+				}
+				else
+				{
+					mCursoreOfCenterChank = std::max(0,static_cast<int>(mCursoreOfCenterChank) - 1);
+				}
+			}
 
 			mOriginPool.x = 0;
 		}
@@ -75,6 +99,7 @@ TiledLayer::TiledLayer()
 ,mNumOfChank(0)
 ,mChankWidth(0)
 ,mChankHeight(0)
+,mCursoreOfCenterChank(0)
 ,mNumOfTileType(0)
 ,mNumOfSubChank(1)
 ,mIndexOfActiveSubChank(0)
@@ -110,6 +135,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mZolder = zolder;
 	mCapacity = capacity;
 	mIndexOfActiveSubChank = 0;
+	mCursoreOfCenterChank = 0;
 	mNumOfChank = mapInfo->getNumOfChank();
 	mChankWidth = mapInfo->getChankWidth();
 	mChankHeight = mapInfo->getChankHeight();
@@ -161,8 +187,11 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 /**
  * private
  */
-void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
+bool TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 {
+	//if some chank is staged,this is true
+	bool flag = false;
+
 	for(size_t n = 0; n < num; ++n)
 	{
 		if(static_cast<size_t>(mChanks.size()) < mCapacity)
@@ -185,6 +214,8 @@ void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 				mChanks.insert(0,chank);
 				this->loadTerrain(chank);
 				chank->release();
+
+				flag = true;
 			}
 			else if(direction == LoadDirection::DIRECTION_END
 				&& mChanks.back()->getIndex() < static_cast<int>(mNumOfChank - 1))
@@ -198,9 +229,13 @@ void TiledLayer::stageNewChank(size_t num, LoadDirection direction)
 				mChanks.pushBack(chank);
 				this->loadTerrain(chank);
 				chank->release();
+
+				flag = true;
 			}
 		}
 	}
+
+	return flag;
 }
 
 void TiledLayer::loadTerrain(Chank *chank)
@@ -213,10 +248,7 @@ void TiledLayer::loadTerrain(Chank *chank)
 		return;
 	}
 
-	std::cout << "seek!!" << '\n';
-	std::cout << "before" << '\n';
 	fs.seekg(chank->getIndex() * mChankWidth * mChankHeight * sizeof(int),std::ios::beg);
-	std::cout << "after" << '\n';
 	auto tiles = chank->getTiles();
 	for(size_t i = 0, size = mChankWidth * mChankHeight; i < size; ++i)
 	{

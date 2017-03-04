@@ -88,6 +88,11 @@ private:
 	size_t mChankHeight;
 
 	/**
+	 * An cursore that indicate a chank displayed on the center of the screen.
+	 */
+	size_t mCursoreOfCenterChank;
+
+	/**
 	 * The number of kinds of tile tpyes.
 	 */
 	int mNumOfTileType;
@@ -157,8 +162,9 @@ private:
 	 * @method stageNewChank
 	 * @param  num           [the number of chanks that will be staged]
 	 * @param  direction     [the direction of loading terrain data]
+	 * @return               [return true if new chank was staged,otherwise return false]
 	 */
-	void stageNewChank(size_t num,LoadDirection direction);
+	bool stageNewChank(size_t num,LoadDirection direction);
 
 	/**
 	 * Load and Save terrain data to a terrain file.
