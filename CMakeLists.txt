@@ -134,7 +134,7 @@ set(GAME_SRC
   Classes/Tm2p5dLib/TM2P5DJsonParser.cpp
   Classes/Tm2p5dLib/TM2P5DProperty.cpp
   Classes/Tm2p5dLib/InfoClasses.cpp
-  Classes/Tm2p5dLib/Chank.cpp
+  Classes/Tm2p5dLib/Pane.cpp
   Classes/Tm2p5dLib/TiledLayer.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
@@ -146,7 +146,7 @@ set(GAME_HEADERS
   Classes/Tm2p5dLib/TM2P5DJsonParser.h
   Classes/Tm2p5dLib/TM2P5DProperty.h
   Classes/Tm2p5dLib/InfoClasses.h
-  Classes/Tm2p5dLib/Chank.h
+  Classes/Tm2p5dLib/Pane.h
   Classes/Tm2p5dLib/TiledLayer.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )

@@ -17,15 +17,15 @@ class MapInfo : public cocos2d::Ref
 {
 public:
 	/**
-	 * Width and height of a chank.
+	 * Width and height of a pane.
 	 */
-	size_t mChankWidth;
-	size_t mChankHeight;
+	size_t mPaneWidth;
+	size_t mPaneHeight;
 
 	/**
-	 * The number of chanks in a terrain.
+	 * The number of panes in a terrain.
 	 */
-	size_t mNumOfChank;
+	size_t mNumOfPane;
 
 	/**
 	 * The orientation of a map.
@@ -48,9 +48,9 @@ public:
 	/**
 	 * Getter functions
 	 */
-	size_t getChankWidth();
-	size_t getChankHeight();
-	size_t getNumOfChank();
+	size_t getPaneWidth();
+	size_t getPaneHeight();
+	size_t getNumOfPane();
 	Orientation::Type getOrientation();
 	cocos2d::Size getTileSize();
 	const std::vector<std::string>& getArchitecture();

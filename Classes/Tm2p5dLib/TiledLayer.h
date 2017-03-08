@@ -3,7 +3,7 @@
 
 #include "../../cocos2d/cocos/cocos2d.h"
 #include "TM2P5DProperty.h"
-#include "Chank.h"
+#include "Pane.h"
 #include <string>
 #include <vector>
 
@@ -13,7 +13,7 @@
 namespace TM2P5DComponent {
 
 //Forward declarations
-class Chank;
+class Pane;
 class MapInfo;
 class LayerInfo;
 class LayerBundlerInfo;
@@ -27,7 +27,7 @@ public:
 	 * @param  mapInfo   [Map information]
 	 * @param  layerInfo [Layer information]
 	 * @param  atlasInfo [tile atlas information]
-	 * @param  capacity  [the number of chanks that whill be staged in this class]
+	 * @param  capacity  [the number of panes that whill be staged in this class]
 	 * @param  zolder    [An z-older of this layer in a tiled-layer-bundler]
 	 * @return           [TiledLayer*]
 	 */
@@ -49,7 +49,7 @@ protected:
 	 * Initialize TiledLayer object.
 	 * @param  layerInfo [Layer information]
 	 * @param  atlasInfo [tile atlas information]
-	 * @param  capacity  [the number of chanks that whill be staged in this class]
+	 * @param  capacity  [the number of panes that whill be staged in this class]
 	 * @param  zolder    [An z-older of this layer in a tiled-layer-bundler]
 	 * @return           [description]
 	 */
@@ -57,7 +57,7 @@ protected:
 
 private:
 	/**
-	 * The number of sub-chanks that will be drawn on the screen.
+	 * The number of sub-panes that will be drawn on the screen.
 	 */
 	static const int NUM_OF_DRAWN_SUB_CHANK = 3;
 
@@ -72,25 +72,25 @@ private:
 	CC_SYNTHESIZE(int,mZolder,Zolder);
 
 	/**
-	 * The number of staged chanks.
+	 * The number of staged panes.
 	 */
 	size_t mCapacity;
 
 	/**
-	 * The number of all chanks in a layer.
+	 * The number of all panes in a layer.
 	 */
-	size_t mNumOfChank;
+	size_t mNumOfPane;
 
 	/**
-	 * The size of a chank.
+	 * The size of a pane.
 	 */
-	size_t mChankWidth;
-	size_t mChankHeight;
+	size_t mPaneWidth;
+	size_t mPaneHeight;
 
 	/**
-	 * An cursore that indicate a chank displayed on the center of the screen.
+	 * An cursore that indicate a pane displayed on the center of the screen.
 	 */
-	size_t mCursoreOfCenterChank;
+	size_t mCursoreOfCenterPane;
 
 	/**
 	 * The number of kinds of tile tpyes.
@@ -98,14 +98,14 @@ private:
 	int mNumOfTileType;
 
 	/**
-	 * The number of sub-chanks.
+	 * The number of sub-panes.
 	 */
-	int mNumOfSubChank;
+	int mNumOfSubPane;
 
 	/**
-	 * An index of a current active sub-chank.
+	 * An index of a current active sub-pane.
 	 */
-	int mIndexOfActiveSubChank;
+	int mIndexOfActiveSubPane;
 
 	/**
 	 * The name of this layer.
@@ -153,40 +153,40 @@ private:
 	std::vector<cocos2d::Rect> mTextureRects;
 
 	/**
-	 * An vector that contains staged chanks.
+	 * An vector that contains staged panes.
 	 */
-	cocos2d::Vector<Chank*> mChanks;
+	cocos2d::Vector<Pane*> mPanes;
 
 	/**
-	 * Stage new chanks.Save old terrain data and load new one.
-	 * @method stageNewChank
-	 * @param  num           [the number of chanks that will be staged]
+	 * Stage new panes.Save old terrain data and load new one.
+	 * @method stageNewPane
+	 * @param  num           [the number of panes that will be staged]
 	 * @param  direction     [the direction of loading terrain data]
-	 * @return               [return true if new chank was staged,otherwise return false]
+	 * @return               [return true if new pane was staged,otherwise return false]
 	 */
-	bool stageNewChank(size_t num,LoadDirection direction);
+	bool stageNewPane(size_t num,LoadDirection direction);
 
 	/**
 	 * Load and Save terrain data to a terrain file.
 	 * @method loadTerrain
 	 * @method saveTerrain
-	 * @param  chank       [chank object]
+	 * @param  pane       [pane object]
 	 */
-	void loadTerrain(Chank* chank);
-	void saveTerrain(Chank* chank);
+	void loadTerrain(Pane* pane);
+	void saveTerrain(Pane* pane);
 
 	/**
-	 * Save all terrain date of chanks that is staged.
-	 * @method saveAllTerrainOfChankStaged
+	 * Save all terrain date of panes that is staged.
+	 * @method saveAllTerrainOfPaneStaged
 	 */
-	void saveAllTerrainOfChankStaged();
+	void saveAllTerrainOfPaneStaged();
 
 	/**
-	 * Make or move sprites for displayed sub-chanks.
-	 * @method allocateSpriteToChank
-	 * @param  chank                 [chank object]
+	 * Make or move sprites for displayed sub-panes.
+	 * @method allocateSpriteToPane
+	 * @param  pane                 [pane object]
 	 */
-	void allocateSpriteToChank(Chank* chank);
+	void allocateSpriteToPane(Pane* pane);
 };
 
 } /* namespace TM2P5DComponent */

@@ -18,9 +18,9 @@ namespace {
 	static const std::string IDENTIFIER_INCLUDE("include");
 
 	//Keys
-	static const std::string KEY_CHANK_WIDTH("chank_width");
-	static const std::string KEY_CHANK_HEIGHT("chank_height");
-	static const std::string KEY_NUM_OF_CHANK("num_of_chank");
+	static const std::string KEY_CHANK_WIDTH("pane_width");
+	static const std::string KEY_CHANK_HEIGHT("pane_height");
+	static const std::string KEY_NUM_OF_CHANK("num_of_pane");
 	static const std::string KEY_ORIENTATION("orientation");
 	static const std::string KEY_TILE_SIZE("tile_size");
 	static const std::string KEY_ARCHITECTURE("architecture");
@@ -198,9 +198,9 @@ MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& obj)
 	auto info = MapInfo::create();
 	auto& elements = obj.get<picojson::object>();
 
-	info->mChankWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
-	info->mChankHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
-	info->mNumOfChank = static_cast<size_t>(elements[KEY_NUM_OF_CHANK].get<double>());
+	info->mPaneWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
+	info->mPaneHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
+	info->mNumOfPane = static_cast<size_t>(elements[KEY_NUM_OF_CHANK].get<double>());
 	info->mOrientation = Orientation::toType(elements[KEY_ORIENTATION].get<std::string>());
 	info->mTileSize = this->comvJsonValueToCcsize(elements[KEY_TILE_SIZE]);
 

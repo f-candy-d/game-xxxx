@@ -23,9 +23,9 @@ MapInfo* MapInfo::create()
 void MapInfo::debugLog(MapInfo *info)
 {
 	std::cout << "\n** DEBUG LOG OF MAP-INFO **" << '\n';
-	std::cout << "width of chank => " << info->mChankWidth << '\n';
-	std::cout << "height of chank => " << info->mChankHeight << '\n';
-	std::cout << "number of chanks => " << info->mNumOfChank << '\n';
+	std::cout << "width of pane => " << info->mPaneWidth << '\n';
+	std::cout << "height of pane => " << info->mPaneHeight << '\n';
+	std::cout << "number of panes => " << info->mNumOfPane << '\n';
 	std::cout << "orientation => " << Orientation::toString(info->mOrientation) << '\n';
 
 	auto size = info->mTileSize;
@@ -39,19 +39,19 @@ void MapInfo::debugLog(MapInfo *info)
 	std::cout << "\t** END **" << "\n\n";
 }
 
-size_t MapInfo::getChankWidth()
+size_t MapInfo::getPaneWidth()
 {
-	return mChankWidth;
+	return mPaneWidth;
 }
 
-size_t MapInfo::getChankHeight()
+size_t MapInfo::getPaneHeight()
 {
-	return mChankHeight;
+	return mPaneHeight;
 }
 
-size_t MapInfo::getNumOfChank()
+size_t MapInfo::getNumOfPane()
 {
-	return mNumOfChank;
+	return mNumOfPane;
 }
 
 Orientation::Type MapInfo::getOrientation()
@@ -73,9 +73,9 @@ const std::vector<std::string>& MapInfo::getArchitecture()
  * MapInfo class : protected
  */
 MapInfo::MapInfo()
-:mChankWidth(0)
-,mChankHeight(0)
-,mNumOfChank(0)
+:mPaneWidth(0)
+,mPaneHeight(0)
+,mNumOfPane(0)
 ,mOrientation(Orientation::NONE)
 ,mTileSize(Size(0,0))
 {}
