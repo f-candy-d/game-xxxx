@@ -24,6 +24,19 @@ TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* 
 	return nullptr;
 }
 
+TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
+{
+	auto ret = new TiledLayer();
+	if(ret->initWithInfo(mapInfo,layerInfo,atlasInfo,capacity,zolder,visibleSize,scale))
+	{
+		ret->autorelease();
+		return ret;
+	}
+
+	CC_SAFE_DELETE(ret);
+	return nullptr;
+}
+
 void TiledLayer::onOriginChanged(Vec2 newOrigin)
 {
 	mOriginPool += newOrigin;
@@ -89,6 +102,11 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 	}
 }
 
+void TiledLayer::onVisibleRectChanged(Rect newRect)
+{
+
+}
+
 /**
  * protected
  */
@@ -100,6 +118,7 @@ TiledLayer::TiledLayer()
 ,mPaneWidth(0)
 ,mPaneHeight(0)
 ,mCursoreOfCenterPane(0)
+,mIndexOfAnchorPane(0)
 ,mNumOfTileType(0)
 ,mNumOfSubPane(1)
 ,mIndexOfActiveSubPane(0)
@@ -109,6 +128,8 @@ TiledLayer::TiledLayer()
 ,mIsVisible(false)
 ,mIsEditable(false)
 ,mTileSize(0,0)
+,mTileTextureSize(0,0)
+,mAbsoluteTileSize(0,0)
 ,mOriginPool(0,0)
 ,mOrientation(Orientation::NONE)
 {}
@@ -150,6 +171,82 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	//get full path for terrain file name
 	mTerrainSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_TERRAIN + layerInfo->getTerrainSource());
 
+	mPanes.reserve(capacity);
+
+	//copy texture rects
+	mTextureRects.reserve(atlasInfo->getTextureRects().size());
+	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
+
+	// Decide the number of sub-panes
+	if(mOrientation == Orientation::LANDSCAPE)
+		for(size_t i = 1;
+			visibleSize.height < mPaneHeight / i * mTileSize.height
+			&& i <= mPaneHeight;
+			i *= 2)
+			mNumOfSubPane = i;
+	else
+	//If the orientation is portrait...
+		for(size_t i = 1;
+			visibleSize.width < mPaneWidth / i * mTileSize.width
+			&& i <= mPaneWidth;
+			i *= 2)
+			mNumOfSubPane = i;
+
+	//batch node
+	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
+	mBatchNode->retain();
+	this->addChild(mBatchNode);
+
+	//Stage first panes and allocate sprites
+	this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
+	for(auto pane : mPanes)
+		this->allocateSpriteToPane(pane);
+
+	return true;
+}
+
+bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
+{
+	if(!Node::init())
+		return false;
+
+	// //check parameters
+	if(mapInfo->getOrientation() == Orientation::NONE
+	|| scale > 0
+	|| atlasInfo->getAtlasSource().empty()
+	|| layerInfo->getTerrainSource().empty()
+	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size()
+	|| (mapInfo->getOrientation() == Orientation::PORTRAIT && mPaneWidth < mPaneHeight)
+	|| (mapInfo->getOrientation() == Orientation::LANDSCAPE && mPaneWidth > mPaneHeight))
+		return false;
+
+	mZolder = zolder;
+	mCapacity = capacity;
+	mIndexOfActiveSubPane = 0;
+	mCursoreOfCenterPane = 0;
+	mIndexOfAnchorPane = 0;
+	mNumOfPane = mapInfo->getNumOfPane();
+	mPaneWidth = mapInfo->getPaneWidth();
+	mPaneHeight = mapInfo->getPaneHeight();
+	mTileTextureSize = mapInfo->getTileSize();
+
+	//TODO : delete these lines
+	mTileSize = mapInfo->getTileSize();
+	mOrientation = mapInfo->getOrientation();
+
+	mLayerName = layerInfo->getLayerName();
+	mIsVisible = layerInfo->isVisible();
+	mIsEditable = layerInfo->isEditable();
+	mNumOfTileType = atlasInfo->getNumOfTileType();
+	mAtlasSrc = DIR_NAME_TM2P5D + DIR_NAME_ATLAS + atlasInfo->getAtlasSource();
+
+	//the abusolute size of a tile sprite
+	mAbsoluteTileSize = mTileTextureSize * scale;
+
+	//get full path for terrain file name
+	mTerrainSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_TERRAIN + layerInfo->getTerrainSource());
+
+	//allocate memory
 	mPanes.reserve(capacity);
 
 	//copy texture rects
@@ -236,6 +333,11 @@ bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)
 	}
 
 	return flag;
+}
+
+bool TiledLayer::stagePane(int anchor)
+{
+
 }
 
 void TiledLayer::loadTerrain(Pane *pane)

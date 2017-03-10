@@ -22,6 +22,7 @@ class AtlasInfo;
 class TiledLayer : public cocos2d::Node
 {
 public:
+	// NOTE : #a : useless since 10/3/2017
 	/**
 	 * Create TiledLayer object.
 	 * @param  mapInfo   [Map information]
@@ -31,9 +32,15 @@ public:
 	 * @param  zolder    [An z-older of this layer in a tiled-layer-bundler]
 	 * @return           [TiledLayer*]
 	 */
-
 	static TiledLayer* create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize);
 
+	// NOTE : #a : add on 10/3/2017 instead of create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize)
+	/**
+	 * @param  scale       [the ratio of the size of a tile sprite to that of a texture of a tile]
+	 */
+	static TiledLayer* create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize,float scale);
+
+	// NOTE : #a : useless since 10/3/2017
 	/**
 	 * This function will be called when a visible rect changed.
 	 * @method onOriginChanged
@@ -41,10 +48,18 @@ public:
 	 */
 	void onOriginChanged(cocos2d::Vec2 newOrigin);
 
+	// NOTE : #a : add on 10/3/2017 instead of onOriginChanged(Vec2 newOrigin)
+	/**
+	 * [onDrawingRectChanged description]
+	 * @param newRect [new drawing rect]
+	 */
+	void onVisibleRectChanged(cocos2d::Rect newRect);
+
 protected:
 	TiledLayer();
 	~TiledLayer();
 
+	// NOTE : #a : useless since 10/3/2017
 	/**
 	 * Initialize TiledLayer object.
 	 * @param  layerInfo [Layer information]
@@ -54,6 +69,12 @@ protected:
 	 * @return           [description]
 	 */
 	bool initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize);
+
+	// NOTE : #a : add on 10/3/2017 instead of initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
+	/**
+	 * @param  scale       [the ratio of the size of a tile sprite to that of a texture of a tile]
+	 */
+	bool initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize,float scale);
 
 private:
 	/**
@@ -91,6 +112,9 @@ private:
 	 * An cursore that indicate a pane displayed on the center of the screen.
 	 */
 	size_t mCursoreOfCenterPane;
+
+	// NOTE : #a : add on 11/3/2017
+	int mIndexOfAnchorPane;
 
 	/**
 	 * The number of kinds of tile tpyes.
@@ -132,10 +156,21 @@ private:
 	 */
 	bool mIsEditable;
 
+	// NOTE : #a : useless since 10/3/2017
 	/**
 	 * The size of a tile.
 	 */
 	cocos2d::Size mTileSize;
+
+	// NOTE : #a : add on 10/3/2017 instead of mTileSize
+	/**
+	 *
+	 * The size of a texture of a tile. (px)
+	 */
+	cocos2d::Size mTileTextureSize;
+
+	// NOTE : #a : add on 11/3/2017
+	cocos2d::Size mAbsoluteTileSize;
 
 	/**
 	 * Pool a delta of the origin movement of a layer.
@@ -157,6 +192,7 @@ private:
 	 */
 	cocos2d::Vector<Pane*> mPanes;
 
+	// NOTE : #a : useless on 11/3/2017
 	/**
 	 * Stage new panes.Save old terrain data and load new one.
 	 * @method stageNewPane
@@ -165,6 +201,13 @@ private:
 	 * @return               [return true if new pane was staged,otherwise return false]
 	 */
 	bool stageNewPane(size_t num,LoadDirection direction);
+
+	// NOTE : #a : add on 11/3/2017 instead of stageNewPane(size_t num,LoadDirection direction)
+	/**
+	 * [stagePane description]
+	 * @param  anchor [an index of a anchor pane which will be staged]
+	 */
+	bool stagePane(int anchor);
 
 	/**
 	 * Load and Save terrain data to a terrain file.
