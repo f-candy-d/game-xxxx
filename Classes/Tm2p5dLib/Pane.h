@@ -89,6 +89,11 @@ private:
 	CC_SYNTHESIZE_READONLY(bool,mIsModified,IsModified);
 
 	/**
+	 * Is a pane object is a null state or not.
+	 */
+	CC_SYNTHESIZE(bool,mIsNullState,IsNullState);
+
+	/**
 	 * An array that contains types of tiles.
 	 */
 	// int* mTiles;

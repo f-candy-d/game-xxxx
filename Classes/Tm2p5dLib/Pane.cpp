@@ -36,6 +36,7 @@ bool Pane::recycle(int index)
 
 	mIndex = index;
 	mIsModified = false;
+	mIsNullState = false;
 
 	return true;
 }
@@ -53,6 +54,7 @@ Pane::Pane()
 ,mWidth(0)
 ,mHeight(0)
 ,mIsModified(false)
+,mIsNullState(false)
 ,mTiles(nullptr)
 {}
 

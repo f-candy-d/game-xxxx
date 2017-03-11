@@ -102,9 +102,19 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 	}
 }
 
-void TiledLayer::onVisibleRectChanged(Rect newRect)
+void TiledLayer::onStageNewPane(int delta)
 {
-
+	int newAnchor = mIndexOfAnchorPane + delta;
+	std::cout << "onStageNewPane(" << delta << ")" << '\n';
+	if(!(newAnchor < 0 || static_cast<int>(mNumOfPane) - 1 < newAnchor))
+	{
+		if(this->stagePane(mIndexOfAnchorPane + delta))
+		{
+			for(auto itr = mPanes.begin(); itr != mPanes.end(); ++itr)
+				this->allocateSpriteToPane(*itr);
+		}
+		mIndexOfAnchorPane = newAnchor;
+	}
 }
 
 /**
@@ -197,7 +207,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mBatchNode->retain();
 	this->addChild(mBatchNode);
 
-	//Stage first panes and allocate sprites
+	// Stage first panes and allocate sprites
 	this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
 	for(auto pane : mPanes)
 		this->allocateSpriteToPane(pane);
@@ -212,7 +222,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 
 	// //check parameters
 	if(mapInfo->getOrientation() == Orientation::NONE
-	|| scale > 0
+	|| scale < 0
 	|| atlasInfo->getAtlasSource().empty()
 	|| layerInfo->getTerrainSource().empty()
 	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size()
@@ -224,7 +234,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mCapacity = capacity;
 	mIndexOfActiveSubPane = 0;
 	mCursoreOfCenterPane = 0;
-	mIndexOfAnchorPane = 0;
+	mIndexOfAnchorPane = -1 * capacity;
 	mNumOfPane = mapInfo->getNumOfPane();
 	mPaneWidth = mapInfo->getPaneWidth();
 	mPaneHeight = mapInfo->getPaneHeight();
@@ -273,8 +283,10 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mBatchNode->retain();
 	this->addChild(mBatchNode);
 
-	//Stage first panes and allocate sprites
-	this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
+	// //Stage first panes and allocate sprites
+	// this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
+	this->stagePane(0);
+	mIndexOfAnchorPane = 0;
 	for(auto pane : mPanes)
 		this->allocateSpriteToPane(pane);
 
@@ -335,9 +347,140 @@ bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)
 	return flag;
 }
 
-bool TiledLayer::stagePane(int anchor)
+bool TiledLayer::stagePane(int newAnchor)
 {
+	std::cout << "stagePane(" << newAnchor << ")" << '\n';
+	// NOTE : The default value of mIndexOfAnchorPane must be (-1 * mCapacity).
 
+	bool flag = false;
+	int oldAnchor = mIndexOfAnchorPane;
+
+	// the difference of a index of an old anchor pane and that of new one
+	int diff_anchor = newAnchor - oldAnchor;
+
+	// use cap_int instead of mCapacity in this function
+	int cap_int = static_cast<int>(mCapacity);
+
+	// fill a vector contains Pane* with dammy Pane objects
+	if(mPanes.size() == 0)
+	{
+		std::cout << "first time of stagePane(int newAnchor)" << '\n';
+		for(int i = 0; i < cap_int; ++i)
+		mPanes.pushBack(Pane::create(mPaneWidth,mPaneHeight,i));
+	}
+
+	if(newAnchor < 0 || static_cast<int>(mNumOfPane) - 1 < newAnchor || mPanes.size() != cap_int)
+		return false;
+
+	if(std::abs(diff_anchor) >= cap_int)
+	{
+		std::cout << "replace all panes staged" << '\n';
+		int range_begin = std::max(newAnchor - (cap_int / 2), 0);
+		int range_end = std::min(newAnchor + ((cap_int - 1) / 2), static_cast<int>(mNumOfPane) - 1);
+		int left_end_index = cap_int / 2 - (newAnchor - range_begin);
+		int right_end_index = cap_int / 2 + (range_end - newAnchor);
+
+		for(int i = 0, j = range_begin; i < cap_int; ++i)
+		{
+			auto pane = mPanes.at(i);
+			if(left_end_index <= i && i <= right_end_index)
+			{
+				if(pane->getIsModified())
+					this->saveTerrain(pane);
+				pane->recycle(j);
+				this->loadTerrain(pane);
+
+				std::cout << "staged a pane at index " << i << "  #pane.index = " << j << '\n';
+				++j;
+			}
+			else
+			{
+				std::cout << "set the state of a pane at index " << i << " as null-state" << '\n';
+				pane->setIsNullState(true);
+			}
+		}
+		flag = true;
+	}
+	else if(diff_anchor > 0)
+	{
+		std::cout << "left-shift" << '\n';
+
+		int old_range_begin = std::max(oldAnchor - (cap_int / 2), 0);
+		int old_range_end = std::min(oldAnchor + ((cap_int - 1) / 2), static_cast<int>(mNumOfPane) - 1);
+		int right_end_index = cap_int / 2 + (old_range_end - oldAnchor);
+
+		int right_end_pane_index = mPanes.at(right_end_index)->getIndex();
+
+		// left-shit
+		for(int i = 0; i < diff_anchor; ++i)
+		{
+			auto pane = mPanes.front();
+			pane->retain();
+			if(pane->getIsModified())
+				this->saveTerrain(pane);
+			mPanes.erase(0);
+			mPanes.pushBack(pane);
+			pane->release();
+		}
+
+		for(int i = right_end_index - diff_anchor + 1, j = right_end_pane_index + 1; i < cap_int; ++i, ++j)
+		{
+			auto pane = mPanes.at(i);
+			if(j < static_cast<int>(mNumOfPane))
+			{
+				pane->recycle(j);
+				this->loadTerrain(pane);
+				flag = true;
+
+				std::cout << "staged a pane at index " << i << "  #pane.index = " << j << '\n';
+			}
+			else
+			{
+				pane->setIsNullState(true);
+				std::cout << "set the state of a pane at index " << i << " as null-state" << '\n';
+			}
+		}
+	}
+	else if(diff_anchor < 0)
+	{
+		std::cout << "right_shift" << '\n';
+
+		int old_range_begin = std::max(oldAnchor - (cap_int / 2), 0);
+		int left_end_index = cap_int / 2 - (oldAnchor - old_range_begin);
+		int left_end_pane_index = mPanes.at(left_end_index)->getIndex();
+
+		// right-shift
+		for(int i = 0; i < -1 * diff_anchor; ++i)
+		{
+			auto pane = mPanes.back();
+			pane->retain();
+			if(pane->getIsModified())
+				this->saveTerrain(pane);
+			mPanes.popBack();
+			mPanes.insert(0,pane);
+			pane->release();
+		}
+
+		for(int i = left_end_index - diff_anchor - 1, j = left_end_pane_index - 1; 0 <= i; --i, --j)
+		{
+			auto pane = mPanes.at(i);
+			if(0 <= j)
+			{
+				pane->recycle(j);
+				this->loadTerrain(pane);
+				flag = true;
+
+				std::cout << "staged a pane at index " << i << "  #pane.index = " << j << '\n';
+			}
+			else
+			{
+				pane->setIsNullState(true);
+				std::cout << "set the state of a pane at index " << i << " as null-state" << '\n';
+			}
+		}
+	}
+
+	return flag;
 }
 
 void TiledLayer::loadTerrain(Pane *pane)
@@ -389,6 +532,11 @@ void TiledLayer::saveAllTerrainOfPaneStaged()
 
 void TiledLayer::allocateSpriteToPane(Pane *pane)
 {
+	// if the state of a pane is null-state,do not allocate sprites for tiles of it
+	// TODO : comment out the following code if we use stageNewChank() when stage new panes
+	if(pane->getIsNullState())
+		return;
+
 	int sub_pane_w,sub_pane_h,sub_pane_size;
 
 	sub_pane_w = (mPaneHeight > mPaneWidth) ? mPaneWidth : mPaneWidth / mNumOfSubPane;
@@ -427,7 +575,7 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 				}
 			}
 		}
-		std::cout << "allocated " << c << " sprites" << '\n';
+		std::cout << "allocated " << c << " sprites of the pane at index " << pane->getIndex() << '\n';
 	}
 	//if the orientation is PORTRAIT...
 	else

@@ -28,6 +28,12 @@ protected:
 	bool initWithOrigin(std::string origin);
 
 private:
+
+	// TODO : for test, remove the following lines later
+	cocos2d::Rect rectPool;
+	size_t paneWidth;
+	size_t paneHeight;
+	cocos2d::Size tileSize;
 };
 
 #endif

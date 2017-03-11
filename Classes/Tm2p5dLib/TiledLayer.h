@@ -51,9 +51,9 @@ public:
 	// NOTE : #a : add on 10/3/2017 instead of onOriginChanged(Vec2 newOrigin)
 	/**
 	 * [onDrawingRectChanged description]
-	 * @param newRect [new drawing rect]
+	 * @param delta [the difference between a index of the old anchor-pane and that of new one]
 	 */
-	void onVisibleRectChanged(cocos2d::Rect newRect);
+	void onStageNewPane(int delta);
 
 protected:
 	TiledLayer();
@@ -204,10 +204,10 @@ private:
 
 	// NOTE : #a : add on 11/3/2017 instead of stageNewPane(size_t num,LoadDirection direction)
 	/**
-	 * [stagePane description]
-	 * @param  anchor [an index of a anchor pane which will be staged]
+	 * NOTE : The default value of mIndexOfAnchorPane must be (-1 * mCapacity) .
+	 * @param  newAnchor [an index of a anchor pane which will be staged]
 	 */
-	bool stagePane(int anchor);
+	bool stagePane(int newAnchor);
 
 	/**
 	 * Load and Save terrain data to a terrain file.

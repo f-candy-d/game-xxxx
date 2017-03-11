@@ -54,13 +54,20 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 		parser->getMapInfo(),
 		parser->getLayerInfoByName("layer-A"),
 		parser->getAtlasInfoByName("atlas-A"),
-		3,
+		5,
 		0,
-		Director::getInstance()->getWinSize() * 0.5);
+		Director::getInstance()->getWinSize(),
+		1.0);
 
 	this->addChild(layer);
 
-	parser->release();
+
+	rectPool = Rect(0,0,0,0);
+
+	paneWidth = parser->getMapInfo()->getPaneWidth();
+	paneHeight = parser->getMapInfo()->getPaneHeight();
+
+	tileSize = parser->getMapInfo()->getTileSize();
 
 	//Touch events
 	auto listener = EventListenerTouchOneByOne::create();
@@ -74,9 +81,31 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 		Vec2 now = this->getPosition();
 		this->setPosition(now.x + delta.x,now.y + delta.y);
 
-		layer->onOriginChanged(delta);
+		rectPool.origin = rectPool.origin + delta;
+		if(rectPool.origin.x < 0)
+		{
+			int d = -1 * rectPool.origin.x / (tileSize.width * paneWidth);
+			if(d > 0)
+			{
+				layer->onStageNewPane(d);
+				rectPool.origin = Vec2(0,0);
+			}
+		}
+		else if(rectPool.origin.x > 0)
+		{
+			int d = rectPool.origin.x / (tileSize.width * paneWidth);
+			if(d > 0)
+			{
+				layer->onStageNewPane(-1 * d);
+				rectPool.origin = Vec2(0,0);
+			}
+		}
+
+		// layer->onOriginChanged(delta);
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener,this);
+
+	parser->release();
 
 	return true;
 }
