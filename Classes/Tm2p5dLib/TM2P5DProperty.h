@@ -46,6 +46,17 @@ enum class LoadDirection
 	DIRECTION_END,
 };
 
+//Process state of Pane object
+enum class State
+{
+	// Not a null object,but it has useless data
+	ZOMBIE,
+	// Staged in a layer object and drawn on the screen
+	STAGED,
+	// Staged in a layer object and wating to be drawn
+	WATING_ALLOCATION,
+};
+
 } /* namespace TM2P5DComponent */
 
 #endif

@@ -55,6 +55,7 @@ Pane::Pane()
 ,mHeight(0)
 ,mIsModified(false)
 ,mIsNullState(false)
+,mState(State::ZOMBIE)
 ,mTiles(nullptr)
 {}
 

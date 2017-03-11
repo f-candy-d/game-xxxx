@@ -41,16 +41,6 @@ getTextureRects	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoCl
 AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo::AtlasInfo()$/;"	function	line:270	class:AtlasInfo	signature:()
 ~AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^AtlasInfo::~AtlasInfo()$/;"	function	line:276	class:AtlasInfo	signature:()
 init	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/InfoClasses.cpp	/^bool AtlasInfo::init()$/;"	function	line:279	class:AtlasInfo	signature:()
-TM2P5D_PROPERTY_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^#define TM2P5D_PROPERTY_H$/;"	macro	line:2
-TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace TM2P5DComponent {$/;"	namespace	line:6
-Orientation	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace Orientation {$/;"	namespace	line:14	namespace:TM2P5DComponent
-PORTRAIT	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		PORTRAIT,$/;"	enumerator	line:18	enum:TM2P5DComponent::Orientation::__anon1
-LANDSCAPE	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		LANDSCAPE,$/;"	enumerator	line:19	enum:TM2P5DComponent::Orientation::__anon1
-NONE	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		NONE,$/;"	enumerator	line:20	enum:TM2P5DComponent::Orientation::__anon1
-Type	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	Type;$/;"	typedef	line:22	namespace:TM2P5DComponent::Orientation	typeref:enum:TM2P5DComponent::Orientation::__anon1
-LoadDirection	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^enum class LoadDirection$/;"	class	line:43	namespace:TM2P5DComponent
-DIRECTION_BEGIN	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	DIRECTION_BEGIN,$/;"	member	line:45	class:TM2P5DComponent::LoadDirection
-DIRECTION_END	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	DIRECTION_END,$/;"	member	line:46	class:TM2P5DComponent::LoadDirection
 TM2P5D_JSON_PARSER_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^#define TM2P5D_JSON_PARSER_H$/;"	macro	line:2
 TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^namespace TM2P5DComponent {$/;"	namespace	line:11
 TM2P5DJsonParser	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.h	/^class TM2P5DJsonParser : public cocos2d::Ref$/;"	class	line:13	namespace:TM2P5DComponent
@@ -270,17 +260,30 @@ comvJsonToLayerBundlerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5
 comvJsonToAtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.cpp	/^AtlasInfo* TM2P5DJsonParser::comvJsonToAtlasInfo(picojson::value& obj)$/;"	function	line:246	class:TM2P5DJsonParser	signature:(picojson::value& obj)
 comvJsonValueToCcsize	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.cpp	/^Size TM2P5DJsonParser::comvJsonValueToCcsize(picojson::value& value)$/;"	function	line:263	class:TM2P5DJsonParser	signature:(picojson::value& value)
 comvJsonValueToCcRect	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DJsonParser.cpp	/^Rect TM2P5DJsonParser::comvJsonValueToCcRect(picojson::value& value)$/;"	function	line:276	class:TM2P5DJsonParser	signature:(picojson::value& value)
-create	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^Pane* Pane::create(size_t width, size_t height, int index)$/;"	function	line:9	class:Pane	signature:(size_t width, size_t height, int index)
-insertType	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^void Pane::insertType(int type,unsigned int x,unsigned int y)$/;"	function	line:22	class:Pane	signature:(int type,unsigned int x,unsigned int y)
-getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^int Pane::getTypeAt(unsigned int x,unsigned int y)$/;"	function	line:27	class:Pane	signature:(unsigned int x,unsigned int y)
-recycle	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^bool Pane::recycle(int index)$/;"	function	line:32	class:Pane	signature:(int index)
-addSprite	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^void Pane::addSprite(Sprite* sprite)$/;"	function	line:44	class:Pane	signature:(Sprite* sprite)
-Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^Pane::Pane()$/;"	function	line:52	class:Pane	signature:()
-~Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^Pane::~Pane()$/;"	function	line:61	class:Pane	signature:()
-initWithSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^bool Pane::initWithSize(size_t width,size_t height,int index)$/;"	function	line:67	class:Pane	signature:(size_t width,size_t height,int index)
-CHANK_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^#define CHANK_H$/;"	macro	line:2
-TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^namespace TM2P5DComponent {$/;"	namespace	line:10
-Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^class Pane : public cocos2d::Ref$/;"	class	line:12	namespace:TM2P5DComponent
+TILED_MAP_2P5D_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^#define TILED_MAP_2P5D_H$/;"	macro	line:2
+TiledMap2P5D	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^class TiledMap2P5D : public cocos2d::Node$/;"	class	line:7
+rectPool	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	cocos2d::Rect rectPool;$/;"	member	line:33	class:TiledMap2P5D
+paneWidth	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	size_t paneWidth;$/;"	member	line:34	class:TiledMap2P5D
+paneHeight	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	size_t paneHeight;$/;"	member	line:35	class:TiledMap2P5D
+tileSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	cocos2d::Size tileSize;$/;"	member	line:36	class:TiledMap2P5D
+create	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D* TiledMap2P5D::create(std::string origin)$/;"	function	line:11	class:TiledMap2P5D	signature:(std::string origin)
+TiledMap2P5D	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D::TiledMap2P5D()$/;"	function	line:27	class:TiledMap2P5D	signature:()
+~TiledMap2P5D	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D::~TiledMap2P5D()$/;"	function	line:32	class:TiledMap2P5D	signature:()
+initWithOrigin	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^bool TiledMap2P5D::initWithOrigin(std::string origin)$/;"	function	line:40	class:TiledMap2P5D	signature:(std::string origin)
+TM2P5D_PROPERTY_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^#define TM2P5D_PROPERTY_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace TM2P5DComponent {$/;"	namespace	line:6
+Orientation	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^namespace Orientation {$/;"	namespace	line:14	namespace:TM2P5DComponent
+PORTRAIT	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		PORTRAIT,$/;"	enumerator	line:18	enum:TM2P5DComponent::Orientation::__anon1
+LANDSCAPE	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		LANDSCAPE,$/;"	enumerator	line:19	enum:TM2P5DComponent::Orientation::__anon1
+NONE	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^		NONE,$/;"	enumerator	line:20	enum:TM2P5DComponent::Orientation::__anon1
+Type	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	Type;$/;"	typedef	line:22	namespace:TM2P5DComponent::Orientation	typeref:enum:TM2P5DComponent::Orientation::__anon1
+LoadDirection	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^enum class LoadDirection$/;"	class	line:43	namespace:TM2P5DComponent
+DIRECTION_BEGIN	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	DIRECTION_BEGIN,$/;"	member	line:45	class:TM2P5DComponent::LoadDirection
+DIRECTION_END	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	DIRECTION_END,$/;"	member	line:46	class:TM2P5DComponent::LoadDirection
+State	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^enum class State$/;"	class	line:50	namespace:TM2P5DComponent
+ZOMBIE	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	ZOMBIE,$/;"	member	line:53	class:TM2P5DComponent::State
+STAGED	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	STAGED,$/;"	member	line:55	class:TM2P5DComponent::State
+WATING_ALLOCATION	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TM2P5DProperty.h	/^	WATING_ALLOCATION,$/;"	member	line:57	class:TM2P5DComponent::State
 TILED_LAYER_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^#define TILED_LAYER_H$/;"	macro	line:2
 TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^namespace TM2P5DComponent {$/;"	namespace	line:13
 TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^class TiledLayer : public cocos2d::Node$/;"	class	line:22	namespace:TM2P5DComponent
@@ -307,27 +310,28 @@ mOriginPool	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer
 mOrientation	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	Orientation::Type mOrientation;$/;"	member	line:183	class:TM2P5DComponent::TiledLayer
 mTextureRects	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	std::vector<cocos2d::Rect> mTextureRects;$/;"	member	line:188	class:TM2P5DComponent::TiledLayer
 mPanes	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.h	/^	cocos2d::Vector<Pane*> mPanes;$/;"	member	line:193	class:TM2P5DComponent::TiledLayer
-TILED_MAP_2P5D_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^#define TILED_MAP_2P5D_H$/;"	macro	line:2
-TiledMap2P5D	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^class TiledMap2P5D : public cocos2d::Node$/;"	class	line:7
-rectPool	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	cocos2d::Rect rectPool;$/;"	member	line:33	class:TiledMap2P5D
-paneWidth	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	size_t paneWidth;$/;"	member	line:34	class:TiledMap2P5D
-paneHeight	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	size_t paneHeight;$/;"	member	line:35	class:TiledMap2P5D
-tileSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.h	/^	cocos2d::Size tileSize;$/;"	member	line:36	class:TiledMap2P5D
-create	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D* TiledMap2P5D::create(std::string origin)$/;"	function	line:11	class:TiledMap2P5D	signature:(std::string origin)
-TiledMap2P5D	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D::TiledMap2P5D()$/;"	function	line:27	class:TiledMap2P5D	signature:()
-~TiledMap2P5D	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^TiledMap2P5D::~TiledMap2P5D()$/;"	function	line:32	class:TiledMap2P5D	signature:()
-initWithOrigin	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledMap2P5D.cpp	/^bool TiledMap2P5D::initWithOrigin(std::string origin)$/;"	function	line:40	class:TiledMap2P5D	signature:(std::string origin)
+CHANK_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^#define CHANK_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^namespace TM2P5DComponent {$/;"	namespace	line:10
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^class Pane : public cocos2d::Ref$/;"	class	line:12	namespace:TM2P5DComponent
+create	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^Pane* Pane::create(size_t width, size_t height, int index)$/;"	function	line:9	class:Pane	signature:(size_t width, size_t height, int index)
+insertType	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^void Pane::insertType(int type,unsigned int x,unsigned int y)$/;"	function	line:22	class:Pane	signature:(int type,unsigned int x,unsigned int y)
+getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^int Pane::getTypeAt(unsigned int x,unsigned int y)$/;"	function	line:27	class:Pane	signature:(unsigned int x,unsigned int y)
+recycle	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^bool Pane::recycle(int index)$/;"	function	line:32	class:Pane	signature:(int index)
+addSprite	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^void Pane::addSprite(Sprite* sprite)$/;"	function	line:44	class:Pane	signature:(Sprite* sprite)
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^Pane::Pane()$/;"	function	line:52	class:Pane	signature:()
+~Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^Pane::~Pane()$/;"	function	line:62	class:Pane	signature:()
+initWithSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.cpp	/^bool Pane::initWithSize(size_t width,size_t height,int index)$/;"	function	line:68	class:Pane	signature:(size_t width,size_t height,int index)
 create	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)$/;"	function	line:14	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
 create	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)$/;"	function	line:27	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
 onOriginChanged	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::onOriginChanged(Vec2 newOrigin)$/;"	function	line:40	class:TiledLayer	signature:(Vec2 newOrigin)
 onStageNewPane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::onStageNewPane(int delta)$/;"	function	line:105	class:TiledLayer	signature:(int delta)
-TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::TiledLayer()$/;"	function	line:123	class:TiledLayer	signature:()
-~TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::~TiledLayer()$/;"	function	line:147	class:TiledLayer	signature:()
-initWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)$/;"	function	line:152	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
-initWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)$/;"	function	line:218	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
-stageNewPane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)$/;"	function	line:299	class:TiledLayer	signature:(size_t num, LoadDirection direction)
-stagePane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::stagePane(int newAnchor)$/;"	function	line:350	class:TiledLayer	signature:(int newAnchor)
-loadTerrain	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::loadTerrain(Pane *pane)$/;"	function	line:486	class:TiledLayer	signature:(Pane *pane)
-saveTerrain	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveTerrain(Pane *pane)$/;"	function	line:505	class:TiledLayer	signature:(Pane *pane)
-saveAllTerrainOfPaneStaged	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveAllTerrainOfPaneStaged()$/;"	function	line:524	class:TiledLayer	signature:()
-allocateSpriteToPane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::allocateSpriteToPane(Pane *pane)$/;"	function	line:533	class:TiledLayer	signature:(Pane *pane)
+TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::TiledLayer()$/;"	function	line:130	class:TiledLayer	signature:()
+~TiledLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^TiledLayer::~TiledLayer()$/;"	function	line:154	class:TiledLayer	signature:()
+initWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)$/;"	function	line:159	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
+initWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)$/;"	function	line:225	class:TiledLayer	signature:(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
+stageNewPane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)$/;"	function	line:309	class:TiledLayer	signature:(size_t num, LoadDirection direction)
+stagePane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^bool TiledLayer::stagePane(int newAnchor)$/;"	function	line:360	class:TiledLayer	signature:(int newAnchor)
+loadTerrain	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::loadTerrain(Pane *pane)$/;"	function	line:504	class:TiledLayer	signature:(Pane *pane)
+saveTerrain	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveTerrain(Pane *pane)$/;"	function	line:523	class:TiledLayer	signature:(Pane *pane)
+saveAllTerrainOfPaneStaged	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::saveAllTerrainOfPaneStaged()$/;"	function	line:542	class:TiledLayer	signature:()
+allocateSpriteToPane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/TiledLayer.cpp	/^void TiledLayer::allocateSpriteToPane(Pane *pane)$/;"	function	line:551	class:TiledLayer	signature:(Pane *pane)

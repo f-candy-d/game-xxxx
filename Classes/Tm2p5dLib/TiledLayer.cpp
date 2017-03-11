@@ -111,7 +111,14 @@ void TiledLayer::onStageNewPane(int delta)
 		if(this->stagePane(mIndexOfAnchorPane + delta))
 		{
 			for(auto itr = mPanes.begin(); itr != mPanes.end(); ++itr)
-				this->allocateSpriteToPane(*itr);
+			{
+				// only when the state of pane is WATING_ALLOCATION, allocate tile sprites
+				if((*itr)->getState() == State::WATING_ALLOCATION)
+				{
+					this->allocateSpriteToPane(*itr);
+					(*itr)->setState(State::STAGED);
+				}
+			}
 		}
 		mIndexOfAnchorPane = newAnchor;
 	}
@@ -288,7 +295,10 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	this->stagePane(0);
 	mIndexOfAnchorPane = 0;
 	for(auto pane : mPanes)
+	{
 		this->allocateSpriteToPane(pane);
+		pane->setState(State::STAGED);
+	}
 
 	return true;
 }
@@ -352,7 +362,9 @@ bool TiledLayer::stagePane(int newAnchor)
 	std::cout << "stagePane(" << newAnchor << ")" << '\n';
 	// NOTE : The default value of mIndexOfAnchorPane must be (-1 * mCapacity).
 
+	//staged new pane or not
 	bool flag = false;
+	
 	int oldAnchor = mIndexOfAnchorPane;
 
 	// the difference of a index of an old anchor pane and that of new one
@@ -389,14 +401,16 @@ bool TiledLayer::stagePane(int newAnchor)
 					this->saveTerrain(pane);
 				pane->recycle(j);
 				this->loadTerrain(pane);
+				pane->setState(State::WATING_ALLOCATION);
 
 				std::cout << "staged a pane at index " << i << "  #pane.index = " << j << '\n';
 				++j;
 			}
 			else
 			{
-				std::cout << "set the state of a pane at index " << i << " as null-state" << '\n';
-				pane->setIsNullState(true);
+				std::cout << "set the state of a pane at index " << i << " as State::ZOMBIE" << '\n';
+				// pane->setIsNullState(true);
+				pane->setState(State::ZOMBIE);
 			}
 		}
 		flag = true;
@@ -431,13 +445,15 @@ bool TiledLayer::stagePane(int newAnchor)
 				pane->recycle(j);
 				this->loadTerrain(pane);
 				flag = true;
+				pane->setState(State::WATING_ALLOCATION);
 
 				std::cout << "staged a pane at index " << i << "  #pane.index = " << j << '\n';
 			}
 			else
 			{
-				pane->setIsNullState(true);
-				std::cout << "set the state of a pane at index " << i << " as null-state" << '\n';
+				// pane->setIsNullState(true);
+				pane->setState(State::ZOMBIE);
+				std::cout << "set the state of a pane at index " << i << " as State::ZOMBIE" << '\n';
 			}
 		}
 	}
@@ -469,13 +485,15 @@ bool TiledLayer::stagePane(int newAnchor)
 				pane->recycle(j);
 				this->loadTerrain(pane);
 				flag = true;
+				pane->setState(State::WATING_ALLOCATION);
 
 				std::cout << "staged a pane at index " << i << "  #pane.index = " << j << '\n';
 			}
 			else
 			{
-				pane->setIsNullState(true);
-				std::cout << "set the state of a pane at index " << i << " as null-state" << '\n';
+				// pane->setIsNullState(true);
+				pane->setState(State::ZOMBIE);
+				std::cout << "set the state of a pane at index " << i << " as State::ZOMBIE" << '\n';
 			}
 		}
 	}
@@ -532,9 +550,8 @@ void TiledLayer::saveAllTerrainOfPaneStaged()
 
 void TiledLayer::allocateSpriteToPane(Pane *pane)
 {
-	// if the state of a pane is null-state,do not allocate sprites for tiles of it
-	// TODO : comment out the following code if we use stageNewChank() when stage new panes
-	if(pane->getIsNullState())
+	//pane has nothing to be drawn,do not draw sprites
+	if(pane->getState() == State::ZOMBIE)
 		return;
 
 	int sub_pane_w,sub_pane_h,sub_pane_size;
