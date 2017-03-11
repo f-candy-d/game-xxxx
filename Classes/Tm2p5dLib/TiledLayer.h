@@ -206,8 +206,9 @@ private:
 	/**
 	 * NOTE : The default value of mIndexOfAnchorPane must be (-1 * mCapacity) .
 	 * @param  newAnchor [an index of a anchor pane which will be staged]
+	 * @param  oldAnchor [an index of a anchor pane that is already staged]
 	 */
-	bool stagePane(int newAnchor);
+	bool stagePane(int newAnchor,int oldAnchor);
 
 	/**
 	 * Load and Save terrain data to a terrain file.

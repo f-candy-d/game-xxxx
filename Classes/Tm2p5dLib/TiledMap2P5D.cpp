@@ -50,6 +50,8 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 		parser->outputErrors();
 	}
 
+	float scale = 0.8;
+
 	auto layer = TM2P5DComponent::TiledLayer::create(
 		parser->getMapInfo(),
 		parser->getLayerInfoByName("layer-A"),
@@ -57,17 +59,16 @@ bool TiledMap2P5D::initWithOrigin(std::string origin)
 		5,
 		0,
 		Director::getInstance()->getWinSize(),
-		1.0);
+		scale);
 
 	this->addChild(layer);
 
 
 	rectPool = Rect(0,0,0,0);
-
 	paneWidth = parser->getMapInfo()->getPaneWidth();
 	paneHeight = parser->getMapInfo()->getPaneHeight();
 
-	tileSize = parser->getMapInfo()->getTileSize();
+	tileSize = parser->getMapInfo()->getTileSize() * scale;
 
 	//Touch events
 	auto listener = EventListenerTouchOneByOne::create();

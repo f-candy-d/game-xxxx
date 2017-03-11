@@ -43,7 +43,7 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 
 	if(mOrientation == Orientation::LANDSCAPE)
 	{
-		if( static_cast<int>(mOriginPool.x) < -1 * static_cast<int>(mPaneWidth * mTileSize.width))
+		if( static_cast<int>(mOriginPool.x) < -1 * static_cast<int>(mPaneWidth * mAbsoluteTileSize.width))
 		{
 			if(mCursoreOfCenterPane < mCapacity / 2)
 			{
@@ -52,7 +52,7 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 			else
 			{
 				std::cout << "stage new pane :: direc->end" << '\n';
-				size_t n = -1 * mOriginPool.x / (static_cast<int>(mPaneWidth) * mTileSize.width);
+				size_t n = -1 * mOriginPool.x / (static_cast<int>(mPaneWidth) * mAbsoluteTileSize.width);
 
 				//if some new panes was staged,allocate tile sprites
 				if(this->stageNewPane(n,LoadDirection::DIRECTION_END))
@@ -69,7 +69,7 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 
 			mOriginPool.x = 0;
 		}
-		else if( static_cast<int>(mOriginPool.x) > static_cast<int>(mPaneWidth * mTileSize.width))
+		else if( static_cast<int>(mOriginPool.x) > static_cast<int>(mPaneWidth * mAbsoluteTileSize.width))
 		{
 			if(mCapacity / 2 < mCursoreOfCenterPane)
 			{
@@ -78,7 +78,7 @@ void TiledLayer::onOriginChanged(Vec2 newOrigin)
 			else
 			{
 				std::cout << "stage new pane :: direc->begin" << '\n';
-				size_t n = mOriginPool.x / (static_cast<int>(mPaneWidth) * mTileSize.width);
+				size_t n = mOriginPool.x / (static_cast<int>(mPaneWidth) * mAbsoluteTileSize.width);
 				//if some new panes was staged,allocate tile sprites
 				if(this->stageNewPane(n,LoadDirection::DIRECTION_BEGIN))
 				{
@@ -108,7 +108,7 @@ void TiledLayer::onStageNewPane(int delta)
 	std::cout << "onStageNewPane(" << delta << ")" << '\n';
 	if(!(newAnchor < 0 || static_cast<int>(mNumOfPane) - 1 < newAnchor))
 	{
-		if(this->stagePane(mIndexOfAnchorPane + delta))
+		if(this->stagePane(mIndexOfAnchorPane + delta,mIndexOfAnchorPane))
 		{
 			for(auto itr = mPanes.begin(); itr != mPanes.end(); ++itr)
 			{
@@ -273,14 +273,14 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	// Decide the number of sub-panes
 	if(mOrientation == Orientation::LANDSCAPE)
 		for(size_t i = 1;
-			visibleSize.height < mPaneHeight / i * mTileSize.height
+			visibleSize.height < mPaneHeight / i * mAbsoluteTileSize.height
 			&& i <= mPaneHeight;
 			i *= 2)
 			mNumOfSubPane = i;
 	else
 	//If the orientation is portrait...
 		for(size_t i = 1;
-			visibleSize.width < mPaneWidth / i * mTileSize.width
+			visibleSize.width < mPaneWidth / i * mAbsoluteTileSize.width
 			&& i <= mPaneWidth;
 			i *= 2)
 			mNumOfSubPane = i;
@@ -292,7 +292,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 
 	// //Stage first panes and allocate sprites
 	// this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
-	this->stagePane(0);
+	this->stagePane(0,mIndexOfAnchorPane);
 	mIndexOfAnchorPane = 0;
 	for(auto pane : mPanes)
 	{
@@ -357,15 +357,13 @@ bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)
 	return flag;
 }
 
-bool TiledLayer::stagePane(int newAnchor)
+bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
 {
-	std::cout << "stagePane(" << newAnchor << ")" << '\n';
+	std::cout << "stagePane(" << newAnchor << ", " << oldAnchor << ")" << '\n';
 	// NOTE : The default value of mIndexOfAnchorPane must be (-1 * mCapacity).
 
 	//staged new pane or not
 	bool flag = false;
-	
-	int oldAnchor = mIndexOfAnchorPane;
 
 	// the difference of a index of an old anchor pane and that of new one
 	int diff_anchor = newAnchor - oldAnchor;
@@ -376,11 +374,12 @@ bool TiledLayer::stagePane(int newAnchor)
 	// fill a vector contains Pane* with dammy Pane objects
 	if(mPanes.size() == 0)
 	{
-		std::cout << "first time of stagePane(int newAnchor)" << '\n';
+		std::cout << "first time of stagePane()" << '\n';
 		for(int i = 0; i < cap_int; ++i)
 		mPanes.pushBack(Pane::create(mPaneWidth,mPaneHeight,i));
 	}
 
+	// check exceptions
 	if(newAnchor < 0 || static_cast<int>(mNumOfPane) - 1 < newAnchor || mPanes.size() != cap_int)
 		return false;
 
@@ -419,10 +418,9 @@ bool TiledLayer::stagePane(int newAnchor)
 	{
 		std::cout << "left-shift" << '\n';
 
-		int old_range_begin = std::max(oldAnchor - (cap_int / 2), 0);
+		// int old_range_begin = std::max(oldAnchor - (cap_int / 2), 0);
 		int old_range_end = std::min(oldAnchor + ((cap_int - 1) / 2), static_cast<int>(mNumOfPane) - 1);
 		int right_end_index = cap_int / 2 + (old_range_end - oldAnchor);
-
 		int right_end_pane_index = mPanes.at(right_end_index)->getIndex();
 
 		// left-shit
@@ -568,6 +566,8 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 			auto sprite = Sprite::create(mAtlasSrc);
 			mBatchNode->addChild(sprite);
 			sprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+			sprite->setContentSize(mAbsoluteTileSize);
+			sprite->setScale(mAbsoluteTileSize.width / mTileTextureSize.width,mAbsoluteTileSize.height / mTileTextureSize.height);
 			pane->addSprite(sprite);
 		}
 	}
@@ -575,7 +575,7 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	if(mOrientation == Orientation::LANDSCAPE)
 	{
 		//An origin point of a pane
-		Vec2 origin(mPaneWidth * mTileSize.width * pane->getIndex(),0);
+		Vec2 origin(mPaneWidth * mAbsoluteTileSize.width * pane->getIndex(),0);
 		int y = std::max(0, sub_pane_h * (mIndexOfActiveSubPane - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
 		int c = 0;
 		for(; y < sub_pane_h * NUM_OF_DRAWN_SUB_CHANK; ++y)
@@ -587,7 +587,7 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 				{
 					auto sprite = pane->getSprites().at(y * mPaneWidth + x);
 					sprite->setTextureRect(mTextureRects[pane->getTypeAt(x,y)]);
-					sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+					sprite->setPosition(x * mAbsoluteTileSize.width + origin.x, y * mAbsoluteTileSize.height + origin.y);
 					c++;
 				}
 			}
@@ -598,7 +598,7 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	else
 	{
 		//An origin point of a pane
-		Vec2 origin(0, mPaneHeight * mTileSize.height * pane->getIndex());
+		Vec2 origin(0, mPaneHeight * mAbsoluteTileSize.height * pane->getIndex());
 		int x = std::max(0,sub_pane_w * (mIndexOfActiveSubPane - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
 		for(int y = 0; y < sub_pane_h; ++y)
 		{
@@ -609,7 +609,7 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 				{
 					auto sprite = pane->getSprites().at(y * mPaneWidth + x);
 					sprite->setTextureRect(mTextureRects[pane->getTypeAt(x,y)]);
-					sprite->setPosition(x * mTileSize.width + origin.x, y * mTileSize.height + origin.y);
+					sprite->setPosition(x * mAbsoluteTileSize.width + origin.x, y * mAbsoluteTileSize.height + origin.y);
 				}
 			}
 		}
