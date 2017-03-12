@@ -188,10 +188,16 @@ private:
 	 */
 	cocos2d::Vec2 mOriginPool;
 
+	// NOTE : #d : useless since 12/3/2017
 	/**
 	 * The orientation of a map.
 	 */
 	Orientation::Type mOrientation;
+
+	/**
+	 * The split of a map.
+	 */
+	Split mSplit;
 
 	/**
 	 * Texture rects of tiles.

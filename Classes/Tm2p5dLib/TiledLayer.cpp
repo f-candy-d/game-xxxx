@@ -151,6 +151,7 @@ TiledLayer::TiledLayer()
 ,mAbsoluteTileSize(0,0)
 ,mOriginPool(0,0)
 ,mOrientation(Orientation::NONE)
+,mSplit(Split::HORIZONTAL_SPLIT)
 {}
 
 TiledLayer::~TiledLayer()
@@ -250,6 +251,9 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mTileTextureSize = mapInfo->getTileSize();
 	mScale = scale;
 
+	//split of a layer
+	mSplit = (mPaneWidth > mPaneHeight) ? Split::VERTICAL_SPLIT : Split::HORIZONTAL_SPLIT;
+
 	//TODO : delete these lines
 	mTileSize = mapInfo->getTileSize();
 	mOrientation = mapInfo->getOrientation();
@@ -286,7 +290,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	// pitch::0.2 => 384 sprites (6 sub-panes was drawn)
 	// pitch::0.1 => 320 sprites (10 sub-panes was drawn)
 	// pitch::0.0 => 272 sprites (17 sub-panes was drawn)
-	this->optimizeSplitOfPane(0.35,2,Split::HORIZONTAL_SPLIT,visibleSize);
+	this->optimizeSplitOfPane(0.35,2,mSplit,visibleSize);
 
 	// if(mOrientation == Orientation::LANDSCAPE)
 	// 	for(size_t i = 1;
@@ -619,7 +623,8 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 		}
 	}
 
-	if(mOrientation == Orientation::LANDSCAPE)
+	// if(mOrientation == Orientation::LANDSCAPE)
+	if(mSplit == Split::HORIZONTAL_SPLIT)
 	{
 		//An origin point of a pane
 		Vec2 origin(mPaneWidth * mAbsoluteTileSize.width * pane->getIndex(),0);
@@ -642,6 +647,7 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 		std::cout << "allocated " << c << " sprites of the pane at index " << pane->getIndex() << '\n';
 	}
 	//if the orientation is PORTRAIT...
+	// if mSplit is Split::VERTICAL_SPLIT...
 	else
 	{
 		//An origin point of a pane
