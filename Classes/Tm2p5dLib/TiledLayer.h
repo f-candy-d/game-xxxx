@@ -108,6 +108,7 @@ private:
 	size_t mPaneWidth;
 	size_t mPaneHeight;
 
+	// NOTE : #c : useless on 12/3/2017
 	/**
 	 * An cursore that indicate a pane displayed on the center of the screen.
 	 */
@@ -127,9 +128,19 @@ private:
 	int mNumOfSubPane;
 
 	/**
+	 * The number of sub-panes that will be drawn on the screen.
+	 */
+	int mNumOfSubPaneDrawn;
+
+	/**
 	 * An index of a current active sub-pane.
 	 */
-	int mIndexOfActiveSubPane;
+	int mIndexOfAnchorSubPane;
+
+	/**
+	 * The scale of a tile sprite.
+	 */
+	float mScale;
 
 	/**
 	 * The name of this layer.
@@ -191,6 +202,11 @@ private:
 	 * An vector that contains staged panes.
 	 */
 	cocos2d::Vector<Pane*> mPanes;
+
+	/**
+	 * @param pitch  [0 ~ 1.0]
+	 */
+	void optimizeSplitOfPane(float pitch,Split split,int surplus,cocos2d::Size visibleSize);
 
 	// NOTE : #a : useless on 11/3/2017
 	/**

@@ -57,6 +57,13 @@ enum class State
 	WATING_ALLOCATION,
 };
 
+// The direction of split of the map
+enum class Split
+{
+	HORIZONTAL_SPLIT,
+	VERTICAL_SPLIT,
+};
+
 } /* namespace TM2P5DComponent */
 
 #endif

@@ -138,7 +138,9 @@ TiledLayer::TiledLayer()
 ,mIndexOfAnchorPane(0)
 ,mNumOfTileType(0)
 ,mNumOfSubPane(1)
-,mIndexOfActiveSubPane(0)
+,mNumOfSubPaneDrawn(0)
+,mIndexOfAnchorSubPane(0)
+,mScale(1.0)
 ,mLayerName("")
 ,mTerrainSrc("")
 ,mAtlasSrc("")
@@ -172,7 +174,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 
 	mZolder = zolder;
 	mCapacity = capacity;
-	mIndexOfActiveSubPane = 0;
+	mIndexOfAnchorSubPane = 0;
 	mCursoreOfCenterPane = 0;
 	mNumOfPane = mapInfo->getNumOfPane();
 	mPaneWidth = mapInfo->getPaneWidth();
@@ -239,13 +241,14 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 
 	mZolder = zolder;
 	mCapacity = capacity;
-	mIndexOfActiveSubPane = 0;
+	mIndexOfAnchorSubPane = 0;
 	mCursoreOfCenterPane = 0;
 	mIndexOfAnchorPane = -1 * capacity;
 	mNumOfPane = mapInfo->getNumOfPane();
 	mPaneWidth = mapInfo->getPaneWidth();
 	mPaneHeight = mapInfo->getPaneHeight();
 	mTileTextureSize = mapInfo->getTileSize();
+	mScale = scale;
 
 	//TODO : delete these lines
 	mTileSize = mapInfo->getTileSize();
@@ -271,19 +274,31 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
 
 	// Decide the number of sub-panes
-	if(mOrientation == Orientation::LANDSCAPE)
-		for(size_t i = 1;
-			visibleSize.height < mPaneHeight / i * mAbsoluteTileSize.height
-			&& i <= mPaneHeight;
-			i *= 2)
-			mNumOfSubPane = i;
-	else
-	//If the orientation is portrait...
-		for(size_t i = 1;
-			visibleSize.width < mPaneWidth / i * mAbsoluteTileSize.width
-			&& i <= mPaneWidth;
-			i *= 2)
-			mNumOfSubPane = i;
+	// NOTE : split=Split::HORIZONTAL_SPLIT, surplus=2, visibleSize=(1024,768)
+	// pitch::1.0 => 4096 sprites (1 sub-panes was drawn)
+	// pitch::0.9 => 4096 sprites (2 sub-panes was drawn)
+	// pitch::0.8 => 3027 sprites (3 sub-panes was drawn)
+	// pitch::0.65 => 1536 sprites (3 sub-panes was drawn)
+	// pitch::0.5 => 768 sprites (3 sub-panes was drawn)
+	// pitch::0.35 => 512 sprites (4 sub-panes was drawn)
+	// pitch::0.2 => 384 sprites (6 sub-panes was drawn)
+	// pitch::0.1 => 320 sprites (10 sub-panes was drawn)
+	// pitch::0.0 => 272 sprites (17 sub-panes was drawn)
+	this->optimizeSplitOfPane(1.0,Split::HORIZONTAL_SPLIT,2,visibleSize);
+
+	// if(mOrientation == Orientation::LANDSCAPE)
+	// 	for(size_t i = 1;
+	// 		visibleSize.height < mPaneHeight / i * mAbsoluteTileSize.height
+	// 		&& i <= mPaneHeight;
+	// 		i *= 2)
+	// 		mNumOfSubPane = i;
+	// else
+	// //If the orientation is portrait...
+	// 	for(size_t i = 1;
+	// 		visibleSize.width < mPaneWidth / i * mAbsoluteTileSize.width
+	// 		&& i <= mPaneWidth;
+	// 		i *= 2)
+	// 		mNumOfSubPane = i;
 
 	//batch node
 	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
@@ -306,6 +321,35 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 /**
  * private
  */
+void TiledLayer::optimizeSplitOfPane(float pitch,Split split,int surplus,Size visibleSize)
+{
+	assert(0.0 <= pitch && pitch <= 1.0);
+	int side_pane = (split == Split::HORIZONTAL_SPLIT) ? mPaneHeight : mPaneWidth;
+	int side_screen = (split == Split::HORIZONTAL_SPLIT) ? visibleSize.height : visibleSize.width;
+	float side_tile = (split == Split::HORIZONTAL_SPLIT) ? mAbsoluteTileSize.height : mAbsoluteTileSize.width;
+
+	if(side_pane <= 0)
+		return;
+
+	// round off log2(side_pane) * pitch to the nearest integer
+	int exponent = static_cast<int>(std::log2(side_pane) * pitch + 0.5);
+
+	// side_sub_pane is 2^exponent
+	int side_sub_pane = 1;
+	for(int i = 0; i < exponent; ++i)
+		side_sub_pane *= 2;
+
+	mNumOfSubPane = side_pane / side_sub_pane;
+
+	// decide the number of sub-panes that will be drawn on the screen
+	float threshold = (side_screen + side_sub_pane * side_tile * surplus) / (side_sub_pane * side_tile);
+	for(mNumOfSubPaneDrawn = 1; mNumOfSubPaneDrawn < threshold; ++mNumOfSubPaneDrawn);
+	// mNumOfSubPaneDrawn must be equal to mNumOfSubPane or smaller than it (mNumOfSubPane >= mNumOfSubPaneDrawn)
+	mNumOfSubPaneDrawn = (mNumOfSubPane < mNumOfSubPaneDrawn) ? mNumOfSubPane : mNumOfSubPaneDrawn;
+
+	std::cout << "TiledLayer::optimizeSplitOfPane() => " << mNumOfSubPane << " >= " << mNumOfSubPaneDrawn << " >= " << threshold << '\n';
+}
+
 bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)
 {
 	//if some pane is staged,this is true
@@ -561,13 +605,13 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	//Create new sprite object
 	if(pane->getSprites().empty())
 	{
-		for(int i = 0; i < sub_pane_size * NUM_OF_DRAWN_SUB_CHANK; ++i)
+		for(int i = 0; i < sub_pane_size * mNumOfSubPaneDrawn; ++i)
 		{
 			auto sprite = Sprite::create(mAtlasSrc);
 			mBatchNode->addChild(sprite);
 			sprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 			sprite->setContentSize(mAbsoluteTileSize);
-			sprite->setScale(mAbsoluteTileSize.width / mTileTextureSize.width,mAbsoluteTileSize.height / mTileTextureSize.height);
+			sprite->setScale(mScale,mScale);
 			pane->addSprite(sprite);
 		}
 	}
@@ -576,9 +620,9 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	{
 		//An origin point of a pane
 		Vec2 origin(mPaneWidth * mAbsoluteTileSize.width * pane->getIndex(),0);
-		int y = std::max(0, sub_pane_h * (mIndexOfActiveSubPane - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
+		int y = std::max(0, sub_pane_h * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
 		int c = 0;
-		for(; y < sub_pane_h * NUM_OF_DRAWN_SUB_CHANK; ++y)
+		for(; y < sub_pane_h * mNumOfSubPaneDrawn; ++y)
 		{
 			for(int x = 0; x < sub_pane_w; ++x)
 			{
@@ -599,10 +643,10 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	{
 		//An origin point of a pane
 		Vec2 origin(0, mPaneHeight * mAbsoluteTileSize.height * pane->getIndex());
-		int x = std::max(0,sub_pane_w * (mIndexOfActiveSubPane - (NUM_OF_DRAWN_SUB_CHANK -1) / 2));
+		int x = std::max(0,sub_pane_w * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
 		for(int y = 0; y < sub_pane_h; ++y)
 		{
-			for(; x < sub_pane_w * NUM_OF_DRAWN_SUB_CHANK; ++x)
+			for(; x < sub_pane_w * mNumOfSubPaneDrawn; ++x)
 			{
 				// (pane->getTypeAt(x,y) < 0 == true means there is no tile on that point
 				if(!(pane->getTypeAt(x,y) < 0))
