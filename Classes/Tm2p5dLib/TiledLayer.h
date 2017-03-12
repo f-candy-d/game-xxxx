@@ -22,31 +22,11 @@ class AtlasInfo;
 class TiledLayer : public cocos2d::Node
 {
 public:
-	// NOTE : #a : useless since 10/3/2017
-	/**
-	 * Create TiledLayer object.
-	 * @param  mapInfo   [Map information]
-	 * @param  layerInfo [Layer information]
-	 * @param  atlasInfo [tile atlas information]
-	 * @param  capacity  [the number of panes that whill be staged in this class]
-	 * @param  zolder    [An z-older of this layer in a tiled-layer-bundler]
-	 * @return           [TiledLayer*]
-	 */
-	static TiledLayer* create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize);
-
 	// NOTE : #a : add on 10/3/2017 instead of create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize)
 	/**
 	 * @param  scale       [the ratio of the size of a tile sprite to that of a texture of a tile]
 	 */
 	static TiledLayer* create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize,float scale);
-
-	// NOTE : #a : useless since 10/3/2017
-	/**
-	 * This function will be called when a visible rect changed.
-	 * @method onOriginChanged
-	 * @param  newOrigin          [A new origin point of a layer]
-	 */
-	void onOriginChanged(cocos2d::Vec2 newOrigin);
 
 	// NOTE : #a : add on 10/3/2017 instead of onOriginChanged(Vec2 newOrigin)
 	/**
@@ -58,17 +38,6 @@ public:
 protected:
 	TiledLayer();
 	~TiledLayer();
-
-	// NOTE : #a : useless since 10/3/2017
-	/**
-	 * Initialize TiledLayer object.
-	 * @param  layerInfo [Layer information]
-	 * @param  atlasInfo [tile atlas information]
-	 * @param  capacity  [the number of panes that whill be staged in this class]
-	 * @param  zolder    [An z-older of this layer in a tiled-layer-bundler]
-	 * @return           [description]
-	 */
-	bool initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,cocos2d::Size visibleSize);
 
 	// NOTE : #a : add on 10/3/2017 instead of initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
 	/**
@@ -213,16 +182,6 @@ private:
 	 * @param pitch  [0 ~ 1.0]
 	 */
 	void optimizeSplitOfPane(float pitch,int surplus,Split split,cocos2d::Size visibleSize);
-
-	// NOTE : #a : useless on 11/3/2017
-	/**
-	 * Stage new panes.Save old terrain data and load new one.
-	 * @method stageNewPane
-	 * @param  num           [the number of panes that will be staged]
-	 * @param  direction     [the direction of loading terrain data]
-	 * @return               [return true if new pane was staged,otherwise return false]
-	 */
-	bool stageNewPane(size_t num,LoadDirection direction);
 
 	// NOTE : #a : add on 11/3/2017 instead of stageNewPane(size_t num,LoadDirection direction)
 	/**

@@ -11,19 +11,6 @@ using namespace TM2P5DComponent;
 /**
  * public
  */
-TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
-{
-	auto ret = new TiledLayer();
-	if(ret->initWithInfo(mapInfo,layerInfo,atlasInfo,capacity,zolder,visibleSize))
-	{
-		ret->autorelease();
-		return ret;
-	}
-
-	CC_SAFE_DELETE(ret);
-	return nullptr;
-}
-
 TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
 {
 	auto ret = new TiledLayer();
@@ -35,71 +22,6 @@ TiledLayer* TiledLayer::create(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* 
 
 	CC_SAFE_DELETE(ret);
 	return nullptr;
-}
-
-void TiledLayer::onOriginChanged(Vec2 newOrigin)
-{
-	mOriginPool += newOrigin;
-
-	if(mOrientation == Orientation::LANDSCAPE)
-	{
-		if( static_cast<int>(mOriginPool.x) < -1 * static_cast<int>(mPaneWidth * mAbsoluteTileSize.width))
-		{
-			if(mCursoreOfCenterPane < mCapacity / 2)
-			{
-				mCursoreOfCenterPane++;
-			}
-			else
-			{
-				std::cout << "stage new pane :: direc->end" << '\n';
-				size_t n = -1 * mOriginPool.x / (static_cast<int>(mPaneWidth) * mAbsoluteTileSize.width);
-
-				//if some new panes was staged,allocate tile sprites
-				if(this->stageNewPane(n,LoadDirection::DIRECTION_END))
-				{
-					size_t i = 0;
-					for(auto itr = mPanes.end() - 1; i < n && itr != mPanes.begin(); ++i,--itr)
-						this->allocateSpriteToPane(*itr);
-				}
-				else
-				{
-					mCursoreOfCenterPane = std::min(mCapacity - 1,mCursoreOfCenterPane + 1);
-				}
-			}
-
-			mOriginPool.x = 0;
-		}
-		else if( static_cast<int>(mOriginPool.x) > static_cast<int>(mPaneWidth * mAbsoluteTileSize.width))
-		{
-			if(mCapacity / 2 < mCursoreOfCenterPane)
-			{
-				mCursoreOfCenterPane--;
-			}
-			else
-			{
-				std::cout << "stage new pane :: direc->begin" << '\n';
-				size_t n = mOriginPool.x / (static_cast<int>(mPaneWidth) * mAbsoluteTileSize.width);
-				//if some new panes was staged,allocate tile sprites
-				if(this->stageNewPane(n,LoadDirection::DIRECTION_BEGIN))
-				{
-					size_t i = 0;
-					for(auto itr = mPanes.begin(); i < n && itr != mPanes.end(); ++i,++itr)
-						this->allocateSpriteToPane(*itr);
-				}
-				else
-				{
-					mCursoreOfCenterPane = std::max(0,static_cast<int>(mCursoreOfCenterPane) - 1);
-				}
-			}
-
-			mOriginPool.x = 0;
-		}
-	}
-	else
-	//if the orientation is LANDSCAPE...
-	{
-
-	}
 }
 
 void TiledLayer::onStageNewPane(int delta)
@@ -157,72 +79,6 @@ TiledLayer::TiledLayer()
 TiledLayer::~TiledLayer()
 {
 	CC_SAFE_RELEASE_NULL(mBatchNode);
-}
-
-bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize)
-{
-	if(!Node::init())
-		return false;
-
-	// //check parameters
-	if(mapInfo->getOrientation() == Orientation::NONE
-	|| atlasInfo->getAtlasSource().empty()
-	|| layerInfo->getTerrainSource().empty()
-	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size()
-	|| (mapInfo->getOrientation() == Orientation::PORTRAIT && mPaneWidth < mPaneHeight)
-	|| (mapInfo->getOrientation() == Orientation::LANDSCAPE && mPaneWidth > mPaneHeight))
-		return false;
-
-	mZolder = zolder;
-	mCapacity = capacity;
-	mIndexOfAnchorSubPane = 0;
-	mCursoreOfCenterPane = 0;
-	mNumOfPane = mapInfo->getNumOfPane();
-	mPaneWidth = mapInfo->getPaneWidth();
-	mPaneHeight = mapInfo->getPaneHeight();
-	mTileSize = mapInfo->getTileSize();
-	mOrientation = mapInfo->getOrientation();
-	mLayerName = layerInfo->getLayerName();
-	mIsVisible = layerInfo->isVisible();
-	mIsEditable = layerInfo->isEditable();
-	mNumOfTileType = atlasInfo->getNumOfTileType();
-	mAtlasSrc = DIR_NAME_TM2P5D + DIR_NAME_ATLAS + atlasInfo->getAtlasSource();
-
-	//get full path for terrain file name
-	mTerrainSrc = FileUtils::getInstance()->fullPathForFilename(DIR_NAME_TM2P5D + DIR_NAME_TERRAIN + layerInfo->getTerrainSource());
-
-	mPanes.reserve(capacity);
-
-	//copy texture rects
-	mTextureRects.reserve(atlasInfo->getTextureRects().size());
-	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
-
-	// Decide the number of sub-panes
-	if(mOrientation == Orientation::LANDSCAPE)
-		for(size_t i = 1;
-			visibleSize.height < mPaneHeight / i * mTileSize.height
-			&& i <= mPaneHeight;
-			i *= 2)
-			mNumOfSubPane = i;
-	else
-	//If the orientation is portrait...
-		for(size_t i = 1;
-			visibleSize.width < mPaneWidth / i * mTileSize.width
-			&& i <= mPaneWidth;
-			i *= 2)
-			mNumOfSubPane = i;
-
-	//batch node
-	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
-	mBatchNode->retain();
-	this->addChild(mBatchNode);
-
-	// Stage first panes and allocate sprites
-	this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
-	for(auto pane : mPanes)
-		this->allocateSpriteToPane(pane);
-
-	return true;
 }
 
 bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* atlasInfo,size_t capacity,int zolder,Size visibleSize,float scale)
@@ -355,57 +211,6 @@ void TiledLayer::optimizeSplitOfPane(float pitch,int surplus,Split split,Size vi
 	mNumOfSubPaneDrawn = (mNumOfSubPane < mNumOfSubPaneDrawn) ? mNumOfSubPane : mNumOfSubPaneDrawn;
 
 	std::cout << "TiledLayer::optimizeSplitOfPane() => " << mNumOfSubPane << " >= " << mNumOfSubPaneDrawn << " >= " << threshold << '\n';
-}
-
-bool TiledLayer::stageNewPane(size_t num, LoadDirection direction)
-{
-	//if some pane is staged,this is true
-	bool flag = false;
-
-	for(size_t n = 0; n < num; ++n)
-	{
-		if(static_cast<size_t>(mPanes.size()) < mCapacity)
-		{
-			//Create new chnak object
-			mPanes.pushBack(Pane::create(mPaneWidth,mPaneHeight,mPanes.size()));
-			this->loadTerrain(mPanes.back());
-		}
-		else
-		{
-			if(direction == LoadDirection::DIRECTION_BEGIN
-				&& 0 < mPanes.front()->getIndex())
-			{
-				auto pane = mPanes.back();
-				pane->retain();
-				if(pane->getIsModified())
-					this->saveTerrain(pane);
-				pane->recycle(mPanes.front()->getIndex() - 1);
-				mPanes.popBack();
-				mPanes.insert(0,pane);
-				this->loadTerrain(pane);
-				pane->release();
-
-				flag = true;
-			}
-			else if(direction == LoadDirection::DIRECTION_END
-				&& mPanes.back()->getIndex() < static_cast<int>(mNumOfPane - 1))
-			{
-				auto pane = mPanes.front();
-				pane->retain();
-				if(pane->getIsModified())
-					this->saveTerrain(pane);
-				pane->recycle(mPanes.back()->getIndex() + 1);
-				mPanes.erase(0);
-				mPanes.pushBack(pane);
-				this->loadTerrain(pane);
-				pane->release();
-
-				flag = true;
-			}
-		}
-	}
-
-	return flag;
 }
 
 bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
