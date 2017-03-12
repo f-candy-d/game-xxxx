@@ -21,7 +21,6 @@ namespace {
 	static const std::string KEY_CHANK_WIDTH("pane_width");
 	static const std::string KEY_CHANK_HEIGHT("pane_height");
 	static const std::string KEY_NUM_OF_CHANK("num_of_pane");
-	static const std::string KEY_ORIENTATION("orientation");
 	static const std::string KEY_TILE_SIZE("tile_size");
 	static const std::string KEY_ARCHITECTURE("architecture");
 	static const std::string KEY_LAYER_NAME("layer_name");
@@ -201,7 +200,6 @@ MapInfo* TM2P5DJsonParser::comvJsonToMapInfo(picojson::value& obj)
 	info->mPaneWidth = static_cast<size_t>(elements[KEY_CHANK_WIDTH].get<double>());
 	info->mPaneHeight = static_cast<size_t>(elements[KEY_CHANK_HEIGHT].get<double>());
 	info->mNumOfPane = static_cast<size_t>(elements[KEY_NUM_OF_CHANK].get<double>());
-	info->mOrientation = Orientation::toType(elements[KEY_ORIENTATION].get<std::string>());
 	info->mTileSize = this->comvJsonValueToCcsize(elements[KEY_TILE_SIZE]);
 
 	for(auto& value : elements[KEY_ARCHITECTURE].get<picojson::array>())

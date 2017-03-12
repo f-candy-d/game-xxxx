@@ -26,7 +26,6 @@ void MapInfo::debugLog(MapInfo *info)
 	std::cout << "width of pane => " << info->mPaneWidth << '\n';
 	std::cout << "height of pane => " << info->mPaneHeight << '\n';
 	std::cout << "number of panes => " << info->mNumOfPane << '\n';
-	std::cout << "orientation => " << Orientation::toString(info->mOrientation) << '\n';
 
 	auto size = info->mTileSize;
 	std::cout << "tile size => w=" << size.width << " h=" << size.height << '\n';
@@ -54,11 +53,6 @@ size_t MapInfo::getNumOfPane()
 	return mNumOfPane;
 }
 
-Orientation::Type MapInfo::getOrientation()
-{
-	return mOrientation;
-}
-
 cocos2d::Size MapInfo::getTileSize()
 {
 	return mTileSize;
@@ -76,7 +70,6 @@ MapInfo::MapInfo()
 :mPaneWidth(0)
 ,mPaneHeight(0)
 ,mNumOfPane(0)
-,mOrientation(Orientation::NONE)
 ,mTileSize(Size(0,0))
 {}
 

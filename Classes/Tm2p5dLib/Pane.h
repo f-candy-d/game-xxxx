@@ -88,12 +88,6 @@ private:
 	 */
 	CC_SYNTHESIZE_READONLY(bool,mIsModified,IsModified);
 
-	// NOTE : #b : useless since 12/3/2017
-	/**
-	 * Is a pane object is a null state or not.
-	 */
-	CC_SYNTHESIZE(bool,mIsNullState,IsNullState);
-
 	// NOTE : #b : add on 12/3/2017
 	/**
 	 * A state of a pane object.

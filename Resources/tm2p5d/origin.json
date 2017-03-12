@@ -4,7 +4,6 @@
 		"pane_width"  :  16,
 		"pane_height" : 256,
 		"num_of_pane" :  20,
-		"orientation"  : "landscape",
 		"tile_size"    : [64, 64],
 		"architecture" : ["layer-bundler-A","layer-bundler-B","layer-bundler-C"]
 	},

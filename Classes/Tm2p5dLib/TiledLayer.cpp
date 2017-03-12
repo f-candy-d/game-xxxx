@@ -56,7 +56,6 @@ TiledLayer::TiledLayer()
 ,mNumOfPane(0)
 ,mPaneWidth(0)
 ,mPaneHeight(0)
-,mCursoreOfCenterPane(0)
 ,mIndexOfAnchorPane(0)
 ,mNumOfTileType(0)
 ,mNumOfSubPane(1)
@@ -68,11 +67,9 @@ TiledLayer::TiledLayer()
 ,mAtlasSrc("")
 ,mIsVisible(false)
 ,mIsEditable(false)
-,mTileSize(0,0)
 ,mTileTextureSize(0,0)
 ,mAbsoluteTileSize(0,0)
 ,mOriginPool(0,0)
-,mOrientation(Orientation::NONE)
 ,mSplit(Split::HORIZONTAL_SPLIT)
 {}
 
@@ -86,20 +83,16 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	if(!Node::init())
 		return false;
 
-	// //check parameters
-	if(mapInfo->getOrientation() == Orientation::NONE
-	|| scale < 0
+	//check parameters
+	if(scale < 0
 	|| atlasInfo->getAtlasSource().empty()
 	|| layerInfo->getTerrainSource().empty()
-	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size()
-	|| (mapInfo->getOrientation() == Orientation::PORTRAIT && mPaneWidth < mPaneHeight)
-	|| (mapInfo->getOrientation() == Orientation::LANDSCAPE && mPaneWidth > mPaneHeight))
+	|| static_cast<size_t>(atlasInfo->getNumOfTileType()) != atlasInfo->getTextureRects().size())
 		return false;
 
 	mZolder = zolder;
 	mCapacity = capacity;
 	mIndexOfAnchorSubPane = 0;
-	mCursoreOfCenterPane = 0;
 	mIndexOfAnchorPane = -1 * capacity;
 	mNumOfPane = mapInfo->getNumOfPane();
 	mPaneWidth = mapInfo->getPaneWidth();
@@ -109,10 +102,6 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 
 	//split of a layer
 	mSplit = (mPaneWidth > mPaneHeight) ? Split::VERTICAL_SPLIT : Split::HORIZONTAL_SPLIT;
-
-	//TODO : delete these lines
-	mTileSize = mapInfo->getTileSize();
-	mOrientation = mapInfo->getOrientation();
 
 	mLayerName = layerInfo->getLayerName();
 	mIsVisible = layerInfo->isVisible();
@@ -148,27 +137,12 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	// pitch::0.0 => 272 sprites (17 sub-panes was drawn)
 	this->optimizeSplitOfPane(0.35,2,mSplit,visibleSize);
 
-	// if(mOrientation == Orientation::LANDSCAPE)
-	// 	for(size_t i = 1;
-	// 		visibleSize.height < mPaneHeight / i * mAbsoluteTileSize.height
-	// 		&& i <= mPaneHeight;
-	// 		i *= 2)
-	// 		mNumOfSubPane = i;
-	// else
-	// //If the orientation is portrait...
-	// 	for(size_t i = 1;
-	// 		visibleSize.width < mPaneWidth / i * mAbsoluteTileSize.width
-	// 		&& i <= mPaneWidth;
-	// 		i *= 2)
-	// 		mNumOfSubPane = i;
-
 	//batch node
 	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
 	mBatchNode->retain();
 	this->addChild(mBatchNode);
 
 	// //Stage first panes and allocate sprites
-	// this->stageNewPane(capacity,LoadDirection::DIRECTION_END);
 	this->stagePane(0,mIndexOfAnchorPane);
 	mIndexOfAnchorPane = 0;
 	for(auto pane : mPanes)
@@ -264,7 +238,6 @@ bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
 			else
 			{
 				std::cout << "set the state of a pane at index " << i << " as State::ZOMBIE" << '\n';
-				// pane->setIsNullState(true);
 				pane->setState(State::ZOMBIE);
 			}
 		}
@@ -274,7 +247,6 @@ bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
 	{
 		std::cout << "left-shift" << '\n';
 
-		// int old_range_begin = std::max(oldAnchor - (cap_int / 2), 0);
 		int old_range_end = std::min(oldAnchor + ((cap_int - 1) / 2), static_cast<int>(mNumOfPane) - 1);
 		int right_end_index = cap_int / 2 + (old_range_end - oldAnchor);
 		int right_end_pane_index = mPanes.at(right_end_index)->getIndex();
@@ -305,7 +277,6 @@ bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
 			}
 			else
 			{
-				// pane->setIsNullState(true);
 				pane->setState(State::ZOMBIE);
 				std::cout << "set the state of a pane at index " << i << " as State::ZOMBIE" << '\n';
 			}
@@ -345,7 +316,6 @@ bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
 			}
 			else
 			{
-				// pane->setIsNullState(true);
 				pane->setState(State::ZOMBIE);
 				std::cout << "set the state of a pane at index " << i << " as State::ZOMBIE" << '\n';
 			}
@@ -428,7 +398,6 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 		}
 	}
 
-	// if(mOrientation == Orientation::LANDSCAPE)
 	if(mSplit == Split::HORIZONTAL_SPLIT)
 	{
 		//An origin point of a pane
@@ -451,7 +420,6 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 		}
 		std::cout << "allocated " << c << " sprites of the pane at index " << pane->getIndex() << '\n';
 	}
-	//if the orientation is PORTRAIT...
 	// if mSplit is Split::VERTICAL_SPLIT...
 	else
 	{

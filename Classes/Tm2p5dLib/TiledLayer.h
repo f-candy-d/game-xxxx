@@ -77,12 +77,6 @@ private:
 	size_t mPaneWidth;
 	size_t mPaneHeight;
 
-	// NOTE : #c : useless on 12/3/2017
-	/**
-	 * An cursore that indicate a pane displayed on the center of the screen.
-	 */
-	size_t mCursoreOfCenterPane;
-
 	// NOTE : #a : add on 11/3/2017
 	int mIndexOfAnchorPane;
 
@@ -136,12 +130,6 @@ private:
 	 */
 	bool mIsEditable;
 
-	// NOTE : #a : useless since 10/3/2017
-	/**
-	 * The size of a tile.
-	 */
-	cocos2d::Size mTileSize;
-
 	// NOTE : #a : add on 10/3/2017 instead of mTileSize
 	/**
 	 *
@@ -156,12 +144,6 @@ private:
 	 * Pool a delta of the origin movement of a layer.
 	 */
 	cocos2d::Vec2 mOriginPool;
-
-	// NOTE : #d : useless since 12/3/2017
-	/**
-	 * The orientation of a map.
-	 */
-	Orientation::Type mOrientation;
 
 	/**
 	 * The split of a map.

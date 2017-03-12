@@ -28,11 +28,6 @@ public:
 	size_t mNumOfPane;
 
 	/**
-	 * The orientation of a map.
-	 */
-	Orientation::Type mOrientation;
-
-	/**
 	 * The size of a texture of a tile (px).
 	 */
 	cocos2d::Size mTileSize;
@@ -51,7 +46,6 @@ public:
 	size_t getPaneWidth();
 	size_t getPaneHeight();
 	size_t getNumOfPane();
-	Orientation::Type getOrientation();
 	cocos2d::Size getTileSize();
 	const std::vector<std::string>& getArchitecture();
 
