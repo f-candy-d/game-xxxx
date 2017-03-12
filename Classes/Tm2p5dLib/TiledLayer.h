@@ -206,7 +206,7 @@ private:
 	/**
 	 * @param pitch  [0 ~ 1.0]
 	 */
-	void optimizeSplitOfPane(float pitch,Split split,int surplus,cocos2d::Size visibleSize);
+	void optimizeSplitOfPane(float pitch,int surplus,Split split,cocos2d::Size visibleSize);
 
 	// NOTE : #a : useless on 11/3/2017
 	/**

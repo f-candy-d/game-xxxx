@@ -274,17 +274,19 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	std::copy(atlasInfo->getTextureRects().begin(),atlasInfo->getTextureRects().end(),std::back_inserter(mTextureRects));
 
 	// Decide the number of sub-panes
-	// NOTE : split=Split::HORIZONTAL_SPLIT, surplus=2, visibleSize=(1024,768)
+	// NOTE : split=Split::HORIZONTAL_SPLIT, surplus=2, visibleSize=(1024,768), paneSize=(16,256), absoluteTileSize=51.2px
 	// pitch::1.0 => 4096 sprites (1 sub-panes was drawn)
 	// pitch::0.9 => 4096 sprites (2 sub-panes was drawn)
 	// pitch::0.8 => 3027 sprites (3 sub-panes was drawn)
 	// pitch::0.65 => 1536 sprites (3 sub-panes was drawn)
 	// pitch::0.5 => 768 sprites (3 sub-panes was drawn)
+	// pitch::0.4 => 512 sprites (4 sub-panes was drawn)
 	// pitch::0.35 => 512 sprites (4 sub-panes was drawn)
+	// pitch::0.25 => 384 sprites (6 sub-panes was drawn)
 	// pitch::0.2 => 384 sprites (6 sub-panes was drawn)
 	// pitch::0.1 => 320 sprites (10 sub-panes was drawn)
 	// pitch::0.0 => 272 sprites (17 sub-panes was drawn)
-	this->optimizeSplitOfPane(1.0,Split::HORIZONTAL_SPLIT,2,visibleSize);
+	this->optimizeSplitOfPane(0.35,2,Split::HORIZONTAL_SPLIT,visibleSize);
 
 	// if(mOrientation == Orientation::LANDSCAPE)
 	// 	for(size_t i = 1;
@@ -321,9 +323,10 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 /**
  * private
  */
-void TiledLayer::optimizeSplitOfPane(float pitch,Split split,int surplus,Size visibleSize)
+void TiledLayer::optimizeSplitOfPane(float pitch,int surplus,Split split,Size visibleSize)
 {
 	assert(0.0 <= pitch && pitch <= 1.0);
+
 	int side_pane = (split == Split::HORIZONTAL_SPLIT) ? mPaneHeight : mPaneWidth;
 	int side_screen = (split == Split::HORIZONTAL_SPLIT) ? visibleSize.height : visibleSize.width;
 	float side_tile = (split == Split::HORIZONTAL_SPLIT) ? mAbsoluteTileSize.height : mAbsoluteTileSize.width;
