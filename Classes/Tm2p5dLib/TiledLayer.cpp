@@ -212,7 +212,7 @@ bool TiledLayer::stagePane(int newAnchor,int oldAnchor)
 	{
 		std::cout << "first time of stagePane()" << '\n';
 		for(int i = 0; i < cap_int; ++i)
-		mPanes.pushBack(Pane::create(mPaneWidth,mPaneHeight,i));
+		mPanes.pushBack(Pane::create(mPaneWidth,mPaneHeight,i,mNumOfSubPane,mSplit));
 	}
 
 	// check exceptions
@@ -342,11 +342,14 @@ void TiledLayer::loadTerrain(Pane *pane)
 	}
 
 	fs.seekg(pane->getIndex() * mPaneWidth * mPaneHeight * sizeof(int),std::ios::beg);
-	auto tiles = pane->getTiles();
-	for(size_t i = 0, size = mPaneWidth * mPaneHeight; i < size; ++i)
+	// auto tiles = pane->getTiles();
+	int type = -1;
+	for(int i = 0, size = mPaneWidth * mPaneHeight; i < size; ++i)
 	{
-		fs.read((char*)&(*tiles),sizeof(int));
-		tiles++;
+		// fs.read((char*)&(*tiles),sizeof(int));
+		fs.read((char*)&type,sizeof(int));
+		// tiles++;
+		pane->insertType(type,i);
 	}
 }
 
@@ -361,11 +364,14 @@ void TiledLayer::saveTerrain(Pane *pane)
 	}
 
 	fs.seekp(pane->getIndex() * mPaneWidth * mPaneHeight * sizeof(int),std::ios::beg);
-	auto tiles = pane->getTiles();
-	for(size_t i = 0,size = mPaneWidth * mPaneHeight; i < size; ++i)
+	// auto tiles = pane->getTiles();
+	int type = -1;
+	for(int i = 0,size = mPaneWidth * mPaneHeight; i < size; ++i)
 	{
-		fs.write((char*)&(*tiles),sizeof(int));
-		tiles++;
+		type = pane->getTypeAt(i);
+		// fs.write((char*)&(*tiles),sizeof(int));
+		fs.write((char*)&type,sizeof(int));
+		// tiles++;
 	}
 }
 

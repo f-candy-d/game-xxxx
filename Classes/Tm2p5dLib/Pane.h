@@ -1,9 +1,8 @@
-#ifndef CHANK_H
-#define CHANK_H
+#ifndef PANE_H
+#define PANE_H
 
 #include "../../cocos2d/cocos/cocos2d.h"
 #include "TM2P5DProperty.h"
-
 /**
  * Pane class is a member of the namespace 'TM2P5DComponent'.
  */
@@ -13,7 +12,20 @@ class Pane : public cocos2d::Ref
 {
 	struct SubPane
 	{
-		
+	public:
+		bool hasSprites;
+		int index;
+		std::vector<int> tiles;
+		cocos2d::Vector<cocos2d::Sprite*> sprites;
+
+		SubPane(int idx,size_t capa = 0);
+		SubPane(const SubPane& other);
+		SubPane& operator=(const SubPane& other) &;
+		size_t getSize();
+
+	private:
+		//read only
+		size_t size;
 	};
 
 public:
@@ -25,7 +37,7 @@ public:
 	 * @param  index       [An intager number that indicate a certain pane on the layer]
 	 * @return             [Pane*]
 	 */
-	static Pane* create(size_t width,size_t height,int index);
+	static Pane* create(size_t width,size_t height,int index,int numSubPane,Split split);
 
 	/**
 	 * Insert a tile type into a array that contains tile types.
@@ -34,7 +46,8 @@ public:
 	 * @param  x          [x-coordinate on the grid of a pane]
 	 * @param  y          [y-coordinate on the grid of a pane]
 	 */
-	void insertType(int type,unsigned int x,unsigned int y);
+	void insertType(int type,int x,int y);
+	void insertType(int type,int index);
 
 	/**
 	 * get a tile type at (x,y),then return it.
@@ -43,7 +56,8 @@ public:
 	 * @param  y         [y-coordinate on the grid of a pane]
 	 * @return           [tile type]
 	 */
-	int getTypeAt(unsigned int x,unsigned int y);
+	int getTypeAt(int x,int y);
+	int getTypeAt(int index);
 
 	/**
 	 * Re-initialize a pane object.
@@ -72,7 +86,7 @@ protected:
 	 * @param  index       [An intager number that indicate a certain pane on the layer]
 	 * @return             [true/false]
 	 */
-	bool initWithSize(size_t width,size_t height,int index);
+	bool initWithSize(size_t width,size_t height,int index,int numSubPane,Split split);
 
 private:
 	/**
@@ -87,6 +101,13 @@ private:
 	 */
 	CC_SYNTHESIZE_READONLY(size_t,mWidth,Width);
 	CC_SYNTHESIZE_READONLY(size_t,mHeight,Height);
+
+	/**
+	 * The size of a sub-pane.
+	 */
+	CC_SYNTHESIZE_READONLY(size_t,mSubWidth,SubWidth);
+	CC_SYNTHESIZE_READONLY(size_t,mSubHeight,SubHeight);
+	CC_SYNTHESIZE_READONLY(size_t,mSubPaneSize,SubPaneSize);
 
 	/**
 	 * Is a terrain in a pane modified or not.
@@ -110,6 +131,11 @@ private:
 	 */
 	// cocos2d::Vector<cocos2d::Sprite*> mSprites;
 	CC_SYNTHESIZE_READONLY_PASS_BY_REF(cocos2d::Vector<cocos2d::Sprite*>,mSprites,Sprites);
+
+	/**
+	 * A vector that contains sub-panes in this pane.
+	 */
+	std::vector<SubPane> mSubPanes;
 };
 
 } /* namespace TM2P5DComponent */
