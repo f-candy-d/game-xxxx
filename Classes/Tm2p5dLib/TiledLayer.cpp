@@ -56,6 +56,8 @@ TiledLayer::TiledLayer()
 ,mNumOfPane(0)
 ,mPaneWidth(0)
 ,mPaneHeight(0)
+,mSubPaneWidth(0)
+,mSubPaneHeight(0)
 ,mIndexOfAnchorPane(0)
 ,mNumOfTileType(0)
 ,mNumOfSubPane(1)
@@ -101,7 +103,7 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	mScale = scale;
 
 	//split of a layer
-	mSplit = (mPaneWidth > mPaneHeight) ? Split::VERTICAL_SPLIT : Split::HORIZONTAL_SPLIT;
+	mSplit = (mPaneHeight > mPaneWidth) ? Split::HORIZONTAL_SPLIT : Split::VERTICAL_SPLIT;
 
 	mLayerName = layerInfo->getLayerName();
 	mIsVisible = layerInfo->isVisible();
@@ -136,6 +138,10 @@ bool TiledLayer::initWithInfo(MapInfo* mapInfo,LayerInfo* layerInfo,AtlasInfo* a
 	// pitch::0.1 => 320 sprites (10 sub-panes was drawn)
 	// pitch::0.0 => 272 sprites (17 sub-panes was drawn)
 	this->optimizeSplitOfPane(0.35,2,mSplit,visibleSize);
+
+	//the size of a sub-pane
+	mSubPaneWidth = (mSplit == Split::HORIZONTAL_SPLIT) ? mPaneWidth : mPaneWidth / mNumOfSubPane;
+	mSubPaneHeight = (mSplit == Split::HORIZONTAL_SPLIT) ? mPaneHeight / mNumOfSubPane : mPaneWidth;
 
 	//batch node
 	mBatchNode = SpriteBatchNode::create(mAtlasSrc);
@@ -378,15 +384,15 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	if(pane->getState() == State::ZOMBIE)
 		return;
 
-	int sub_pane_w,sub_pane_h,sub_pane_size;
+	int sub_pane_width,sub_pane_height,sub_pane_size;
 
-	sub_pane_w = (mPaneHeight > mPaneWidth) ? mPaneWidth : mPaneWidth / mNumOfSubPane;
-	sub_pane_h = (mPaneHeight > mPaneWidth) ? mPaneHeight / mNumOfSubPane : mPaneHeight;
-	sub_pane_size = sub_pane_w * sub_pane_h;
+	sub_pane_width = mSubPaneWidth;
+	sub_pane_height = mSubPaneHeight;
 
 	//Create new sprite object
 	if(pane->getSprites().empty())
 	{
+		int sub_pane_size = sub_pane_width * sub_pane_height;
 		for(int i = 0; i < sub_pane_size * mNumOfSubPaneDrawn; ++i)
 		{
 			auto sprite = Sprite::create(mAtlasSrc);
@@ -402,11 +408,11 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	{
 		//An origin point of a pane
 		Vec2 origin(mPaneWidth * mAbsoluteTileSize.width * pane->getIndex(),0);
-		int y = std::max(0, sub_pane_h * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
+		int y = std::max(0, sub_pane_height * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
 		int c = 0;
-		for(; y < sub_pane_h * mNumOfSubPaneDrawn; ++y)
+		for(; y < sub_pane_height * mNumOfSubPaneDrawn; ++y)
 		{
-			for(int x = 0; x < sub_pane_w; ++x)
+			for(int x = 0; x < sub_pane_width; ++x)
 			{
 				// (pane->getTypeAt(x,y) < 0 == true means there is no tile on that point
 				if(!(pane->getTypeAt(x,y) < 0))
@@ -425,10 +431,10 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 	{
 		//An origin point of a pane
 		Vec2 origin(0, mPaneHeight * mAbsoluteTileSize.height * pane->getIndex());
-		int x = std::max(0,sub_pane_w * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
-		for(int y = 0; y < sub_pane_h; ++y)
+		int x = std::max(0,sub_pane_width * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
+		for(int y = 0; y < sub_pane_height; ++y)
 		{
-			for(; x < sub_pane_w * mNumOfSubPaneDrawn; ++x)
+			for(; x < sub_pane_width * mNumOfSubPaneDrawn; ++x)
 			{
 				// (pane->getTypeAt(x,y) < 0 == true means there is no tile on that point
 				if(!(pane->getTypeAt(x,y) < 0))
@@ -440,5 +446,60 @@ void TiledLayer::allocateSpriteToPane(Pane *pane)
 			}
 		}
 	}
+}
 
+void TiledLayer::drawSubPane(Pane *pane,size_t index)
+{
+	assert(index < mNumOfSubPane);
+	assert(0 < pane->getSprites().size());
+
+	//pane has nothing to be drawn,do not draw sprites
+	if(pane->getState() == State::ZOMBIE)
+		return;
+
+	if(mSplit == Split::HORIZONTAL_SPLIT)
+	{
+		//An origin point of a pane
+		Vec2 origin(mPaneWidth * mAbsoluteTileSize.width * pane->getIndex(),0);
+		// int y = std::max(0, mSubPaneHeight * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
+		int y = mSubPaneHeight * index;
+		int c = 0;
+		// for(; y < mSubPaneHeight * mNumOfSubPaneDrawn; ++y)
+		for(; y < mSubPaneHeight; ++y)
+		{
+			for(int x = 0; x < mSubPaneWidth; ++x)
+			{
+				// (pane->getTypeAt(x,y) < 0 == true means there is no tile on that point
+				if(!(pane->getTypeAt(x,y) < 0))
+				{
+					auto sprite = pane->getSprites().at(y * mPaneWidth + x);
+					sprite->setTextureRect(mTextureRects[pane->getTypeAt(x,y)]);
+					sprite->setPosition(x * mAbsoluteTileSize.width + origin.x, y * mAbsoluteTileSize.height + origin.y);
+					c++;
+				}
+			}
+		}
+		std::cout << "allocated " << c << " sprites of the pane at index " << pane->getIndex() << '\n';
+	}
+	// if mSplit is Split::VERTICAL_SPLIT...
+	else
+	{
+		//An origin point of a pane
+		Vec2 origin(0, mPaneHeight * mAbsoluteTileSize.height * pane->getIndex());
+		// int x = std::max(0,mSubPaneWidth * (mIndexOfAnchorSubPane - (mNumOfSubPaneDrawn -1) / 2));
+		int x = mSubPaneWidth * index;
+		for(int y = 0; y < mSubPaneHeight; ++y)
+		{
+			for(; x < mSubPaneWidth; ++x)
+			{
+				// (pane->getTypeAt(x,y) < 0 == true means there is no tile on that point
+				if(!(pane->getTypeAt(x,y) < 0))
+				{
+					auto sprite = pane->getSprites().at(y * mPaneWidth + x);
+					sprite->setTextureRect(mTextureRects[pane->getTypeAt(x,y)]);
+					sprite->setPosition(x * mAbsoluteTileSize.width + origin.x, y * mAbsoluteTileSize.height + origin.y);
+				}
+			}
+		}
+	}
 }

@@ -77,6 +77,12 @@ private:
 	size_t mPaneWidth;
 	size_t mPaneHeight;
 
+	/**
+	 * The size of a sub-pane.
+	 */
+	size_t mSubPaneWidth;
+	size_t mSubPaneHeight;
+
 	// NOTE : #a : add on 11/3/2017
 	int mIndexOfAnchorPane;
 
@@ -194,6 +200,13 @@ private:
 	 * @param  pane                 [pane object]
 	 */
 	void allocateSpriteToPane(Pane* pane);
+
+	/**
+	 * Draw a sub-pane in the pane.
+	 * @param pane  [A parent pane of sub-panes]
+	 * @param index [An index of a sub-pane that will be drawn]
+	 */
+	void drawSubPane(Pane* pane,size_t index);
 };
 
 } /* namespace TM2P5DComponent */

@@ -11,6 +11,11 @@ namespace TM2P5DComponent {
 
 class Pane : public cocos2d::Ref
 {
+	struct SubPane
+	{
+		
+	};
+
 public:
 	/**
 	 * Create Pane object.

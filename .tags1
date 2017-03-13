@@ -4,10 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-map_info	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^	"map_info" :$/;"	function	line:2
-pane_width	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^		"pane_width"  :  16,$/;"	function	line:4
-pane_height	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^		"pane_height" : 256,$/;"	function	line:5
-num_of_pane	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^		"num_of_pane" :  20,$/;"	function	line:6
-tile_size	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^		"tile_size"    : [64, 64],$/;"	function	line:7
-architecture	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^		"architecture" : ["layer-bundler-A","layer-bundler-B","layer-bundler-C"]$/;"	function	line:8
-include	/home/daichi/dev/projects/cocos/GameXXX/Resources/tm2p5d/origin.json	/^	"include" : ["layer.json","layer_bundler.json","atlas.json"]$/;"	function	line:11
+CHANK_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^#define CHANK_H$/;"	macro	line:2
+TM2P5DComponent	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^namespace TM2P5DComponent {$/;"	namespace	line:10
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^class Pane : public cocos2d::Ref$/;"	class	line:12	namespace:TM2P5DComponent
+SubPane	/home/daichi/dev/projects/cocos/GameXXX/Classes/Tm2p5dLib/Pane.h	/^	struct SubPane$/;"	struct	line:14	class:TM2P5DComponent::Pane
