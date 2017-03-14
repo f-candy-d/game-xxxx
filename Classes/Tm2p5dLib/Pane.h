@@ -4,30 +4,50 @@
 #include "../../cocos2d/cocos/cocos2d.h"
 #include "TM2P5DProperty.h"
 /**
- * Pane class is a member of the namespace 'TM2P5DComponent'.
+ * Pane class and SubPane class is a member of the namespace 'TM2P5DComponent'.
  */
 namespace TM2P5DComponent {
 
+/**
+ * declaration of SubPane class
+ */
+class SubPane :public cocos2d::Ref
+{
+public:
+	static SubPane* create(int index,size_t capacity);
+	SubPane();
+	// SubPane(int idx,size_t capa = 0);
+	// SubPane(const SubPane& other);
+	// SubPane& operator=(const SubPane& other) &;
+
+	/**
+	 * getter and setter functions for mOwnSprites.
+	 * @return [description]
+	 */
+	bool ownSprites();
+	void ownSprites(bool has);
+
+	/**
+	 * getter functions for vectors.
+	 */
+	std::vector<int>& getTiles() {return mTiles;}
+	cocos2d::Vector<cocos2d::Sprite*>& getSprites() {return mSprites;}
+
+private:
+	CC_SYNTHESIZE(int,mIndex,Index);
+	CC_SYNTHESIZE_READONLY(size_t,mSize,Size);
+	bool mOwnSprites;
+	std::vector<int> mTiles;
+	cocos2d::Vector<cocos2d::Sprite*> mSprites;
+
+	bool init(int index,size_t capacity);
+};
+
+/**
+ * declaration of Pane class
+ */
 class Pane : public cocos2d::Ref
 {
-	struct SubPane
-	{
-	public:
-		bool hasSprites;
-		int index;
-		std::vector<int> tiles;
-		cocos2d::Vector<cocos2d::Sprite*> sprites;
-
-		SubPane(int idx,size_t capa = 0);
-		SubPane(const SubPane& other);
-		SubPane& operator=(const SubPane& other) &;
-		size_t getSize();
-
-	private:
-		//read only
-		size_t size;
-	};
-
 public:
 	/**
 	 * Create Pane object.
@@ -41,13 +61,13 @@ public:
 
 	/**
 	 * Insert a tile type into a array that contains tile types.
-	 * @method insertType
+	 * @method insertTypeAt
 	 * @param  type       [tile type]
 	 * @param  x          [x-coordinate on the grid of a pane]
 	 * @param  y          [y-coordinate on the grid of a pane]
 	 */
-	void insertType(int type,int x,int y);
-	void insertType(int type,int index);
+	void insertTypeAt(int type,int x,int y);
+	void insertTypeAt(int type,int index);
 
 	/**
 	 * get a tile type at (x,y),then return it.
@@ -67,12 +87,27 @@ public:
 	 */
 	bool recycle(int index);
 
+	// NOTE :: useless
 	/**
 	 * Add a sprite to the back of a vector.
 	 * @method addSprite
 	 * @param  sprite    [sprite object]
 	 */
 	void addSprite(cocos2d::Sprite* sprite);
+
+	/**
+	 * Return a pointer of a sub-pane object that has a certain index.
+	 * @param  index [an index of a sub-pane]
+	 * @return       [SubPane*]
+	 */
+	SubPane* getSubPaneAt(size_t index);
+
+	/**
+	 * pass the ownership of sprites
+	 * @param from [an index of sub-pane that is a old owner of sprites]
+	 * @param to   [an index of sub-pane that is a new owner pane of sprites]
+	 */
+	void passSpriteOwnership(size_t from,size_t to);
 
 protected:
 	Pane();
@@ -121,12 +156,6 @@ private:
 	CC_SYNTHESIZE(State,mState,State);
 
 	/**
-	 * An array that contains types of tiles.
-	 */
-	// int* mTiles;
-	CC_SYNTHESIZE_READONLY(int*,mTiles,Tiles);
-
-	/**
 	 * An vector that contains sprites of tiles in a parent node.
 	 */
 	// cocos2d::Vector<cocos2d::Sprite*> mSprites;
@@ -135,7 +164,7 @@ private:
 	/**
 	 * A vector that contains sub-panes in this pane.
 	 */
-	std::vector<SubPane> mSubPanes;
+	cocos2d::Vector<SubPane*> mSubPanes;
 };
 
 } /* namespace TM2P5DComponent */

@@ -5,71 +5,61 @@ USING_NS_CC;
 using namespace TM2P5DComponent;
 
 /**
- * struct SubPane
+ * SubPane class
  */
-Pane::SubPane::SubPane(int idx, size_t capa)
+/**
+ * public
+ */
+SubPane* SubPane::create(int index,size_t capacity)
 {
-	assert(0 <= idx);
-
-	this->hasSprites = false;
-	this->index = idx;
-	this->size = capa;
-
-	if(0 < this->size)
+	auto ret = new SubPane();
+	if(ret->init(index,capacity))
 	{
-		this->sprites.reserve(this->size);
-		this->tiles.reserve(this->size);
+		ret->autorelease();
+		return ret;
+	}
+
+	CC_SAFE_DELETE(ret);
+	return nullptr;
+}
+
+SubPane::SubPane()
+:mOwnSprites(false)
+,mIndex(0)
+,mSize(0)
+{}
+
+bool SubPane::ownSprites()
+{
+	return mOwnSprites;
+}
+
+void SubPane::ownSprites(bool has)
+{
+	mOwnSprites = has;
+}
+
+/**
+ * private
+ */
+bool SubPane::init(int index,size_t capacity)
+{
+	if(index < 0)
+		return false;
+
+	mIndex = index;
+	mSize = capacity;
+
+	if(0 < capacity)
+	{
+		mSprites.reserve(capacity);
+		mTiles.reserve(capacity);
 
 		//fill by -1
-		this->tiles = std::move(std::vector<int>(this->size,-1));
-	}
-}
-
-Pane::SubPane::SubPane(const Pane::SubPane& other)
-{
-	this->hasSprites = other.hasSprites;
-	this->index = other.index;
-	this->size = other.size;
-
-	if(other.size)
-	{
-		this->sprites.reserve(other.size);
-		this->tiles.reserve(other.size);
-		this->tiles = other.tiles;
-
-		if(other.hasSprites)
-		{
-			//copy elements
-			this->sprites = other.sprites;
-		}
-	}
-}
-
-Pane::SubPane& Pane::SubPane::operator=(const Pane::SubPane& other) &
-{
-	this->hasSprites = other.hasSprites;
-	this->index = other.index;
-	this->size = other.size;
-
-	if(other.size)
-	{
-		this->sprites.reserve(other.size);
-		this->tiles.reserve(other.size);
-		this->tiles = other.tiles;
-
-		if(other.hasSprites)
-		{
-			//copy elements
-			this->sprites = other.sprites;
-		}
+		mTiles = std::move(std::vector<int>(capacity,-1));
 	}
 
-	return (*this);
-}
-
-size_t Pane::SubPane::getSize()
-{
-	return this->size;
+	return true;
 }
 
 /**
@@ -88,32 +78,32 @@ Pane* Pane::create(size_t width, size_t height, int index, int numSubPane,Split 
 	return nullptr;
 }
 
-void Pane::insertType(int type,int x,int y)
+void Pane::insertTypeAt(int type,int x,int y)
 {
 	assert(0 <= x && 0 <= y);
-	// mTiles[y * mWidth + x] = type;
-	this->insertType(type,y * mWidth + x);
+
+	this->insertTypeAt(type,y * mWidth + x);
 }
 
-void Pane::insertType(int type,int index)
+void Pane::insertTypeAt(int type,int index)
 {
 	assert(0 <= index);
 
-	mSubPanes[index / mSubPaneSize].tiles[index % mSubPaneSize] = type;
+	mSubPanes.at(index / mSubPaneSize)->getTiles()[index % mSubPaneSize] = type;
 }
 
 int Pane::getTypeAt(int x,int y)
 {
 	assert(0 <= x && 0 <= y);
-	// return mTiles[y * mWidth + x];
+
 	return this->getTypeAt(y * mWidth + x);
 }
 
 int Pane::getTypeAt(int index)
 {
 	assert(0 <= index);
-	// return mTiles[y * mWidth + x];
-	return mSubPanes[index / mSubPaneSize].tiles[index % mSubPaneSize];
+
+	return mSubPanes.at(index / mSubPaneSize)->getTiles()[index % mSubPaneSize];
 }
 
 bool Pane::recycle(int index)
@@ -133,6 +123,27 @@ void Pane::addSprite(Sprite* sprite)
 	mSprites.pushBack(sprite);
 }
 
+SubPane* Pane::getSubPaneAt(size_t index)
+{
+	return mSubPanes.at(index);
+}
+
+void Pane::passSpriteOwnership(size_t from,size_t to)
+{
+	assert(from < mSubPanes.size());
+	assert(to < mSubPanes.size());
+
+	auto old_owner = mSubPanes.at(from);
+	auto new_owner = mSubPanes.at(to);
+
+	assert(old_owner->ownSprites());
+	assert(!new_owner->ownSprites());
+
+	new_owner->getSprites() = std::move(old_owner->getSprites());
+	new_owner->ownSprites(true);
+	old_owner->ownSprites(false);
+}
+
 /**
  * protected
  */
@@ -145,13 +156,10 @@ Pane::Pane()
 ,mSubPaneSize(0)
 ,mIsModified(false)
 ,mState(State::ZOMBIE)
-,mTiles(nullptr)
 {}
 
 Pane::~Pane()
 {
-	if(mTiles)
-		delete [] mTiles;
 }
 
 bool Pane::initWithSize(size_t width,size_t height,int index,int numSubPane,Split split)
@@ -163,15 +171,13 @@ bool Pane::initWithSize(size_t width,size_t height,int index,int numSubPane,Spli
 	mWidth = width;
 	mHeight = height;
 
-	mTiles = new int[width * height];
-
 	//for sub-pane
 	mSubWidth = (split == Split::HORIZONTAL_SPLIT) ? mWidth : mWidth / numSubPane;
 	mSubHeight = (split == Split::HORIZONTAL_SPLIT) ? mHeight / numSubPane : mWidth;
 	mSubPaneSize = mSubWidth * mSubHeight;
 	mSubPanes.reserve(numSubPane);
 	for(int i = 0; i < numSubPane; ++i)
-		mSubPanes.push_back(SubPane(i,mSubWidth * mSubHeight));
+		mSubPanes.pushBack(SubPane::create(i,mSubWidth * mSubHeight));
 
 	return true;
 }

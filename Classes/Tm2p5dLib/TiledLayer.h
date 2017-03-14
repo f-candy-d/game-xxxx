@@ -202,11 +202,12 @@ private:
 	void allocateSpriteToPane(Pane* pane);
 
 	/**
-	 * Draw a sub-pane in the pane.
-	 * @param pane  [A parent pane of sub-panes]
-	 * @param index [An index of a sub-pane that will be drawn]
+	 * [allocateSpriteToSubPane description]
+	 * @param sub    [description]
+	 * @param origin [an origin point of a parent pane]
 	 */
-	void drawSubPane(Pane* pane,size_t index);
+	void allocateSpriteToSubPane(SubPane* sub,cocos2d::Vec2 origin);
+
 };
 
 } /* namespace TM2P5DComponent */
