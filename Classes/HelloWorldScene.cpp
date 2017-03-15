@@ -1,6 +1,8 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "Tm2p5dLib/TiledMap2P5D.h"
+#include "DLib/DLib.h"
+#include <iostream>
 
 USING_NS_CC;
 
@@ -74,9 +76,26 @@ bool HelloWorld::init()
     // // add the sprite as a child to this layer
     // this->addChild(sprite, 0);
 
-    //TEST
-    auto tm = TiledMap2P5D::create("originfile");
-    this->addChild(tm);
+    //NOTE : TEST
+    // auto tm = TiledMap2P5D::create("originfile");
+    // this->addChild(tm);
+
+    DLib::LockerArray<int> larray;
+    larray.setDummyBaggage(0);
+    auto key = larray.rentLocker(4);
+    larray.leaveBaggage(key,3,100);
+    auto key2 = larray.rentLocker(10);
+    larray.leaveBaggage(key2,0,50);
+    larray.leaveBaggage(key2,1,29);
+
+    for(auto itr = larray.beginOf(key2); itr != larray.endOf(key2); ++itr)
+    {
+        std::cout << "larray=>" << *itr << '\n';
+    }
+
+    auto vec = larray.getLockersOf(key);
+    for(auto i : vec)
+        std::cout << "vec=>" << i << '\n';
 
     return true;
 }
