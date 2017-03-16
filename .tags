@@ -442,56 +442,57 @@ init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool 
 menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:192	class:HelloWorld	signature:(Ref* pSender)
 D_LIB_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib.h	/^#define D_LIB_H$/;"	macro	line:2
 DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib.h	/^namespace DLib$/;"	namespace	line:7
-LOCKER_ARRAY_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^#define LOCKER_ARRAY_H$/;"	macro	line:2
-DLib	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^namespace DLib$/;"	namespace	line:9
-locker_array	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^class DLib::locker_array$/;"	class	line:15	class:DLib
-key	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	struct key$/;"	struct	line:21	class:DLib::locker_array
-size	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const size_t size;$/;"	member	line:29	struct:DLib::locker_array::key
-in_use	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const size_t in_use;$/;"	member	line:31	struct:DLib::locker_array::key
-is_broken	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const bool is_broken;$/;"	member	line:33	struct:DLib::locker_array::key
-tag	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		int tag;$/;"	member	line:35	struct:DLib::locker_array::key
-key	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key(const key& other):id(other.id),size(other.size),in_use(other.in_use),is_broken(other.is_broken),tag(0) {}$/;"	function	line:37	struct:DLib::locker_array::key	signature:(const key& other)
-operator =	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key& operator=(const key& other) &$/;"	function	line:38	struct:DLib::locker_array::key	signature:(const key& other)
-spare	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key spare() { return std::move(key(*this)); }$/;"	function	line:48	struct:DLib::locker_array::key	signature:()
-key	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key(int id, size_t size):id(id),size(size),in_use(0),is_broken(false),tag(0) {}$/;"	function	line:51	struct:DLib::locker_array::key	signature:(int id, size_t size)
-id	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const int id;$/;"	member	line:52	struct:DLib::locker_array::key
-increase	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		void increase() { const_cast<size_t&>(in_use) += 1; }$/;"	function	line:53	struct:DLib::locker_array::key	signature:()
-decrease	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		void decrease() { const_cast<size_t&>(in_use) -= 1; }$/;"	function	line:54	struct:DLib::locker_array::key	signature:()
-destroy	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		void destroy()$/;"	function	line:55	struct:DLib::locker_array::key	signature:()
-iterator	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	typedef typename std::vector<T>::iterator iterator;$/;"	typedef	line:66	class:DLib::locker_array
-const_iterator	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	typedef typename std::vector<T>::const_iterator const_iterator;$/;"	typedef	line:67	class:DLib::locker_array
-begin	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator begin()$/;"	function	line:71	class:DLib::locker_array	signature:()
-end	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator end()$/;"	function	line:76	class:DLib::locker_array	signature:()
-begin_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator begin_of(key k_ey)$/;"	function	line:81	class:DLib::locker_array	signature:(key k_ey)
-end_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator end_of(key k_ey)$/;"	function	line:89	class:DLib::locker_array	signature:(key k_ey)
-cbegin	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cbegin()$/;"	function	line:97	class:DLib::locker_array	signature:() const
-cend	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cend()$/;"	function	line:103	class:DLib::locker_array	signature:() const
-cbegin_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cbegin_of(key k_ey)$/;"	function	line:109	class:DLib::locker_array	signature:(key k_ey) const
-cend_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cend_of(key k_ey)$/;"	function	line:118	class:DLib::locker_array	signature:(key k_ey) const
-locker_array	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	locker_array(const size_t capacity = 0)$/;"	function	line:127	class:DLib::locker_array	signature:(const size_t capacity = 0)
-~locker_array	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual ~locker_array() {}$/;"	function	line:133	class:DLib::locker_array	signature:()
-size	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	size_t size()$/;"	function	line:135	class:DLib::locker_array	signature:() const
-set_dummy_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual void set_dummy_baggage(T dummy)$/;"	function	line:141	class:DLib::locker_array	signature:(T dummy)
-get_dummy_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	T get_dummy_baggage()$/;"	function	line:146	class:DLib::locker_array	signature:() const
-rent_locker	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	key rent_locker(size_t size)$/;"	function	line:152	class:DLib::locker_array	signature:(size_t size)
-return_locker	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual bool return_locker(key& k_ey)$/;"	function	line:169	class:DLib::locker_array	signature:(key& k_ey)
-get_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	T get_baggage(key k_ey, size_t local_index)$/;"	function	line:192	class:DLib::locker_array	signature:(key k_ey, size_t local_index) const
-remove_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual T remove_baggage(key& k_ey, size_t local_index)$/;"	function	line:201	class:DLib::locker_array	signature:(key& k_ey, size_t local_index)
-leave_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual bool leave_baggage(key& k_ey, size_t local_index, T baggage)$/;"	function	line:218	class:DLib::locker_array	signature:(key& k_ey, size_t local_index, T baggage)
-replace_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual T replace_baggage(key& k_ey, size_t local_index, T baggage)$/;"	function	line:237	class:DLib::locker_array	signature:(key& k_ey, size_t local_index, T baggage)
-get_lockers_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::vector<T> get_lockers_of(key k_ey)$/;"	function	line:248	class:DLib::locker_array	signature:(key k_ey) const
-get_lockers	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::vector<T>& get_lockers() { return mLockers; }$/;"	function	line:263	class:DLib::locker_array	signature:()
-get_ranges	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::unordered_map<int, DLib::range>& get_ranges() { return mRanges; }$/;"	function	line:264	class:DLib::locker_array	signature:()
-to_index	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	size_t to_index(key& k_ey, size_t local_index)$/;"	function	line:266	class:DLib::locker_array	signature:(key& k_ey, size_t local_index) const
-mDummy	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	T mDummy;$/;"	member	line:280	class:DLib::locker_array
-mLockers	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::vector<T> mLockers;$/;"	member	line:281	class:DLib::locker_array
-mRanges	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::unordered_map<int, DLib::range> mRanges;$/;"	member	line:282	class:DLib::locker_array
 createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
 init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
 menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:192	class:HelloWorld	signature:(Ref* pSender)
 COCOS_LOCKER_ARRAY_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^#define COCOS_LOCKER_ARRAY_H$/;"	macro	line:2
 TM2DwD	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^namespace TM2DwD$/;"	namespace	line:7
 TM2DwDUnit	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^	namespace TM2DwDUnit$/;"	namespace	line:9	namespace:TM2DwD
-CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^class TM2DwD::TM2DwDUnit::CocosLockerArray : public DLib::locker_array<T>$/;"	class	line:16	class:TM2DwD::TM2DwDUnit
-CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^	CocosLockerArray(const size_t capacity = 0)$/;"	function	line:19	class:TM2DwD::TM2DwDUnit::CocosLockerArray	signature:(const size_t capacity = 0)
-~CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^	~CocosLockerArray()$/;"	function	line:30	class:TM2DwD::TM2DwDUnit::CocosLockerArray	signature:()
+CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^class TM2DwD::TM2DwDUnit::CocosLockerArray : public DLib::locker_array<T>$/;"	class	line:21	class:TM2DwD::TM2DwDUnit
+CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^	CocosLockerArray(const size_t capacity = 0)$/;"	function	line:24	class:TM2DwD::TM2DwDUnit::CocosLockerArray	signature:(const size_t capacity = 0)
+~CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^	~CocosLockerArray()$/;"	function	line:34	class:TM2DwD::TM2DwDUnit::CocosLockerArray	signature:()
+LOCKER_ARRAY_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^#define LOCKER_ARRAY_H$/;"	macro	line:2
+DLib	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^namespace DLib$/;"	namespace	line:9
+locker_array	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^template <typename T> class DLib::locker_array$/;"	class	line:14	class:DLib
+key	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	struct key$/;"	struct	line:20	class:DLib::locker_array
+size	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const size_t size;$/;"	member	line:28	struct:DLib::locker_array::key
+in_use	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const size_t in_use;$/;"	member	line:30	struct:DLib::locker_array::key
+is_broken	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const bool is_broken;$/;"	member	line:32	struct:DLib::locker_array::key
+tag	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		int tag;$/;"	member	line:34	struct:DLib::locker_array::key
+key	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key(const key& other):id(other.id),size(other.size),in_use(other.in_use),is_broken(other.is_broken),tag(0) {}$/;"	function	line:36	struct:DLib::locker_array::key	signature:(const key& other)
+operator =	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key& operator=(const key& other) &$/;"	function	line:37	struct:DLib::locker_array::key	signature:(const key& other)
+spare	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key spare() { return std::move(key(*this)); }$/;"	function	line:47	struct:DLib::locker_array::key	signature:()
+key	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		key(int id, size_t size):id(id),size(size),in_use(0),is_broken(false),tag(0) {}$/;"	function	line:50	struct:DLib::locker_array::key	signature:(int id, size_t size)
+id	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		const int id;$/;"	member	line:51	struct:DLib::locker_array::key
+increase	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		void increase() { const_cast<size_t&>(in_use) += 1; }$/;"	function	line:52	struct:DLib::locker_array::key	signature:()
+decrease	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		void decrease() { const_cast<size_t&>(in_use) -= 1; }$/;"	function	line:53	struct:DLib::locker_array::key	signature:()
+destroy	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^		void destroy()$/;"	function	line:54	struct:DLib::locker_array::key	signature:()
+iterator	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	typedef typename std::vector<T>::iterator iterator;$/;"	typedef	line:65	class:DLib::locker_array
+const_iterator	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	typedef typename std::vector<T>::const_iterator const_iterator;$/;"	typedef	line:66	class:DLib::locker_array
+begin	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator begin()$/;"	function	line:70	class:DLib::locker_array	signature:()
+end	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator end()$/;"	function	line:75	class:DLib::locker_array	signature:()
+begin_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator begin_of(key k_ey)$/;"	function	line:80	class:DLib::locker_array	signature:(key k_ey)
+end_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	iterator end_of(key k_ey)$/;"	function	line:88	class:DLib::locker_array	signature:(key k_ey)
+cbegin	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cbegin()$/;"	function	line:96	class:DLib::locker_array	signature:() const
+cend	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cend()$/;"	function	line:102	class:DLib::locker_array	signature:() const
+cbegin_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cbegin_of(key k_ey)$/;"	function	line:108	class:DLib::locker_array	signature:(key k_ey) const
+cend_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	const_iterator cend_of(key k_ey)$/;"	function	line:117	class:DLib::locker_array	signature:(key k_ey) const
+locker_array	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	locker_array(const size_t capacity = 0)$/;"	function	line:126	class:DLib::locker_array	signature:(const size_t capacity = 0)
+~locker_array	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual ~locker_array() {}$/;"	function	line:132	class:DLib::locker_array	signature:()
+size	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	size_t size()$/;"	function	line:134	class:DLib::locker_array	signature:() const
+set_dummy_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual void set_dummy_baggage(T dummy)$/;"	function	line:140	class:DLib::locker_array	signature:(T dummy)
+get_dummy_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	T get_dummy_baggage()$/;"	function	line:145	class:DLib::locker_array	signature:() const
+rent_locker	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	key rent_locker(size_t size)$/;"	function	line:151	class:DLib::locker_array	signature:(size_t size)
+return_locker	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual bool return_locker(key& k_ey)$/;"	function	line:168	class:DLib::locker_array	signature:(key& k_ey)
+get_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	T get_baggage(key k_ey, size_t local_index)$/;"	function	line:191	class:DLib::locker_array	signature:(key k_ey, size_t local_index) const
+remove_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual T remove_baggage(key& k_ey, size_t local_index)$/;"	function	line:200	class:DLib::locker_array	signature:(key& k_ey, size_t local_index)
+leave_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual bool leave_baggage(key& k_ey, size_t local_index, T baggage)$/;"	function	line:217	class:DLib::locker_array	signature:(key& k_ey, size_t local_index, T baggage)
+replace_baggage	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	virtual T replace_baggage(key& k_ey, size_t local_index, T baggage)$/;"	function	line:236	class:DLib::locker_array	signature:(key& k_ey, size_t local_index, T baggage)
+swap	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	bool swap(key k_ey, size_t local_index_a, size_t local_index_b)$/;"	function	line:247	class:DLib::locker_array	signature:(key k_ey, size_t local_index_a, size_t local_index_b)
+get_lockers_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::vector<T> get_lockers_of(key k_ey)$/;"	function	line:262	class:DLib::locker_array	signature:(key k_ey) const
+get_lockers	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::vector<T>& get_lockers() { return mLockers; }$/;"	function	line:277	class:DLib::locker_array	signature:()
+get_ranges	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::unordered_map<int, DLib::range>& get_ranges() { return mRanges; }$/;"	function	line:278	class:DLib::locker_array	signature:()
+to_index	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	size_t to_index(key& k_ey, size_t local_index)$/;"	function	line:280	class:DLib::locker_array	signature:(key& k_ey, size_t local_index) const
+mDummy	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	T mDummy;$/;"	member	line:294	class:DLib::locker_array
+mLockers	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::vector<T> mLockers;$/;"	member	line:295	class:DLib::locker_array
+mRanges	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_locker_array.h	/^	std::unordered_map<int, DLib::range> mRanges;$/;"	member	line:296	class:DLib::locker_array

@@ -11,8 +11,7 @@ namespace DLib
 	template <typename T> class locker_array;
 }
 
-template <typename T>
-class DLib::locker_array
+template <typename T> class DLib::locker_array
 {
 	/**
 	 * structure key
@@ -245,6 +244,21 @@ public:
 		return old;
 	}
 
+	bool swap(key k_ey, size_t local_index_a, size_t local_index_b)
+	{
+		if(k_ey.is_broken)
+			return false;
+
+		size_t index_a = this->to_index(k_ey, local_index_a);
+		size_t index_b = this->to_index(k_ey, local_index_b);
+
+		T tmp = mLockers[index_a];
+		mLockers[index_a] = mLockers[index_b];
+		mLockers[index_b] = tmp;
+
+		return true;
+	}
+
 	std::vector<T> get_lockers_of(key k_ey)
 	const
 	{
@@ -280,7 +294,6 @@ private:
 	T mDummy;
 	std::vector<T> mLockers;
 	std::unordered_map<int, DLib::range> mRanges;
-
 };
 
 #endif
