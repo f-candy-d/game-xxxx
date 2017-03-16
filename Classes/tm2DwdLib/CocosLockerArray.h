@@ -6,14 +6,14 @@
 
 namespace TM2DwD
 {
-	namespace TM2DwDComponet
+	namespace TM2DwDUnit
 	{
 		template <typename T> class CocosLockerArray;
 	}
 }
 
 template <typename T>
-class TM2DwD::TM2DwDComponet::CocosLockerArray : public DLib::locker_array<T>
+class TM2DwD::TM2DwDUnit::CocosLockerArray : public DLib::locker_array<T>
 {
 public:
 	CocosLockerArray(const size_t capacity = 0)
