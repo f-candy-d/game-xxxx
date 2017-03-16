@@ -126,24 +126,15 @@ public:
 
 	locker_array(const size_t capacity = 0)
 	{
-		// NOTE : T must be a child class of cocos2d::Ref class
-		// static_assert(std::is_convertible<T, cocos2d::Ref*>::value, "In locker_array<T>, T must be a pointer of a child class of cocos2d::Ref class!");
-
 		if(0 < capacity)
 			mLockers.reserve(capacity);
+
+		std::cout << "locker_arary(" << capacity << ") called" << '\n';
 	}
 
-	locker_array(const locker_array<T>& other)
+	virtual ~locker_array()
 	{
-		this->copy(other);
-	}
-
-	~locker_array()
-	{}
-
-	locker_array<T>& operator=(const locker_array<T>& other)
-	{
-		this->copy(other); return (*this);
+		std::cout << "~locker_arary() called" << '\n';
 	}
 
 	size_t size()
