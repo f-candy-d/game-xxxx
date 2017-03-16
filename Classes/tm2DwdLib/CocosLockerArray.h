@@ -12,6 +12,11 @@ namespace TM2DwD
 	}
 }
 
+/**
+ * NOTE : In CocosLockerArray<T> class, T must be a pointer of a class which inherits cocos2d::Ref class.
+ *        Increase the reference counter of an element when add it in this array,
+ *        and decrease that of an element when remove it from this array.
+ */
 template <typename T>
 class TM2DwD::TM2DwDUnit::CocosLockerArray : public DLib::locker_array<T>
 {
@@ -19,10 +24,9 @@ public:
 	CocosLockerArray(const size_t capacity = 0)
 	:DLib::locker_array<T>(capacity)
 	{
-		// NOTE : T must be a child class of cocos2d::Ref class
 		static_assert(std::is_convertible<T, cocos2d::Ref*>::value, "In CocosLockerArray<T>, T must be a pointer of a child class of cocos2d::Ref class!");
 
-		//dummy baggage
+		// NOTE : DO NOT set again the dummy baggage on another place!
 		T dummy = nullptr;
 		this->set_dummy_baggage(dummy);
 	}
