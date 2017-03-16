@@ -128,14 +128,9 @@ public:
 	{
 		if(0 < capacity)
 			mLockers.reserve(capacity);
-
-		std::cout << "locker_arary(" << capacity << ") called" << '\n';
 	}
 
-	virtual ~locker_array()
-	{
-		std::cout << "~locker_arary() called" << '\n';
-	}
+	virtual ~locker_array() {}
 
 	size_t size()
 	const
@@ -143,7 +138,7 @@ public:
 		return mLockers.size();
 	}
 
-	void set_dummy_baggage(T dummy)
+	virtual void set_dummy_baggage(T dummy)
 	{
 		mDummy = dummy;
 	}
@@ -171,7 +166,7 @@ public:
 		return k_ey;
 	}
 
-	bool return_locker(key& k_ey)
+	virtual bool return_locker(key& k_ey)
 	{
 		if(k_ey.is_broken)
 			return false;
@@ -203,7 +198,7 @@ public:
 			return mLockers[this->to_index(k_ey, local_index)];
 	}
 
-	T remove_baggage(key& k_ey, size_t local_index)
+	virtual T remove_baggage(key& k_ey, size_t local_index)
 	{
 		if(k_ey.is_broken)
 			return mDummy;
@@ -220,7 +215,7 @@ public:
 		return old;
 	}
 
-	bool leave_baggage(key& k_ey, size_t local_index, T baggage)
+	virtual bool leave_baggage(key& k_ey, size_t local_index, T baggage)
 	{
 		if(k_ey.is_broken)
 			return false;
@@ -239,7 +234,7 @@ public:
 		return false;
 	}
 
-	T replace_baggage(key& k_ey, size_t local_index, T baggage)
+	virtual T replace_baggage(key& k_ey, size_t local_index, T baggage)
 	{
 		if(k_ey.is_broken)
 			return mDummy;
@@ -264,10 +259,9 @@ public:
 		return std::move(vec);
 	}
 
-private:
-	T mDummy;
-	std::vector<T> mLockers;
-	std::unordered_map<int, DLib::range> mRanges;
+protected:
+	std::vector<T>& get_lockers() { return mLockers; }
+	std::unordered_map<int, DLib::range>& get_ranges() { return mRanges; }
 
 	size_t to_index(key& k_ey, size_t local_index)
 	const
@@ -281,6 +275,11 @@ private:
 
 		return index;
 	}
+
+private:
+	T mDummy;
+	std::vector<T> mLockers;
+	std::unordered_map<int, DLib::range> mRanges;
 
 };
 

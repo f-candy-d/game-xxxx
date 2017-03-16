@@ -186,8 +186,6 @@ bool HelloWorld::init()
     //     for(auto itr = locker.begin_of(key3); itr != locker.end_of(key3); ++itr)
     //         std::cout << "loop using iterator (key3) => " << *itr << '\n';
 
-    TM2DwD::TM2DwDComponet::CocosLockerArray<int> clarray(54);
-
     return true;
 }
 
