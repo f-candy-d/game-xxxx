@@ -494,4 +494,4 @@ CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/Cocos
 ~CocosLockerArray	/home/daichi/dev/cocos-projects/GameXXX/Classes/tm2DwdLib/CocosLockerArray.h	/^	~CocosLockerArray()$/;"	function	line:30	class:TM2DwD::TM2DwDComponet::CocosLockerArray	signature:()
 createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
 init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:193	class:HelloWorld	signature:(Ref* pSender)
+menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:192	class:HelloWorld	signature:(Ref* pSender)
