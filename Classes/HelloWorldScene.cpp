@@ -105,6 +105,17 @@ bool HelloWorld::init()
     for(auto str : cmap.get_category(cat1))
         std::cout << "cat1 => " << str << '\n';
 
+    cmap.push_back(cat2, "2fdfd");
+    cmap.push_back(cat2, "2fdfdefdf");
+    cmap.push_back(cat2, "2fdfdfdfdfdffff");
+
+    for(auto itr = cmap.begin(); itr != cmap.end(); ++itr)
+    {
+        for(auto str : itr->second)
+            std::cout << "category => " << itr->first << " : value => " << str << '\n';
+    }
+
+
     return true;
 }
 

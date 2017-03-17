@@ -552,9 +552,6 @@ mRanges	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_locker_array.h
 mStaticSerial	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_locker_array.h	/^	static int mStaticSerial;$/;"	member	line:397	class:DLib::locker_array
 make_serial_code	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_locker_array.h	/^	int make_serial_code() { return mStaticSerial++; }$/;"	function	line:399	class:DLib::locker_array	signature:()
 mStaticSerial	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_locker_array.h	/^int DLib::locker_array<T>::mStaticSerial = 0;$/;"	member	line:405	class:DLib::locker_array
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:217	class:HelloWorld	signature:(Ref* pSender)
 createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
 init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
 menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:112	class:HelloWorld	signature:(Ref* pSender)
@@ -590,3 +587,42 @@ cend_of	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_categorized_ma
 mMap	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	std::unordered_map<Category, category_vector, Hash> mMap;$/;"	member	line:150	class:DLib::categorized_map
 mDummyCategory	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	category_vector mDummyCategory;$/;"	member	line:151	class:DLib::categorized_map
 mDummy	/home/daichi/dev/cocos-projects/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	Value mDummy;$/;"	member	line:152	class:DLib::categorized_map
+CATEGORIZED_MAP_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^#define CATEGORIZED_MAP_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^namespace DLib$/;"	namespace	line:8
+categorized_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^class DLib::categorized_map$/;"	class	line:14	class:DLib
+add_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	bool add_category(Category& cat)$/;"	function	line:20	class:DLib::categorized_map	signature:(Category& cat)
+add_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	bool add_category(Category& cat, size_t size)$/;"	function	line:23	class:DLib::categorized_map	signature:(Category& cat, size_t size)
+add_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	bool add_category(Category& cat, category_vector& source)$/;"	function	line:34	class:DLib::categorized_map	signature:(Category& cat, category_vector& source)
+erase_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void erase_category(Category& cat)$/;"	function	line:44	class:DLib::categorized_map	signature:(Category& cat)
+erase_all_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline void erase_all_category()$/;"	function	line:47	class:DLib::categorized_map	signature:()
+get_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	category_vector& get_category(Category& cat)$/;"	function	line:50	class:DLib::categorized_map	signature:(Category& cat)
+find_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline bool find_category(Category& cat)$/;"	function	line:54	class:DLib::categorized_map	signature:(Category& cat) const
+count_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline size_t count_category()$/;"	function	line:58	class:DLib::categorized_map	signature:() const
+get	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	Value get(Category& cat, size_t index)$/;"	function	line:62	class:DLib::categorized_map	signature:(Category& cat, size_t index) const
+push_back	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	bool push_back(Category& cat, Value val)$/;"	function	line:74	class:DLib::categorized_map	signature:(Category& cat, Value val)
+emplace_back	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	bool emplace_back(Category& cat, Value val)$/;"	function	line:83	class:DLib::categorized_map	signature:(Category& cat, Value val)
+insert	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	bool insert(Category& cat, typename category_vector::iterator& iterator, Value val)$/;"	function	line:92	class:DLib::categorized_map	signature:(Category& cat, typename category_vector::iterator& iterator, Value val)
+pop_back	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void pop_back(Category& cat)$/;"	function	line:101	class:DLib::categorized_map	signature:(Category& cat)
+erase	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void erase(Category& cat, typename category_vector::iterator iterator)$/;"	function	line:104	class:DLib::categorized_map	signature:(Category& cat, typename category_vector::iterator iterator)
+erase	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void erase(Category& cat, typename category_vector::iterator first, typename category_vector::iterator last)$/;"	function	line:107	class:DLib::categorized_map	signature:(Category& cat, typename category_vector::iterator first, typename category_vector::iterator last)
+empty	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline bool empty()$/;"	function	line:110	class:DLib::categorized_map	signature:() const
+empty	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline bool empty(Category& cat)$/;"	function	line:114	class:DLib::categorized_map	signature:(Category& cat) const
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline size_t size(Category& cat)$/;"	function	line:118	class:DLib::categorized_map	signature:(Category& cat) const
+reserve	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void reserve(Category& cat)$/;"	function	line:122	class:DLib::categorized_map	signature:(Category& cat)
+resize	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void resize(Category& cat, size_t size)$/;"	function	line:125	class:DLib::categorized_map	signature:(Category& cat, size_t size)
+dummy	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline void dummy(Value val)$/;"	function	line:128	class:DLib::categorized_map	signature:(Value val)
+dummy	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline Value dummy()$/;"	function	line:131	class:DLib::categorized_map	signature:() const
+begin_of	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_vector::iterator begin_of(Category& cat)$/;"	function	line:136	class:DLib::categorized_map	signature:(Category& cat)
+end_of	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_vector::iterator end_of(Category& cat)$/;"	function	line:139	class:DLib::categorized_map	signature:(Category& cat)
+cbegin_of	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_vector::const_iterator cbegin_of(Category& cat)$/;"	function	line:142	class:DLib::categorized_map	signature:(Category& cat) const
+cend_of	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_vector::const_iterator cend_of(Category& cat)$/;"	function	line:146	class:DLib::categorized_map	signature:(Category& cat) const
+begin	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_map::iterator begin()$/;"	function	line:150	class:DLib::categorized_map	signature:()
+end	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_map::iterator end()$/;"	function	line:153	class:DLib::categorized_map	signature:()
+cbegin	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_map::iterator cbegin()$/;"	function	line:156	class:DLib::categorized_map	signature:()
+cend	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	typename category_map::iterator cend()$/;"	function	line:159	class:DLib::categorized_map	signature:()
+mMap	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	category_map mMap;$/;"	member	line:163	class:DLib::categorized_map
+mDummyCategory	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	category_vector mDummyCategory;$/;"	member	line:164	class:DLib::categorized_map
+mDummy	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	Value mDummy;$/;"	member	line:165	class:DLib::categorized_map
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:123	class:HelloWorld	signature:(Ref* pSender)

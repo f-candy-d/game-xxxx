@@ -14,6 +14,7 @@ template <class Category, class Value, class Hash = std::hash<Category>>
 class DLib::categorized_map
 {
 	using category_vector = std::vector<Value>;
+	using category_map = std::unordered_map<Category, category_vector, Hash>;
 
 public:
 	bool add_category(Category& cat)
@@ -40,7 +41,7 @@ public:
 		return true;
 	}
 
-	inline void erase_category(Category& cat)
+	void erase_category(Category& cat)
 	{ mMap.erase(cat); }
 
 	inline void erase_all_category()
@@ -146,8 +147,20 @@ public:
 	const
 	{ return this->find_category(cat) ? mMap.at[cat].cend() : mDummyCategory.cend(); }
 
+	typename category_map::iterator begin()
+	{ return mMap.begin(); }
+
+	typename category_map::iterator end()
+	{ return mMap.end(); }
+
+	typename category_map::iterator cbegin()
+	{ return mMap.cbegin(); }
+
+	typename category_map::iterator cend()
+	{ return mMap.cend(); }
+
 private:
-	std::unordered_map<Category, category_vector, Hash> mMap;
+	category_map mMap;
 	category_vector mDummyCategory;
 	Value mDummy;
 };
