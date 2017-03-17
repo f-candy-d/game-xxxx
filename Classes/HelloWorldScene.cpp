@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Tm2p5dLib/TiledMap2P5D.h"
 #include "tm2DwdLib/CocosLockerArray.h"
-// #include "DLib/dlib.h"
+#include "DLib/dlib.h"
 #include <iostream>
 
 USING_NS_CC;
@@ -81,134 +81,29 @@ bool HelloWorld::init()
     // auto tm = TiledMap2P5D::create("originfile");
     // this->addChild(tm);
 
-    DLib::locker_array<int> locker(10);
-    locker.set_dummy_baggage(0);
-    auto key1 = locker.rent_locker(4);
-    std::cout << "rented 4 lockers! (key1)" << '\n';
-    for(size_t i = 0; i < key1.size; ++i)
-        locker.leave_baggage(key1, i, i * 10);
+    DLib::categorized_map<int, std::string> cmap;
+    int cat1 = 1;
+    int cat2 = 2;
+    int cat3 = 3;
+    int cat4 = 4;
 
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
+    cmap.dummy("dummy");
 
-    auto key2 = locker.rent_locker(3);
-    std::cout << "rented 3 lockers! (key2)" << '\n';
-    for(size_t i = 0; i < key2.size; ++i)
-        locker.leave_baggage(key2, i, i * key2.size + key2.size);
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
+    cmap.add_category(cat1,2);
+    cmap.add_category(cat2);
 
-    for(auto itr = locker.begin_of(key1); itr != locker.end_of(key1); ++itr)
-        std::cout << "loop using iterator (key1) => " << *itr << '\n';
+    std::vector<std::string> source1{"a","b","c"};
+    cmap.add_category(cat3,source1);
 
-    int removed = locker.remove_baggage(key1, 2);
-    std::cout << "removed baggage at index 2!(key1) removed => " << removed << '\n';
+    std::cout << "cmap.get_of(cat4, 0) = " << cmap.get(cat4, 0) << '\n';
+    std::cout << "cmap.get_of(cat3, 0) = " << cmap.get(cat3, 0) << '\n';
+    std::cout << "cmap.get_of(cat3, 1) = " << cmap.get(cat3, 1) << '\n';
+    std::cout << "cmap.get_of(cat3, 2) = " << cmap.get(cat3, 2) << '\n';
 
-    std::cout << "get baggaged at index of 1 (key2) => " << locker.get_baggage(key2, 1) << '\n';
-
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
-
-    std::cout << "replace with 999 (key2) at index 2" << '\n';
-    removed = locker.replace_baggage(key2, 2, 999);
-    std::cout << "removed => " << removed << '\n';
-
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
-
-    auto key3 = locker.rent_locker(10);
-    std::cout << "rented 10 lockers! (key3)" << '\n';
-    for(size_t i = 0; i < key3.size; ++i)
-        locker.leave_baggage(key3, i, i * key3.size + key3.size);
-
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
-
-    std::cout << "get baggaged at index of 1 (key2) => " << locker.get_baggage(key2, 1) << '\n';
-
-    removed = locker.remove_baggage(key1, 3);
-    std::cout << "removed baggage at index 3!(key1) removed => " << removed << '\n';
-    removed = locker.remove_baggage(key2, 2);
-    std::cout << "removed baggage at index 2!(key2) removed => " << removed << '\n';
-
-    std::cout << "replace with 777 (key3) at index 5" << '\n';
-    removed = locker.replace_baggage(key3, 5, 777);
-    std::cout << "removed => " << removed << '\n';
-
-    for(auto itr = locker.begin_of(key3); itr != locker.end_of(key3); ++itr)
-        std::cout << "loop using iterator (key3) => " << *itr << '\n';
-
-    log("key1.rent=%zd key1.in_use=%zd",key1.size,key1.in_use);
-    log("key2.rent=%zd key2.in_use=%zd",key2.size,key2.in_use);
-    log("key3.rent=%zd key3.in_use=%zd",key3.size,key3.in_use);
-
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
-
-    std::cout << "locker.return_locker(key2)=>" << locker.return_locker(key2) << '\n';
-    std::cout << "returned 3 lockers! (key2)" << '\n';
-
-    for(auto itr = locker.begin_of(key1); itr != locker.end_of(key1); ++itr)
-        std::cout << "loop using iterator (key1) => " << *itr << '\n';
-
-    for(auto itr = locker.begin_of(key3); itr != locker.end_of(key3); ++itr)
-        std::cout << "loop using iterator (key3) => " << *itr << '\n';
-
-    for(auto elm : locker)
-        std::cout << "range_based loop (all) => " << elm << '\n';
-
-    std::cout << "loop(key2)" << '\n';
-    std::cout << "key2.isbroken=" << key2.is_broken << '\n';
-    for(auto itr = locker.begin_of(key2); itr != locker.end_of(key2); ++itr)
-        std::cout << "loop using iterator (key2) => " << *itr << '\n';
-
-    removed = locker.get_baggage(key2, 3);
-    std::cout << "get baggage at index 3!(key2) removed => " << removed << '\n';
-    removed = locker.remove_baggage(key2, 2);
-    std::cout << "removed baggage at index 2!(key2) removed => " << removed << '\n';
-
-    std::cout << "replace with 777 (key2) at index 5" << '\n';
-    removed = locker.replace_baggage(key2, 5, 777);
-    std::cout << "removed => " << removed << '\n';
-
-    // making spare-key part1
-    // key2 = key3;
-    key2 = key3.spare();
-
-    for(auto itr = locker.begin_of(key2); itr != locker.end_of(key2); ++itr)
-        std::cout << "loop using iterator (key2 = key3) => " << *itr << '\n';
-
-    // making spare-key part2
-    DLib::locker_array<int>::key key4(key1);
-    for(auto itr = locker.begin_of(key4); itr != locker.end_of(key4); ++itr)
-        std::cout << "loop using iterator (key4 = key1) => " << *itr << '\n';
-
-        for(auto itr = locker.begin_of(key3); itr != locker.end_of(key3); ++itr)
-            std::cout << "loop using iterator (key3) => " << *itr << '\n';
-
-        auto key5 = locker.rent_locker(5);
-        DLib::locker_array<int> locker2;
-        auto key6 = locker2.rent_locker(5);
-        if(locker.leave_baggage(key5, 0, 777))
-            std::cout << "leave baggage '777' in locker at index 0 with key5" << '\n';
-        else
-            std::cout << "could't leave baggage '777' in locker at index 0 with key5" << '\n';
-
-        if(locker.leave_baggage(key6, 1, 666))
-            std::cout << "leave baggage '666' in locker at index 1 with key6" << '\n';
-        else
-            std::cout << "could't leave baggage '666' in locker at index 1 with key6" << '\n';
-
-        if(locker2.leave_baggage(key6, 1, 666))
-            std::cout << "leave baggage '666' in locker2 at index 1 with key6" << '\n';
-        else
-            std::cout << "could't leave baggage '666' in locker2 at index 1 with key6" << '\n';
-
-        DLib::locker_array<int>::key key7(key5);
-        if(locker.leave_baggage(key7, 3, 111))
-            std::cout << "leave baggage '111' in locker at index 3 with key7(= key5)" << '\n';
-        else
-            std::cout << "could't leave baggage '111' in locker at index 3 with key7(= key5)" << '\n';
+    cmap.push_back(cat1, "bokeboke");
+    cmap.push_back(cat1, "bokebokehogehoge");
+    for(auto str : cmap.get_category(cat1))
+        std::cout << "cat1 => " << str << '\n';
 
     return true;
 }

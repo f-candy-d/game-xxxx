@@ -7,6 +7,7 @@
 namespace DLib
 {
 	template <typename T> class locker_array;
+	template <class Category, class Value, class Hash> class categorized_map;
 	class range;
 }
 
@@ -16,6 +17,7 @@ namespace DLib
  */
 
 #include "dlib_locker_array.h"
+#include "dlib_categorized_map.h"
 #include "dlib_range.h"
 
 #endif
