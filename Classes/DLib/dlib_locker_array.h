@@ -14,7 +14,7 @@ namespace DLib
 template <typename T> class DLib::locker_array
 {
 	/**
-	 * structure key
+	 * key object. use for access to the baaggage of the locker
 	 */
  public:
 	struct key
@@ -33,13 +33,22 @@ template <typename T> class DLib::locker_array
 		// use this parameter to identifier a certain key
 		int tag;
 
-		key(const key& other):id(other.id),size(other.size),in_use(other.in_use),is_broken(other.is_broken),tag(0) {}
+		key(const key& other)
+		:id(other.id)
+		,parent_serial(other.parent_serial)
+		,size(other.size)
+		,in_use(other.in_use)
+		,is_broken(other.is_broken)
+		,tag(other.tag)
+		{}
+
 		key& operator=(const key& other) &
 		{
 			const_cast<bool&>(is_broken) = other.is_broken;
 			const_cast<size_t&>(size) = other.size;
 			const_cast<size_t&>(in_use) = other.in_use;
 			const_cast<int&>(id) = other.id;
+			const_cast<int&>(parent_serial) = other.parent_serial;
 			tag = other.tag;
 			return (*this);
 		}
@@ -47,8 +56,17 @@ template <typename T> class DLib::locker_array
 		key spare() { return std::move(key(*this)); }
 
 	private:
-		key(int id, size_t size):id(id),size(size),in_use(0),is_broken(false),tag(0) {}
+		key(int id, int parent_serial, size_t size)
+		:id(id)
+		,parent_serial(parent_serial)
+		,size(size)
+		,in_use(0)
+		,is_broken(false)
+		,tag(0)
+		{}
+
 		const int id;
+		const int parent_serial;
 		void increase() { const_cast<size_t&>(in_use) += 1; }
 		void decrease() { const_cast<size_t&>(in_use) -= 1; }
 		void destroy()
@@ -56,6 +74,61 @@ template <typename T> class DLib::locker_array
 			const_cast<bool&>(is_broken) = true;
 			const_cast<size_t&>(size) = 0;
 			const_cast<size_t&>(in_use) = 0;
+		}
+	};
+
+	/**
+	 * iterator class
+	 */
+public:
+	class range_iterator : public std::iterator<std::forward_iterator_tag, T>
+	{
+		// NOTE : ONLY locker_array<T> class can create an object of this class
+		friend locker_array<T>;
+
+	public:
+		range_iterator& operator++()
+		{
+			mIndex = (mRange.to() < mIndex + 1) ? mRange.to() : mIndex + 1;
+		}
+
+		range_iterator operator++(int)
+		{
+			auto before = *this;
+			mIndex = (mRange.to() < mIndex + 1) ? mRange.to() : mIndex + 1;
+			return before;
+		}
+
+		T& operator*() {
+			if(mIndex <= mRange.to())
+				return locker_array<T>::mLockers[mIndex];
+			else
+				return locker_array<T>::mDummy;
+		};
+
+		bool operator==(const range_iterator& other);
+		bool operator!=(const range_iterator& other);
+
+		range_iterator(const range_iterator& other)
+		{
+			this->mIndex = other.mIndex;
+			this->mParent = other.mParent;
+		}
+
+	private:
+		int mIndex;
+		const DLib::range mRange;
+
+		//constructors are private
+		range_iterator()
+		:mIndex(-1),mRange(-1,-1) {};
+
+		range_iterator(int index, DLib::range& rng)
+		{
+			assert(rng.contains(index));
+
+			mIndex = index;
+			mRange = rng;
 		}
 	};
 
@@ -79,7 +152,7 @@ public:
 
 	iterator begin_of(key k_ey)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mLockers.end();
 
 		return mLockers.begin() += mRanges.at(k_ey.id).from();
@@ -87,7 +160,7 @@ public:
 
 	iterator end_of(key k_ey)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mLockers.end();
 
 		return mLockers.begin() += mRanges.at(k_ey.id).to() + 1;
@@ -108,7 +181,7 @@ public:
 	const_iterator cbegin_of(key k_ey)
 	const
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mLockers.cend();
 
 		return mLockers.cbegin() += mRanges.at(k_ey.id).from();
@@ -117,19 +190,41 @@ public:
 	const_iterator cend_of(key k_ey)
 	const
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mLockers.cend();
 
 		return mLockers.cbegin() += mRanges.at(k_ey.id).to() + 1;
 	}
 
 	locker_array(const size_t capacity = 0)
+	:mSerial(-1)
 	{
+		mSerial = this->make_serial_code();
+
 		if(0 < capacity)
 			mLockers.reserve(capacity);
 	}
 
+	locker_array(const locker_array& other)
+	{
+		this->mLockers = other.mLockers;
+		this->mRanges = other.mRanges;
+		this->mDummy = other.mDummy;
+		// NOTE : DO NOT copy a serial number! make new one
+		this->mSerial = this->make_serial_code();
+	}
+
 	virtual ~locker_array() {}
+
+	locker_array& operator=(const locker_array& other)
+	{
+		// NOTE : DO NOT copy a serial number!
+		this->mLockers = other.mLockers;
+		this->mRanges = other.mRanges;
+		this->mDummy = other.mDummy;
+
+		return (*this);
+	}
 
 	size_t size()
 	const
@@ -153,7 +248,7 @@ public:
 		assert(0 < size);
 
 		// the id of key is the index of 'range' in the vector 'mRange'
-		key k_ey(mRanges.size(), size);
+		key k_ey(mRanges.size(), mSerial, size);
 		DLib::range range(mLockers.size(), mLockers.size() + size - 1);
 
 		mRanges[k_ey.id] = range;
@@ -167,7 +262,7 @@ public:
 
 	virtual bool return_locker(key& k_ey)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return false;
 
 		//remove the baggage in a range
@@ -191,7 +286,7 @@ public:
 	T get_baggage(key k_ey, size_t local_index)
 	const
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mDummy;
 		else
 			return mLockers[this->to_index(k_ey, local_index)];
@@ -199,7 +294,7 @@ public:
 
 	virtual T remove_baggage(key& k_ey, size_t local_index)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mDummy;
 
 		size_t index = this->to_index(k_ey, local_index);
@@ -216,7 +311,7 @@ public:
 
 	virtual bool leave_baggage(key& k_ey, size_t local_index, T baggage)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return false;
 
 		size_t index = this->to_index(k_ey, local_index);
@@ -235,7 +330,7 @@ public:
 
 	virtual T replace_baggage(key& k_ey, size_t local_index, T baggage)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return mDummy;
 
 		T old = this->remove_baggage(k_ey, local_index);
@@ -246,7 +341,7 @@ public:
 
 	bool swap(key k_ey, size_t local_index_a, size_t local_index_b)
 	{
-		if(k_ey.is_broken)
+		if(k_ey.is_broken && k_ey.parent_serial == mSerial)
 			return false;
 
 		size_t index_a = this->to_index(k_ey, local_index_a);
@@ -290,10 +385,23 @@ protected:
 		return index;
 	}
 
+public:
+	int get_serial() {return mSerial;}
+
 private:
+	int mSerial;
 	T mDummy;
 	std::vector<T> mLockers;
 	std::unordered_map<int, DLib::range> mRanges;
+	// do not use this variable directly!
+	static int mStaticSerial;
+
+	int make_serial_code() { return mStaticSerial++; }
+
 };
+
+// use this serial number for identificaiton of each locker-array object
+template <typename T>
+int DLib::locker_array<T>::mStaticSerial = 0;
 
 #endif
