@@ -17,7 +17,7 @@ class DLib::categorized_map
 	using category_map = std::unordered_map<Category, category_vector, Hash>;
 
 public:
-	bool add_category(Category& cat)
+	inline bool add_category(Category& cat)
 	{ return this->add_category(cat, 0); }
 
 	bool add_category(Category& cat, size_t size)
@@ -47,7 +47,7 @@ public:
 	inline void erase_all_category()
 	{ mMap.clear(); }
 
-	category_vector& get_category(Category& cat)
+	inline category_vector& get_category(Category& cat)
 	{ return this->find_category(cat) ? mMap[cat] : mDummyCategory; }
 
 	// if the category 'cat' is already exists in the map, return true
@@ -132,32 +132,68 @@ public:
 	const
 	{ return mDummy; }
 
+	/**
+	* NOTE : use as...
+	* categorized_map<int,std::string> map;
+	* //add categories and elements...
+	* map.go_round( [](int category, std::string& value) {
+	*     std::cout << "category => " << category << " : value => " << value << '\n';
+	* });
+	*
+	* you can take all categories and values in a map!
+	*/
+	template <typename F>
+	void go_round(F lambda)
+	{
+		for(auto itr_cat = mMap.begin(); itr_cat != mMap.end(); ++itr_cat)
+			for(auto itr_val = itr_cat->second.begin(); itr_val != itr_cat->second.end(); ++itr_val)
+				lambda(itr_cat->first, *itr_val);
+	}
+
+	template <typename F>
+	void go_round(F lambda)
+	const
+	{
+		// read-only
+		for(auto itr_cat = mMap.cbegin(); itr_cat != mMap.cend(); ++itr_cat)
+			for(auto itr_val = itr_cat->second.cbegin(); itr_val != itr_cat->second.cend(); ++itr_val)
+				lambda(itr_cat->first, *itr_val);
+	}
+
 	// iterator
-	typename category_vector::iterator begin_of(Category& cat)
+	inline typename category_vector::iterator begin_of(Category& cat)
 	{ return this->find_category(cat) ? mMap[cat].begin() : mDummyCategory.end(); }
 
-	typename category_vector::iterator end_of(Category& cat)
+	inline typename category_vector::iterator end_of(Category& cat)
 	{ return this->find_category(cat) ? mMap[cat].end() : mDummyCategory.end(); }
 
-	typename category_vector::const_iterator cbegin_of(Category& cat)
+	inline typename category_vector::const_iterator cbegin_of(Category& cat)
 	const
 	{ return this->find_category(cat) ? mMap.at[cat].cbegin() : mDummyCategory.cend(); }
 
-	typename category_vector::const_iterator cend_of(Category& cat)
+	inline typename category_vector::const_iterator cend_of(Category& cat)
 	const
 	{ return this->find_category(cat) ? mMap.at[cat].cend() : mDummyCategory.cend(); }
 
-	typename category_map::iterator begin()
+	inline typename category_map::iterator begin()
 	{ return mMap.begin(); }
 
-	typename category_map::iterator end()
+	inline typename category_map::iterator end()
 	{ return mMap.end(); }
 
-	typename category_map::iterator cbegin()
+	inline typename category_map::iterator cbegin()
 	{ return mMap.cbegin(); }
 
-	typename category_map::iterator cend()
+	inline typename category_map::iterator cend()
 	{ return mMap.cend(); }
+
+	// operator
+	inline category_vector& operator[](Category& cat)
+	{ return mMap.at(cat); }
+
+	inline const category_vector& operator[](Category& cat)
+	const
+	{ return mMap.at(cat); }
 
 private:
 	category_map mMap;

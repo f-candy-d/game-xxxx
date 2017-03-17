@@ -109,12 +109,39 @@ bool HelloWorld::init()
     cmap.push_back(cat2, "2fdfdefdf");
     cmap.push_back(cat2, "2fdfdfdfdfdffff");
 
-    for(auto itr = cmap.begin(); itr != cmap.end(); ++itr)
+    // for(auto itr = cmap.begin(); itr != cmap.end(); ++itr)
+    // {
+    //     for(auto str : itr->second)
+    //         std::cout << "category => " << itr->first << " : value => " << str << '\n';
+    // }
+
+    cmap.go_round(
+        [](int category, std::string& val) {
+            val += "------> write";
+            category += 10;
+    });
+
+    cmap.go_round(
+        [](int category, std::string val) {
+        std::cout << "category => " << category << " : value => " << val << '\n';
+    });
+
+    std::cout << "cmap[cat3][0]=" << cmap[cat1].size() << '\n';
+
+    const DLib::categorized_map<int, std::string> cmap2(cmap);
+    auto vec = cmap2[cat3];
+
+    for(auto str : vec)
     {
-        for(auto str : itr->second)
-            std::cout << "category => " << itr->first << " : value => " << str << '\n';
+        std::cout << "vec::" << str << '\n';
     }
 
+    cmap2.go_round(
+        [](int category, std::string val) {
+        std::cout << "cmap2 :: category => " << category << " : value => " << val << '\n';
+    });
+
+    cmap[cat4] = std::move(std::vector<std::string>());
 
     return true;
 }
