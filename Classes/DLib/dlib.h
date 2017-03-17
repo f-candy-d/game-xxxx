@@ -6,8 +6,8 @@
  */
 namespace DLib
 {
-	template <typename T> class locker_array;
-	template <class Category, class Value, class Hash> class categorized_map;
+	// template <typename T> class locker_array; <- NOTE : USELESS!!
+	// template <class Category, class Value, class Hash> class categorized_map; <- NOTE : USELESS!!
 	class range;
 }
 
@@ -16,8 +16,8 @@ namespace DLib
  *        This file will include all other header files in it.
  */
 
-#include "dlib_locker_array.h"
-#include "dlib_categorized_map.h"
+// #include "useless/dlib_locker_array.h"
+// #include "useless/dlib_categorized_map.h"
 #include "dlib_range.h"
 
 #endif

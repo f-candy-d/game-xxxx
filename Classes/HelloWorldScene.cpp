@@ -136,6 +136,23 @@ bool HelloWorld::init()
         std::cout << "cmap2 :: category => " << category << " : value => " << val << '\n';
     });
 
+    Vector<Sprite*> ccvec;
+    auto sp1 = Sprite::create();
+    sp1->setTag(10);
+    ccvec.pushBack(sp1);
+
+    std::cout << "ccvec.count=" << ccvec.at(0)->getTag() << '\n';
+
+    ccvec.at(0)->setTag(20);
+    std::cout << "ccvec->gettag=" << ccvec.at(0)->getTag() << '\n';
+
+    std::vector<int> stdvec;
+    stdvec.push_back(20);
+    std::cout << "stdvec[0]=" << stdvec.at(0) << '\n';
+    stdvec.at(0) = 100;
+    std::cout << "stdvec[0]=" << stdvec.at(0) << '\n';
+
+
     return true;
 }
 
