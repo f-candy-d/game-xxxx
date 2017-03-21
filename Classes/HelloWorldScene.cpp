@@ -81,6 +81,41 @@ bool HelloWorld::init()
     // auto tm = TiledMap2P5D::create("originfile");
     // this->addChild(tm);
 
+    DLib::vec<10, float> vecA, vecB;
+    int i = 0;
+    for(auto itr = vecA.begin(); itr != vecA.end(); ++itr, ++i)
+        *itr  = 10.0 * i;
+
+    auto vecAB = vecB - vecA;
+
+    for(auto ba = vecAB.begin(), a = vecA.begin(), b = vecB.begin();
+    ba != vecAB.end(); ++ba, ++a, ++b)
+        log("%lf[AB] = %lf[B] - %lf[A]",*ba,*b,*a);
+
+    -vecAB;
+    for(auto itr = vecAB.begin(); itr != vecAB.end(); ++itr)
+        std::cout << "vecAB=>" << *itr << '\n';
+
+    std::cout << "vecAB[0] = " << vecAB[0] << '\n';
+    float zero = 0;
+    zero *= -1;
+    std::cout << "-1 * 0 = " << zero << '\n';
+    if(-0 != 0) std::cout << "-1 * 0 is not equal to 0" << '\n';
+
+    DLib::vec<10, float> v1,v2;
+    v1 = v2 = vecAB;
+
+    DLib::vec<10, float> v(777);
+    for(auto itr = v.begin(); itr != v.end(); ++itr)
+        std::cout << "v=>" << *itr << '\n';
+
+        DLib::vec2<int> v123(19);
+        for(auto elm : v123)
+            std::cout << "elm=" << elm << '\n';
+
+    vecA.set(1,2,3,4,5,6,7,8,9,10);
+    for(auto elm : vecA)
+        std::cout << "vecA=" << elm << '\n';
 
     return true;
 }

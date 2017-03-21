@@ -10,6 +10,9 @@
 // #include "useless/dlib_categorized_map.h"
 #include "dlib_range.h"
 #include "dlib_size.h"
+#include "dlib_vec.h"
+#include "dlib_vec2.h"
 #include "dlib_grid_size.h"
+#include "dlib_grid_point.h"
 
 #endif
