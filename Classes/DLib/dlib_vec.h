@@ -22,7 +22,6 @@ public:
 	template < typename... Rest>
 	inline void set(const T& first, const Rest&... rest)
 	{
-		std::cout << "first->" << first << '\n';
 		this->set_recur(0, first, rest...);
 	}
 
@@ -72,11 +71,11 @@ public:
 		return std::move(result);
 	}
 
-	inline vec<D, T>& operator-()
+	inline vec<D, T> operator-()
 	{
 		for(auto itr = mComponents.begin(); itr != mComponents.end(); ++itr)
 			*itr *= -1;
-		return (*this);
+		return vec(*this);
 	}
 
 	inline vec<D, T> operator-(const vec<D, T>& other)

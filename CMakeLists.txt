@@ -136,6 +136,9 @@ set(GAME_SRC
   Classes/Tm2p5dLib/InfoClasses.cpp
   Classes/Tm2p5dLib/Pane.cpp
   Classes/Tm2p5dLib/TiledLayer.cpp
+  Classes/DLib/dlib_grid_point.cpp
+  Classes/DLib/dlib_grid_size.cpp
+  Classes/DLib/dlib_size.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 

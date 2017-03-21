@@ -1,65 +1,42 @@
 #include "dlib_grid_size.h"
 
-inline int DLib::grid_size::x()
+/**
+ * public
+ */
+DLib::size<float> DLib::grid_size::comv_to_px()
 {
-	return mX;
+	return DLib::size<float>(unit.width * width, unit.height * height);
 }
 
-inline int DLib::grid_size::y()
+/**
+ * global
+ */
+bool DLib::operator<(const DLib::grid_size& a, const DLib::grid_size& b)
 {
-	return mY;
+	return (a.width < b.width) && (a.height < b.height);
 }
 
-inline DLib::size<float> DLib::grid_size::unit()
+bool DLib::operator>(const DLib::grid_size& a, const DLib::grid_size& b)
 {
-	return mUnit;
+	return b < a;
 }
 
-inline DLib::size<float> DLib::grid_size::comv_to_px()
+bool DLib::operator<=(const DLib::grid_size& a, const DLib::grid_size& b)
 {
-	return DLib::size<float>((mX + mComvScaleX) * mUnit.width, (mY + mComvScaleY) * mUnit.height);
+	return !(a > b);
 }
 
-void DLib::grid_size::set_comv_scele(DLib::grid_size::ComvScale type)
+bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)
 {
-	switch (type)
-	{
-		case DLib::grid_size::ComvScale::LEFT_BOTTOM :
-			this->set_comv_scele(0, 0);
-			break;
-
-		case DLib::grid_size::ComvScale::RIGHT_BOTTOM :
-			this->set_comv_scele(1.0, 0);
-			break;
-
-		case DLib::grid_size::ComvScale::LEFT_TOP :
-			this->set_comv_scele(0, 1.0);
-			break;
-
-		case DLib::grid_size::ComvScale::RIGHT_TOP :
-			this->set_comv_scele(1.0, 1.0);
-			break;
-
-		case DLib::grid_size::ComvScale::CENTER :
-			this->set_comv_scele(0.5, 0.5);
-	}
+	return !(a < b);
 }
 
-void DLib::grid_size::set_comv_scele(float sc_x, float sc_y)
+bool DLib::operator==(const DLib::grid_size& a, DLib::grid_size& b)
 {
-	//scale-x
-	if(sc_x < 0)
-		mComvScaleX = 0.0;
-	else if(1 < sc_x)
-		mComvScaleX = 1.0;
-	else
-		mComvScaleX = sc_x;
+	return (a.width == b.width) && (a.height == b.height);
+}
 
-	//scale-y
-	if(sc_y < 0)
-		mComvScaleY = 0.0;
-	else if(1 < sc_y)
-		mComvScaleY = 1.0;
-	else
-		mComvScaleY = sc_y;
+bool DLib::operator!=(const DLib::grid_size& a, DLib::grid_size& b)
+{
+	return !(a == b);
 }

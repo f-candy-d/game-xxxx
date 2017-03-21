@@ -5,24 +5,26 @@
 
 namespace DLib
 {
-	class grid_size;
+	struct grid_size;
+	//global operators
+	bool operator<(const DLib::grid_size& a, const DLib::grid_size& b);
+	bool operator>(const DLib::grid_size& a, const DLib::grid_size& b);
+	bool operator<=(const DLib::grid_size& a, const DLib::grid_size& b);
+	bool operator>=(const DLib::grid_size& a, const DLib::grid_size& b);
+	bool operator==(const DLib::grid_size& a, DLib::grid_size& b);
+	bool operator!=(const DLib::grid_size& a, DLib::grid_size& b);
 }
 
-class DLib::grid_size
+struct DLib::grid_size
 {
+	int width;
+	int height;
+	const DLib::size<float> unit; //px
+
 public:
-	grid_size(DLib::size<float> unit) :mWidth(0),mHeight(0),mUnit(unit) {}
-	grid_size(int width, int height, DLib::size<float> unit) :mWidth(width),mHeight(height),mUnit(unit) {}
-
-	int width();
-	int height();
-	DLib::size<float> unit();
+	grid_size(DLib::size<float> u) :width(0),height(0),unit(u) {}
+	grid_size(int w, int h, DLib::size<float> u) :width(w),height(h),unit(u) {}
 	DLib::size<float> comv_to_px();
-
-private:
-	int mWidth;
-	int mHeight;
-	const DLib::size<float> mUnit; //px
 };
 
 #endif

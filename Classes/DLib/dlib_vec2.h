@@ -5,27 +5,48 @@
 
 namespace DLib
 {
-	template <typename T> class vec2;
+	template <typename T> struct vec2;
 }
 
-template <typename T> class DLib::vec2 : public DLib::vec<2, T>
+template <typename T> struct DLib::vec2
 {
+	T x;
+	T y;
+
 public:
-	vec2() :DLib::vec<2, T>() {}
-	vec2(T dflt) :DLib::vec<2, T>(dflt) {}
-	T x()
+	vec2() :x(0),y(0) {}
+	vec2(T p, T q) :x(p),y(q) {}
+
+	inline vec2<T>& operator+()
 	const
-	{ return this->mComponents[0]; }
+	{
+		return (*this);
+	}
 
-	void x(T val)
-	{ this->mComponents[0] = val; }
+	inline vec2<T>& operator-()
+	{
+		this->x *= -1;
+		this->y *= -1;
+		return (*this);
+	}
 
-	T y()
+	inline vec2<T> operator+(const vec2<T>& other)
 	const
-	{ return this->mComponents[1]; }
+	{
+		return std::move(vec2(this->x + other.x, this->y + other.y));
+	}
 
-	void y(T val)
-	{ this->mComponents[1] = val; }
+	inline vec2<T> operator-(const vec2<T>& other)
+	const
+	{
+		return std::move(vec2(this->x - other.x, this->y - other.y));
+	}
+
+	inline void set(T p, T q)
+	{
+		this->x = p;
+		this->y = q;
+	}
 
 };
 

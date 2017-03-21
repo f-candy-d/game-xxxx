@@ -28,36 +28,27 @@ void DLib::grid_point::set_representative_point(RepresentativePoint type)
 	}
 }
 
-void DLib::grid_point::set_representative_point(float repScaX, float repScaY)
+void DLib::grid_point::set_representative_point(float rep_scal_x, float rep_scal_y)
 {
-	//scale-x
-	if(repScaX < 0)
-		mRepPointScaleX = 0.0;
-	else if(1 < repScaX)
-		mRepPointScaleX = 1.0;
+	//scale-width
+	if(rep_scal_x < 0)
+		rep_point_scale_x = 0.0;
+	else if(1 < rep_scal_x)
+		rep_point_scale_x = 1.0;
 	else
-		mRepPointScaleX = repScaX;
+		rep_point_scale_x = rep_scal_x;
 
-	//scale-y
-	if(repScaY < 0)
-		mRepPointScaleY = 0.0;
-	else if(1 < repScaY)
-		mRepPointScaleY = 1.0;
+	//scale-height
+	if(rep_scal_y < 0)
+		rep_point_scale_y = 0.0;
+	else if(1 < rep_scal_y)
+		rep_point_scale_y = 1.0;
 	else
-		mRepPointScaleY = repScaY;
+		rep_point_scale_y = rep_scal_y;
 }
 
-inline int DLib::grid_point::x()
+DLib::vec2<float> DLib::grid_point::comv_to_px()
+const
 {
-	return mX;
-}
-
-inline int DLib::grid_point::y()
-{
-	return mY;
-}
-
-inline DLib::size<float> DLib::grid_point::unit()
-{
-	return mUnit;
+	return DLib::vec2<float>((x + rep_point_scale_x) * unit.width, (y + rep_point_scale_y) * unit.height);
 }
