@@ -1,7 +1,7 @@
 #ifndef COCOS_LOCKER_ARRAY_H
 #define COCOS_LOCKER_ARRAY_H
 
-#include "../DLib/dlib_locker_array.h"
+#include "../DLib/useless/dlib_locker_array.h"
 #include "../../cocos2d/cocos/cocos2d.h"
 
 namespace TM2DwD

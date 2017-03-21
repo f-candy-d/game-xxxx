@@ -1,7 +1,7 @@
 #ifndef LOCKER_ARRAY_H
 #define LOCKER_ARRAY_H
 
-#include "dlib_range.h"
+#include "../dlib_range.h"
 #include <iostream>
 #include <vector>
 #include <unordered_map>
