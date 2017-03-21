@@ -1,22 +1,11 @@
 #ifndef D_LIB_SIZE_H
 #define D_LIB_SIZE_H
 
+#include <iostream>
+
 namespace DLib
 {
 	template <typename T> struct size;
-	// global operators
-	// template <typename T>
-	// bool operator<(const size<T>& a, const size<T>& b);
-	// template <typename T>
-	// bool operator>(const size<T>& a, const size<T>& b);
-	// template <typename T>
-	// bool operator<=(const size<T>& a, const size<T>& b);
-	// template <typename T>
-	// bool operator>=(const size<T>& a, const size<T>& b);
-	// template <typename T>
-	// bool operator==(const size<T>& a, const size<T>& b);
-	// template <typename T>
-	// bool operator!=(const size<T>& a, const size<T>& b);
 }
 
 template <typename T> struct DLib::size
@@ -30,6 +19,7 @@ public:
 	T area() { return width * height; }
 };
 
+// global operators
 namespace DLib
 {
 	template <typename T>
@@ -66,6 +56,12 @@ namespace DLib
 	bool operator!=(const size<T>& a, const size<T>& b)
 	{
 		return !(a == b);
+	}
+
+	template <typename T>
+	std::ostream& operator<<(std::ostream& os, const size<T>& sz)
+	{
+		return (os << '[' << sz.width << " , " << sz.height << ']');
 	}
 }
 

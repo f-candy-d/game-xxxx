@@ -1,4 +1,5 @@
 #include "dlib_grid_size.h"
+#include <cassert>
 
 /**
  * public
@@ -13,6 +14,7 @@ DLib::size<float> DLib::grid_size::comv_to_px()
  */
 bool DLib::operator<(const DLib::grid_size& a, const DLib::grid_size& b)
 {
+	assert(a.unit == b.unit);
 	return (a.width < b.width) && (a.height < b.height);
 }
 
@@ -33,10 +35,16 @@ bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)
 
 bool DLib::operator==(const DLib::grid_size& a, DLib::grid_size& b)
 {
+	assert(a.unit == b.unit);
 	return (a.width == b.width) && (a.height == b.height);
 }
 
 bool DLib::operator!=(const DLib::grid_size& a, DLib::grid_size& b)
 {
 	return !(a == b);
+}
+
+std::ostream& DLib::operator<<(std::ostream& os, const DLib::grid_size& gd_size)
+{
+	return (os << '[' << gd_size.width << " , " << gd_size.height << ']');
 }

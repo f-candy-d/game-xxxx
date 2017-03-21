@@ -85,13 +85,18 @@ bool HelloWorld::init()
     DLib::grid_size size_small(10,10,unit);
     DLib::grid_size size_large(100,100,unit);
 
-    bool res =  size_small < size_large;
-    std::cout << "size_small < size_large = " << res << '\n';
+    std::cout << size_small << '\n';
+    std::cout << size_small.comv_to_px() << '\n';
+
+    bool res =  size_small == size_large;
+    std::cout << "size_small == size_large = " << res << '\n';
 
     DLib::size<float> unit2(20,20);
 
     res =  unit < unit2;
     std::cout << "unit < unit2 = " << res << '\n';
+    res = unit == unit2;
+    std::cout << "unit == unit2 = " << res << '\n';
 
     return true;
 }

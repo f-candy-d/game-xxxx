@@ -2,17 +2,19 @@
 #define D_LIB_GRID_SIZE_H
 
 #include "dlib_size.h"
+#include <iostream>
 
 namespace DLib
 {
 	struct grid_size;
 	//global operators
-	bool operator<(const DLib::grid_size& a, const DLib::grid_size& b);
-	bool operator>(const DLib::grid_size& a, const DLib::grid_size& b);
-	bool operator<=(const DLib::grid_size& a, const DLib::grid_size& b);
-	bool operator>=(const DLib::grid_size& a, const DLib::grid_size& b);
-	bool operator==(const DLib::grid_size& a, DLib::grid_size& b);
-	bool operator!=(const DLib::grid_size& a, DLib::grid_size& b);
+	bool operator<(const grid_size& a, const grid_size& b);
+	bool operator>(const grid_size& a, const grid_size& b);
+	bool operator<=(const grid_size& a, const grid_size& b);
+	bool operator>=(const grid_size& a, const grid_size& b);
+	bool operator==(const grid_size& a, grid_size& b);
+	bool operator!=(const grid_size& a, grid_size& b);
+	std::ostream& operator<<(std::ostream& os, const DLib::grid_size& gd_size);
 }
 
 struct DLib::grid_size

@@ -2,6 +2,7 @@
 #define DLIB_VEC2_H
 
 #include "dlib_vec.h"
+#include <iostream>
 
 namespace DLib
 {
@@ -49,5 +50,15 @@ public:
 	}
 
 };
+
+namespace DLib
+{
+	// global operators
+	template <typename T>
+	std::ostream& operator<<(std::ostream& os, const vec2<T>& v2)
+	{
+		return (os << '(' << v2.x << " , " << v2.y << ')');
+	}
+}
 
 #endif
