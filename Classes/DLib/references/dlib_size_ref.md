@@ -1,8 +1,7 @@
 ##### template `<typename T>` struct
 # size
 T型（値型）のwidth値、height値を持つ。負値も扱えるが、その場合、動作は未定義。  
-ある2つのsizeオブジェクトa、ｂについて、`a.width <(>) b.width`かつ`a.height <(>) b.height`のときのみ、`a <(>) b`が成り立つ。2つの条件の内**どちらか1つのみが真**の場合は、aとｂは**比較不可能**とする。  
-また、等号`==`について、a,bが**図形的に合同であるとき**のみ真とする(`a.width == b.width`かつ`a.height == b.height`)。面積が等しいかどうかを判定する場合は、代わりに`area()`関数の結果を利用する。
+ある2つのsizeオブジェクトa、ｂについて、`a.width <(>) b.width`かつ`a.height <(>) b.height`のときのみ、`a <(>) b`が成り立つ。2つの条件の内**どちらか1つのみが真**の場合は、aとｂは**比較不可能**とする。また、等号`==`について、a,bが**図形的に合同であるとき**のみ真とする(`a.width == b.width`かつ`a.height == b.height`)。面積の比較をする場合は、代わりに`area()`関数の結果を利用する。
 #### 名前空間
 ```c++
 namespace DLib
@@ -22,7 +21,7 @@ T height;
 `T height`  
 >縦幅。
 
-#### *public* メンバ関数
+#### public メンバ関数
 ```c++
 size();
 size(T w, T h);
