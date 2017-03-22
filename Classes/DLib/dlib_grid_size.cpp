@@ -23,25 +23,25 @@ bool DLib::operator>(const DLib::grid_size& a, const DLib::grid_size& b)
 	return b < a;
 }
 
-bool DLib::operator<=(const DLib::grid_size& a, const DLib::grid_size& b)
-{
-	return !(a > b);
-}
-
-bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)
-{
-	return !(a < b);
-}
-
-bool DLib::operator==(const DLib::grid_size& a, DLib::grid_size& b)
+bool DLib::operator==(const DLib::grid_size& a, const DLib::grid_size& b)
 {
 	assert(a.unit == b.unit);
 	return (a.width == b.width) && (a.height == b.height);
 }
 
-bool DLib::operator!=(const DLib::grid_size& a, DLib::grid_size& b)
+bool DLib::operator!=(const DLib::grid_size& a, const DLib::grid_size& b)
 {
 	return !(a == b);
+}
+
+bool DLib::operator<=(const DLib::grid_size& a, const DLib::grid_size& b)
+{
+	return (a < b) || (a == b);
+}
+
+bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)
+{
+	return (a > b) || (a == b);
 }
 
 std::ostream& DLib::operator<<(std::ostream& os, const DLib::grid_size& gd_size)

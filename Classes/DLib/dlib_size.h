@@ -35,18 +35,6 @@ namespace DLib
 	}
 
 	template <typename T>
-	bool operator<=(const size<T>& a, const size<T>& b)
-	{
-		return !(a > b);
-	}
-
-	template <typename T>
-	bool operator>=(const size<T>& a, const size<T>& b)
-	{
-		return !(a < b);
-	}
-
-	template <typename T>
 	bool operator==(const size<T>& a, const size<T>& b)
 	{
 		return (a.width == b.width) && (a.height == b.height);
@@ -59,9 +47,21 @@ namespace DLib
 	}
 
 	template <typename T>
-	std::ostream& operator<<(std::ostream& os, const size<T>& sz)
+	bool operator<=(const size<T>& a, const size<T>& b)
 	{
-		return (os << '[' << sz.width << " , " << sz.height << ']');
+		return (a < b) || (a == b);
+	}
+
+	template <typename T>
+	bool operator>=(const size<T>& a, const size<T>& b)
+	{
+		return (a > b) || (a == b);
+	}
+
+	template <typename T>
+	std::ostream& operator<<(std::ostream& os, const size<T>& psize)
+	{
+		return (os << '[' << psize.width << " , " << psize.height << ']');
 	}
 }
 
