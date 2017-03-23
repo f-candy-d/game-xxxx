@@ -156,4 +156,8 @@ tests/cpp-tests/Resources/audio
 #ignore cocos2d-x
 /cocos2d
 
+# ignore tmp directory & references
+/Classes/DLib/references
+/Classes/tmp
+
 # End of https://www.gitignore.io/api/cocos2dx
