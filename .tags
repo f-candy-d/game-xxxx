@@ -761,3 +761,37 @@ grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_g
 public メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### public メンバ変数$/;"	function	line:14
 public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### public メンバ関数$/;"	function	line:30
 global メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### global メンバ関数$/;"	function	line:56
+RANGE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^#define RANGE_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^namespace DLib {$/;"	namespace	line:6
+range	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^class DLib::range$/;"	class	line:10	class:DLib
+range	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	range(int from = 0, int to = 0)$/;"	function	line:13	class:DLib::range	signature:(int from = 0, int to = 0)
+set	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline void set(int from, int to)$/;"	function	line:16	class:DLib::range	signature:(int from, int to)
+from	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline int from()$/;"	function	line:19	class:DLib::range	signature:() const
+from	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline void from(int from)$/;"	function	line:23	class:DLib::range	signature:(int from)
+to	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline int to()$/;"	function	line:26	class:DLib::range	signature:() const
+to	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline void to(int to)$/;"	function	line:30	class:DLib::range	signature:(int to)
+diff	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline int diff()$/;"	function	line:33	class:DLib::range	signature:() const
+distance	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline int distance()$/;"	function	line:37	class:DLib::range	signature:() const
+move	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline void move(int delta)$/;"	function	line:41	class:DLib::range	signature:(int delta)
+contains	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline bool contains(int p)$/;"	function	line:44	class:DLib::range	signature:(int p) const
+merge	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	inline range merge(const range& other)$/;"	function	line:48	class:DLib::range	signature:(const range& other) const
+mFrom	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	int mFrom;$/;"	member	line:55	class:DLib::range
+mTo	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_range.h	/^	int mTo;$/;"	member	line:56	class:DLib::range
+class	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_range_ref.md	/^#### class$/;"	function	line:1
+range	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_range_ref.md	/^# range$/;"	function	line:2
+名前空間	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_range_ref.md	/^#### 名前空間$/;"	function	line:5
+private メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_range_ref.md	/^#### private メンバ変数$/;"	function	line:12
+public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_range_ref.md	/^#### public メンバ関数$/;"	function	line:24
+template `<unsigned int D, typename T>` class	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^#### template `<unsigned int D, typename T>` class$/;"	function	line:1
+vec	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^# vec$/;"	function	line:2
+名前空間	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^#### 名前空間$/;"	function	line:6
+using , typedef	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^#### using , typedef$/;"	function	line:14
+protected メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^#### protected メンバ変数$/;"	function	line:21
+public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^#### public メンバ関数$/;"	function	line:29
+private メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec_ref.md	/^#### private メンバ関数$/;"	function	line:103
+template `<typename T>` struct	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### template `<typename T>` struct$/;"	function	line:1
+vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^# vec2$/;"	function	line:2
+名前空間	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### 名前空間$/;"	function	line:6
+public メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### public メンバ変数$/;"	function	line:14
+public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### public メンバ関数$/;"	function	line:26
+global メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### global メンバ関数$/;"	function	line:68

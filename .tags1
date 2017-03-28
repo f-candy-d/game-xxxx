@@ -4,9 +4,3 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-struct	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### struct$/;"	function	line:1
-grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^# grid_size$/;"	function	line:2
-名前空間	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### 名前空間$/;"	function	line:6
-public メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### public メンバ変数$/;"	function	line:14
-public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### public メンバ関数$/;"	function	line:30
-global メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_size_ref.md	/^#### global メンバ関数$/;"	function	line:56
