@@ -4,22 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-CATEGORIZED_MAP_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^#define CATEGORIZED_MAP_H$/;"	macro	line:2
-DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^namespace DLib$/;"	namespace	line:8
-categorized_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^class DLib::categorized_map$/;"	class	line:14	class:DLib
-find_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline bool find_category(Category& cat)$/;"	function	line:21	class:DLib::categorized_map	signature:(Category& cat) const
-is_empty	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline bool is_empty()$/;"	function	line:25	class:DLib::categorized_map	signature:() const
-is_empty	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline bool is_empty(Category& cat)$/;"	function	line:29	class:DLib::categorized_map	signature:(Category& cat) const
-count_category	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline size_t count_category()$/;"	function	line:33	class:DLib::categorized_map	signature:() const
-size_of	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline size_t size_of(Category& cat)$/;"	function	line:38	class:DLib::categorized_map	signature:(Category& cat) const
-go_round	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void go_round(L lambda)$/;"	function	line:53	class:DLib::categorized_map	signature:(L lambda)
-go_round	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	void go_round(L lambda)$/;"	function	line:61	class:DLib::categorized_map	signature:(L lambda) const
-begin	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline typename category_map::iterator begin()$/;"	function	line:71	class:DLib::categorized_map	signature:()
-end	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline typename category_map::iterator end()$/;"	function	line:74	class:DLib::categorized_map	signature:()
-cbegin	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline typename category_map::const_iterator cbegin()$/;"	function	line:77	class:DLib::categorized_map	signature:()
-cend	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline typename category_map::const_iterator cend()$/;"	function	line:80	class:DLib::categorized_map	signature:()
-operator []	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline category_vector& operator[](Category& cat)$/;"	function	line:84	class:DLib::categorized_map	signature:(Category& cat)
-operator []	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline const category_vector& operator[](Category& cat)$/;"	function	line:87	class:DLib::categorized_map	signature:(Category& cat) const
-operator ()	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline category_map& operator()()$/;"	function	line:91	class:DLib::categorized_map	signature:()
-operator ()	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	inline const category_map& operator()()$/;"	function	line:94	class:DLib::categorized_map	signature:() const
-mMap	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^	category_map mMap;$/;"	member	line:99	class:DLib::categorized_map
+struct	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^#### struct$/;"	function	line:1
+grid_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^# grid_point$/;"	function	line:2
+名前空間	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^#### 名前空間$/;"	function	line:7
+enum	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^#### enum$/;"	function	line:16
+public メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^#### public メンバ変数$/;"	function	line:30
+private メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^#### private メンバ変数$/;"	function	line:46
+public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_grid_point_ref.md	/^#### public メンバ関数$/;"	function	line:58

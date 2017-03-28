@@ -1,6 +1,7 @@
 #### template `<typename T>` struct
 # size
-[class summary here...]
+T型（値型）のwidth値、height値を持つ。負値も扱えるが、その場合、動作は未定義。  
+ある2つのsizeオブジェクトa、ｂについて、`a.width <(>) b.width`かつ`a.height <(>) b.height`のときのみ、`a <(>) b`が成り立つ。2つの条件の内**どちらか1つのみが真**の場合は、aとｂは**比較不可能**とする。また、等号`==`について、a,bが**図形的に合同であるとき**のみ真とする(`a.width == b.width`かつ`a.height == b.height`)。面積の比較をする場合は、代わりに`area()`関数の結果を利用する。
 
 #### 名前空間
 ```c++
@@ -17,10 +18,10 @@ T height;
 ```
 
 `T width`
->description here...
+>横幅。
 
 `T height`
->description here...
+>縦幅。
 
 #### public メンバ関数
 ```c++
@@ -30,15 +31,15 @@ T area();
 ```
 
 `size()`
->description here...
+>デフォルトコンストラクタ。特になにもしない。
 
 `size(T w, T h)`
 >**@param w :**  
 >**@param h :**  
->
+>引数付きコンストラクタ。メンバの初期化のみ。
 
 `T area()`
->description here...
+>面積（*width* × *height*）を返す。
 
 #### global メンバ関数
 ```c++
@@ -52,36 +53,43 @@ template <typename T> std::ostream& operator<<(std::ostream& os, const size<T>& 
 ```
 
 `template <typename T> bool operator<(const size<T>& a, const size<T>& b)`
->**@param a :**  
->**@param b :**  
->
+>**@param a :** 比較対象A  
+>**@param b :** 比較対象B  
+
+>`a < b`の判定。
 
 `template <typename T> bool operator>(const size<T>& a, const size<T>& b)`
->**@param a :**  
->**@param b :**  
->
+>**@param a :** 比較対象A  
+>**@param b :** 比較対象B  
+
+>`a > b`の判定。
 
 `template <typename T> bool operator==(const size<T>& a, const size<T>& b)`
->**@param a :**  
->**@param b :**  
->
+>**@param a :** 比較対象A  
+>**@param b :** 比較対象B  
+
+>`a == b`の判定。
 
 `template <typename T> bool operator!=(const size<T>& a, const size<T>& b)`
->**@param a :**  
->**@param b :**  
->
+>**@param a :** 比較対象A  
+>**@param b :** 比較対象B  
+
+>`a != b`の判定。
 
 `template <typename T> bool operator<=(const size<T>& a, const size<T>& b)`
->**@param a :**  
->**@param b :**  
->
+>**@param a :** 比較対象A  
+>**@param b :** 比較対象B  
+
+>`a <= b`の判定。
 
 `template <typename T> bool operator>=(const size<T>& a, const size<T>& b)`
->**@param a :**  
->**@param b :**  
->
+>**@param a :** 比較対象A  
+>**@param b :** 比較対象B  
+
+>`a >= b`の判定。
 
 `template <typename T> std::ostream& operator<<(std::ostream& os, const size<T>& psize)`
->**@param os :**  
->**@param psize :**  
->
+>**@param os    :** outputストリーム  
+>**@param psize :** 表示するsizeオブジェクト  
+
+>`std::cout << size_object << std::endl;`を可能にするためにこれが必要。
