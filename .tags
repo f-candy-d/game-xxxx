@@ -720,9 +720,6 @@ getItemForTouch	/home/daichi/dev/projects/cocos/GameXXX/cocos2d/cocos/2d/CCMenu.
 setOpacityModifyRGB	/home/daichi/dev/projects/cocos/GameXXX/cocos2d/cocos/2d/CCMenu.cpp	/^void Menu::setOpacityModifyRGB(bool \/*value*\/)$/;"	function	line:578	class:Menu	signature:(bool )
 isOpacityModifyRGB	/home/daichi/dev/projects/cocos/GameXXX/cocos2d/cocos/2d/CCMenu.cpp	/^bool Menu::isOpacityModifyRGB() const$/;"	function	line:581	class:Menu	signature:() const
 getDescription	/home/daichi/dev/projects/cocos/GameXXX/cocos2d/cocos/2d/CCMenu.cpp	/^std::string Menu::getDescription() const$/;"	function	line:586	class:Menu	signature:() const
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:143	class:HelloWorld	signature:(Ref* pSender)
 CATEGORIZED_MAP_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^#define CATEGORIZED_MAP_H$/;"	macro	line:2
 DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^namespace DLib$/;"	namespace	line:8
 categorized_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_categorized_map.h	/^class DLib::categorized_map$/;"	class	line:14	class:DLib
@@ -795,3 +792,6 @@ vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_r
 public メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### public メンバ変数$/;"	function	line:14
 public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### public メンバ関数$/;"	function	line:26
 global メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### global メンバ関数$/;"	function	line:68
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:86	class:HelloWorld	signature:(Ref* pSender)

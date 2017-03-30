@@ -78,31 +78,6 @@ bool HelloWorld::init()
     // this->addChild(sprite, 0);
 
     //NOTE : TEST
-    // auto tm = TiledMap2P5D::create("originfile");
-    // this->addChild(tm);
-
-    DLib::size<float> unit(10, 10);
-    DLib::grid_size size_small(10,20,unit);
-    DLib::grid_size size_large(20,10,unit);
-
-    std::cout << size_small << '\n';
-    std::cout << size_small.comv_to_px() << '\n';
-
-    bool res =  size_small == size_large;
-    std::cout << "size_small == size_large = " << res << '\n';
-
-    res =  size_small <= size_large;
-    std::cout << "size_small <= size_large = " << res << '\n';
-
-    res =  size_small > size_large;
-    std::cout << "size_small > size_large = " << res << '\n';
-
-    DLib::size<float> unit2(20,20);
-
-    res =  unit < unit2;
-    std::cout << "unit < unit2 = " << res << '\n';
-    res = unit == unit2;
-    std::cout << "unit == unit2 = " << res << '\n';
 
     return true;
 }

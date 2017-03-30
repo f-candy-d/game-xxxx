@@ -130,12 +130,12 @@ endif( WIN32 )
 set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/HelloWorldScene.cpp
-  Classes/Tm2p5dLib/TiledMap2P5D.cpp
-  Classes/Tm2p5dLib/TM2P5DJsonParser.cpp
-  Classes/Tm2p5dLib/TM2P5DProperty.cpp
-  Classes/Tm2p5dLib/InfoClasses.cpp
-  Classes/Tm2p5dLib/Pane.cpp
-  Classes/Tm2p5dLib/TiledLayer.cpp
+#  Classes/Tm2p5dLib/TiledMap2P5D.cpp
+#  Classes/Tm2p5dLib/TM2P5DJsonParser.cpp
+#  Classes/Tm2p5dLib/TM2P5DProperty.cpp
+#  Classes/Tm2p5dLib/InfoClasses.cpp
+#  Classes/Tm2p5dLib/Pane.cpp
+#  Classes/Tm2p5dLib/TiledLayer.cpp
   Classes/DLib/dlib_grid_point.cpp
   Classes/DLib/dlib_grid_size.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -144,12 +144,12 @@ set(GAME_SRC
 set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/HelloWorldScene.h
-  Classes/Tm2p5dLib/TiledMap2P5D.h
-  Classes/Tm2p5dLib/TM2P5DJsonParser.h
-  Classes/Tm2p5dLib/TM2P5DProperty.h
-  Classes/Tm2p5dLib/InfoClasses.h
-  Classes/Tm2p5dLib/Pane.h
-  Classes/Tm2p5dLib/TiledLayer.h
+#  Classes/Tm2p5dLib/TiledMap2P5D.h
+#  Classes/Tm2p5dLib/TM2P5DJsonParser.h
+#  Classes/Tm2p5dLib/TM2P5DProperty.h
+#  Classes/Tm2p5dLib/InfoClasses.h
+#  Classes/Tm2p5dLib/Pane.h
+#  Classes/Tm2p5dLib/TiledLayer.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 
