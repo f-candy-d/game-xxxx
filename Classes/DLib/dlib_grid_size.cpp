@@ -9,6 +9,13 @@ DLib::size<float> DLib::grid_size::comv_to_px()
 	return DLib::size<float>(unit.width * width, unit.height * height);
 }
 
+void DLib::grid_size::copy(const DLib::grid_size &other)
+{
+	width = other.width;
+	height = other.height;
+	const_cast<DLib::size<float>&>(unit) = other.unit;
+}
+
 /**
  * global
  */

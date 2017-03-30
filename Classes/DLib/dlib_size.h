@@ -16,7 +16,8 @@ template <typename T> struct DLib::size
 public:
 	size() :width(0),height(0) {}
 	size(T w, T h) :width(w),height(h) {}
-	T area() { return width * height; }
+	inline T area() const { return width * height; }
+	inline void scale(float scale) { width *= scale; height *= scale; }
 };
 
 // global operators
@@ -61,7 +62,7 @@ namespace DLib
 	template <typename T>
 	std::ostream& operator<<(std::ostream& os, const size<T>& psize)
 	{
-		return (os << '[' << psize.width << " , " << psize.height << ']');
+		return (os << '(' << psize.width << " , " << psize.height << ')');
 	}
 }
 

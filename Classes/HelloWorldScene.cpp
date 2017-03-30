@@ -1,9 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "Tm2p5dLib/TiledMap2P5D.h"
-#include "DLib/dlib.h"
 #include <iostream>
-#include <ctime>
+#include "tm2DwdLib/Pane.h"
 
 USING_NS_CC;
 
@@ -78,6 +76,23 @@ bool HelloWorld::init()
     // this->addChild(sprite, 0);
 
     //NOTE : TEST
+    auto pane = TM2DwD::TM2DwDUnit::Pane::create(10, 10);
+    std::cout << "pane::GridSize = " << pane->getGridSize() << '\n';
+    std::cout << "pane::GridSize::unit = " << pane->getGridSize().unit << '\n';
+    std::cout << "pane::TileTextureSize = " << pane->getTileTextureSize() << '\n';
+    std::cout << "pane::ActualTileSize = " << pane->getActualTileSize() << '\n';
+    std::cout << "pane::SpriteScale = " << pane->getSpriteScale() << '\n';
+
+
+    pane->setSpriteScale(2.0);
+    std::cout << "scale up !!" << '\n';
+
+    std::cout << "pane::GridSize = " << pane->getGridSize() << '\n';
+    std::cout << "pane::GridSize::unit = " << pane->getGridSize().unit << '\n';
+    std::cout << "pane::TileTextureSize = " << pane->getTileTextureSize() << '\n';
+    std::cout << "pane::ActualTileSize = " << pane->getActualTileSize() << '\n';
+    std::cout << "pane::SpriteScale = " << pane->getSpriteScale() << '\n';
+
 
     return true;
 }

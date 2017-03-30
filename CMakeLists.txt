@@ -138,6 +138,7 @@ set(GAME_SRC
 #  Classes/Tm2p5dLib/TiledLayer.cpp
   Classes/DLib/dlib_grid_point.cpp
   Classes/DLib/dlib_grid_size.cpp
+  Classes/tm2DwdLib/Pane.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -150,6 +151,7 @@ set(GAME_HEADERS
 #  Classes/Tm2p5dLib/InfoClasses.h
 #  Classes/Tm2p5dLib/Pane.h
 #  Classes/Tm2p5dLib/TiledLayer.h
+  Classes/tm2DwdLib/Pane.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

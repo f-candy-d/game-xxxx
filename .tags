@@ -792,6 +792,50 @@ vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_r
 public メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### public メンバ変数$/;"	function	line:14
 public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### public メンバ関数$/;"	function	line:26
 global メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/references/dlib_vec2_ref.md	/^#### global メンバ関数$/;"	function	line:68
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:86	class:HelloWorld	signature:(Ref* pSender)
+D_LIB_GRID_SIZE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^#define D_LIB_GRID_SIZE_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^namespace DLib$/;"	namespace	line:7
+grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^struct DLib::grid_size$/;"	struct	line:20	class:DLib
+width	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^	size_t width;$/;"	member	line:22	struct:DLib::grid_size
+height	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^	size_t height;$/;"	member	line:23	struct:DLib::grid_size
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^	const DLib::size<float> unit; \/\/px$/;"	member	line:24	struct:DLib::grid_size
+grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^	grid_size(DLib::size<float> u) :width(0),height(0),unit(u) {}$/;"	function	line:27	struct:DLib::grid_size	signature:(DLib::size<float> u)
+grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^	grid_size(size_t w, size_t h, DLib::size<float> u) :width(w),height(h),unit(u) {}$/;"	function	line:28	struct:DLib::grid_size	signature:(size_t w, size_t h, DLib::size<float> u)
+area	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.h	/^	inline size_t area() const { return width * height; }$/;"	function	line:31	struct:DLib::grid_size	signature:() const
+comv_to_px	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^DLib::size<float> DLib::grid_size::comv_to_px()$/;"	function	line:7	class:DLib::grid_size	signature:()
+copy	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^void DLib::grid_size::copy(const DLib::grid_size &other)$/;"	function	line:12	class:DLib::grid_size	signature:(const DLib::grid_size &other)
+operator <	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^bool DLib::operator<(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:22	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator >	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^bool DLib::operator>(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:28	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator ==	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^bool DLib::operator==(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:33	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator !=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^bool DLib::operator!=(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:39	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator <=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^bool DLib::operator<=(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:44	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator >=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:49	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_grid_size.cpp	/^std::ostream& DLib::operator<<(std::ostream& os, const DLib::grid_size& gd_size)$/;"	function	line:54	class:DLib	signature:(std::ostream& os, const DLib::grid_size& gd_size)
+create	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane* Pane::create(size_t pWidth, size_t pHeight)$/;"	function	line:11	class:Pane	signature:(size_t pWidth, size_t pHeight)
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane::Pane(DLib::size<float> pAts, DLib::size<float> pTts, size_t pWidth, size_t pHeight)$/;"	function	line:27	class:Pane	signature:(DLib::size<float> pAts, DLib::size<float> pTts, size_t pWidth, size_t pHeight)
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane::Pane()$/;"	function	line:34	class:Pane	signature:()
+setSpriteScale	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^void Pane::setSpriteScale(float scale)$/;"	function	line:41	class:Pane	signature:(float scale)
+initWithSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^bool Pane::initWithSize(size_t pWidth, size_t pHeight)$/;"	function	line:55	class:Pane	signature:(size_t pWidth, size_t pHeight)
+TM2D_W_D_LIB_PANE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^#define TM2D_W_D_LIB_PANE_H$/;"	macro	line:2
+TM2DwD	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^namespace TM2DwD$/;"	namespace	line:8
+TM2DwDUnit	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^	namespace TM2DwDUnit$/;"	namespace	line:10	namespace:TM2DwD
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^class TM2DwD::TM2DwDUnit::Pane : public cocos2d::Ref$/;"	class	line:16	class:TM2DwD::TM2DwDUnit
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:8	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:24	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:101	class:HelloWorld	signature:(Ref* pSender)
+D_LIB_SIZE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^#define D_LIB_SIZE_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^namespace DLib$/;"	namespace	line:6
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^template <typename T> struct DLib::size$/;"	struct	line:11	class:DLib
+width	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	T width;$/;"	member	line:13	struct:DLib::size
+height	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	T height;$/;"	member	line:14	struct:DLib::size
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	size() :width(0),height(0) {}$/;"	function	line:17	struct:DLib::size	signature:()
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	size(T w, T h) :width(w),height(h) {}$/;"	function	line:18	struct:DLib::size	signature:(T w, T h)
+area	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	inline T area() const { return width * height; }$/;"	function	line:19	struct:DLib::size	signature:() const
+scale	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	inline void scale(float scale) { width *= scale; height *= scale; }$/;"	function	line:20	struct:DLib::size	signature:(float scale)
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^namespace DLib$/;"	namespace	line:24
+operator <	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator<(const size<T>& a, const size<T>& b)$/;"	function	line:27	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
+operator >	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator>(const size<T>& a, const size<T>& b)$/;"	function	line:33	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
+operator ==	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator==(const size<T>& a, const size<T>& b)$/;"	function	line:39	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
+operator !=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator!=(const size<T>& a, const size<T>& b)$/;"	function	line:45	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
+operator <=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator<=(const size<T>& a, const size<T>& b)$/;"	function	line:51	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
+operator >=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator>=(const size<T>& a, const size<T>& b)$/;"	function	line:57	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
+operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	std::ostream& operator<<(std::ostream& os, const size<T>& psize)$/;"	function	line:63	namespace:DLib	signature:(std::ostream& os, const size<T>& psize)

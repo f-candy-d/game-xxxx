@@ -16,11 +16,27 @@ namespace TM2DwD
 class TM2DwD::TM2DwDUnit::Pane : public cocos2d::Ref
 {
 public:
-	static Pane* create();
+	static Pane* create(size_t pWidth, size_t pHeight);
+
+	/**
+	 * @param pAts : Actual-Tile-Size
+	 * @param pTts : Tile-Texture-Size
+	 * @param pWidth : Width of a pane
+	 * @param pHeight : Height of a pane
+	 */
+	Pane(DLib::size<float> pAts, DLib::size<float> pTts,size_t pWidth, size_t pHeight);
 	Pane();
+	void setSpriteScale(float scale);
+
+protected:
+	bool initWithSize(size_t pWidth, size_t pHeight);
 
 private:
-	std::vector<int> mTiles;
+	CC_SYNTHESIZE_READONLY(DLib::grid_size, mGridSize, GridSize);
+	CC_SYNTHESIZE_READONLY(const DLib::size<float>, mTileTextureSize, TileTextureSize);
+	CC_SYNTHESIZE_READONLY(DLib::size<float>, mActualTileSize, ActualTileSize);
+	CC_SYNTHESIZE_READONLY(float, mSpriteScale, SpriteScale);
+	CC_SYNTHESIZE_PASS_BY_REF(std::vector<int>, mTiles, Tiles);
 };
 
 #endif
