@@ -13,7 +13,7 @@ Pane* Pane::create(size_t pWidth, size_t pHeight)
 	DLib::size<float> vTts(64, 64); // Tile-Texture-Size
 	auto vAts = vTts; // Actual-Tile-Size
 
-	auto ret = new Pane(vAts, vTts, pWidth, pHeight);
+	auto ret = new Pane(vAts, vTts);
 	if(ret->initWithSize(pWidth, pHeight))
 	{
 		ret->autorelease();
@@ -24,8 +24,8 @@ Pane* Pane::create(size_t pWidth, size_t pHeight)
 	return nullptr;
 }
 
-Pane::Pane(DLib::size<float> pAts, DLib::size<float> pTts, size_t pWidth, size_t pHeight)
-:mGridSize(pWidth, pHeight, pAts)
+Pane::Pane(DLib::size<float> pAts, DLib::size<float> pTts)
+:mGridSize(pAts)
 ,mTileTextureSize(pTts)
 ,mActualTileSize(pAts)
 ,mSpriteScale(1.0)
@@ -57,6 +57,8 @@ bool Pane::initWithSize(size_t pWidth, size_t pHeight)
 	if(mGridSize.unit.width < 0 || mGridSize.unit.height < 0)
 		return false;
 
+	mGridSize.width = pWidth;
+	mGridSize.height = pHeight;
 	mTiles.reserve(mGridSize.area());
 
 	return true;

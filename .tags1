@@ -4,20 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-D_LIB_SIZE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^#define D_LIB_SIZE_H$/;"	macro	line:2
-DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^namespace DLib$/;"	namespace	line:6
-size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^template <typename T> struct DLib::size$/;"	struct	line:11	class:DLib
-width	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	T width;$/;"	member	line:13	struct:DLib::size
-height	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	T height;$/;"	member	line:14	struct:DLib::size
-size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	size() :width(0),height(0) {}$/;"	function	line:17	struct:DLib::size	signature:()
-size	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	size(T w, T h) :width(w),height(h) {}$/;"	function	line:18	struct:DLib::size	signature:(T w, T h)
-area	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	inline T area() const { return width * height; }$/;"	function	line:19	struct:DLib::size	signature:() const
-scale	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	inline void scale(float scale) { width *= scale; height *= scale; }$/;"	function	line:20	struct:DLib::size	signature:(float scale)
-DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^namespace DLib$/;"	namespace	line:24
-operator <	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator<(const size<T>& a, const size<T>& b)$/;"	function	line:27	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
-operator >	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator>(const size<T>& a, const size<T>& b)$/;"	function	line:33	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
-operator ==	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator==(const size<T>& a, const size<T>& b)$/;"	function	line:39	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
-operator !=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator!=(const size<T>& a, const size<T>& b)$/;"	function	line:45	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
-operator <=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator<=(const size<T>& a, const size<T>& b)$/;"	function	line:51	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
-operator >=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator>=(const size<T>& a, const size<T>& b)$/;"	function	line:57	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
-operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	std::ostream& operator<<(std::ostream& os, const size<T>& psize)$/;"	function	line:63	namespace:DLib	signature:(std::ostream& os, const size<T>& psize)
+TM2D_W_D_LIB_PANE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^#define TM2D_W_D_LIB_PANE_H$/;"	macro	line:2
+TM2DwD	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^namespace TM2DwD$/;"	namespace	line:8
+TM2DwDUnit	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^	namespace TM2DwDUnit$/;"	namespace	line:10	namespace:TM2DwD
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^class TM2DwD::TM2DwDUnit::Pane : public cocos2d::Ref$/;"	class	line:16	class:TM2DwD::TM2DwDUnit
