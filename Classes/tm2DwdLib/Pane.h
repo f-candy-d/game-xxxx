@@ -19,10 +19,9 @@ public:
 	static Pane* create(size_t pWidth, size_t pHeight);
 
 	/**
-	 * @param pAts : Actual-Tile-Size
 	 * @param pTts : Tile-Texture-Size
 	 */
-	Pane(DLib::size<float> pAts, DLib::size<float> pTts);
+	Pane(DLib::size<float> pTts);
 	Pane();
 	void setSpriteScale(float scale);
 

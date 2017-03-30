@@ -11,9 +11,8 @@ using namespace TM2DwD::TM2DwDUnit;
 Pane* Pane::create(size_t pWidth, size_t pHeight)
 {
 	DLib::size<float> vTts(64, 64); // Tile-Texture-Size
-	auto vAts = vTts; // Actual-Tile-Size
 
-	auto ret = new Pane(vAts, vTts);
+	auto ret = new Pane(vTts);
 	if(ret->initWithSize(pWidth, pHeight))
 	{
 		ret->autorelease();
@@ -24,10 +23,10 @@ Pane* Pane::create(size_t pWidth, size_t pHeight)
 	return nullptr;
 }
 
-Pane::Pane(DLib::size<float> pAts, DLib::size<float> pTts)
-:mGridSize(pAts)
+Pane::Pane(DLib::size<float> pTts)
+:mGridSize(pTts)
 ,mTileTextureSize(pTts)
-,mActualTileSize(pAts)
+,mActualTileSize(pTts)
 ,mSpriteScale(1.0)
 {}
 

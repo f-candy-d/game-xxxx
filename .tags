@@ -831,10 +831,10 @@ operator <=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	
 operator >=	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	bool operator>=(const size<T>& a, const size<T>& b)$/;"	function	line:57	namespace:DLib	signature:(const size<T>& a, const size<T>& b)
 operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/DLib/dlib_size.h	/^	std::ostream& operator<<(std::ostream& os, const size<T>& psize)$/;"	function	line:63	namespace:DLib	signature:(std::ostream& os, const size<T>& psize)
 create	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane* Pane::create(size_t pWidth, size_t pHeight)$/;"	function	line:11	class:Pane	signature:(size_t pWidth, size_t pHeight)
-Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane::Pane(DLib::size<float> pAts, DLib::size<float> pTts)$/;"	function	line:27	class:Pane	signature:(DLib::size<float> pAts, DLib::size<float> pTts)
-Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane::Pane()$/;"	function	line:34	class:Pane	signature:()
-setSpriteScale	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^void Pane::setSpriteScale(float scale)$/;"	function	line:41	class:Pane	signature:(float scale)
-initWithSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^bool Pane::initWithSize(size_t pWidth, size_t pHeight)$/;"	function	line:55	class:Pane	signature:(size_t pWidth, size_t pHeight)
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane::Pane(DLib::size<float> pTts)$/;"	function	line:26	class:Pane	signature:(DLib::size<float> pTts)
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^Pane::Pane()$/;"	function	line:33	class:Pane	signature:()
+setSpriteScale	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^void Pane::setSpriteScale(float scale)$/;"	function	line:40	class:Pane	signature:(float scale)
+initWithSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^bool Pane::initWithSize(size_t pWidth, size_t pHeight)$/;"	function	line:54	class:Pane	signature:(size_t pWidth, size_t pHeight)
 TM2D_W_D_LIB_PANE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^#define TM2D_W_D_LIB_PANE_H$/;"	macro	line:2
 TM2DwD	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^namespace TM2DwD$/;"	namespace	line:8
 TM2DwDUnit	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^	namespace TM2DwDUnit$/;"	namespace	line:10	namespace:TM2DwD
