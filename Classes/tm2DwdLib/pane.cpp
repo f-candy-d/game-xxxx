@@ -16,17 +16,17 @@ Pane::Pane()
 ,is_modified_(false)
 {}
 
-Pane::Pane(DLib::size<size_t> v_size, int v_tile_type_no_tile)
-:kTileTypeNoTile(v_tile_type_no_tile)
-,grid_size_(v_size.width, v_size.height)
+Pane::Pane(DLib::size<size_t> _size, int _tile_type_no_tile)
+:kTileTypeNoTile(_tile_type_no_tile)
+,grid_size_(_size.width, _size.height)
 ,grid_point_(0, 0)
-,tiles_(v_size.area(), kTileTypeNoTile)
+,tiles_(_size.area(), kTileTypeNoTile)
 ,is_modified_(false)
 {}
 
-Pane* Pane::create(DLib::size<size_t> v_size, const AtlasInfo* v_atlas_info)
+Pane* Pane::create(DLib::size<size_t> _size, const AtlasInfo* _atlas_info)
 {
-	auto ret = new Pane(v_size, v_atlas_info->tile_type_no_tile_);
+	auto ret = new Pane(_size, _atlas_info->tile_type_no_tile_);
 	if(ret->init())
 	{
 		ret->autorelease();
@@ -38,27 +38,27 @@ Pane* Pane::create(DLib::size<size_t> v_size, const AtlasInfo* v_atlas_info)
 	return nullptr;
 }
 
-int Pane::getTypeAt(int v_x, int v_y)
+int Pane::getTypeAt(int _x, int _y)
 const
 {
-	return this->getTypeAt(grid_size_.width * v_y + v_x);
+	return this->getTypeAt(grid_size_.width * _y + _x);
 }
 
-int Pane::getTypeAt(int v_index)
+int Pane::getTypeAt(int _index)
 const
 {
-	return tiles_[v_index];
+	return tiles_[_index];
 }
 
-void Pane::insertTypeAt(int v_x, int v_y, int v_type)
+void Pane::insertTypeAt(int _x, int _y, int _type)
 {
-	this->insertTypeAt(grid_size_.width * v_y + v_x, v_type);
+	this->insertTypeAt(grid_size_.width * _y + _x, _type);
 }
 
-// void Pane::insertTypeAt(int v_index, int v_type)
-void Pane::insertTypeAt(int v_index, int v_type)
+// void Pane::insertTypeAt(int _index, int _type)
+void Pane::insertTypeAt(int _index, int _type)
 {
-	tiles_[v_index] = v_type;
+	tiles_[_index] = _type;
 }
 
 /**

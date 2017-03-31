@@ -21,19 +21,19 @@ class tm2d_w_d::tm2d_w_d_unit::Pane : public cocos2d::Ref
 {
 public:
 	Pane();
-	Pane(DLib::size<size_t> v_size, int v_tile_type_no_tile);
-	static Pane* create(DLib::size<size_t> v_size, const AtlasInfo* v_atlas_info);
-	int getTypeAt(int v_x, int v_y) const;
-	int getTypeAt(int v_index) const;
-	void insertTypeAt(int v_x, int v_y, int v_type);
-	void insertTypeAt(int v_index, int v_type);
+	Pane(DLib::size<size_t> _size, int _tile_type_no_tile);
+	static Pane* create(DLib::size<size_t> _size, const AtlasInfo* _atlas_info);
+	int getTypeAt(int _x, int _y) const;
+	int getTypeAt(int _index) const;
+	void insertTypeAt(int _x, int _y, int _type);
+	void insertTypeAt(int _index, int _type);
 	// accessors and mutators
 	inline DLib::size<size_t> get_grid_size() const { return grid_size_; }
 	inline bool is_modified() const { return is_modified_; }
 	inline std::vector<int>& get_tiles() { return tiles_; }
 	inline const std::vector<int>& get_tiles() const { return tiles_; }
 	inline DLib::vec2<unsigned int> get_grid_point() const { return grid_point_; }
-	inline void set_grid_point(DLib::vec2<unsigned int> v_val) { grid_point_ = v_val; }
+	inline void set_grid_point(DLib::vec2<unsigned int> _val) { grid_point_ = _val; }
 
 protected:
 	bool init();
