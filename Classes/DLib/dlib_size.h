@@ -8,7 +8,7 @@ namespace DLib
 	template <typename T> struct size;
 }
 
-template <typename T> struct DLib::size
+template <typename T = float> struct DLib::size
 {
 	T width;
 	T height;

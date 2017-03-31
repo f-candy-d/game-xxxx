@@ -6,7 +6,7 @@
 
 namespace DLib
 {
-	template <typename T> struct vec2;
+	template <typename T = float> struct vec2;
 }
 
 template <typename T> struct DLib::vec2
