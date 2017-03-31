@@ -62,7 +62,7 @@ namespace DLib
 	template <typename T>
 	std::ostream& operator<<(std::ostream& os, const size<T>& psize)
 	{
-		return (os << '(' << psize.width << " , " << psize.height << ')');
+		return (os << '(' << psize.width << " x " << psize.height << ')');
 	}
 }
 

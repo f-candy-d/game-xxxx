@@ -3,6 +3,22 @@
 /**
  * publc
  */
+DLib::grid_point::grid_point(DLib::size<float> unit)
+:x(0)
+,y(0)
+,unit(unit)
+,rep_point_scale_x(0.0)
+,rep_point_scale_y(0.0)
+{}
+
+DLib::grid_point::grid_point(unsigned int p, unsigned int q, DLib::size<float> unit)
+:x(p)
+,y(q)
+,unit(unit)
+,rep_point_scale_x(0.0)
+,rep_point_scale_y(0.0)
+{}
+
 void DLib::grid_point::set_representative_point(RepresentativePoint type)
 {
 	switch (type)

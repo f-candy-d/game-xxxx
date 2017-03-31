@@ -4,7 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-TM2D_W_D_LIB_PANE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^#define TM2D_W_D_LIB_PANE_H$/;"	macro	line:2
-TM2DwD	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^namespace TM2DwD$/;"	namespace	line:8
-TM2DwDUnit	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^	namespace TM2DwDUnit$/;"	namespace	line:10	namespace:TM2DwD
-Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.h	/^class TM2DwD::TM2DwDUnit::Pane : public cocos2d::Ref$/;"	class	line:16	class:TM2DwD::TM2DwDUnit
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:8	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:24	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:93	class:HelloWorld	signature:(Ref* pSender)

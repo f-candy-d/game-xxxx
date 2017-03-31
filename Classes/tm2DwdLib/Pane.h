@@ -2,7 +2,8 @@
 #define TM2D_W_D_LIB_PANE_H
 
 #include "../../cocos2d/cocos/cocos2d.h"
-#include "DLib/dlib_grid_size.h"
+#include "DLib/dlib_size.h"
+#include "DLib/dlib_vec2.h"
 #include <vector>
 
 namespace TM2DwD
@@ -17,23 +18,24 @@ class TM2DwD::TM2DwDUnit::Pane : public cocos2d::Ref
 {
 public:
 	static Pane* create(size_t pWidth, size_t pHeight);
-
-	/**
-	 * @param pTts : Tile-Texture-Size
-	 */
-	Pane(DLib::size<float> pTts);
+	Pane(size_t pWidth, size_t pHeight, int pTileTypeNoTile);
 	Pane();
-	void setSpriteScale(float scale);
+	const int& getTypeAt(int x, int y) const;
+	const int& getTypeAt(int index) const;
+	void insertTypeAt(int x, int y, int type);
+	void insertTypeAt(int index, int type);
+	// inline methods
+	inline bool isModified() { return mIsModified; }
 
 protected:
-	bool initWithSize(size_t pWidth, size_t pHeight);
+	bool init();
 
 private:
-	CC_SYNTHESIZE_READONLY(DLib::grid_size, mGridSize, GridSize);
-	CC_SYNTHESIZE_READONLY(const DLib::size<float>, mTileTextureSize, TileTextureSize);
-	CC_SYNTHESIZE_READONLY(DLib::size<float>, mActualTileSize, ActualTileSize);
-	CC_SYNTHESIZE_READONLY(float, mSpriteScale, SpriteScale);
+	const int TILE_TYPE_NO_TILE;
+	CC_SYNTHESIZE_READONLY(const DLib::size<size_t>, mGridSize, GridSize);
+	CC_SYNTHESIZE(DLib::vec2<unsigned int>, mGridPoint, GridPoint);
 	CC_SYNTHESIZE_PASS_BY_REF(std::vector<int>, mTiles, Tiles);
+	bool mIsModified; // read-only
 };
 
 #endif

@@ -53,5 +53,5 @@ bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)
 
 std::ostream& DLib::operator<<(std::ostream& os, const DLib::grid_size& gd_size)
 {
-	return (os << '[' << gd_size.width << " , " << gd_size.height << ']');
+	return (os << '[' << gd_size.width << " x " << gd_size.height << ']');
 }
