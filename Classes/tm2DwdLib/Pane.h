@@ -11,14 +11,17 @@ namespace TM2DwD
 	namespace TM2DwDUnit
 	{
 		class Pane;
+
+		//forward declaration
+		struct AtlasInfo;
 	}
 }
 
 class TM2DwD::TM2DwDUnit::Pane : public cocos2d::Ref
 {
 public:
-	static Pane* create(size_t pWidth, size_t pHeight);
-	Pane(size_t pWidth, size_t pHeight, int pTileTypeNoTile);
+	static Pane* create(DLib::size<size_t> pSize, const AtlasInfo* pAtlasInfo);
+	Pane(DLib::size<size_t> pSize, int pTtnt);
 	Pane();
 	const int& getTypeAt(int x, int y) const;
 	const int& getTypeAt(int index) const;

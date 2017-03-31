@@ -1,4 +1,5 @@
 #include "Pane.h"
+#include "InfoClasses.h"
 
 /**
  * TM2DwD::TM2DwDUnit::Pane class
@@ -8,9 +9,9 @@ using namespace TM2DwD::TM2DwDUnit;
 /**
  * public
  */
-Pane* Pane::create(size_t pWidth, size_t pHeight)
+Pane* Pane::create(DLib::size<size_t> pSize, const AtlasInfo* pAtlasInfo)
 {
-	auto ret = new Pane(pWidth, pHeight, -1);
+	auto ret = new Pane(pSize, pAtlasInfo->tile_type_no_tile);
 	if(ret->init())
 	{
 		ret->autorelease();
@@ -18,14 +19,15 @@ Pane* Pane::create(size_t pWidth, size_t pHeight)
 	}
 
 	CC_SAFE_DELETE(ret);
+
 	return nullptr;
 }
 
-Pane::Pane(size_t pWidth, size_t pHeight, int pTileTypeNoTile)
-:TILE_TYPE_NO_TILE(pTileTypeNoTile)
-,mGridSize(pWidth, pHeight)
+Pane::Pane(DLib::size<size_t> pSize, int pTtnt)
+:TILE_TYPE_NO_TILE(pTtnt)
+,mGridSize(pSize.width, pSize.height)
 ,mGridPoint(0, 0)
-,mTiles(pWidth * pHeight, TILE_TYPE_NO_TILE)
+,mTiles(pSize.area(), TILE_TYPE_NO_TILE)
 ,mIsModified(false)
 {}
 

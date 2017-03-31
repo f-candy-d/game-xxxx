@@ -6,10 +6,10 @@
 
 namespace DLib
 {
-	template <typename T = float> struct vec2;
+	template <typename T> struct vec2;
 }
 
-template <typename T> struct DLib::vec2
+template <typename T = float> struct DLib::vec2
 {
 	T x;
 	T y;

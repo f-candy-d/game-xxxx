@@ -2,6 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include <iostream>
 #include "tm2DwdLib/Pane.h"
+#include "tm2DwdLib/InfoClasses.h"
 
 USING_NS_CC;
 
@@ -76,7 +77,8 @@ bool HelloWorld::init()
     // this->addChild(sprite, 0);
 
     //NOTE : TEST
-    auto pane = TM2DwD::TM2DwDUnit::Pane::create(10, 10);
+    TM2DwD::TM2DwDUnit::AtlasInfo atlas;
+    auto pane = TM2DwD::TM2DwDUnit::Pane::create(DLib::size<size_t>(10, 10), &atlas);
     std::cout << "pane::GridSize = " << pane->getGridSize() << '\n';
     std::cout << "pane::GridPoint = " << pane->getGridPoint() << '\n';
     int c = 0;
