@@ -861,6 +861,61 @@ getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^c
 insertTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^void Pane::insertTypeAt(int x, int y, int type)$/;"	function	line:51	class:Pane	signature:(int x, int y, int type)
 insertTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^void Pane::insertTypeAt(int index, int type)$/;"	function	line:56	class:Pane	signature:(int index, int type)
 init	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/Pane.cpp	/^bool Pane::init()$/;"	function	line:64	class:Pane	signature:()
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:8	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:24	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:93	class:HelloWorld	signature:(Ref* pSender)
+TM2D_W_D_LIB_INFO_CLASSES_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^#define TM2D_W_D_LIB_INFO_CLASSES_H$/;"	macro	line:2
+tm2d_w_d	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^namespace tm2d_w_d$/;"	namespace	line:9
+tm2d_w_d_unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	namespace tm2d_w_d_unit$/;"	namespace	line:11	namespace:tm2d_w_d
+MapInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^struct tm2d_w_d::tm2d_w_d_unit::MapInfo$/;"	struct	line:21	class:tm2d_w_d::tm2d_w_d_unit
+size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	DLib::size<size_t> size_;$/;"	member	line:23	struct:tm2d_w_d::tm2d_w_d_unit::MapInfo
+architecture_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::vector<std::string> architecture_;$/;"	member	line:24	struct:tm2d_w_d::tm2d_w_d_unit::MapInfo
+MapInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	MapInfo()$/;"	function	line:26	struct:tm2d_w_d::tm2d_w_d_unit::MapInfo	signature:()
+LayerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^struct tm2d_w_d::tm2d_w_d_unit::LayerInfo$/;"	struct	line:31	class:tm2d_w_d::tm2d_w_d_unit
+layer_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string layer_name_;$/;"	member	line:33	struct:tm2d_w_d::tm2d_w_d_unit::LayerInfo
+atlas_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string atlas_name_;$/;"	member	line:34	struct:tm2d_w_d::tm2d_w_d_unit::LayerInfo
+terrain_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string terrain_name_;$/;"	member	line:35	struct:tm2d_w_d::tm2d_w_d_unit::LayerInfo
+is_visible_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	bool is_visible_;$/;"	member	line:36	struct:tm2d_w_d::tm2d_w_d_unit::LayerInfo
+is_editable_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	bool is_editable_;$/;"	member	line:37	struct:tm2d_w_d::tm2d_w_d_unit::LayerInfo
+LayerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	LayerInfo()$/;"	function	line:39	struct:tm2d_w_d::tm2d_w_d_unit::LayerInfo	signature:()
+BundlerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^struct tm2d_w_d::tm2d_w_d_unit::BundlerInfo$/;"	struct	line:48	class:tm2d_w_d::tm2d_w_d_unit
+bundler_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string bundler_name_;$/;"	member	line:50	struct:tm2d_w_d::tm2d_w_d_unit::BundlerInfo
+architecture_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::vector<std::string> architecture_;$/;"	member	line:51	struct:tm2d_w_d::tm2d_w_d_unit::BundlerInfo
+BundlerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	BundlerInfo()$/;"	function	line:53	struct:tm2d_w_d::tm2d_w_d_unit::BundlerInfo	signature:()
+AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^struct tm2d_w_d::tm2d_w_d_unit::AtlasInfo$/;"	struct	line:58	class:tm2d_w_d::tm2d_w_d_unit
+atlas_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string atlas_name_;$/;"	member	line:60	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+atlas_src_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string atlas_src_name_;$/;"	member	line:61	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+texture_size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	DLib::size<float> texture_size_;$/;"	member	line:62	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+num_tile_type_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	int num_tile_type_;$/;"	member	line:63	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+tile_type_no_tile_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	int tile_type_no_tile_;$/;"	member	line:64	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+texture_positions_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::unordered_map<int, DLib::vec2<float>> texture_positions_;$/;"	member	line:65	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	AtlasInfo()$/;"	function	line:67	struct:tm2d_w_d::tm2d_w_d_unit::AtlasInfo	signature:()
+TerrainInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^struct tm2d_w_d::tm2d_w_d_unit::TerrainInfo$/;"	struct	line:76	class:tm2d_w_d::tm2d_w_d_unit
+terrain_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string terrain_name_;$/;"	member	line:78	struct:tm2d_w_d::tm2d_w_d_unit::TerrainInfo
+terrain_src_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string terrain_src_name_;$/;"	member	line:79	struct:tm2d_w_d::tm2d_w_d_unit::TerrainInfo
+atlas_name_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	std::string atlas_name_;$/;"	member	line:80	struct:tm2d_w_d::tm2d_w_d_unit::TerrainInfo
+size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	DLib::size<size_t> size_;$/;"	member	line:81	struct:tm2d_w_d::tm2d_w_d_unit::TerrainInfo
+TerrainInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/info_classes.h	/^	TerrainInfo()$/;"	function	line:84	struct:tm2d_w_d::tm2d_w_d_unit::TerrainInfo	signature:()
+TM2D_W_D_LIB_PANE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^#define TM2D_W_D_LIB_PANE_H$/;"	macro	line:2
+tm2d_w_d	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^namespace tm2d_w_d$/;"	namespace	line:9
+tm2d_w_d_unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	namespace tm2d_w_d_unit$/;"	namespace	line:11	namespace:tm2d_w_d
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^class tm2d_w_d::tm2d_w_d_unit::Pane : public cocos2d::Ref$/;"	class	line:20	class:tm2d_w_d::tm2d_w_d_unit
+get_grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	inline DLib::size<size_t> get_grid_size() const { return grid_size_; }$/;"	function	line:31	class:tm2d_w_d::tm2d_w_d_unit::Pane	signature:() const
+is_modified	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	inline bool is_modified() const { return is_modified_; }$/;"	function	line:32	class:tm2d_w_d::tm2d_w_d_unit::Pane	signature:() const
+get_tiles	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	inline std::vector<int>& get_tiles() { return tiles_; }$/;"	function	line:33	class:tm2d_w_d::tm2d_w_d_unit::Pane	signature:()
+get_tiles	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	inline const std::vector<int>& get_tiles() const { return tiles_; }$/;"	function	line:34	class:tm2d_w_d::tm2d_w_d_unit::Pane	signature:() const
+get_grid_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	inline DLib::vec2<unsigned int> get_grid_point() const { return grid_point_; }$/;"	function	line:35	class:tm2d_w_d::tm2d_w_d_unit::Pane	signature:() const
+set_grid_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	inline void set_grid_point(DLib::vec2<unsigned int> v_val) { grid_point_ = v_val; }$/;"	function	line:36	class:tm2d_w_d::tm2d_w_d_unit::Pane	signature:(DLib::vec2<unsigned int> v_val)
+kTileTypeNoTile	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	const int kTileTypeNoTile;$/;"	member	line:43	class:tm2d_w_d::tm2d_w_d_unit::Pane
+grid_size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	const DLib::size<size_t> grid_size_;$/;"	member	line:45	class:tm2d_w_d::tm2d_w_d_unit::Pane
+is_modified_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	bool is_modified_;$/;"	member	line:46	class:tm2d_w_d::tm2d_w_d_unit::Pane
+tiles_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	std::vector<int> tiles_;$/;"	member	line:47	class:tm2d_w_d::tm2d_w_d_unit::Pane
+grid_point_	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.h	/^	DLib::vec2<unsigned int> grid_point_;$/;"	member	line:49	class:tm2d_w_d::tm2d_w_d_unit::Pane
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:9	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:25	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:96	class:HelloWorld	signature:(Ref* pSender)
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^Pane::Pane()$/;"	function	line:12	class:Pane	signature:()
+Pane	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^Pane::Pane(DLib::size<size_t> v_size, int v_tile_type_no_tile)$/;"	function	line:19	class:Pane	signature:(DLib::size<size_t> v_size, int v_tile_type_no_tile)
+create	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^Pane* Pane::create(DLib::size<size_t> v_size, const AtlasInfo* v_atlas_info)$/;"	function	line:27	class:Pane	signature:(DLib::size<size_t> v_size, const AtlasInfo* v_atlas_info)
+getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^int Pane::getTypeAt(int v_x, int v_y)$/;"	function	line:41	class:Pane	signature:(int v_x, int v_y) const
+getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^int Pane::getTypeAt(int v_index)$/;"	function	line:47	class:Pane	signature:(int v_index) const
+insertTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^void Pane::insertTypeAt(int v_x, int v_y, int v_type)$/;"	function	line:53	class:Pane	signature:(int v_x, int v_y, int v_type)
+insertTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^void Pane::insertTypeAt(int v_index, int v_type)$/;"	function	line:59	class:Pane	signature:(int v_index, int v_type)
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/pane.cpp	/^bool Pane::init()$/;"	function	line:67	class:Pane	signature:()

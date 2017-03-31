@@ -1,8 +1,8 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include <iostream>
-#include "tm2DwdLib/Pane.h"
-#include "tm2DwdLib/InfoClasses.h"
+#include "tm2DwdLib/pane.h"
+#include "tm2DwdLib/info_classes.h"
 
 USING_NS_CC;
 
@@ -77,12 +77,13 @@ bool HelloWorld::init()
     // this->addChild(sprite, 0);
 
     //NOTE : TEST
-    TM2DwD::TM2DwDUnit::AtlasInfo atlas;
-    auto pane = TM2DwD::TM2DwDUnit::Pane::create(DLib::size<size_t>(10, 10), &atlas);
-    std::cout << "pane::GridSize = " << pane->getGridSize() << '\n';
-    std::cout << "pane::GridPoint = " << pane->getGridPoint() << '\n';
+
+    tm2d_w_d::tm2d_w_d_unit::AtlasInfo mAtlas;
+    auto fPane = tm2d_w_d::tm2d_w_d_unit::Pane::create(DLib::size<size_t>(10, 10), &mAtlas);
+    std::cout << "fPane::GridSize = " << fPane->get_grid_size() << '\n';
+    std::cout << "fPane::GridPoint = " << fPane->get_grid_point() << '\n';
     int c = 0;
-    for(auto type : pane->getTiles())
+    for(auto type : fPane->get_tiles())
     {
         std::cout << "[" << c << "]type => " << type << '\n';
         c++;
