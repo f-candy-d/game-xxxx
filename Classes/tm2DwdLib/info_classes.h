@@ -37,9 +37,9 @@ struct tm2d_w_d::tm2d_w_d_unit::LayerInfo
 	bool is_editable_;
 
 	LayerInfo()
-	:layer_name_("")
-	,atlas_name_("")
-	,terrain_name_("")
+	:layer_name_(NULL)
+	,atlas_name_(NULL)
+	,terrain_name_(NULL)
 	,is_visible_(false)
 	,is_editable_(true)
 	{}
@@ -51,7 +51,7 @@ struct tm2d_w_d::tm2d_w_d_unit::BundlerInfo
 	std::vector<std::string> architecture_;
 
 	BundlerInfo()
-	:bundler_name_("")
+	:bundler_name_(NULL)
 	{}
 };
 
@@ -65,8 +65,8 @@ struct tm2d_w_d::tm2d_w_d_unit::AtlasInfo
 	std::unordered_map<int, DLib::vec2<float>> texture_positions_;
 
 	AtlasInfo()
-	:atlas_name_("")
-	,atlas_src_name_("")
+	:atlas_name_(NULL)
+	,atlas_src_name_(NULL)
 	,texture_size_(0.0, 0.0)
 	,num_tile_type_(0)
 	,tile_type_no_tile_(-1)
@@ -82,9 +82,9 @@ struct tm2d_w_d::tm2d_w_d_unit::TerrainInfo
 	// DLib::size<size_t> pane_size;
 
 	TerrainInfo()
-	:terrain_name_("")
-	,terrain_src_name_("")
-	,atlas_name_("")
+	:terrain_name_(NULL)
+	,terrain_src_name_(NULL)
+	,atlas_name_(NULL)
 	,size_(0, 0)
 	{}
 };

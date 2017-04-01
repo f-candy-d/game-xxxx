@@ -1,7 +1,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include <iostream>
-#include "tm2DwdLib/pane.h"
+#include "tm2DwdLib/block.h"
 #include "tm2DwdLib/info_classes.h"
 
 USING_NS_CC;
@@ -79,11 +79,11 @@ bool HelloWorld::init()
     //NOTE : TEST
 
     tm2d_w_d::tm2d_w_d_unit::AtlasInfo mAtlas;
-    auto fPane = tm2d_w_d::tm2d_w_d_unit::Pane::create(DLib::size<size_t>(10, 10), &mAtlas);
-    std::cout << "fPane::GridSize = " << fPane->get_grid_size() << '\n';
-    std::cout << "fPane::GridPoint = " << fPane->get_grid_point() << '\n';
+    auto fBlock = tm2d_w_d::tm2d_w_d_unit::Block::create(DLib::size<size_t>(10, 10), &mAtlas);
+    std::cout << "fBlock::GridSize = " << fBlock->get_size() << '\n';
+    std::cout << "fBlock::GridPoint = " << fBlock->get_position() << '\n';
     int c = 0;
-    for(auto type : fPane->get_tiles())
+    for(auto type : fBlock->get_tiles())
     {
         std::cout << "[" << c << "]type => " << type << '\n';
         c++;
