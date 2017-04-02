@@ -1,8 +1,8 @@
 #ifndef TM2D_W_D_LIB_INFO_CLASSES_H
 #define TM2D_W_D_LIB_INFO_CLASSES_H
 
-#include "../../cocos2d/cocos/cocos2d.h"
-#include "../DLib/dlib_size.h"
+#include "../../../cocos2d/cocos/cocos2d.h"
+#include "../../dlib/dlib_size.h"
 #include <string>
 #include <unordered_map>
 

@@ -1,8 +1,8 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include <iostream>
-#include "tm2DwdLib/block.h"
-#include "tm2DwdLib/info_classes.h"
+#include "dlib_cc/lts_map/block.h"
+#include "dlib_cc/lts_map/info_classes.h"
 
 USING_NS_CC;
 

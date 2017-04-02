@@ -4,6 +4,5 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:9	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:25	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:96	class:HelloWorld	signature:(Ref* pSender)
+__HELLOWORLD_SCENE_H__	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.h	/^#define __HELLOWORLD_SCENE_H__$/;"	macro	line:2
+HelloWorld	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.h	/^class HelloWorld : public cocos2d::Layer$/;"	class	line:6
