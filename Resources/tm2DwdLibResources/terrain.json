@@ -1,0 +1,17 @@
+{
+	"terrain_info" :
+	[
+		{
+			"terrain_name" : "terrain_A",
+			"terrain_src_name" : "terrain_a.dat",
+			"atlas_name" : "atlas-A",
+			"size" : [1024, 1024],
+			"block_size" : [32, 32],
+			"location_pin_map" :
+			{
+				"toilet" : [512, 512],
+				"my_home" : [0,777]
+			}
+		}
+	]
+}

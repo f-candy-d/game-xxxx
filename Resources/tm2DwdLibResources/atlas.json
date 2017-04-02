@@ -1,0 +1,19 @@
+{
+	"atlas_info" :
+	[
+		{
+			"atlas_name" : "atlas-A",
+			"atlas_src_name" : "tile_atlas_a.png",
+			"texture_size" : [64, 64],
+			"num_tile_type" : 4,
+			"tile_type_no_tile" : -1,
+			"texture_position_map" :
+			[
+				[0, 0],
+				[64, 0],
+				[128, 0],
+				[192, 0]
+			]
+		}
+	]
+}

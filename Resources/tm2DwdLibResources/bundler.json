@@ -1,0 +1,19 @@
+{
+	"bundler_info" :
+	[
+		{
+			"bundler_name" : "bundler-A",
+			"architecture" : ["layer-A","layer-B"]
+		},
+
+		{
+			"bundler_name" : "bundler-B",
+			"architecture" : ["layer-A"]
+		},
+
+		{
+			"bundler_name" : "bundler-C",
+			"architecture" : ["layer-A","layer-B","layer-C"]
+		}
+	]
+}
