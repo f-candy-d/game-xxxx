@@ -2,9 +2,9 @@
 #include "info_classes.h"
 
 /**
- * tm2d_w_d::tm2d_w_d_unit::Block class
+ * lts_map::lts_map_unit::Block class
  */
-using namespace tm2d_w_d::tm2d_w_d_unit;
+using namespace lts_map::lts_map_unit;
 
 /**
  * public

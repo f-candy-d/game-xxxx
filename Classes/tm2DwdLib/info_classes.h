@@ -6,9 +6,9 @@
 #include <string>
 #include <unordered_map>
 
-namespace tm2d_w_d
+namespace lts_map
 {
-	namespace tm2d_w_d_unit
+	namespace lts_map_unit
 	{
 		struct MapInfo;
 		struct LayerInfo;
@@ -18,7 +18,7 @@ namespace tm2d_w_d
 	}
 }
 
-struct tm2d_w_d::tm2d_w_d_unit::MapInfo
+struct lts_map::lts_map_unit::MapInfo
 {
 	DLib::size<size_t> size_;
 	std::vector<std::string> architecture_;
@@ -28,7 +28,7 @@ struct tm2d_w_d::tm2d_w_d_unit::MapInfo
 	{}
 };
 
-struct tm2d_w_d::tm2d_w_d_unit::LayerInfo
+struct lts_map::lts_map_unit::LayerInfo
 {
 	std::string layer_name_;
 	std::string atlas_name_;
@@ -37,55 +37,57 @@ struct tm2d_w_d::tm2d_w_d_unit::LayerInfo
 	bool is_editable_;
 
 	LayerInfo()
-	:layer_name_(NULL)
-	,atlas_name_(NULL)
-	,terrain_name_(NULL)
+	:layer_name_("")
+	,atlas_name_("")
+	,terrain_name_("")
 	,is_visible_(false)
-	,is_editable_(true)
+	,is_editable_(false)
 	{}
 };
 
-struct tm2d_w_d::tm2d_w_d_unit::BundlerInfo
+struct lts_map::lts_map_unit::BundlerInfo
 {
 	std::string bundler_name_;
 	std::vector<std::string> architecture_;
 
 	BundlerInfo()
-	:bundler_name_(NULL)
+	:bundler_name_("")
 	{}
 };
 
-struct tm2d_w_d::tm2d_w_d_unit::AtlasInfo
+struct lts_map::lts_map_unit::AtlasInfo
 {
 	std::string atlas_name_;
 	std::string atlas_src_name_;
 	DLib::size<float> texture_size_;
 	int num_tile_type_;
 	int tile_type_no_tile_;
-	std::unordered_map<int, DLib::vec2<float>> texture_positions_;
+	std::unordered_map<int, DLib::vec2<float>> texture_position_map_;
 
 	AtlasInfo()
-	:atlas_name_(NULL)
-	,atlas_src_name_(NULL)
+	:atlas_name_("")
+	,atlas_src_name_("")
 	,texture_size_(0.0, 0.0)
 	,num_tile_type_(0)
 	,tile_type_no_tile_(-1)
 	{}
 };
 
-struct tm2d_w_d::tm2d_w_d_unit::TerrainInfo
+struct lts_map::lts_map_unit::TerrainInfo
 {
 	std::string terrain_name_;
 	std::string terrain_src_name_;
 	std::string atlas_name_;
 	DLib::size<size_t> size_;
-	// DLib::size<size_t> pane_size;
+	DLib::size<size_t> block_size_;
+	std::unordered_map<std::string, DLib::vec2<int>> location_pin_map_;
 
 	TerrainInfo()
-	:terrain_name_(NULL)
-	,terrain_src_name_(NULL)
-	,atlas_name_(NULL)
+	:terrain_name_("")
+	,terrain_src_name_("")
+	,atlas_name_("")
 	,size_(0, 0)
+	,block_size_(0, 0)
 	{}
 };
 

@@ -6,9 +6,9 @@
 #include "DLib/dlib_vec2.h"
 #include <vector>
 
-namespace tm2d_w_d
+namespace lts_map
 {
-	namespace tm2d_w_d_unit
+	namespace lts_map_unit
 	{
 		class Block;
 
@@ -17,7 +17,7 @@ namespace tm2d_w_d
 	}
 }
 
-class tm2d_w_d::tm2d_w_d_unit::Block : public cocos2d::Ref
+class lts_map::lts_map_unit::Block : public cocos2d::Ref
 {
 public:
 	Block();
@@ -30,10 +30,9 @@ public:
 	// accessors and mutators
 	inline DLib::size<size_t> get_size() const { return size_; }
 	inline bool is_modified() const { return is_modified_; }
-	inline std::vector<int>& get_tiles() { return tiles_; }
 	inline const std::vector<int>& get_tiles() const { return tiles_; }
-	inline DLib::vec2<unsigned int> get_position() const { return position_; }
-	inline void set_position(DLib::vec2<unsigned int> val) { position_ = val; }
+	inline DLib::vec2<int> get_position() const { return position_; }
+	inline void set_position(DLib::vec2<int> val) { position_ = val; }
 
 protected:
 	bool init();
@@ -46,7 +45,7 @@ private:
 	bool is_modified_;
 	std::vector<int> tiles_;
 	// others
-	DLib::vec2<unsigned int> position_;
+	DLib::vec2<int> position_;
 };
 
 #endif
