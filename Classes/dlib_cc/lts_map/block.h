@@ -2,8 +2,8 @@
 #define TM2D_W_D_LIB_BLOCK_H
 
 #include "../../../cocos2d/cocos/cocos2d.h"
-#include "../../dlib/dlib_size.h"
-#include "../../dlib/dlib_vec2.h"
+#include "../../dlib/size.h"
+#include "../../dlib/vec2.h"
 #include <vector>
 
 namespace lts_map

@@ -1088,3 +1088,102 @@ init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool 
 menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:96	class:HelloWorld	signature:(Ref* pSender)
 __HELLOWORLD_SCENE_H__	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.h	/^#define __HELLOWORLD_SCENE_H__$/;"	macro	line:2
 HelloWorld	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.h	/^class HelloWorld : public cocos2d::Layer$/;"	class	line:6
+TM2D_W_D_LIB_BLOCK_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^#define TM2D_W_D_LIB_BLOCK_H$/;"	macro	line:2
+lts_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^namespace lts_map$/;"	namespace	line:9
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	namespace unit$/;"	namespace	line:11	namespace:lts_map
+Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^class lts_map::unit::Block : public cocos2d::Ref$/;"	class	line:20	class:lts_map::unit
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline DLib::size<size_t> size() const { return size_; }$/;"	function	line:31	class:lts_map::unit::Block	signature:() const
+is_modified	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline bool is_modified() const { return is_modified_; }$/;"	function	line:32	class:lts_map::unit::Block	signature:() const
+tiles	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline const std::vector<int>& tiles() const { return tiles_; }$/;"	function	line:33	class:lts_map::unit::Block	signature:() const
+position	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline DLib::vec2<int> position() const { return position_; }$/;"	function	line:34	class:lts_map::unit::Block	signature:() const
+set_position	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline void set_position(DLib::vec2<int> val) { position_ = val; }$/;"	function	line:35	class:lts_map::unit::Block	signature:(DLib::vec2<int> val)
+kTileTypeNoTile	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	const int kTileTypeNoTile;$/;"	member	line:42	class:lts_map::unit::Block
+size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	const DLib::size<size_t> size_;$/;"	member	line:44	class:lts_map::unit::Block
+is_modified_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	bool is_modified_;$/;"	member	line:45	class:lts_map::unit::Block
+tiles_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	std::vector<int> tiles_;$/;"	member	line:46	class:lts_map::unit::Block
+position_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	DLib::vec2<int> position_;$/;"	member	line:48	class:lts_map::unit::Block
+TM2D_W_D_LIB_INFO_CLASSES_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^#define TM2D_W_D_LIB_INFO_CLASSES_H$/;"	macro	line:2
+lts_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^namespace lts_map$/;"	namespace	line:9
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	namespace unit$/;"	namespace	line:11	namespace:lts_map
+MapInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^struct lts_map::unit::MapInfo$/;"	struct	line:21	class:lts_map::unit
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	DLib::size<size_t> size;$/;"	member	line:23	struct:lts_map::unit::MapInfo
+architecture	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::vector<std::string> architecture;$/;"	member	line:24	struct:lts_map::unit::MapInfo
+MapInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	MapInfo()$/;"	function	line:26	struct:lts_map::unit::MapInfo	signature:()
+LayerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^struct lts_map::unit::LayerInfo$/;"	struct	line:31	class:lts_map::unit
+layer_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string layer_name;$/;"	member	line:33	struct:lts_map::unit::LayerInfo
+atlas_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string atlas_name;$/;"	member	line:34	struct:lts_map::unit::LayerInfo
+terrain_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string terrain_name;$/;"	member	line:35	struct:lts_map::unit::LayerInfo
+is_visible	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	bool is_visible;$/;"	member	line:36	struct:lts_map::unit::LayerInfo
+is_editable	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	bool is_editable;$/;"	member	line:37	struct:lts_map::unit::LayerInfo
+LayerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	LayerInfo()$/;"	function	line:39	struct:lts_map::unit::LayerInfo	signature:()
+BundlerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^struct lts_map::unit::BundlerInfo$/;"	struct	line:48	class:lts_map::unit
+bundler_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string bundler_name;$/;"	member	line:50	struct:lts_map::unit::BundlerInfo
+architecture	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::vector<std::string> architecture;$/;"	member	line:51	struct:lts_map::unit::BundlerInfo
+BundlerInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	BundlerInfo()$/;"	function	line:53	struct:lts_map::unit::BundlerInfo	signature:()
+AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^struct lts_map::unit::AtlasInfo$/;"	struct	line:58	class:lts_map::unit
+atlas_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string atlas_name;$/;"	member	line:60	struct:lts_map::unit::AtlasInfo
+atlas_src_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string atlas_src_name;$/;"	member	line:61	struct:lts_map::unit::AtlasInfo
+texture_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	DLib::size<float> texture_size;$/;"	member	line:62	struct:lts_map::unit::AtlasInfo
+num_tile_type	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	int num_tile_type;$/;"	member	line:63	struct:lts_map::unit::AtlasInfo
+tile_type_no_tile	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	int tile_type_no_tile;$/;"	member	line:64	struct:lts_map::unit::AtlasInfo
+texture_position_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::unordered_map<int, DLib::vec2<float>> texture_position_map;$/;"	member	line:65	struct:lts_map::unit::AtlasInfo
+AtlasInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	AtlasInfo()$/;"	function	line:67	struct:lts_map::unit::AtlasInfo	signature:()
+TerrainInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^struct lts_map::unit::TerrainInfo$/;"	struct	line:76	class:lts_map::unit
+terrain_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string terrain_name;$/;"	member	line:78	struct:lts_map::unit::TerrainInfo
+terrain_src_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string terrain_src_name;$/;"	member	line:79	struct:lts_map::unit::TerrainInfo
+atlas_name	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::string atlas_name;$/;"	member	line:80	struct:lts_map::unit::TerrainInfo
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	DLib::size<size_t> size;$/;"	member	line:81	struct:lts_map::unit::TerrainInfo
+block_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	DLib::size<size_t> block_size;$/;"	member	line:82	struct:lts_map::unit::TerrainInfo
+location_pin_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	std::unordered_map<std::string, DLib::vec2<int>> location_pin_map;$/;"	member	line:83	struct:lts_map::unit::TerrainInfo
+TerrainInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	TerrainInfo()$/;"	function	line:85	struct:lts_map::unit::TerrainInfo	signature:()
+D_LIB_GRID_SIZE_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^#define D_LIB_GRID_SIZE_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^namespace DLib$/;"	namespace	line:7
+grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^struct DLib::grid_size$/;"	struct	line:20	class:DLib
+width	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^	size_t width;$/;"	member	line:22	struct:DLib::grid_size
+height	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^	size_t height;$/;"	member	line:23	struct:DLib::grid_size
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^	const DLib::size<float> unit; \/\/px$/;"	member	line:24	struct:DLib::grid_size
+grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^	grid_size(DLib::size<float> u) :width(0),height(0),unit(u) {}$/;"	function	line:27	struct:DLib::grid_size	signature:(DLib::size<float> u)
+grid_size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^	grid_size(size_t w, size_t h, DLib::size<float> u) :width(w),height(h),unit(u) {}$/;"	function	line:28	struct:DLib::grid_size	signature:(size_t w, size_t h, DLib::size<float> u)
+area	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.h	/^	inline size_t area() const { return width * height; }$/;"	function	line:31	struct:DLib::grid_size	signature:() const
+D_LIB_GRID_POINT_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^#define D_LIB_GRID_POINT_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^namespace DLib$/;"	namespace	line:7
+grid_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^struct DLib::grid_point$/;"	struct	line:15	class:DLib
+RepresentativePoint	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^	enum class RepresentativePoint$/;"	class	line:18	struct:DLib::grid_point
+LEFT_BOTTOM	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^		LEFT_BOTTOM,$/;"	member	line:20	class:DLib::grid_point::RepresentativePoint
+RIGHT_BOTTOM	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^		RIGHT_BOTTOM,$/;"	member	line:21	class:DLib::grid_point::RepresentativePoint
+LEFT_TOP	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^		LEFT_TOP,$/;"	member	line:22	class:DLib::grid_point::RepresentativePoint
+RIGHT_TOP	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^		RIGHT_TOP,$/;"	member	line:23	class:DLib::grid_point::RepresentativePoint
+CENTER	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^		CENTER,$/;"	member	line:24	class:DLib::grid_point::RepresentativePoint
+x	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^	unsigned int x;$/;"	member	line:28	struct:DLib::grid_point
+y	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^	unsigned int y;$/;"	member	line:29	struct:DLib::grid_point
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^	const DLib::size<float> unit;$/;"	member	line:30	struct:DLib::grid_point
+rep_point_scale_x	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^	float rep_point_scale_x;$/;"	member	line:39	struct:DLib::grid_point
+rep_point_scale_y	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.h	/^	float rep_point_scale_y;$/;"	member	line:40	struct:DLib::grid_point
+grid_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.cpp	/^DLib::grid_point::grid_point(DLib::size<float> unit)$/;"	function	line:6	class:DLib::grid_point	signature:(DLib::size<float> unit)
+grid_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.cpp	/^DLib::grid_point::grid_point(unsigned int p, unsigned int q, DLib::size<float> unit)$/;"	function	line:14	class:DLib::grid_point	signature:(unsigned int p, unsigned int q, DLib::size<float> unit)
+set_representative_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.cpp	/^void DLib::grid_point::set_representative_point(RepresentativePoint type)$/;"	function	line:22	class:DLib::grid_point	signature:(RepresentativePoint type)
+set_representative_point	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.cpp	/^void DLib::grid_point::set_representative_point(float rep_scal_x, float rep_scal_y)$/;"	function	line:47	class:DLib::grid_point	signature:(float rep_scal_x, float rep_scal_y)
+comv_to_px	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_point.cpp	/^DLib::vec2<float> DLib::grid_point::comv_to_px()$/;"	function	line:66	class:DLib::grid_point	signature:() const
+comv_to_px	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^DLib::size<float> DLib::grid_size::comv_to_px()$/;"	function	line:7	class:DLib::grid_size	signature:()
+copy	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^void DLib::grid_size::copy(const DLib::grid_size &other)$/;"	function	line:12	class:DLib::grid_size	signature:(const DLib::grid_size &other)
+operator <	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^bool DLib::operator<(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:22	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator >	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^bool DLib::operator>(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:28	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator ==	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^bool DLib::operator==(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:33	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator !=	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^bool DLib::operator!=(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:39	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator <=	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^bool DLib::operator<=(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:44	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator >=	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^bool DLib::operator>=(const DLib::grid_size& a, const DLib::grid_size& b)$/;"	function	line:49	class:DLib	signature:(const DLib::grid_size& a, const DLib::grid_size& b)
+operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/grid_size.cpp	/^std::ostream& DLib::operator<<(std::ostream& os, const DLib::grid_size& gd_size)$/;"	function	line:54	class:DLib	signature:(std::ostream& os, const DLib::grid_size& gd_size)
+DLIB_VEC2_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^#define DLIB_VEC2_H$/;"	macro	line:2
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^namespace DLib$/;"	namespace	line:6
+vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^template <typename T = float> struct DLib::vec2$/;"	struct	line:11	class:DLib
+x	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	T x;$/;"	member	line:13	struct:DLib::vec2
+y	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	T y;$/;"	member	line:14	struct:DLib::vec2
+vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	vec2() :x(0),y(0) {}$/;"	function	line:17	struct:DLib::vec2	signature:()
+vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	vec2(T p, T q) :x(p),y(q) {}$/;"	function	line:18	struct:DLib::vec2	signature:(T p, T q)
+operator +	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T>& operator+()$/;"	function	line:20	struct:DLib::vec2	signature:() const
+operator -	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T>& operator-()$/;"	function	line:26	struct:DLib::vec2	signature:()
+operator +	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T> operator+(const vec2<T>& other)$/;"	function	line:33	struct:DLib::vec2	signature:(const vec2<T>& other) const
+operator -	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T> operator-(const vec2<T>& other)$/;"	function	line:39	struct:DLib::vec2	signature:(const vec2<T>& other) const
+set	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline void set(T p, T q)$/;"	function	line:45	struct:DLib::vec2	signature:(T p, T q)
+DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^namespace DLib$/;"	namespace	line:53
+operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	std::ostream& operator<<(std::ostream& os, const vec2<T>& v2)$/;"	function	line:57	namespace:DLib	signature:(std::ostream& os, const vec2<T>& v2)

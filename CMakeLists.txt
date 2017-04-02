@@ -136,8 +136,8 @@ set(GAME_SRC
 #  Classes/Tm2p5dLib/InfoClasses.cpp
 #  Classes/Tm2p5dLib/Pane.cpp
 #  Classes/Tm2p5dLib/TiledLayer.cpp
-  Classes/dlib/dlib_grid_point.cpp
-  Classes/dlib/dlib_grid_size.cpp
+  Classes/dlib/grid_point.cpp
+  Classes/dlib/grid_size.cpp
   Classes/dlib_cc/lts_map/block.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
