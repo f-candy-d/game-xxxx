@@ -139,6 +139,7 @@ set(GAME_SRC
   Classes/dlib/grid_point.cpp
   Classes/dlib/grid_size.cpp
   Classes/dlib_cc/lts_map/block.cpp
+  Classes/dlib_cc/lts_map/info_json_parser.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -152,6 +153,8 @@ set(GAME_HEADERS
 #  Classes/Tm2p5dLib/Pane.h
 #  Classes/Tm2p5dLib/TiledLayer.h
   Classes/dlib_cc/lts_map/block.h
+  Classes/dlib_cc/lts_map/info_classes.h
+  Classes/dlib_cc/lts_map/info_json_parser.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

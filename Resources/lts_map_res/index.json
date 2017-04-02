@@ -1,0 +1,9 @@
+{
+	"file_index" : [
+		"map.json",
+		"layer.json",
+		"bundler.json",
+		"atlas.json",
+		"terrain.json"
+	]
+}

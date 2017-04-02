@@ -5,7 +5,7 @@
 			"layer_name" : "layer-A",
 			"atlas_name" : "atlas-A",
 			"terrain_name" : "terrain_A",
-			"is_is_visible" : true,
+			"is_visible" : true,
 			"is_editable" : true
 		},
 

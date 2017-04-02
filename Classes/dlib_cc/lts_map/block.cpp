@@ -9,21 +9,6 @@ using namespace lts_map::unit;
 /**
  * public
  */
-Block::Block()
-:kTileTypeNoTile(-1)
-,size_(0, 0)
-,position_(0, 0)
-,is_modified_(false)
-{}
-
-Block::Block(const dlib::size<size_t>& size, int tile_type_no_tile)
-:kTileTypeNoTile(tile_type_no_tile)
-,size_(size.width, size.height)
-,position_(0, 0)
-,tiles_(size.area(), kTileTypeNoTile)
-,is_modified_(false)
-{}
-
 Block* Block::Create(const dlib::size<size_t>& size, const AtlasInfo* atlas_info)
 {
 	auto ret = new Block(size, atlas_info->tile_type_no_tile);
@@ -63,6 +48,21 @@ void Block::InsertTypeAt(int index, int type)
 /**
  * protected
  */
+ Block::Block()
+ :kTileTypeNoTile(-1)
+ ,size_(0, 0)
+ ,position_(0, 0)
+ ,is_modified_(false)
+ {}
+
+ Block::Block(const dlib::size<size_t>& size, int tile_type_no_tile)
+ :kTileTypeNoTile(tile_type_no_tile)
+ ,size_(size.width, size.height)
+ ,position_(0, 0)
+ ,tiles_(size.area(), kTileTypeNoTile)
+ ,is_modified_(false)
+ {}
+
 bool Block::Init()
 {
 	return true;

@@ -1,9 +1,7 @@
 {
 	"map_info" :
 	{
-		"size" : [1024, 1024],
-		"architecture" : ["bundler-A","bundler-B","bundler-C"]
-	},
-
-	"include" : ["layer.json","bundler.json","atlas.json"]
+		"map_size" : [1024, 1024],
+		"architecture" : ["bundler-A", "bundler-B", "bundler-C"]
+	}
 }

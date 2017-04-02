@@ -3,6 +3,7 @@
 #include <iostream>
 #include "dlib_cc/lts_map/block.h"
 #include "dlib_cc/lts_map/info_classes.h"
+#include "dlib_cc/lts_map/info_json_parser.h"
 
 USING_NS_CC;
 
@@ -82,12 +83,34 @@ bool HelloWorld::init()
     auto fBlock = lts_map::unit::Block::Create(dlib::size<size_t>(10, 10), &mAtlas);
     std::cout << "fBlock::GridSize = " << fBlock->size() << '\n';
     std::cout << "fBlock::GridPoint = " << fBlock->position() << '\n';
-    int c = 0;
-    for(auto type : fBlock->tiles())
+
+    auto parser = lts_map::unit::InfoJsonParser::Create();
+    parser->ParseJson("index.json");
+    // log map-info
+    lts_map::unit::DebugLog(parser->map_info());
+    for(auto nameb : parser->map_info()->architecture)
     {
-        std::cout << "[" << c << "]type => " << type << '\n';
-        c++;
+        std::cout << "IN " << nameb << '\n';
+        // log bundler-info
+        lts_map::unit::DebugLog(parser->bundler_info(nameb));
+        for(auto namel : parser->bundler_info(nameb)->architecture)
+        {
+            std::cout << "IN " << namel << '\n';
+            // log layer-info
+            auto layer = parser->layer_info(namel);
+            lts_map::unit::DebugLog(layer);
+            // log atlas-info
+            auto namea = layer->atlas_name;
+            lts_map::unit::DebugLog(parser->atlas_info(namea));
+            auto namet = layer->terrain_name;
+            // log terrain-info
+            lts_map::unit::DebugLog(parser->terrain_info(namet));
+
+            std::cout << "END " << namel << '\n';
+        }
+        std::cout << "END " << nameb << '\n';
     }
+
 
     return true;
 }

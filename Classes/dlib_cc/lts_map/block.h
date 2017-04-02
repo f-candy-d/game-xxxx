@@ -18,8 +18,6 @@ namespace lts_map
 class lts_map::unit::Block : public cocos2d::Ref
 {
 public:
-	Block();
-	Block(const dlib::size<size_t>& size, int tile_type_no_tile);
 	static Block* Create(const dlib::size<size_t>& size, const AtlasInfo* atlas_info);
 	int GetTypeAt(int x, int y) const;
 	int GetTypeAt(int index) const;
@@ -33,6 +31,8 @@ public:
 	inline void set_position(dlib::vec2<int> val) { position_ = val; }
 
 protected:
+	Block();
+	Block(const dlib::size<size_t>& size, int tile_type_no_tile);
 	bool Init();
 
 private:

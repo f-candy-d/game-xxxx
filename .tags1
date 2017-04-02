@@ -4,6 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:9	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:25	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:96	class:HelloWorld	signature:(Ref* pSender)
+terrain_info	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^	"terrain_info" :$/;"	function	line:2
+terrain_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"terrain_name" : "terrain-A",$/;"	function	line:5
+terrain_src_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"terrain_src_name" : "terrain_a.dat",$/;"	function	line:6
+atlas_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"atlas_name" : "atlas-A",$/;"	function	line:7
+map_size	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"map_size" : [1024, 1024],$/;"	function	line:8
+block_size	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"block_size" : [32, 32],$/;"	function	line:9
+location_pin_map	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"location_pin_map" :$/;"	function	line:10
+toilet	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^				"toilet" : [512, 512],$/;"	function	line:12
+my_home	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^				"my_home" : [0,777]$/;"	function	line:13
