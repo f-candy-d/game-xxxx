@@ -3,11 +3,11 @@
 
 #include<cassert>
 
-namespace DLib {
+namespace dlib {
 	class range;
 }
 
-class DLib::range
+class dlib::range
 {
 public:
 	range(int from = 0, int to = 0)

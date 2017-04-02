@@ -4,12 +4,12 @@
 #include <vector>
 #include <iostream>
 
-namespace DLib
+namespace dlib
 {
 	template <unsigned int D, typename T> class vec;
 }
 
-template <unsigned int D, typename T> class DLib::vec
+template <unsigned int D, typename T> class dlib::vec
 {
 	using iterator = typename std::vector<T>::iterator;
 	using const_iterator = typename std::vector<T>::const_iterator;

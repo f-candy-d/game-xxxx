@@ -1,17 +1,17 @@
 #ifndef LOCKER_ARRAY_H
 #define LOCKER_ARRAY_H
 
-#include "../dlib_range.h"
+#include "../range.h"
 #include <iostream>
 #include <vector>
 #include <unordered_map>
 
-namespace DLib
+namespace dlib
 {
 	template <typename T> class locker_array;
 }
 
-template <typename T> class DLib::locker_array
+template <typename T> class dlib::locker_array
 {
 	/**
 	 * key object. use for access to the baaggage of the locker
@@ -117,13 +117,13 @@ public:
 
 	private:
 		int mIndex;
-		const DLib::range mRange;
+		const dlib::range mRange;
 
 		//constructors are private
 		range_iterator()
 		:mIndex(-1),mRange(-1,-1) {};
 
-		range_iterator(int index, DLib::range& rng)
+		range_iterator(int index, dlib::range& rng)
 		{
 			assert(rng.contains(index));
 
@@ -249,7 +249,7 @@ public:
 
 		// the id of key is the index of 'range' in the vector 'mRange'
 		key k_ey(mRanges.size(), mSerial, size);
-		DLib::range range(mLockers.size(), mLockers.size() + size - 1);
+		dlib::range range(mLockers.size(), mLockers.size() + size - 1);
 
 		mRanges[k_ey.id] = range;
 
@@ -266,7 +266,7 @@ public:
 			return false;
 
 		//remove the baggage in a range
-		DLib::range rng = mRanges[k_ey.id];
+		dlib::range rng = mRanges[k_ey.id];
 		mLockers.erase(this->begin_of(k_ey), this->end_of(k_ey));
 
 		mRanges.erase(k_ey.id);
@@ -370,12 +370,12 @@ public:
 
 protected:
 	std::vector<T>& get_lockers() { return mLockers; }
-	std::unordered_map<int, DLib::range>& get_ranges() { return mRanges; }
+	std::unordered_map<int, dlib::range>& get_ranges() { return mRanges; }
 
 	size_t to_index(key& k_ey, size_t local_index)
 	const
 	{
-		DLib::range rng = mRanges.at(k_ey.id);
+		dlib::range rng = mRanges.at(k_ey.id);
 		size_t index = rng.from() + local_index;
 
 		// range check
@@ -392,7 +392,7 @@ private:
 	int mSerial;
 	T mDummy;
 	std::vector<T> mLockers;
-	std::unordered_map<int, DLib::range> mRanges;
+	std::unordered_map<int, dlib::range> mRanges;
 	// do not use this variable directly!
 	static int mStaticSerial;
 
@@ -402,6 +402,6 @@ private:
 
 // use this serial number for identificaiton of each locker-array object
 template <typename T>
-int DLib::locker_array<T>::mStaticSerial = 0;
+int dlib::locker_array<T>::mStaticSerial = 0;
 
 #endif

@@ -20,7 +20,7 @@ namespace lts_map
 
 struct lts_map::unit::MapInfo
 {
-	DLib::size<size_t> size;
+	dlib::size<size_t> size;
 	std::vector<std::string> architecture;
 
 	MapInfo()
@@ -59,10 +59,10 @@ struct lts_map::unit::AtlasInfo
 {
 	std::string atlas_name;
 	std::string atlas_src_name;
-	DLib::size<float> texture_size;
+	dlib::size<float> texture_size;
 	int num_tile_type;
 	int tile_type_no_tile;
-	std::unordered_map<int, DLib::vec2<float>> texture_position_map;
+	std::unordered_map<int, dlib::vec2<float>> texture_position_map;
 
 	AtlasInfo()
 	:atlas_name("")
@@ -78,9 +78,9 @@ struct lts_map::unit::TerrainInfo
 	std::string terrain_name;
 	std::string terrain_src_name;
 	std::string atlas_name;
-	DLib::size<size_t> size;
-	DLib::size<size_t> block_size;
-	std::unordered_map<std::string, DLib::vec2<int>> location_pin_map;
+	dlib::size<size_t> size;
+	dlib::size<size_t> block_size;
+	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map;
 
 	TerrainInfo()
 	:terrain_name("")

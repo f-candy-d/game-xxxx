@@ -4,17 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-DLIB_VEC2_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^#define DLIB_VEC2_H$/;"	macro	line:2
-DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^namespace DLib$/;"	namespace	line:6
-vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^template <typename T = float> struct DLib::vec2$/;"	struct	line:11	class:DLib
-x	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	T x;$/;"	member	line:13	struct:DLib::vec2
-y	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	T y;$/;"	member	line:14	struct:DLib::vec2
-vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	vec2() :x(0),y(0) {}$/;"	function	line:17	struct:DLib::vec2	signature:()
-vec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	vec2(T p, T q) :x(p),y(q) {}$/;"	function	line:18	struct:DLib::vec2	signature:(T p, T q)
-operator +	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T>& operator+()$/;"	function	line:20	struct:DLib::vec2	signature:() const
-operator -	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T>& operator-()$/;"	function	line:26	struct:DLib::vec2	signature:()
-operator +	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T> operator+(const vec2<T>& other)$/;"	function	line:33	struct:DLib::vec2	signature:(const vec2<T>& other) const
-operator -	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline vec2<T> operator-(const vec2<T>& other)$/;"	function	line:39	struct:DLib::vec2	signature:(const vec2<T>& other) const
-set	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	inline void set(T p, T q)$/;"	function	line:45	struct:DLib::vec2	signature:(T p, T q)
-DLib	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^namespace DLib$/;"	namespace	line:53
-operator <<	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib/vec2.h	/^	std::ostream& operator<<(std::ostream& os, const vec2<T>& v2)$/;"	function	line:57	namespace:DLib	signature:(std::ostream& os, const vec2<T>& v2)
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:9	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:25	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:96	class:HelloWorld	signature:(Ref* pSender)

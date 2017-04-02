@@ -16,7 +16,7 @@ Block::Block()
 ,is_modified_(false)
 {}
 
-Block::Block(const DLib::size<size_t>& size, int tile_type_no_tile)
+Block::Block(const dlib::size<size_t>& size, int tile_type_no_tile)
 :kTileTypeNoTile(tile_type_no_tile)
 ,size_(size.width, size.height)
 ,position_(0, 0)
@@ -24,7 +24,7 @@ Block::Block(const DLib::size<size_t>& size, int tile_type_no_tile)
 ,is_modified_(false)
 {}
 
-Block* Block::Create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info)
+Block* Block::Create(const dlib::size<size_t>& size, const AtlasInfo* atlas_info)
 {
 	auto ret = new Block(size, atlas_info->tile_type_no_tile);
 	if(ret->Init())

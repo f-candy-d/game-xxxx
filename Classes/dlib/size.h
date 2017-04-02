@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-namespace DLib
+namespace dlib
 {
 	template <typename T> struct size;
 }
 
-template <typename T = float> struct DLib::size
+template <typename T = float> struct dlib::size
 {
 	T width;
 	T height;
@@ -21,7 +21,7 @@ public:
 };
 
 // global operators
-namespace DLib
+namespace dlib
 {
 	template <typename T>
 	bool operator<(const size<T>& a, const size<T>& b)

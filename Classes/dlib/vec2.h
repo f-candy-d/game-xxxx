@@ -2,13 +2,14 @@
 #define DLIB_VEC2_H
 
 #include <iostream>
+#include <utility>
 
-namespace DLib
+namespace dlib
 {
 	template <typename T> struct vec2;
 }
 
-template <typename T = float> struct DLib::vec2
+template <typename T = float> struct dlib::vec2
 {
 	T x;
 	T y;
@@ -50,7 +51,7 @@ public:
 
 };
 
-namespace DLib
+namespace dlib
 {
 	// global operators
 	template <typename T>

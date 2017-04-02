@@ -5,13 +5,13 @@
 #include <vector>
 #include <iostream>
 
-namespace DLib
+namespace dlib
 {
 	template <class Category, class Value, class Hash> class categorized_map;
 }
 
 template <class Category, class Value, class Hash = std::hash<Category>>
-class DLib::categorized_map
+class dlib::categorized_map
 {
 	using category_vector = std::vector<Value>;
 	using category_map = std::unordered_map<Category, category_vector, Hash>;

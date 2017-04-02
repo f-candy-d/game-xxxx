@@ -6,13 +6,13 @@
  *        This file will include all other header files in it.
  */
 
-// #include "useless/dlib_locker_array.h"
-// #include "useless/dlib_categorized_map.h"
-#include "dlib_range.h"
-#include "dlib_size.h"
-#include "dlib_vec.h"
-#include "dlib_vec2.h"
-#include "dlib_grid_size.h"
-#include "dlib_grid_point.h"
+// #include "useless/locker_array.h"
+// #include "useless/categorized_map.h"
+#include "range.h"
+#include "size.h"
+#include "vec.h"
+#include "vec2.h"
+#include "grid_size.h"
+#include "grid_point.h"
 
 #endif

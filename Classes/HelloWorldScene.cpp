@@ -79,7 +79,7 @@ bool HelloWorld::init()
     //NOTE : TEST
 
     lts_map::unit::AtlasInfo mAtlas;
-    auto fBlock = lts_map::unit::Block::Create(DLib::size<size_t>(10, 10), &mAtlas);
+    auto fBlock = lts_map::unit::Block::Create(dlib::size<size_t>(10, 10), &mAtlas);
     std::cout << "fBlock::GridSize = " << fBlock->size() << '\n';
     std::cout << "fBlock::GridPoint = " << fBlock->position() << '\n';
     int c = 0;
