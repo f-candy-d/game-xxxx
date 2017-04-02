@@ -1,10 +1,10 @@
-#ifndef TM2D_W_D_LIB_INFO_CLASSES_H
-#define TM2D_W_D_LIB_INFO_CLASSES_H
+#ifndef DLIB_CC_LTS_MAP_INFO_CLASSES_H
+#define DLIB_CC_LTS_MAP_INFO_CLASSES_H
 
-#include "../../../cocos2d/cocos/cocos2d.h"
-#include "../../dlib/size.h"
+#include "../include_lib_index.h"
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 namespace lts_map
 {

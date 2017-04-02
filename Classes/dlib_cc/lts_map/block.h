@@ -1,9 +1,7 @@
-#ifndef TM2D_W_D_LIB_BLOCK_H
-#define TM2D_W_D_LIB_BLOCK_H
+#ifndef DLIB_CC_LTS_MAP_BLOCK_H
+#define DLIB_CC_LTS_MAP_BLOCK_H
 
-#include "../../../cocos2d/cocos/cocos2d.h"
-#include "../../dlib/size.h"
-#include "../../dlib/vec2.h"
+#include "../include_lib_index.h"
 #include <vector>
 
 namespace lts_map
