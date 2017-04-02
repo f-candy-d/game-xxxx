@@ -2,9 +2,9 @@
 #include "info_classes.h"
 
 /**
- * lts_map::lts_map_unit::Block class
+ * lts_map::unit::Block class
  */
-using namespace lts_map::lts_map_unit;
+using namespace lts_map::unit;
 
 /**
  * public
@@ -26,7 +26,7 @@ Block::Block(const DLib::size<size_t>& size, int tile_type_no_tile)
 
 Block* Block::create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info)
 {
-	auto ret = new Block(size, atlas_info->tile_type_no_tile_);
+	auto ret = new Block(size, atlas_info->tile_type_no_tile);
 	if(ret->init())
 	{
 		ret->autorelease();

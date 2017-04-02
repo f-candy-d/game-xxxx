@@ -8,7 +8,7 @@
 
 namespace lts_map
 {
-	namespace lts_map_unit
+	namespace unit
 	{
 		class Block;
 
@@ -17,7 +17,7 @@ namespace lts_map
 	}
 }
 
-class lts_map::lts_map_unit::Block : public cocos2d::Ref
+class lts_map::unit::Block : public cocos2d::Ref
 {
 public:
 	Block();
