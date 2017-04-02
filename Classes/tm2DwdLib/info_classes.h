@@ -8,7 +8,7 @@
 
 namespace lts_map
 {
-	namespace lts_map_unit
+	namespace unit
 	{
 		struct MapInfo;
 		struct LayerInfo;
@@ -18,76 +18,76 @@ namespace lts_map
 	}
 }
 
-struct lts_map::lts_map_unit::MapInfo
+struct lts_map::unit::MapInfo
 {
-	DLib::size<size_t> size_;
-	std::vector<std::string> architecture_;
+	DLib::size<size_t> size;
+	std::vector<std::string> architecture;
 
 	MapInfo()
-	:size_(0, 0)
+	:size(0, 0)
 	{}
 };
 
-struct lts_map::lts_map_unit::LayerInfo
+struct lts_map::unit::LayerInfo
 {
-	std::string layer_name_;
-	std::string atlas_name_;
-	std::string terrain_name_;
-	bool is_visible_;
-	bool is_editable_;
+	std::string layer_name;
+	std::string atlas_name;
+	std::string terrain_name;
+	bool is_visible;
+	bool is_editable;
 
 	LayerInfo()
-	:layer_name_("")
-	,atlas_name_("")
-	,terrain_name_("")
-	,is_visible_(false)
-	,is_editable_(false)
+	:layer_name("")
+	,atlas_name("")
+	,terrain_name("")
+	,is_visible(false)
+	,is_editable(false)
 	{}
 };
 
-struct lts_map::lts_map_unit::BundlerInfo
+struct lts_map::unit::BundlerInfo
 {
-	std::string bundler_name_;
-	std::vector<std::string> architecture_;
+	std::string bundler_name;
+	std::vector<std::string> architecture;
 
 	BundlerInfo()
-	:bundler_name_("")
+	:bundler_name("")
 	{}
 };
 
-struct lts_map::lts_map_unit::AtlasInfo
+struct lts_map::unit::AtlasInfo
 {
-	std::string atlas_name_;
-	std::string atlas_src_name_;
-	DLib::size<float> texture_size_;
-	int num_tile_type_;
-	int tile_type_no_tile_;
-	std::unordered_map<int, DLib::vec2<float>> texture_position_map_;
+	std::string atlas_name;
+	std::string atlas_src_name;
+	DLib::size<float> texture_size;
+	int num_tile_type;
+	int tile_type_no_tile;
+	std::unordered_map<int, DLib::vec2<float>> texture_position_map;
 
 	AtlasInfo()
-	:atlas_name_("")
-	,atlas_src_name_("")
-	,texture_size_(0.0, 0.0)
-	,num_tile_type_(0)
-	,tile_type_no_tile_(-1)
+	:atlas_name("")
+	,atlas_src_name("")
+	,texture_size(0.0, 0.0)
+	,num_tile_type(0)
+	,tile_type_no_tile(-1)
 	{}
 };
 
-struct lts_map::lts_map_unit::TerrainInfo
+struct lts_map::unit::TerrainInfo
 {
-	std::string terrain_name_;
-	std::string terrain_src_name_;
-	std::string atlas_name_;
-	DLib::size<size_t> size_;
-	DLib::size<size_t> block_size_;
-	std::unordered_map<std::string, DLib::vec2<int>> location_pin_map_;
+	std::string terrain_name;
+	std::string terrain_src_name;
+	std::string atlas_name;
+	DLib::size<size_t> size;
+	DLib::size<size_t> block_size;
+	std::unordered_map<std::string, DLib::vec2<int>> location_pin_map;
 
 	TerrainInfo()
-	:terrain_name_("")
-	,terrain_src_name_("")
-	,atlas_name_("")
-	,size_(0, 0)
-	,block_size_(0, 0)
+	:terrain_name("")
+	,terrain_src_name("")
+	,atlas_name("")
+	,size(0, 0)
+	,block_size(0, 0)
 	{}
 };
 
