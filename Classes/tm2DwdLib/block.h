@@ -22,20 +22,20 @@ class lts_map::unit::Block : public cocos2d::Ref
 public:
 	Block();
 	Block(const DLib::size<size_t>& size, int tile_type_no_tile);
-	static Block* create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info);
-	int getTypeAt(int x, int y) const;
-	int getTypeAt(int index) const;
-	void insertTypeAt(int x, int y, int type);
-	void insertTypeAt(int index, int type);
+	static Block* Create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info);
+	int GetTypeAt(int x, int y) const;
+	int GetTypeAt(int index) const;
+	void InsertTypeAt(int x, int y, int type);
+	void InsertTypeAt(int index, int type);
 	// accessors and mutators
-	inline DLib::size<size_t> get_size() const { return size_; }
+	inline DLib::size<size_t> size() const { return size_; }
 	inline bool is_modified() const { return is_modified_; }
-	inline const std::vector<int>& get_tiles() const { return tiles_; }
-	inline DLib::vec2<int> get_position() const { return position_; }
+	inline const std::vector<int>& tiles() const { return tiles_; }
+	inline DLib::vec2<int> position() const { return position_; }
 	inline void set_position(DLib::vec2<int> val) { position_ = val; }
 
 protected:
-	bool init();
+	bool Init();
 
 private:
 	// constant variable

@@ -24,10 +24,10 @@ Block::Block(const DLib::size<size_t>& size, int tile_type_no_tile)
 ,is_modified_(false)
 {}
 
-Block* Block::create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info)
+Block* Block::Create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info)
 {
 	auto ret = new Block(size, atlas_info->tile_type_no_tile);
-	if(ret->init())
+	if(ret->Init())
 	{
 		ret->autorelease();
 		return ret;
@@ -38,24 +38,24 @@ Block* Block::create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info
 	return nullptr;
 }
 
-int Block::getTypeAt(int x, int y)
+int Block::GetTypeAt(int x, int y)
 const
 {
-	return this->getTypeAt(size_.width * y + x);
+	return this->GetTypeAt(size_.width * y + x);
 }
 
-int Block::getTypeAt(int index)
+int Block::GetTypeAt(int index)
 const
 {
 	return tiles_[index];
 }
 
-void Block::insertTypeAt(int x, int y, int type)
+void Block::InsertTypeAt(int x, int y, int type)
 {
-	this->insertTypeAt(size_.width * y + x, type);
+	this->InsertTypeAt(size_.width * y + x, type);
 }
 
-void Block::insertTypeAt(int index, int type)
+void Block::InsertTypeAt(int index, int type)
 {
 	tiles_[index] = type;
 }
@@ -63,7 +63,7 @@ void Block::insertTypeAt(int index, int type)
 /**
  * protected
  */
-bool Block::init()
+bool Block::Init()
 {
 	return true;
 }

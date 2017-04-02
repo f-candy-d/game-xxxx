@@ -4,11 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^Block::Block()$/;"	function	line:12	class:Block	signature:()
-Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^Block::Block(const DLib::size<size_t>& size, int tile_type_no_tile)$/;"	function	line:19	class:Block	signature:(const DLib::size<size_t>& size, int tile_type_no_tile)
-create	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^Block* Block::create(const DLib::size<size_t>& size, const AtlasInfo* atlas_info)$/;"	function	line:27	class:Block	signature:(const DLib::size<size_t>& size, const AtlasInfo* atlas_info)
-getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^int Block::getTypeAt(int x, int y)$/;"	function	line:41	class:Block	signature:(int x, int y) const
-getTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^int Block::getTypeAt(int index)$/;"	function	line:47	class:Block	signature:(int index) const
-insertTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^void Block::insertTypeAt(int x, int y, int type)$/;"	function	line:53	class:Block	signature:(int x, int y, int type)
-insertTypeAt	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^void Block::insertTypeAt(int index, int type)$/;"	function	line:58	class:Block	signature:(int index, int type)
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/tm2DwdLib/block.cpp	/^bool Block::init()$/;"	function	line:66	class:Block	signature:()
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:9	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:25	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:96	class:HelloWorld	signature:(Ref* pSender)
