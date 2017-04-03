@@ -4,7 +4,7 @@
 		{
 			"layer_name" : "layer-A",
 			"atlas_name" : "atlas-A",
-			"terrain_name" : "terrain_A",
+			"terrain_name" : "terrain-A",
 			"is_visible" : true,
 			"is_editable" : true
 		},
@@ -12,7 +12,7 @@
 		{
 			"layer_name" : "layer-B",
 			"atlas_name" : "atlas-A",
-			"terrain_name" : "terrain_A",
+			"terrain_name" : "terrain-A",
 			"is_visible" : false,
 			"is_editable" : false
 		},
@@ -20,7 +20,7 @@
 		{
 			"layer_name" : "layer-C",
 			"atlas_name" : "atlas-A",
-			"terrain_name" : "terrain_A",
+			"terrain_name" : "terrain-A",
 			"is_visible" : true,
 			"is_editable" : false
 		}

@@ -1,7 +1,7 @@
 #ifndef DLIB_CC_LTS_MAP_BLOCK_H
 #define DLIB_CC_LTS_MAP_BLOCK_H
 
-#include "../include_lib_index.h"
+#include "../tools/include_lib_index.h"
 #include <vector>
 
 namespace lts_map
@@ -23,12 +23,13 @@ public:
 	int GetTypeAt(int index) const;
 	void InsertTypeAt(int x, int y, int type);
 	void InsertTypeAt(int index, int type);
+	void Reset(const dlib::vec2<int>& position, bool do_cleanup);
 	// accessors and mutators
 	inline dlib::size<size_t> size() const { return size_; }
 	inline bool is_modified() const { return is_modified_; }
 	inline const std::vector<int>& tiles() const { return tiles_; }
 	inline dlib::vec2<int> position() const { return position_; }
-	inline void set_position(dlib::vec2<int> val) { position_ = val; }
+	inline void set_position(const dlib::vec2<int>& val) { position_ = val; }
 
 protected:
 	Block();

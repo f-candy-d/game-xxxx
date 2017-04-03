@@ -45,22 +45,34 @@ void Block::InsertTypeAt(int index, int type)
 	tiles_[index] = type;
 }
 
+void Block::Reset(const dlib::vec2<int>& position, bool do_cleanup)
+{
+	position_ = position;
+	is_modified_ = false;
+
+	if(do_cleanup)
+	{
+		for(auto& tile : tiles_)
+			tile = kTileTypeNoTile;
+	}
+}
+
 /**
  * protected
  */
  Block::Block()
  :kTileTypeNoTile(-1)
  ,size_(0, 0)
- ,position_(0, 0)
  ,is_modified_(false)
+ ,position_(0, 0)
  {}
 
  Block::Block(const dlib::size<size_t>& size, int tile_type_no_tile)
  :kTileTypeNoTile(tile_type_no_tile)
  ,size_(size.width, size.height)
- ,position_(0, 0)
  ,tiles_(size.area(), kTileTypeNoTile)
  ,is_modified_(false)
+ ,position_(0, 0)
  {}
 
 bool Block::Init()

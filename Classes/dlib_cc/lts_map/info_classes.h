@@ -1,7 +1,7 @@
 #ifndef DLIB_CC_LTS_MAP_INFO_CLASSES_H
 #define DLIB_CC_LTS_MAP_INFO_CLASSES_H
 
-#include "../include_lib_index.h"
+#include "../tools/include_lib_index.h"
 #include <string>
 #include <unordered_map>
 #include <vector>

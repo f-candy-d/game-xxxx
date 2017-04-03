@@ -1,8 +1,8 @@
 #ifndef DLIB_CC_LTS_MAP_INFO_JSON_PARSER_H
 #define DLIB_CC_LTS_MAP_INFO_JSON_PARSER_H
 
-#include "../include_lib_index.h"
-#include "picojson.h"
+#include "../tools/include_lib_index.h"
+#include "../tools/picojson.h"
 #include "info_classes.h"
 #include <unordered_map>
 #include <vector>
@@ -36,7 +36,6 @@ private:
 	std::unordered_map<std::string, BundlerInfo> bundler_info_map_;
 	std::unordered_map<std::string, AtlasInfo> atlas_info_map_;
 	std::unordered_map<std::string, TerrainInfo> terrain_info_map_;
-	std::vector<std::string> error_pool_;
 
 	MapInfo MakeMapInfo(picojson::value& obj);
 	LayerInfo MakeLayerInfo(picojson::value& obj);

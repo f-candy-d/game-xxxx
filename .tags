@@ -1321,3 +1321,28 @@ block_size	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain
 location_pin_map	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"location_pin_map" :$/;"	function	line:10
 toilet	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^				"toilet" : [512, 512],$/;"	function	line:12
 my_home	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^				"my_home" : [0,777]$/;"	function	line:13
+DLIB_CC_LTS_MAP_INFO_JSON_PARSER_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^#define DLIB_CC_LTS_MAP_INFO_JSON_PARSER_H$/;"	macro	line:2
+lts_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^namespace lts_map$/;"	namespace	line:10
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	namespace unit$/;"	namespace	line:12	namespace:lts_map
+InfoJsonParser	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^class lts_map::unit::InfoJsonParser : public cocos2d::Ref$/;"	class	line:18	class:lts_map::unit
+map_info	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	inline const MapInfo* map_info() const { return &map_info_; }$/;"	function	line:24	class:lts_map::unit::InfoJsonParser	signature:() const
+layer_info	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	inline const LayerInfo* layer_info(std::string& name) const { return &layer_info_map_.at(name); }$/;"	function	line:25	class:lts_map::unit::InfoJsonParser	signature:(std::string& name) const
+bundler_info	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	inline const BundlerInfo* bundler_info(std::string& name) const {return &bundler_info_map_.at(name); }$/;"	function	line:26	class:lts_map::unit::InfoJsonParser	signature:(std::string& name) const
+atlas_info	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	inline const AtlasInfo* atlas_info(std::string& name) const { return &atlas_info_map_.at(name); }$/;"	function	line:27	class:lts_map::unit::InfoJsonParser	signature:(std::string& name) const
+terrain_info	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	inline const TerrainInfo* terrain_info(std::string& name) const { return &terrain_info_map_.at(name); }$/;"	function	line:28	class:lts_map::unit::InfoJsonParser	signature:(std::string& name) const
+map_info_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	MapInfo map_info_;$/;"	member	line:34	class:lts_map::unit::InfoJsonParser
+layer_info_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	std::unordered_map<std::string, LayerInfo> layer_info_map_;$/;"	member	line:35	class:lts_map::unit::InfoJsonParser
+bundler_info_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	std::unordered_map<std::string, BundlerInfo> bundler_info_map_;$/;"	member	line:36	class:lts_map::unit::InfoJsonParser
+atlas_info_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	std::unordered_map<std::string, AtlasInfo> atlas_info_map_;$/;"	member	line:37	class:lts_map::unit::InfoJsonParser
+terrain_info_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	std::unordered_map<std::string, TerrainInfo> terrain_info_map_;$/;"	member	line:38	class:lts_map::unit::InfoJsonParser
+MakeDLibSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	dlib::size<T> MakeDLibSize(picojson::value& value)$/;"	function	line:47	class:lts_map::unit::InfoJsonParser	signature:(picojson::value& value)
+MakeDLibVec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	dlib::vec2<T> MakeDLibVec2(picojson::value& value)$/;"	function	line:58	class:lts_map::unit::InfoJsonParser	signature:(picojson::value& value)
+class : public cocos2d::Ref	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### class : public cocos2d::Ref$/;"	function	line:1
+InfoJsonParser	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^# InfoJsonParser$/;"	function	line:2
+< データ形式 >	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^###### < データ形式 >  $/;"	function	line:6
+< キー値 >	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^###### < キー値 >  $/;"	function	line:17
+名前空間	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### 名前空間$/;"	function	line:52
+private メンバ変数	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### private メンバ変数$/;"	function	line:64
+public メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### public メンバ関数$/;"	function	line:88
+protected メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### protected メンバ関数$/;"	function	line:130
+private メンバ関数	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### private メンバ関数$/;"	function	line:138
