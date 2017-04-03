@@ -53,7 +53,7 @@ void Block::Reset(const dlib::vec2<int>& position, bool do_cleanup)
 	if(do_cleanup)
 	{
 		for(auto& tile : tiles_)
-			tile = kTileTypeNoTile;
+			tile = tile_type_no_tile_;
 	}
 }
 
@@ -61,16 +61,16 @@ void Block::Reset(const dlib::vec2<int>& position, bool do_cleanup)
  * protected
  */
  Block::Block()
- :kTileTypeNoTile(-1)
+ :tile_type_no_tile_(-1)
  ,size_(0, 0)
  ,is_modified_(false)
  ,position_(0, 0)
  {}
 
  Block::Block(const dlib::size<size_t>& size, int tile_type_no_tile)
- :kTileTypeNoTile(tile_type_no_tile)
+ :tile_type_no_tile_(tile_type_no_tile)
  ,size_(size.width, size.height)
- ,tiles_(size.area(), kTileTypeNoTile)
+ ,tiles_(size.area(), tile_type_no_tile_)
  ,is_modified_(false)
  ,position_(0, 0)
  {}

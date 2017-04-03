@@ -16,6 +16,7 @@ namespace lts_map
 		struct AtlasInfo;
 		struct TerrainInfo;
 
+		// for debuging
 		void DebugLog(const MapInfo* info);
 		void DebugLog(const LayerInfo* info);
 		void DebugLog(const BundlerInfo* info);
@@ -26,21 +27,29 @@ namespace lts_map
 
 struct lts_map::unit::MapInfo
 {
+public:
 	dlib::size<size_t> map_size;
 	std::vector<std::string> architecture;
 
 	MapInfo()
 	:map_size(0, 0)
 	{}
+
+	inline bool Valied() const
+	{
+		return true;
+	}
 };
 
 struct lts_map::unit::LayerInfo
 {
+public:
 	std::string layer_name;
 	std::string atlas_name;
 	std::string terrain_name;
 	bool is_visible;
 	bool is_editable;
+	float tile_scale;
 
 	LayerInfo()
 	:layer_name("")
@@ -48,21 +57,34 @@ struct lts_map::unit::LayerInfo
 	,terrain_name("")
 	,is_visible(false)
 	,is_editable(false)
+	,tile_scale(1.0)
 	{}
+
+	inline bool Valied() const
+	{
+		return true;
+	}
 };
 
 struct lts_map::unit::BundlerInfo
 {
+public:
 	std::string bundler_name;
 	std::vector<std::string> architecture;
 
 	BundlerInfo()
 	:bundler_name("")
 	{}
+
+	inline bool Valied() const
+	{
+		return true;
+	}
 };
 
 struct lts_map::unit::AtlasInfo
 {
+public:
 	std::string atlas_name;
 	std::string atlas_src_name;
 	dlib::size<float> texture_size;
@@ -77,10 +99,16 @@ struct lts_map::unit::AtlasInfo
 	,num_tile_type(0)
 	,tile_type_no_tile(-1)
 	{}
+
+	inline bool Valied() const
+	{
+		return true;
+	}
 };
 
 struct lts_map::unit::TerrainInfo
 {
+public:
 	std::string terrain_name;
 	std::string terrain_src_name;
 	std::string atlas_name;
@@ -95,6 +123,11 @@ struct lts_map::unit::TerrainInfo
 	,map_size(0, 0)
 	,block_size(0, 0)
 	{}
+
+	inline bool Valied() const
+	{
+		return true;
+	}
 };
 
 inline void lts_map::unit::DebugLog(const lts_map::unit::MapInfo *info)

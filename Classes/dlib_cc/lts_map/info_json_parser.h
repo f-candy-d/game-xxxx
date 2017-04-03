@@ -21,11 +21,11 @@ public:
 	static InfoJsonParser* Create();
 	bool ParseJson(std::string json);
 	// accessors and mutators
-	inline const MapInfo* map_info() const { return &map_info_; }
-	inline const LayerInfo* layer_info(std::string& name) const { return &layer_info_map_.at(name); }
-	inline const BundlerInfo* bundler_info(std::string& name) const {return &bundler_info_map_.at(name); }
-	inline const AtlasInfo* atlas_info(std::string& name) const { return &atlas_info_map_.at(name); }
-	inline const TerrainInfo* terrain_info(std::string& name) const { return &terrain_info_map_.at(name); }
+	inline MapInfo* map_info() { return &map_info_; }
+	inline LayerInfo* layer_info(std::string& name) { return &layer_info_map_.at(name); }
+	inline BundlerInfo* bundler_info(std::string& name) {return &bundler_info_map_.at(name); }
+	inline AtlasInfo* atlas_info(std::string& name) { return &atlas_info_map_.at(name); }
+	inline TerrainInfo* terrain_info(std::string& name) { return &terrain_info_map_.at(name); }
 
 protected:
 	bool Init();

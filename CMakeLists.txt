@@ -140,6 +140,7 @@ set(GAME_SRC
   Classes/dlib/grid_size.cpp
   Classes/dlib_cc/lts_map/block.cpp
   Classes/dlib_cc/lts_map/info_json_parser.cpp
+  Classes/dlib_cc/lts_map/lts_layer.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -155,6 +156,7 @@ set(GAME_HEADERS
   Classes/dlib_cc/lts_map/block.h
   Classes/dlib_cc/lts_map/info_classes.h
   Classes/dlib_cc/lts_map/info_json_parser.h
+  Classes/dlib_cc/lts_map/lts_layer.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

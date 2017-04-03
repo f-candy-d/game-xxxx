@@ -18,6 +18,28 @@ namespace lts_map
 class lts_map::unit::Block : public cocos2d::Ref
 {
 public:
+	struct SpriteOwnership
+	{
+		using Id = std::string;
+
+	public:
+		bool has_ownership;
+		Id id;
+
+		SpriteOwnership() :has_ownership(false) {}
+		SpriteOwnership(Id& id) :has_ownership(false),id(id) {}
+
+		inline void transfer(SpriteOwnership& to)
+		{
+			to.id = this->id;
+			this->id.clear();
+			this->id.shrink_to_fit();
+			to.has_ownership = true;
+			this->has_ownership = false;
+		}
+	};
+
+public:
 	static Block* Create(const dlib::size<size_t>& size, const AtlasInfo* atlas_info);
 	int GetTypeAt(int x, int y) const;
 	int GetTypeAt(int index) const;
@@ -38,9 +60,9 @@ protected:
 
 private:
 	// constant variable
-	const int kTileTypeNoTile;
-	// read-only variables
+	const int tile_type_no_tile_;
 	const dlib::size<size_t> size_;
+	// read-only variables
 	bool is_modified_;
 	std::vector<int> tiles_;
 	// others
