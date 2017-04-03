@@ -1337,7 +1337,7 @@ atlas_info_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/
 terrain_info_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	std::unordered_map<std::string, TerrainInfo> terrain_info_map_;$/;"	member	line:38	class:lts_map::unit::InfoJsonParser
 MakeDLibSize	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	dlib::size<T> MakeDLibSize(picojson::value& value)$/;"	function	line:47	class:lts_map::unit::InfoJsonParser	signature:(picojson::value& value)
 MakeDLibVec2	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_json_parser.h	/^	dlib::vec2<T> MakeDLibVec2(picojson::value& value)$/;"	function	line:58	class:lts_map::unit::InfoJsonParser	signature:(picojson::value& value)
-class : public cocos2d::Ref	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### class : public cocos2d::Ref$/;"	function	line:1
+class lts_map::unit::InfoJsonParser : public cocos2d::Ref	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^#### class lts_map::unit::InfoJsonParser : public cocos2d::Ref$/;"	function	line:1
 InfoJsonParser	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^# InfoJsonParser$/;"	function	line:2
 < データ形式 >	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^###### < データ形式 >  $/;"	function	line:6
 < キー値 >	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/reference/lts_map/info_json_parser_ref.md	/^###### < キー値 >  $/;"	function	line:17

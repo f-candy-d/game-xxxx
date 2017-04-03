@@ -1,4 +1,4 @@
-#### class : public cocos2d::Ref
+#### class lts_map::unit::InfoJsonParser : public cocos2d::Ref
 # InfoJsonParser
 `LTS-Map`のMap,Layer,Bundler,Atlas,Terrainのそれぞれの設定ファイル(`.json`)をパースして、各infoオブジェクトを作成する。  
 各infoオブジェクトの実体は`InfoJsonParser`オブジェクトが持ち、データを参照するときはアクセッサメソッドでポインタを受け取り、それを利用する。  
@@ -133,7 +133,7 @@ bool Init();
 ```
 
 `bool Init()`
->初期化メソッド
+>初期化メソッド。Create()内で呼ばれる。初期化が成功すれば`ture`、そうでなければ`falise`をかえす。
 
 #### private メンバ関数
 ```c++
