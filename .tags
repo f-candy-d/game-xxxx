@@ -1294,26 +1294,6 @@ Reset	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.cpp	
 Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.cpp	/^ Block::Block()$/;"	function	line:63	class:Block	signature:()
 Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.cpp	/^ Block::Block(const dlib::size<size_t>& size, int tile_type_no_tile)$/;"	function	line:70	class:Block	signature:(const dlib::size<size_t>& size, int tile_type_no_tile)
 Init	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.cpp	/^bool Block::Init()$/;"	function	line:78	class:Block	signature:()
-DLIB_CC_LTS_MAP_BLOCK_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^#define DLIB_CC_LTS_MAP_BLOCK_H$/;"	macro	line:2
-lts_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^namespace lts_map$/;"	namespace	line:7
-unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	namespace unit$/;"	namespace	line:9	namespace:lts_map
-Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^class lts_map::unit::Block : public cocos2d::Ref$/;"	class	line:18	class:lts_map::unit
-SpriteOwnership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	struct SpriteOwnership$/;"	struct	line:21	class:lts_map::unit::Block
-has_ownership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		bool has_ownership;$/;"	member	line:26	struct:lts_map::unit::Block::SpriteOwnership
-id	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		Id id;$/;"	member	line:27	struct:lts_map::unit::Block::SpriteOwnership
-SpriteOwnership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		SpriteOwnership() :has_ownership(false) {}$/;"	function	line:29	struct:lts_map::unit::Block::SpriteOwnership	signature:()
-SpriteOwnership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		SpriteOwnership(Id& id) :has_ownership(false),id(id) {}$/;"	function	line:30	struct:lts_map::unit::Block::SpriteOwnership	signature:(Id& id)
-transfer	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		inline void transfer(SpriteOwnership& to)$/;"	function	line:32	struct:lts_map::unit::Block::SpriteOwnership	signature:(SpriteOwnership& to)
-size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline dlib::size<size_t> size() const { return size_; }$/;"	function	line:50	class:lts_map::unit::Block	signature:() const
-is_modified	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline bool is_modified() const { return is_modified_; }$/;"	function	line:51	class:lts_map::unit::Block	signature:() const
-tiles	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline const std::vector<int>& tiles() const { return tiles_; }$/;"	function	line:52	class:lts_map::unit::Block	signature:() const
-position	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline dlib::vec2<int> position() const { return position_; }$/;"	function	line:53	class:lts_map::unit::Block	signature:() const
-set_position	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline void set_position(const dlib::vec2<int>& val) { position_ = val; }$/;"	function	line:54	class:lts_map::unit::Block	signature:(const dlib::vec2<int>& val)
-tile_type_no_tile_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	const int tile_type_no_tile_;$/;"	member	line:63	class:lts_map::unit::Block
-size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	const dlib::size<size_t> size_;$/;"	member	line:64	class:lts_map::unit::Block
-is_modified_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	bool is_modified_;$/;"	member	line:66	class:lts_map::unit::Block
-tiles_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	std::vector<int> tiles_;$/;"	member	line:67	class:lts_map::unit::Block
-position_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	dlib::vec2<int> position_;$/;"	member	line:69	class:lts_map::unit::Block
 DLIB_CC_LTS_MAP_INFO_CLASSES_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^#define DLIB_CC_LTS_MAP_INFO_CLASSES_H$/;"	macro	line:2
 lts_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^namespace lts_map$/;"	namespace	line:9
 unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/info_classes.h	/^	namespace unit$/;"	namespace	line:11	namespace:lts_map
@@ -1380,7 +1360,30 @@ block_size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_
 location_pin_map_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;$/;"	member	line:55	class:lts_map::unit::LTSLayer
 blocks_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	cocos2d::Vector<Block*> blocks_;$/;"	member	line:56	class:lts_map::unit::LTSLayer
 sprites_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	std::unordered_map<Block::SpriteOwnership::Id, SpriteContainer> sprites_;$/;"	member	line:57	class:lts_map::unit::LTSLayer
+DLIB_CC_LTS_MAP_BLOCK_H	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^#define DLIB_CC_LTS_MAP_BLOCK_H$/;"	macro	line:2
+lts_map	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^namespace lts_map$/;"	namespace	line:7
+unit	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	namespace unit$/;"	namespace	line:9	namespace:lts_map
+Block	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^class lts_map::unit::Block : public cocos2d::Ref$/;"	class	line:18	class:lts_map::unit
+SpriteOwnership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	class SpriteOwnership$/;"	class	line:21	class:lts_map::unit::Block
+SpriteOwnership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		SpriteOwnership() :has_ownership(false) {}$/;"	function	line:26	class:lts_map::unit::Block::SpriteOwnership	signature:()
+Transfer	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		inline void Transfer(SpriteOwnership& to)$/;"	function	line:28	class:lts_map::unit::Block::SpriteOwnership	signature:(SpriteOwnership& to)
+SetOwnership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		inline void SetOwnership(Id& id)$/;"	function	line:34	class:lts_map::unit::Block::SpriteOwnership	signature:(Id& id)
+Disable	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		inline void Disable()$/;"	function	line:40	class:lts_map::unit::Block::SpriteOwnership	signature:()
+id	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		inline const Id& id() { return id_; } const;$/;"	function	line:47	class:lts_map::unit::Block::SpriteOwnership	signature:()
+has_ownership	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		inline bool has_ownership() { return has_ownership_; } const;$/;"	function	line:48	class:lts_map::unit::Block::SpriteOwnership	signature:()
+id_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		Id id_;$/;"	member	line:51	class:lts_map::unit::Block::SpriteOwnership
+has_ownership_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^		bool has_ownership_;$/;"	member	line:52	class:lts_map::unit::Block::SpriteOwnership
+size	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline dlib::size<size_t> size() const { return size_; }$/;"	function	line:63	class:lts_map::unit::Block	signature:() const
+is_modified	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline bool is_modified() const { return is_modified_; }$/;"	function	line:64	class:lts_map::unit::Block	signature:() const
+tiles	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline const std::vector<int>& tiles() const { return tiles_; }$/;"	function	line:65	class:lts_map::unit::Block	signature:() const
+position	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline dlib::vec2<int> position() const { return position_; }$/;"	function	line:66	class:lts_map::unit::Block	signature:() const
+set_position	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	inline void set_position(const dlib::vec2<int>& val) { position_ = val; }$/;"	function	line:67	class:lts_map::unit::Block	signature:(const dlib::vec2<int>& val)
+tile_type_no_tile_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	const int tile_type_no_tile_;$/;"	member	line:76	class:lts_map::unit::Block
+size_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	const dlib::size<size_t> size_;$/;"	member	line:77	class:lts_map::unit::Block
+is_modified_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	bool is_modified_;$/;"	member	line:79	class:lts_map::unit::Block
+tiles_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	std::vector<int> tiles_;$/;"	member	line:80	class:lts_map::unit::Block
+position_	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	dlib::vec2<int> position_;$/;"	member	line:82	class:lts_map::unit::Block
 Create	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:14	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
 LTSLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer::LTSLayer($/;"	function	line:31	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
 InitWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^bool LTSLayer::InitWithInfo($/;"	function	line:50	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
-OptimizeBlockSizeAndNum	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^int LTSLayer::OptimizeBlockSizeAndNum()$/;"	function	line:68	class:LTSLayer	signature:()
+OptimizeBlockSizeAndNum	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^int LTSLayer::OptimizeBlockSizeAndNum()$/;"	function	line:74	class:LTSLayer	signature:()

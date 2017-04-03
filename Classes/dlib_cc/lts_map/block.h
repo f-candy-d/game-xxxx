@@ -18,25 +18,38 @@ namespace lts_map
 class lts_map::unit::Block : public cocos2d::Ref
 {
 public:
-	struct SpriteOwnership
+	class SpriteOwnership
 	{
 		using Id = std::string;
 
 	public:
-		bool has_ownership;
-		Id id;
-
 		SpriteOwnership() :has_ownership(false) {}
-		SpriteOwnership(Id& id) :has_ownership(false),id(id) {}
 
-		inline void transfer(SpriteOwnership& to)
+		inline void Transfer(SpriteOwnership& to)
 		{
-			to.id = this->id;
-			this->id.clear();
-			this->id.shrink_to_fit();
-			to.has_ownership = true;
-			this->has_ownership = false;
+			to.SetOwnership(this->id_);
+			this->Disable();
 		}
+
+		inline void SetOwnership(Id& id)
+		{
+			id_ = id;
+			has_ownership_ = true;
+		}
+
+		inline void Disable()
+		{
+			id_.clear();
+			id_.shrink_to_fit();
+			has_ownership_ = false;
+		}
+
+		inline const Id& id() { return id_; } const;
+		inline bool has_ownership() { return has_ownership_; } const;
+
+	private:
+		Id id_;
+		bool has_ownership_;
 	};
 
 public:

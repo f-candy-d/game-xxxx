@@ -57,7 +57,13 @@ bool LTSLayer::InitWithInfo(
 	blocks_.reserve(block_num);
 	sprites_.reserve(block_num);
 
-	
+	// make SpriteContainer and default blocks
+	for(int i = 0; i < block_num; ++i)
+	{
+		std::string container_id("id_" + std::to_string(i));
+		Block::SpriteOwnership ownership;
+		ownership.SetOwnership(container_id);
+	}
 
 	return true;
 }
