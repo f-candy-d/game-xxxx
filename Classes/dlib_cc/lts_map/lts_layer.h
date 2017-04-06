@@ -54,7 +54,6 @@ private:
 	dlib::size<size_t> block_size_;
 	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;
 	cocos2d::Vector<Block*> blocks_;
-	std::unordered_map<Block::SpriteOwnership::Id, SpriteContainer> sprites_;
 
 	int OptimizeBlockSizeAndNum();
 	void LoadTerrainIntoBlock(int x, int y);
