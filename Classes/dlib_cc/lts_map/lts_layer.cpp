@@ -14,8 +14,8 @@ using namespace lts_map::unit;
  */
 namespace
 {
-	static constexpr float kDefaultPitchOfSize = 0.5;
-	static constexpr float kDefaultPitchOfNum = 0.5;
+	// default pitch of a loading block area size
+	static constexpr float kDefPitchOfLoadingBlockArea = 0.5;
 }
 
 /**
@@ -44,7 +44,7 @@ LTSLayer* LTSLayer::Create(
 void LTSLayer::InitLayer()
 {
 	/**
-	 * this method must be called after calling OptimizeBlockSize() and OptimizeBlockNum()
+	 * this method should be called after calling OptimizeLoadingBlock()
 	 */
 
 	blocks_.reserve(num_width_block_ * num_height_block_);
@@ -57,7 +57,7 @@ void LTSLayer::InitLayer()
 	is_initialized_ = true;
 }
 
-void LTSLayer::OptimizeBlockSize(float pitch = kDefaultPitchOfSize)
+void LTSLayer::OptimizeLoadingBlock(float pitch = kDefPitchOfLoadingBlockArea)
 {
 	assert(0.0 <= pitch && pitch <= 1.0);
 	/**
@@ -95,44 +95,42 @@ void LTSLayer::OptimizeBlockSize(float pitch = kDefaultPitchOfSize)
 		map_height / divisors_h[static_cast<int>((divisors_h.size() - 1) * pitch)];
 }
 
-void LTSLayer::OptimizeBlockNum(float pitch = kDefaultPitchOfNum)
+void LTSLayer::AdjustLoadingBlockArea()
 {
-	assert(0.0 <= pitch && pitch <= 1.0);
-
-	auto visible_size = Director::getInstance()->getWinSize();
-
-	// the horizontal number of blocks
-	const int max_block_w_num = map_size_.width / block_size_.width;
-	int min_block_w_num(1);
-
-	for(;min_block_w_num * actual_tile_size_.width * block_size_.width < visible_size.width;
-		&& min_block_w_num < max_block_w_num;
-		++min_block_w_num);
-
-	num_width_block_ = (max_block_w_num - min_block_w_num + 1) * pitch;
-
-	// the horizontal number of blocks
-	const int max_block_h_num = map_size_.height / block_size_.height;
-	int min_block_h_num(1);
-
-	for(;min_block_h_num * actual_tile_size_.height * block_size_.height < visible_size.height;
-		&& min_block_h_num < max_block_h_num;
-		++min_block_h_num) {}
-
-	num_height_block_ = (max_block_h_num - min_block_h_num + 1) * pitch;
-
-	std::cout << "num width blocks =>" << num_width_block_ << '\n';
-	std::cout << "num height blocks =>" << num_height_block_ << '\n';
+	//
+	// auto visible_size = Director::getInstance()->getWinSize();
+	//
+	// // the horizontal number of blocks
+	// const int max_block_w_num = map_size_.width / block_size_.width;
+	// int min_block_w_num(1);
+	//
+	// for(;min_block_w_num * actual_tile_size_.width * block_size_.width < visible_size.width;
+	// 	&& min_block_w_num < max_block_w_num;
+	// 	++min_block_w_num);
+	//
+	// num_width_block_ = (max_block_w_num - min_block_w_num + 1) * pitch;
+	//
+	// // the horizontal number of blocks
+	// const int max_block_h_num = map_size_.height / block_size_.height;
+	// int min_block_h_num(1);
+	//
+	// for(;min_block_h_num * actual_tile_size_.height * block_size_.height < visible_size.height;
+	// 	&& min_block_h_num < max_block_h_num;
+	// 	++min_block_h_num) {}
+	//
+	// num_height_block_ = (max_block_h_num - min_block_h_num + 1) * pitch;
+	//
+	// std::cout << "num width blocks =>" << num_width_block_ << '\n';
+	// std::cout << "num height blocks =>" << num_height_block_ << '\n';
 }
 
-void LTSLayer::ScaleTile(float scale, bool do_optimization)
+void LTSLayer::ScaleTile(float scale, bool do_adjustment)
 {
 	tile_scale_ = scale;
 
-	if(do_optimization)
+	if(do_adjustment)
 	{
-		OptimizeBlockSize(kDefaultPitchOfSize);
-		OptimizeBlockNum(kDefaultPitchOfNum);
+		AdjustLoadingBlockArea();
 	}
 }
 
@@ -157,6 +155,7 @@ LTSLayer::LTSLayer(
 ,tile_scale_(layer_info->tile_scale)
 ,num_width_block_(1)
 ,num_height_block_(1)
+,loading_block_area_size_(atlas_info->texture_size)
 ,actual_tile_size_(atlas_info->texture_size)
 ,block_size_(terrain_info->block_size)
 ,location_pin_map_(terrain_info->location_pin_map)
@@ -170,12 +169,11 @@ bool LTSLayer::InitWithInfo(
 
 	/**
 	 * if auto_initialization is false,
-	 * be sure of calling OptimizeBlockSize(), OptimizeBlockNum() and InitLayer() methods manually!
+	 * be sure of calling OptimizeLoadingBlock() and InitLayer() methods manually!
 	 */
 	if(auto_initialization)
 	{
-		OptimizeBlockSize(kDefaultPitchOfSize);
-		OptimizeBlockNum(kDefaultPitchOfNum);
+		OptimizeLoadingBlock(kDefPitchOfLoadingBlockArea);
 		InitLayer();
 	}
 

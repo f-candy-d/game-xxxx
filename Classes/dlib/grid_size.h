@@ -21,9 +21,10 @@ struct dlib::grid_size
 {
 	size_t width;
 	size_t height;
-	const dlib::size<float> unit; //px
+	dlib::size<float> unit; //px
 
 public:
+	grid_size() :width(0),height(0),unit(0.0, 0.0) {}
 	grid_size(dlib::size<float> u) :width(0),height(0),unit(u) {}
 	grid_size(size_t w, size_t h, dlib::size<float> u) :width(w),height(h),unit(u) {}
 	dlib::size<float> comv_to_px();
