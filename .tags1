@@ -4,12 +4,13 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-kDefPitchOfLoadingBlockArea	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr float kDefPitchOfLoadingBlockArea = 0.5;$/;"	member	line:18	namespace:__anon1	file:
-Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:24	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
-Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:30	class:LTSLayer	signature:( const LayerInfo *layer_info, const AtlasInfo *atlas_info, const TerrainInfo *terrain_info, bool auto_initialization)
-InitLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::InitLayer()$/;"	function	line:44	class:LTSLayer	signature:()
-OptimizeLoadingBlock	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::OptimizeLoadingBlock(float pitch = kDefPitchOfLoadingBlockArea)$/;"	function	line:60	class:LTSLayer	signature:(float pitch = kDefPitchOfLoadingBlockArea)
-AdjustLoadingBlockArea	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::AdjustLoadingBlockArea()$/;"	function	line:98	class:LTSLayer	signature:()
-ScaleTile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::ScaleTile(float scale, bool do_adjustment)$/;"	function	line:127	class:LTSLayer	signature:(float scale, bool do_adjustment)
-LTSLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer::LTSLayer($/;"	function	line:140	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
-InitWithInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^bool LTSLayer::InitWithInfo($/;"	function	line:164	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info, bool auto_initialization)
+kDefaultPitch	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr float kDefaultPitch = 0.0;$/;"	member	line:18	namespace:__anon1	file:
+kMinBlockNum	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr size_t kMinBlockNum = 3;$/;"	member	line:20	namespace:__anon1	file:
+Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:26	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
+Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:32	class:LTSLayer	signature:( const LayerInfo *layer_info, const AtlasInfo *atlas_info, const TerrainInfo *terrain_info, bool auto_initialization)
+InitLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::InitLayer()$/;"	function	line:46	class:LTSLayer	signature:()
+OptimizeLoadingBlock	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::OptimizeLoadingBlock(float pitch = kDefaultPitch)$/;"	function	line:65	class:LTSLayer	signature:(float pitch = kDefaultPitch)
+AdjustLoadingBlockArea	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::AdjustLoadingBlockArea()$/;"	function	line:145	class:LTSLayer	signature:()
+ScaleTile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::ScaleTile(float scale, bool do_adjustment)$/;"	function	line:149	class:LTSLayer	signature:(float scale, bool do_adjustment)
+LTSLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer::LTSLayer($/;"	function	line:163	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
+InitWithInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^bool LTSLayer::InitWithInfo($/;"	function	line:185	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info, bool auto_initialization)

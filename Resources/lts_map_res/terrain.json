@@ -5,7 +5,7 @@
 			"terrain_name" : "terrain-A",
 			"terrain_src_name" : "terrain_a.dat",
 			"atlas_name" : "atlas-A",
-			"map_size" : [1024, 1024],
+			"map_size" : [2048, 4096],
 			"block_size" : [32, 32],
 			"location_pin_map" :
 			{

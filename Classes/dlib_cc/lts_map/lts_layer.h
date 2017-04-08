@@ -71,9 +71,7 @@ private:
 	bool is_editable_;
 	bool is_initialized_;
 	float tile_scale_;
-	int num_width_block_;
-	int num_height_block_;
-	dlib::grid_size loading_block_area_size_;
+	dlib::size<size_t> loading_block_area_;
 	dlib::size<float> actual_tile_size_;
 	dlib::size<size_t> block_size_;
 	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;

@@ -1384,9 +1384,6 @@ Create	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer
 LTSLayer	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer::LTSLayer($/;"	function	line:31	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
 InitWithInfo	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^bool LTSLayer::InitWithInfo($/;"	function	line:50	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
 OptimizeBlockSizeAndNum	/home/daichi/dev/projects/cocos/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^int LTSLayer::OptimizeBlockSizeAndNum()$/;"	function	line:74	class:LTSLayer	signature:()
-createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:11	class:HelloWorld	signature:()
-init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:27	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:127	class:HelloWorld	signature:(Ref* pSender)
 D_LIB_GRID_SIZE_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^#define D_LIB_GRID_SIZE_H$/;"	macro	line:2
 dlib	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^namespace dlib$/;"	namespace	line:7
 grid_size	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^struct dlib::grid_size$/;"	struct	line:20	class:dlib
@@ -1397,6 +1394,21 @@ grid_size	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^	gr
 grid_size	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^	grid_size(dlib::size<float> u) :width(0),height(0),unit(u) {}$/;"	function	line:28	struct:dlib::grid_size	signature:(dlib::size<float> u)
 grid_size	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^	grid_size(size_t w, size_t h, dlib::size<float> u) :width(w),height(h),unit(u) {}$/;"	function	line:29	struct:dlib::grid_size	signature:(size_t w, size_t h, dlib::size<float> u)
 area	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/grid_size.h	/^	inline size_t area() const { return width * height; }$/;"	function	line:32	struct:dlib::grid_size	signature:() const
+createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:11	class:HelloWorld	signature:()
+init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:27	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:131	class:HelloWorld	signature:(Ref* pSender)
+map_info	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/map.json	/^	"map_info" :$/;"	function	line:2
+map_size	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/map.json	/^		"map_size" : [2048, 4096],$/;"	function	line:4
+architecture	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/map.json	/^		"architecture" : ["bundler-A", "bundler-B", "bundler-C"]$/;"	function	line:5
+terrain_info	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^	"terrain_info" :$/;"	function	line:2
+terrain_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^			"terrain_name" : "terrain-A",$/;"	function	line:5
+terrain_src_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^			"terrain_src_name" : "terrain_a.dat",$/;"	function	line:6
+atlas_name	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^			"atlas_name" : "atlas-A",$/;"	function	line:7
+map_size	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^			"map_size" : [2048, 4096],$/;"	function	line:8
+block_size	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^			"block_size" : [32, 32],$/;"	function	line:9
+location_pin_map	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^			"location_pin_map" :$/;"	function	line:10
+toilet	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^				"toilet" : [512, 512],$/;"	function	line:12
+my_home	/home/daichi/dev/cocos-projects/GameXXX/Resources/lts_map_res/terrain.json	/^				"my_home" : [0,777]$/;"	function	line:13
 DLIB_CC_LTS_MAP_TLS_LAYER_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^#define DLIB_CC_LTS_MAP_TLS_LAYER_H$/;"	macro	line:2
 lts_map	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^namespace lts_map$/;"	namespace	line:10
 unit	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	namespace unit$/;"	namespace	line:12	namespace:lts_map
@@ -1424,19 +1436,18 @@ is_visible_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_
 is_editable_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	bool is_editable_;$/;"	member	line:71	class:lts_map::unit::LTSLayer
 is_initialized_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	bool is_initialized_;$/;"	member	line:72	class:lts_map::unit::LTSLayer
 tile_scale_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	float tile_scale_;$/;"	member	line:73	class:lts_map::unit::LTSLayer
-num_width_block_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	int num_width_block_;$/;"	member	line:74	class:lts_map::unit::LTSLayer
-num_height_block_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	int num_height_block_;$/;"	member	line:75	class:lts_map::unit::LTSLayer
-loading_block_area_size_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	dlib::grid_size loading_block_area_size_;$/;"	member	line:76	class:lts_map::unit::LTSLayer
-actual_tile_size_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	dlib::size<float> actual_tile_size_;$/;"	member	line:77	class:lts_map::unit::LTSLayer
-block_size_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	dlib::size<size_t> block_size_;$/;"	member	line:78	class:lts_map::unit::LTSLayer
-location_pin_map_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;$/;"	member	line:79	class:lts_map::unit::LTSLayer
-blocks_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	cocos2d::Vector<Block*> blocks_;$/;"	member	line:80	class:lts_map::unit::LTSLayer
-kDefPitchOfLoadingBlockArea	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr float kDefPitchOfLoadingBlockArea = 0.5;$/;"	member	line:18	namespace:__anon1	file:
-Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:24	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
-Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:30	class:LTSLayer	signature:( const LayerInfo *layer_info, const AtlasInfo *atlas_info, const TerrainInfo *terrain_info, bool auto_initialization)
-InitLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::InitLayer()$/;"	function	line:44	class:LTSLayer	signature:()
-OptimizeLoadingBlock	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::OptimizeLoadingBlock(float pitch = kDefPitchOfLoadingBlockArea)$/;"	function	line:60	class:LTSLayer	signature:(float pitch = kDefPitchOfLoadingBlockArea)
-AdjustLoadingBlockArea	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::AdjustLoadingBlockArea()$/;"	function	line:98	class:LTSLayer	signature:()
-ScaleTile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::ScaleTile(float scale, bool do_adjustment)$/;"	function	line:127	class:LTSLayer	signature:(float scale, bool do_adjustment)
-LTSLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer::LTSLayer($/;"	function	line:140	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
-InitWithInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^bool LTSLayer::InitWithInfo($/;"	function	line:164	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info, bool auto_initialization)
+loading_block_area_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	dlib::size<size_t> loading_block_area_;$/;"	member	line:74	class:lts_map::unit::LTSLayer
+actual_tile_size_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	dlib::size<float> actual_tile_size_;$/;"	member	line:75	class:lts_map::unit::LTSLayer
+block_size_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	dlib::size<size_t> block_size_;$/;"	member	line:76	class:lts_map::unit::LTSLayer
+location_pin_map_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;$/;"	member	line:77	class:lts_map::unit::LTSLayer
+blocks_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.h	/^	cocos2d::Vector<Block*> blocks_;$/;"	member	line:78	class:lts_map::unit::LTSLayer
+kDefaultPitch	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr float kDefaultPitch = 0.0;$/;"	member	line:18	namespace:__anon1	file:
+kMinBlockNum	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr size_t kMinBlockNum = 3;$/;"	member	line:20	namespace:__anon1	file:
+Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:26	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
+Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer* LTSLayer::Create($/;"	function	line:32	class:LTSLayer	signature:( const LayerInfo *layer_info, const AtlasInfo *atlas_info, const TerrainInfo *terrain_info, bool auto_initialization)
+InitLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::InitLayer()$/;"	function	line:46	class:LTSLayer	signature:()
+OptimizeLoadingBlock	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::OptimizeLoadingBlock(float pitch = kDefaultPitch)$/;"	function	line:65	class:LTSLayer	signature:(float pitch = kDefaultPitch)
+AdjustLoadingBlockArea	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::AdjustLoadingBlockArea()$/;"	function	line:145	class:LTSLayer	signature:()
+ScaleTile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::ScaleTile(float scale, bool do_adjustment)$/;"	function	line:149	class:LTSLayer	signature:(float scale, bool do_adjustment)
+LTSLayer	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^LTSLayer::LTSLayer($/;"	function	line:163	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info)
+InitWithInfo	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^bool LTSLayer::InitWithInfo($/;"	function	line:185	class:LTSLayer	signature:( const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info, bool auto_initialization)
