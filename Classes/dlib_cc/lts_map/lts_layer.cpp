@@ -67,7 +67,7 @@ void LTSLayer::OptimizeBlockSize()
 /**
  * the higher the pitch is, the bigger is the size of loading blocks area
  */
-void LTSLayer::OptimizeBlockSize(float pitch = kDefaultPitch)
+void LTSLayer::OptimizeBlockSize(float pitch)
 {
 	assert(0.0 <= pitch && pitch <= 1.0);
 	/**
@@ -77,14 +77,29 @@ void LTSLayer::OptimizeBlockSize(float pitch = kDefaultPitch)
 		return;
 
 	std::vector<size_t> options;
-	auto visible_size = Director::getInstance()->getWinSize();
+	auto visible_size = Director::getInstance()->getWinSize() * 200;
 	dlib::size<size_t> min_loading_area(
-		static_cast<size_t>(visible_size.width / actual_tile_size_.width + 1),
-		static_cast<size_t>(visible_size.height / actual_tile_size_.height + 1));
+		actual_tile_size_.width == 0.0
+		? 0
+		: static_cast<size_t>(visible_size.width / actual_tile_size_.width + 1),
+		actual_tile_size_.height == 0.0
+		? 0
+		: static_cast<size_t>(visible_size.height / actual_tile_size_.height + 1));
 
-	assert(min_loading_area <= map_size_);
-
+	std::cout << "visible size width => " << visible_size.width << '\n';
+	std::cout << "actual_tile_size_ = " << actual_tile_size_ << '\n';
+	std::cout << "visible_size.width / actual_tile_size_.width = " << visible_size.width / actual_tile_size_.width << '\n';
 	std::cout << "min loading area => " << min_loading_area << '\n';
+
+	/**
+	 * when a visible size is too large or an actual tile size is too small
+	 */
+	if(min_loading_area > map_size_)
+	{
+		std::cout << "LTSLayer::OptimizeBlockSize() >> A visible size is too large or an actual tile size is too small !!" << '\n';
+		// make a visible size equal to the map size
+		min_loading_area = map_size_;
+	}
 
 	// optimize the width of a size of a loading block area
 	for(size_t i = map_size_.width; 0 < i; --i)
@@ -110,7 +125,10 @@ void LTSLayer::OptimizeBlockSize(float pitch = kDefaultPitch)
 		}
 	}
 
-	block_size_.width = options[static_cast<int>((options.size() - 1) * pitch)];
+	if(options.size() != 0)
+	{
+		block_size_.width = options[static_cast<size_t>((options.size() - 1) * pitch)];
+	}
 	options.clear();
 
 	// optimize the height of a size of a loading block area
@@ -134,7 +152,10 @@ void LTSLayer::OptimizeBlockSize(float pitch = kDefaultPitch)
 		}
 	}
 
-	block_size_.height = options[static_cast<int>((options.size() - 1) * pitch)];
+	if(options.size() != 0)
+	{
+		block_size_.height = options[static_cast<size_t>((options.size() - 1) * pitch)];
+	}
 	AdjustLoadingBlockArea();
 
 	std::cout << "block size => " << block_size_ << '\n';
@@ -163,7 +184,7 @@ void LTSLayer::AdjustLoadingBlockArea()
 		loading_block_area_size_.height += 2);
 }
 
-void LTSLayer::ScaleTile(float scale, bool do_adjustment)
+void LTSLayer::ScaleTile(float scale)
 {
 	ScaleTile(scale, true);
 }

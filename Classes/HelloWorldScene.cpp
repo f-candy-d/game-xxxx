@@ -117,7 +117,8 @@ bool HelloWorld::init()
     auto layer = lts_map::unit::LTSLayer::Create(
         parser->layer_info(layername),
         parser->atlas_info(atlasname),
-        parser->terrain_info(terrainname));
+        parser->terrain_info(terrainname),
+        false);
     layer->ScaleTile(0.5, false);
     layer->OptimizeBlockSize();
     layer->InitLayer();
