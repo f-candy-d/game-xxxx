@@ -187,6 +187,8 @@ void LTSLayer::AdjustLoadingBlockArea()
 		loading_block_area_size_.height * block_size_.height < min_loading_area.height
 		&& loading_block_area_size_.height * block_size_.height < map_size_.height;
 		loading_block_area_size_.height += 2);
+
+	std::cout << "adjustment : loading block area size => " << loading_block_area_size_ << '\n';
 }
 
 void LTSLayer::ScaleTile(float scale)
@@ -198,7 +200,7 @@ void LTSLayer::ScaleTile(float scale, bool do_adjustment)
 {
 	actual_tile_size_.scale(scale / tile_scale_);
 	tile_scale_ = scale;
-	this->setScale(scale);
+	// this->setScale(scale);
 
 	if(do_adjustment)
 	{
@@ -431,6 +433,7 @@ void LTSLayer::AllocateSpritesToBlock(Block* block)
 				sprite->setPosition(
 					block_origin.x + actual_tile_size_.width * x,
 					block_origin.y + actual_tile_size_.height * y);
+				sprite->setScale(tile_scale_);
 
 				count++;
 			}
