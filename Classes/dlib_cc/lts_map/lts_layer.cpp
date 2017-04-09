@@ -53,13 +53,14 @@ void LTSLayer::InitLayer()
 	 */
 
 	blocks_.reserve(loading_block_area_size_.area());
+	center_block_position_.set(loading_block_area_size_.width / 2, loading_block_area_size_.height / 2);
 
-	// make SpriteContainer and default blocks
+	// make default blocks
 	for(size_t y = 0; y < loading_block_area_size_.height; ++y)
 	{
 		for(size_t x = 0; x < loading_block_area_size_.width; ++x)
 		{
-			LoadTerrainIntoBlock(x, y, nullptr);
+			blocks_.pushBack(LoadTerrainIntoBlock(x, y, nullptr));
 		}
 	}
 
@@ -202,6 +203,16 @@ void LTSLayer::ScaleTile(float scale, bool do_adjustment)
 	}
 }
 
+void LTSLayer::MoveTo(size_t new_center_x, size_t new_center_y)
+{
+	
+}
+
+void LTSLayer::MoveTo(dlib::vec2<size_t> new_center_position)
+{
+	MoveTo(new_center_position.x, new_center_position.y);
+}
+
 /**
  * protected
  */
@@ -224,6 +235,7 @@ LTSLayer::LTSLayer(
 ,actual_tile_size_(atlas_info->texture_size)
 ,loading_block_area_size_(kMinMapWidth, kMinMapHeight)
 ,block_size_(terrain_info->block_size)
+,center_block_position_(0, 0)
 ,location_pin_map_(terrain_info->location_pin_map)
 {}
 
