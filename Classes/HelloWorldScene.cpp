@@ -121,7 +121,7 @@ bool HelloWorld::init()
     // layer->ScaleTile(0.5, false);
     layer->OptimizeBlockSize();
     layer->InitLayer();
-    // layer->MoveTo(64, 512);
+    layer->MoveTo(10,15);
     // layer->MoveTo(0, 0);
 
     this->addChild(layer);

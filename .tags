@@ -1245,9 +1245,6 @@ bundler_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/bundl
 architecture	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/bundler.json	/^			"architecture" : ["layer-A"]$/;"	function	line:11
 bundler_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/bundler.json	/^			"bundler_name" : "bundler-C",$/;"	function	line:15
 architecture	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/bundler.json	/^			"architecture" : ["layer-A","layer-B","layer-C"]$/;"	function	line:16
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:10	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:26	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:119	class:HelloWorld	signature:(Ref* pSender)
 terrain_info	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^	"terrain_info" :$/;"	function	line:2
 terrain_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"terrain_name" : "terrain-A",$/;"	function	line:5
 terrain_src_name	/home/daichi/dev/projects/cocos/GameXXX/Resources/lts_map_res/terrain.json	/^			"terrain_src_name" : "terrain_a.dat",$/;"	function	line:6
@@ -1567,3 +1564,6 @@ MoveToRowAbove	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/l
 createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:11	class:HelloWorld	signature:()
 init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:27	class:HelloWorld	signature:()
 menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:147	class:HelloWorld	signature:(Ref* pSender)
+createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:11	class:HelloWorld	signature:()
+init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:27	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:147	class:HelloWorld	signature:(Ref* pSender)
