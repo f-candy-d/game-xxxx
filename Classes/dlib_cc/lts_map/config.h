@@ -11,6 +11,14 @@ namespace lts_map
 		const std::string kMapResourceRootDirectory("lts_map_res/");
 		const std::string kMapAtlasDirectory(kMapResourceRootDirectory + "atlas/");
 		const std::string kMapTerrainDirectory(kMapResourceRootDirectory + "terrain/");
+
+		// minimum map size
+		constexpr size_t kMinMapWidth = 3;
+		constexpr size_t kMinMapHeight = 3;
+		constexpr size_t kMinMapSize = kMinMapWidth * kMinMapHeight;
+
+		// for Block
+		constexpr int kDefaultTileTypeNoTile = -1;
 	}
 }
 

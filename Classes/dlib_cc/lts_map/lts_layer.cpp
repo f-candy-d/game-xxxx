@@ -1,6 +1,8 @@
 #include "lts_layer.h"
 #include "info_classes.h"
+#include "config.h"
 #include <iostream>
+#include <fstream>
 
 /**
  * lts_map::unit::LTSLayer class
@@ -17,7 +19,8 @@ namespace
 	// default pitch of a loading block area size
 	static constexpr float kDefaultPitch = 0.0;
 	// the number of blocks of one side of loading block area (an odd number)
-	static constexpr size_t kMinBlockNum = 3;
+	static constexpr size_t kMinLoadingBlockAreaWidth = 3;
+	static constexpr size_t kMinLoadingBlockAreaHeight = 3;
 }
 
 /**
@@ -52,8 +55,12 @@ void LTSLayer::InitLayer()
 	blocks_.reserve(loading_block_area_size_.area());
 
 	// make SpriteContainer and default blocks
-	for(size_t i = 0; i < loading_block_area_size_.area(); ++i)
+	for(size_t y = 0; y < loading_block_area_size_.height; ++y)
 	{
+		for(size_t x = 0; x < loading_block_area_size_.width; ++x)
+		{
+			LoadTerrainIntoBlock(x, y, nullptr);
+		}
 	}
 
 	is_initialized_ = true;
@@ -77,7 +84,7 @@ void LTSLayer::OptimizeBlockSize(float pitch)
 		return;
 
 	std::vector<size_t> options;
-	auto visible_size = Director::getInstance()->getWinSize() * 200;
+	auto visible_size = Director::getInstance()->getWinSize();
 	dlib::size<size_t> min_loading_area(
 		actual_tile_size_.width == 0.0
 		? 0
@@ -85,11 +92,6 @@ void LTSLayer::OptimizeBlockSize(float pitch)
 		actual_tile_size_.height == 0.0
 		? 0
 		: static_cast<size_t>(visible_size.height / actual_tile_size_.height + 1));
-
-	std::cout << "visible size width => " << visible_size.width << '\n';
-	std::cout << "actual_tile_size_ = " << actual_tile_size_ << '\n';
-	std::cout << "visible_size.width / actual_tile_size_.width = " << visible_size.width / actual_tile_size_.width << '\n';
-	std::cout << "min loading area => " << min_loading_area << '\n';
 
 	/**
 	 * when a visible size is too large or an actual tile size is too small
@@ -109,7 +111,7 @@ void LTSLayer::OptimizeBlockSize(float pitch)
 		{
 			size_t block_width = map_size_.width / i;
 			// j is an odd number (>1)
-			for(size_t j = kMinBlockNum; j <= i; j += 2)
+			for(size_t j = kMinLoadingBlockAreaWidth; j <= i; j += 2)
 			{
 				if(min_loading_area.width <= block_width * j
 					&& block_width * j <= map_size_.width)
@@ -137,7 +139,7 @@ void LTSLayer::OptimizeBlockSize(float pitch)
 		if(map_size_.height % i == 0)
 		{
 			size_t block_height = map_size_.height / i;
-			for(size_t j = kMinBlockNum; j <= i; j += 2)
+			for(size_t j = kMinLoadingBlockAreaHeight; j <= i; j += 2)
 			{
 				if(min_loading_area.height <= block_height * j
 					&& block_height * j <= map_size_.height)
@@ -172,13 +174,13 @@ void LTSLayer::AdjustLoadingBlockArea()
 	assert(min_loading_area <= map_size_);
 
 	// loading_block_area_size_.width must be an odd number
-	for(loading_block_area_size_.width = kMinBlockNum;
+	for(loading_block_area_size_.width = kMinLoadingBlockAreaWidth;
 		loading_block_area_size_.width * block_size_.width < min_loading_area.width
 		&& loading_block_area_size_.width * block_size_.width < map_size_.width;
 		loading_block_area_size_.width += 2);
 
 	// loading_block_area_size_.height must be an odd number
-	for(loading_block_area_size_.height = kMinBlockNum;
+	for(loading_block_area_size_.height = kMinLoadingBlockAreaHeight;
 		loading_block_area_size_.height * block_size_.height < min_loading_area.height
 		&& loading_block_area_size_.height * block_size_.height < map_size_.height;
 		loading_block_area_size_.height += 2);
@@ -220,7 +222,7 @@ LTSLayer::LTSLayer(
 ,is_initialized_(false)
 ,tile_scale_(layer_info->tile_scale)
 ,actual_tile_size_(atlas_info->texture_size)
-,loading_block_area_size_(0, 0)
+,loading_block_area_size_(kMinMapWidth, kMinMapHeight)
 ,block_size_(terrain_info->block_size)
 ,location_pin_map_(terrain_info->location_pin_map)
 {}
@@ -247,3 +249,66 @@ bool LTSLayer::InitWithInfo(
 /**
  * private
  */
+Block* LTSLayer::LoadTerrainIntoBlock(size_t x, size_t y, Block* used)
+{
+	auto block_num_width = map_size_.width / block_size_.width;
+	auto block_num_height = map_size_.height / block_size_.height;
+	assert(0 <= x && x < block_num_width);
+	assert(0 <= y && y < block_num_height);
+
+	if(used == nullptr)
+	{
+		used = Block::Create(block_size_);
+		used->set_tile_type_no_tile(tile_type_no_tile_);
+		used->set_position(x, y);
+	}
+	else
+	{
+		used->Reset(x, y, false);
+	}
+
+	ReadTerrainDataBinary(used);
+	return std::move(used);
+}
+
+bool LTSLayer::SaveTerrainInBlock(const Block* block)
+{
+	if(!block)
+		return false;
+}
+
+bool LTSLayer::ReadTerrainDataBinary(Block* block)
+{
+	if(!block)
+		return false;
+
+	const std::string path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
+	std::ifstream ifs(path.c_str(), std::ios::binary);
+
+	assert(ifs);
+	std::cout << "load terrain data from " << path << '\n';
+
+	auto position = block->position();
+	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
+	ifs.seekg(index * block->size().area() * sizeof(int), ifs.beg);
+
+	for(size_t i = 0; i < block->size().area(); ++i)
+	{
+		int type = tile_type_no_tile_;
+		ifs.read((char*)&type, sizeof(type));
+		block->InsertTypeAt(i, type);
+	}
+
+	return true;
+}
+
+bool LTSLayer::WriteTerrainDataBinary(const Block* block)
+{
+	if(!block)
+		return false;
+}
+
+void LTSLayer::AllocateSpritesToBlock(const Block* block)
+{
+
+}

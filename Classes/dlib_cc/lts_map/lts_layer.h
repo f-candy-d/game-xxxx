@@ -79,10 +79,10 @@ private:
 	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;
 	cocos2d::Vector<Block*> blocks_;
 
-	void LoadTerrainIntoBlock(int x, int y);
-	void SaveTerrainInBlock(int x, int y);
-	bool ReadTerrainDataBinary(int x, int y);
-	bool WriteTerrainDataBinary(int x, int y);
+	Block* LoadTerrainIntoBlock(size_t x, size_t y, Block* used);
+	bool SaveTerrainInBlock(const Block* block);
+	bool ReadTerrainDataBinary(Block* block);
+	bool WriteTerrainDataBinary(const Block* block);
 	void AllocateSpritesToBlock(const Block* block);
 };
 
