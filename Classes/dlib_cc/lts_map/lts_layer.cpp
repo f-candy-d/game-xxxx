@@ -210,6 +210,8 @@ void LTSLayer::MoveTo(int new_center_x, int new_center_y)
 
 void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 {
+	std::cout << "move to " << new_center_block_position << '\n';
+
 	// adjustment
 	for(; new_center_block_position.x - (static_cast<int>(loading_block_area_size_.width) / 2) < 0; ++new_center_block_position.x);
 	for(; map_size_.width / block_size_.width <= new_center_block_position.x + loading_block_area_size_.width / 2; --new_center_block_position.x);
