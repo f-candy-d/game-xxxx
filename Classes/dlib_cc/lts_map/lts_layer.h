@@ -20,7 +20,7 @@ namespace lts_map
 	}
 }
 
-class lts_map::unit::LTSLayer : public cocos2d::Ref
+class lts_map::unit::LTSLayer : public cocos2d::Layer
 {
 	using SpriteContainer = cocos2d::Vector<cocos2d::Sprite*>;
 
@@ -83,10 +83,9 @@ private:
 	cocos2d::Vector<Block*> blocks_;
 
 	Block* LoadTerrainIntoBlock(size_t x, size_t y, Block* used);
-	bool SaveTerrainInBlock(const Block* block);
 	bool ReadTerrainDataBinary(Block* block);
 	bool WriteTerrainDataBinary(const Block* block);
-	void AllocateSpritesToBlock(const Block* block);
+	void AllocateSpritesToBlock(Block* block);
 	void MoveToRightNextColumn();
 	void MoveToLeftNextColumn();
 	void MoveToRowBelow();

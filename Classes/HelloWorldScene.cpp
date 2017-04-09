@@ -117,14 +117,14 @@ bool HelloWorld::init()
     auto layer = lts_map::unit::LTSLayer::Create(
         parser->layer_info(layername),
         parser->atlas_info(atlasname),
-        parser->terrain_info(terrainname),
-        false);
+        parser->terrain_info(terrainname), false);
     layer->ScaleTile(0.5, false);
     layer->OptimizeBlockSize();
     layer->InitLayer();
-    layer->MoveTo(64, 512);
-    layer->MoveTo(0, 0);
+    // layer->MoveTo(64, 512);
+    // layer->MoveTo(0, 0);
 
+    this->addChild(layer);
 
     return true;
 }

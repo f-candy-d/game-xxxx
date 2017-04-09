@@ -60,7 +60,9 @@ void LTSLayer::InitLayer()
 	{
 		for(size_t x = 0; x < loading_block_area_size_.width; ++x)
 		{
-			blocks_.pushBack(LoadTerrainIntoBlock(x, y, nullptr));
+			auto block = LoadTerrainIntoBlock(x, y, nullptr);
+			blocks_.pushBack(block);
+			AllocateSpritesToBlock(block);
 		}
 	}
 
@@ -196,6 +198,7 @@ void LTSLayer::ScaleTile(float scale, bool do_adjustment)
 {
 	actual_tile_size_.scale(scale / tile_scale_);
 	tile_scale_ = scale;
+	this->setScale(scale);
 
 	if(do_adjustment)
 	{
@@ -210,13 +213,13 @@ void LTSLayer::MoveTo(int new_center_x, int new_center_y)
 
 void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 {
-	std::cout << "move to " << new_center_block_position << '\n';
-
 	// adjustment
 	for(; new_center_block_position.x - (static_cast<int>(loading_block_area_size_.width) / 2) < 0; ++new_center_block_position.x);
 	for(; map_size_.width / block_size_.width <= new_center_block_position.x + loading_block_area_size_.width / 2; --new_center_block_position.x);
 	for(; new_center_block_position.y - (static_cast<int>(loading_block_area_size_.height) / 2) < 0; ++new_center_block_position.y);
 	for(; map_size_.height / block_size_.height <= new_center_block_position.y + loading_block_area_size_.height / 2; --new_center_block_position.y);
+
+	std::cout << "move to " << new_center_block_position << " from " << center_block_position_ << '\n';
 
 	auto delta = new_center_block_position - center_block_position_;
 
@@ -236,6 +239,7 @@ void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 				++x)
 			{
 				LoadTerrainIntoBlock(x, y, *itr_block);
+				AllocateSpritesToBlock(*itr_block);
 			}
 		}
 
@@ -302,6 +306,9 @@ LTSLayer::LTSLayer(
 bool LTSLayer::InitWithInfo(
 	const LayerInfo* layer_info, const AtlasInfo* atlas_info, const TerrainInfo* terrain_info, bool auto_initialization)
 {
+	if(!Layer::init())
+		return false;
+
 	if(!(layer_info->Valied() && atlas_info->Valied() && terrain_info->Valied()))
 		return false;
 
@@ -336,17 +343,12 @@ Block* LTSLayer::LoadTerrainIntoBlock(size_t x, size_t y, Block* used)
 	}
 	else
 	{
+		WriteTerrainDataBinary(used);
 		used->Reset(x, y, false);
 	}
 
 	ReadTerrainDataBinary(used);
 	return std::move(used);
-}
-
-bool LTSLayer::SaveTerrainInBlock(const Block* block)
-{
-	if(!block)
-		return false;
 }
 
 bool LTSLayer::ReadTerrainDataBinary(Block* block)
@@ -358,7 +360,7 @@ bool LTSLayer::ReadTerrainDataBinary(Block* block)
 	std::ifstream ifs(path.c_str(), std::ios::binary);
 
 	assert(ifs);
-	std::cout << "load terrain data from " << path << '\n';
+	std::cout << "read terrain data from " << path << '\n';
 
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
@@ -376,13 +378,66 @@ bool LTSLayer::ReadTerrainDataBinary(Block* block)
 
 bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 {
-	if(!block)
+	if(!block || !block->is_modified())
 		return false;
+
+	const std::string path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
+	std::ofstream ofs(path.c_str(), std::ios::in|std::ios::out|std::ios::binary|std::ios::app);
+
+	assert(ofs);
+	std::cout << "write terrain data to " << path << '\n';
+
+	auto position = block->position();
+	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
+	ofs.seekp(index * block->size().area() * sizeof(int), ofs.beg);
+
+	for(auto type : block->tiles())
+	{
+		ofs.write((char*)&type, sizeof(int));
+	}
+
+	return true;
 }
 
-void LTSLayer::AllocateSpritesToBlock(const Block* block)
+void LTSLayer::AllocateSpritesToBlock(Block* block)
 {
+	assert(block);
 
+	for(; block->sprites().size() < block->size().area();)
+	{
+		auto sprite = Sprite::create(kMapAtlasDirectory + atlas_src_name_);
+		this->addChild(sprite);
+		block->PushBackSprite(sprite);
+		sprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	}
+
+	Vec2 block_origin(
+		block->size().width * actual_tile_size_.width * block->position().x,
+		block->size().height * actual_tile_size_.height * block->position().y);
+
+	int count = 0;
+
+	for(int y = 0; y < block->size().height; ++y)
+	{
+		for(int x = 0; x < block->size().width; ++x)
+		{
+			auto type = block->GetTypeAt(y * block->size().width + x);
+			if(tile_type_no_tile_ != type)
+			{
+				auto sprite = block->GetSpriteAt(y * block->size().width + x);
+				auto texture_pos = texture_positions_[type];
+				Rect texture_rect(texture_pos.x, texture_pos.y, texture_size_.width, texture_size_.height);
+				sprite->setTextureRect(std::move(texture_rect));
+				sprite->setPosition(
+					block_origin.x + actual_tile_size_.width * x,
+					block_origin.y + actual_tile_size_.height * y);
+
+				count++;
+			}
+		}
+	}
+
+	std::cout << "allocated " << count << " sprites" << '\n';
 }
 
 void LTSLayer::MoveToRightNextColumn()
@@ -406,6 +461,7 @@ void LTSLayer::MoveToRightNextColumn()
 				new_x,
 				blocks_.at((y + 1) * loading_block_area_size_.width - 1)->position().y,
 				blocks_.at((y + 1) * loading_block_area_size_.width - 1));
+			AllocateSpritesToBlock(blocks_.at((y + 1) * loading_block_area_size_.width - 1));
 		}
 	}
 }
@@ -431,6 +487,7 @@ void LTSLayer::MoveToLeftNextColumn()
 				new_x,
 				blocks_.at(y * loading_block_area_size_.width)->position().y,
 				blocks_.at(y * loading_block_area_size_.width));
+			AllocateSpritesToBlock(blocks_.at(y * loading_block_area_size_.width));
 		}
 	}
 }
@@ -456,6 +513,7 @@ void LTSLayer::MoveToRowBelow()
 		for(size_t i = 0; i < loading_block_area_size_.width; ++i)
 		{
 			LoadTerrainIntoBlock(blocks_.at(i)->position().x, new_y, blocks_.at(i));
+			AllocateSpritesToBlock(blocks_.at(i));
 		}
 	}
 }
@@ -481,6 +539,7 @@ void LTSLayer::MoveToRowAbove()
 		for(size_t i = blocks_.size() - loading_block_area_size_.width; i < blocks_.size(); ++i)
 		{
 			LoadTerrainIntoBlock(blocks_.at(i)->position().x, new_y, blocks_.at(i));
+			AllocateSpritesToBlock(blocks_.at(i));
 		}
 	}
 }
