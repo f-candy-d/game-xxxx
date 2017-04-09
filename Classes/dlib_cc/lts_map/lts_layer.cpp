@@ -205,7 +205,33 @@ void LTSLayer::ScaleTile(float scale, bool do_adjustment)
 
 void LTSLayer::MoveTo(size_t new_center_x, size_t new_center_y)
 {
-	
+	// shift all elements in blocks_ to the left by the same times as the width of loading-block-area-size
+	std::vector<int> vec;
+	for(int i = 0; i < 3 * 3; ++i)
+		vec.push_back(i);
+
+	std::vector<int> tmp;
+	tmp.reserve(vec.size());
+
+	std::cout << "before" << '\n';
+	for(auto e : vec)
+		std::cout << "vec => " << e << '\n';
+
+	for(size_t i = vec.size() - 3, c = 0; c < vec.size(); ++i, ++c)
+	{
+		i = i < vec.size() ? i : 0;
+		tmp.push_back(vec[i]);
+	}
+	vec = std::move(tmp);
+
+	std::cout << "after" << '\n';
+	for(auto e : vec)
+		std::cout << "vec => " << e << '\n';
+
+	for(size_t i = 0; i < 3; ++i)
+	{
+		std::cout << "load => " << vec[i] << '\n';
+	}
 }
 
 void LTSLayer::MoveTo(dlib::vec2<size_t> new_center_position)
@@ -323,4 +349,104 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 void LTSLayer::AllocateSpritesToBlock(const Block* block)
 {
 
+}
+
+void LTSLayer::MoveToRightNextColumn()
+{
+	assert(blocks_.size() == loading_block_area_size_.area());
+
+	size_t new_x = blocks_.back()->position().x + 1;
+
+	if(new_x < map_size_.width)
+	{
+		for(size_t y = 0; y < loading_block_area_size_.height; ++y)
+		{
+			for(size_t i = 0; i < loading_block_area_size_.width - 1; ++i)
+			{
+				blocks_.swap(
+					y * loading_block_area_size_.width + i,
+					y * loading_block_area_size_.width + i + 1);
+			}
+
+			LoadTerrainIntoBlock(
+				new_x,
+				blocks_.at((y + 1) * loading_block_area_size_.width - 1)->position().y,
+				blocks_.at((y + 1) * loading_block_area_size_.width - 1));
+		}
+	}
+}
+
+void LTSLayer::MoveToLeftNextColumn()
+{
+	assert(blocks_.size() == loading_block_area_size_.area());
+
+	size_t new_x = blocks_.front()->position().x - 1;
+
+	if(0 <= new_x)
+	{
+		for(size_t y = 0; y < loading_block_area_size_.height; ++y)
+		{
+			for(size_t i = 0; i < loading_block_area_size_.width - 1; ++i)
+			{
+				blocks_.swap(
+					(y + 1) * loading_block_area_size_.width - 1 - i,
+					(y + 1) * loading_block_area_size_.width - 1 - i - 1);
+			}
+
+			LoadTerrainIntoBlock(
+				new_x,
+				blocks_.at(y * loading_block_area_size_.width)->position().y,
+				blocks_.at(y * loading_block_area_size_.width));
+		}
+	}
+}
+
+void LTSLayer::MoveToRowBelow()
+{
+	assert(blocks_.size() == loading_block_area_size_.area());
+
+	size_t new_y = blocks_.front()->position().y - 1;
+
+	if(0 <= new_y)
+	{
+		// shift all elements in blocks_ to the right by the same times as the width of loading-block-area-size
+		Vector<Block*> tmp;
+		tmp.reserve(blocks_.size());
+		for(size_t i = blocks_.size() - loading_block_area_size_.width, c = 0; c < blocks_.size(); ++i, ++c)
+		{
+			i = i < blocks_.size() ? i : 0;
+			tmp.pushBack(blocks_.at(i));
+		}
+		blocks_ = std::move(tmp);
+
+		for(size_t i = 0; i < loading_block_area_size_.width; ++i)
+		{
+			LoadTerrainIntoBlock(blocks_.at(i)->position().x, new_y, blocks_.at(i));
+		}
+	}
+}
+
+void LTSLayer::MoveToRowAbove()
+{
+	assert(blocks_.size() == loading_block_area_size_.area());
+
+	size_t new_y = blocks_.back()->position().y + 1;
+
+	if(new_y < map_size_.height)
+	{
+		// shift all elements in blocks_ to the left by the same times as the width of loading-block-area-size
+		Vector<Block*> tmp;
+		tmp.reserve(blocks_.size());
+		for(size_t i = loading_block_area_size_.width, c = 0; c < blocks_.size(); ++i, ++c)
+		{
+			i = i < blocks_.size() ? i : 0;
+			tmp.pushBack(blocks_.at(i));
+		}
+		blocks_ = std::move(tmp);
+
+		for(size_t i = blocks_.size() - loading_block_area_size_.width; i < blocks_.size(); ++i)
+		{
+			LoadTerrainIntoBlock(blocks_.at(i)->position().x, new_y, blocks_.at(i));
+		}
+	}
 }

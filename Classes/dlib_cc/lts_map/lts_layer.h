@@ -87,6 +87,10 @@ private:
 	bool ReadTerrainDataBinary(Block* block);
 	bool WriteTerrainDataBinary(const Block* block);
 	void AllocateSpritesToBlock(const Block* block);
+	void MoveToRightNextColumn();
+	void MoveToLeftNextColumn();
+	void MoveToRowBelow();
+	void MoveToRowAbove();
 };
 
 #endif
