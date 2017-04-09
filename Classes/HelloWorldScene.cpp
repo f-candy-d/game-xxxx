@@ -122,7 +122,8 @@ bool HelloWorld::init()
     layer->ScaleTile(0.5, false);
     layer->OptimizeBlockSize();
     layer->InitLayer();
-    layer->MoveTo(0,0);
+    layer->MoveTo(64, 512);
+    layer->MoveTo(0, 0);
 
 
     return true;

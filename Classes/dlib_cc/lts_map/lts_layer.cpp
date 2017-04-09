@@ -203,40 +203,72 @@ void LTSLayer::ScaleTile(float scale, bool do_adjustment)
 	}
 }
 
-void LTSLayer::MoveTo(size_t new_center_x, size_t new_center_y)
+void LTSLayer::MoveTo(int new_center_x, int new_center_y)
 {
-	// shift all elements in blocks_ to the left by the same times as the width of loading-block-area-size
-	std::vector<int> vec;
-	for(int i = 0; i < 3 * 3; ++i)
-		vec.push_back(i);
-
-	std::vector<int> tmp;
-	tmp.reserve(vec.size());
-
-	std::cout << "before" << '\n';
-	for(auto e : vec)
-		std::cout << "vec => " << e << '\n';
-
-	for(size_t i = vec.size() - 3, c = 0; c < vec.size(); ++i, ++c)
-	{
-		i = i < vec.size() ? i : 0;
-		tmp.push_back(vec[i]);
-	}
-	vec = std::move(tmp);
-
-	std::cout << "after" << '\n';
-	for(auto e : vec)
-		std::cout << "vec => " << e << '\n';
-
-	for(size_t i = 0; i < 3; ++i)
-	{
-		std::cout << "load => " << vec[i] << '\n';
-	}
+	MoveTo(std::move(dlib::vec2<int>(new_center_x, new_center_y)));
 }
 
-void LTSLayer::MoveTo(dlib::vec2<size_t> new_center_position)
+void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 {
-	MoveTo(new_center_position.x, new_center_position.y);
+	// adjustment
+	for(; new_center_block_position.x - (static_cast<int>(loading_block_area_size_.width) / 2) < 0; ++new_center_block_position.x);
+	for(; map_size_.width / block_size_.width <= new_center_block_position.x + loading_block_area_size_.width / 2; --new_center_block_position.x);
+	for(; new_center_block_position.y - (static_cast<int>(loading_block_area_size_.height) / 2) < 0; ++new_center_block_position.y);
+	for(; map_size_.height / block_size_.height <= new_center_block_position.y + loading_block_area_size_.height / 2; --new_center_block_position.y);
+
+	auto delta = new_center_block_position - center_block_position_;
+
+	if(loading_block_area_size_.width <= delta.x
+		|| loading_block_area_size_.width <= -delta.x
+		|| loading_block_area_size_.height <= delta.y
+		|| loading_block_area_size_.height <= -delta.y)
+	{
+		// reload all blocks
+		auto itr_block = blocks_.begin();
+		for(size_t y = new_center_block_position.y - loading_block_area_size_.height / 2;
+			y <= new_center_block_position.y + loading_block_area_size_.height / 2;
+			++y)
+		{
+			for(size_t x = new_center_block_position.x - loading_block_area_size_.width / 2;
+				x <= new_center_block_position.x + loading_block_area_size_.width / 2;
+				++x)
+			{
+				LoadTerrainIntoBlock(x, y, *itr_block);
+			}
+		}
+
+		// update
+		center_block_position_ = new_center_block_position;
+
+		return;
+	}
+
+	// x-coordinate
+	if(0 < delta.x && delta.x < loading_block_area_size_.width)
+	{
+		for(int i = 0; i < delta.x; ++i)
+			MoveToRightNextColumn();
+	}
+	else if(delta.x < 0 && -delta.x < loading_block_area_size_.width)
+	{
+		for(int i = 0; i < -delta.x; ++i)
+			MoveToLeftNextColumn();
+	}
+
+	// y-coordinate
+	if(0 < delta.y && delta.y < loading_block_area_size_.height)
+	{
+		for(int i = 0; i < delta.y; ++i)
+			MoveToRowAbove();
+	}
+	else if(delta.y < 0 && -delta.y < loading_block_area_size_.height)
+	{
+		for(int i = 0; i < -delta.y; ++i)
+			MoveToRowBelow();
+	}
+
+	// update
+	center_block_position_ = new_center_block_position;
 }
 
 /**

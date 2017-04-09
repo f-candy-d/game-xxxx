@@ -37,8 +37,8 @@ public:
 	void AdjustLoadingBlockArea();
 	void ScaleTile(float scale);
 	void ScaleTile(float scale, bool do_optimization);
-	void MoveTo(size_t new_center_x, size_t new_center_y);
-	void MoveTo(dlib::vec2<size_t> new_center_position);
+	void MoveTo(int new_center_x, int new_center_y);
+	void MoveTo(dlib::vec2<int> new_center_position);
 
 	// accessors and mutators
 	inline const std::string& layer_name() const { return layer_name_; }
@@ -78,7 +78,7 @@ private:
 	dlib::size<size_t> loading_block_area_size_;
 	dlib::size<float> actual_tile_size_;
 	dlib::size<size_t> block_size_;
-	dlib::vec2<size_t> center_block_position_;
+	dlib::vec2<int> center_block_position_;
 	std::unordered_map<std::string, dlib::vec2<int>> location_pin_map_;
 	cocos2d::Vector<Block*> blocks_;
 
