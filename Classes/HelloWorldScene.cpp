@@ -118,7 +118,7 @@ bool HelloWorld::init()
         parser->layer_info(layername),
         parser->atlas_info(atlasname),
         parser->terrain_info(terrainname), false);
-    layer->ScaleTile(0.5, false);
+    // layer->ScaleTile(0.5, false);
     layer->OptimizeBlockSize();
     layer->InitLayer();
     // layer->MoveTo(64, 512);

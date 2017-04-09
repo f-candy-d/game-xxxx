@@ -3,10 +3,10 @@
 	[
 		{
 			"terrain_name" : "terrain-A",
-			"terrain_src_name" : "terrain_a.dat",
+			"terrain_src_name" : "terrain_a_1024x5660.dat",
 			"atlas_name" : "atlas-A",
-			"map_size" : [2048, 4096],
-			"block_size" : [32, 32],
+			"map_size" : [1024, 5660],
+			"block_size" : [1, 1],
 			"location_pin_map" :
 			{
 				"toilet" : [512, 512],

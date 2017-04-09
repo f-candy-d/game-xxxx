@@ -1,7 +1,7 @@
 {
 	"map_info" :
 	{
-		"map_size" : [2048, 4096],
+		"map_size" : [1024, 5660],
 		"architecture" : ["bundler-A", "bundler-B", "bundler-C"]
 	}
 }
