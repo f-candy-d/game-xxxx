@@ -10,31 +10,25 @@ namespace dlib_cc
 {
 	namespace utils
 	{
-		class FileStream;
+		class BinaryFileStream;
 	}
 }
 
-class dlib_cc::utils::FileStream : public cocos2d::Ref
+class dlib_cc::utils::BinaryFileStream : public cocos2d::Ref
 {
 
 public:
-	// compile-time constants
-	static constexpr int kModeOverwrite = 1 << 0;
-	static constexpr int kModeAppend = 1 << 1;
-	static constexpr int kModeBinary = 1 << 2;
-	static constexpr int kModeText = 1 << 3;
-
-	FileStream* Create();
+	static BinaryFileStream* Create();
 
 	template <typename T>
-	bool ReadBySize(
-		std::string filename,
+	bool Read(
+		const std::string& filename,
 		std::vector<T>& buff,
-		int mode = kModeOverwrite | kModeText,
-		std::streamoff ofset = 0,
+		size_t size,
+		size_t ofset = 0,
 		std::ios_base::seekdir way = std::ios::beg)
 	{
-		std::ifstream ifs(filename.c_str(), MakeModeFlag(mode));
+		std::ifstream ifs(filename.c_str(), std::ios::binary);
 
 		if(!ifs)
 		{
@@ -42,13 +36,66 @@ public:
 			return false;
 		}
 
+		if(ofset != 0)
+		{
+			ifs.seekg(ofset * sizeof(T), way);
+		}
 
+		for(size_t i = 0; i < size; ++i)
+		{
+			T data;
+			ifs.read((char*)&data, sizeof(data));
+			buff.push_back(data);
+		}
 
 		return true;
 	}
 
+	template <typename T>
+	bool Write(
+		const std::string& filename,
+		const std::vector<T>& buff,
+		bool append = true,
+		size_t ofset = 0,
+		std::ios_base::seekdir way = std::ios::beg)
+	{
+		auto mode_flag =
+			(append)
+			? std::ios::in|std::ios::out|std::ios::binary|std::ios::app
+			: std::ios::out|std::ios::binary|std::ios::trunc;
+
+		std::ofstream ofs(filename.c_str(), mode_flag);
+
+		if(!ofs)
+		{
+			std::cout << "error opening file => " << filename << '\n';
+			return false;
+		}
+
+		if(append)
+		{
+			ofs.seekp(ofset * sizeof(T), way);
+		}
+
+		for(auto& data : buff)
+		{
+			ofs.write((char*)&data, sizeof(data));
+		}
+
+		return true;
+	}
+
+	std::string MakeTmpFile();
+	void DeleteTmpFile(const std::string& filename);
+
+protected:
+	bool Init();
+	BinaryFileStream();
+	~BinaryFileStream();
+
 private:
-	std::ios_base::open_mode MakeModeFlag(int mode);
+	std::string tmpfile_extension_;
+	std::vector<std::string> tmpfile_names_;
 };
 
 #endif

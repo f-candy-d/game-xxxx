@@ -28,6 +28,14 @@ public:
 	cocos2d::Sprite* GetSpriteAt(int index) const { return sprites_.at(index); }
 	void InsertSpriteAt(int index, cocos2d::Sprite* sprite) { sprites_.insert(index, sprite); }
 	void PushBackSprite(cocos2d::Sprite* sprite) { sprites_.pushBack(sprite); }
+	void CopyTiles(const std::vector<int>& src) {
+		assert(src.size() == size_.area());
+		tiles_ = src;
+	}
+	void CopyTiles(const std::vector<int>&& src) {
+		assert(src.size() == size_.area());
+		tiles_ = std::move(src);
+	}
 	// accessors and mutators
 	dlib::size<size_t> size() const { return size_; }
 	bool is_modified() const { return is_modified_; }

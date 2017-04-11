@@ -361,22 +361,17 @@ bool LTSLayer::ReadTerrainDataBinary(Block* block)
 	if(!block)
 		return false;
 
-	const std::string path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
-	std::ifstream ifs(path.c_str(), std::ios::binary);
-
-	assert(ifs);
-	std::cout << "read terrain data from " << path << '\n';
-
+	auto path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
-	ifs.seekg(index * block->size().area() * sizeof(int), ifs.beg);
+	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
+	std::vector<int> buff;
+	buff.reserve(block->tiles().size());
 
-	for(size_t i = 0; i < block->size().area(); ++i)
-	{
-		int type = tile_type_no_tile_;
-		ifs.read((char*)&type, sizeof(type));
-		block->InsertTypeAt(i, type);
-	}
+	assert(bfs->Read(path, buff, block->size().area(), index * block->size().area()));
+	block->CopyTiles(std::move(buff));
+
+	std::cout << "read terrain from " << path << '\n';
 
 	return true;
 }
@@ -387,19 +382,25 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 		return false;
 
 	const std::string path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
-	std::ofstream ofs(path.c_str(), std::ios::in|std::ios::out|std::ios::binary|std::ios::app);
-
-	assert(ofs);
-	std::cout << "write terrain data to " << path << '\n';
+	// std::ofstream ofs(path.c_str(), std::ios::in|std::ios::out|std::ios::binary|std::ios::app);
+	//
+	// assert(ofs);
+	// std::cout << "write terrain data to " << path << '\n';
+	//
+	// auto position = block->position();
+	// auto index = position.y * (map_size_.width / block_size_.width) + position.x;
+	// ofs.seekp(index * block->size().area() * sizeof(int), ofs.beg);
+	//
+	// for(auto type : block->tiles())
+	// {
+	// 	ofs.write((char*)&type, sizeof(int));
+	// }
 
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
-	ofs.seekp(index * block->size().area() * sizeof(int), ofs.beg);
-
-	for(auto type : block->tiles())
-	{
-		ofs.write((char*)&type, sizeof(int));
-	}
+	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
+	assert(bfs->Write<int>(path, block->tiles(), true, index * block->size().area(), std::ios::beg));
+	std::cout << "write terrain data to " << path << '\n';
 
 	return true;
 }
@@ -408,25 +409,7 @@ void LTSLayer::AlignBlocksInStraightLineInFile()
 {
 	const std::string path =
 		FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
-	const std::string path_tmp =
-		FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory) + kMapTmpFile;
-	std::ifstream ifs(path.c_str(), std::ios::binary);
-	std::ofstream ofs(path_tmp.c_str(), std::ios::out|std::ios::trunc);
-	std::cout << "tmp => " << path_tmp << '\n';
-	assert(ofs);
-	int a = 299;
-	// ofs.write((char*)&a, sizeof(int));
-	ofs << a;
-	ofs.close();
-
-	// if(!std::remove(path_tmp.c_str()))
-	// {
-	// 	std::cout << "file successfully deleted! => " << path_tmp << '\n';
-	// }
-	// else
-	// {
-	// 	std::cout << "error deleting file... => " << path_tmp << '\n';
-	// }
+	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
 }
 
 void LTSLayer::AllocateSpritesToBlock(Block* block)
