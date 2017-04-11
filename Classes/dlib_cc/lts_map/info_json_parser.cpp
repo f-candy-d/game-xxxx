@@ -5,7 +5,7 @@
 #include <cassert>
 
 using namespace cocos2d;
-using namespace lts_map::unit;
+using namespace dlib_cc::lts_map_unit;
 
 // constant variables
 namespace

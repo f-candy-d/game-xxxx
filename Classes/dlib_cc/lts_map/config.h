@@ -3,14 +3,15 @@
 
 #include <string>
 
-namespace lts_map
+namespace dlib_cc
 {
-	namespace unit
+	namespace lts_map_unit
 	{
 		// file pathes to directories which has resources of a stl-map
 		const std::string kMapResourceRootDirectory("lts_map_res/");
 		const std::string kMapAtlasDirectory(kMapResourceRootDirectory + "atlas/");
 		const std::string kMapTerrainDirectory(kMapResourceRootDirectory + "terrain/");
+		const std::string kMapTmpFile("tmp.dat");
 
 		// minimum map size
 		constexpr size_t kMinMapWidth = 3;

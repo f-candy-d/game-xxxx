@@ -1,4 +1,4 @@
-#### class lts_map::unit::InfoJsonParser : public cocos2d::Ref
+#### class dlib_cc::lts_map_unit::InfoJsonParser : public cocos2d::Ref
 # InfoJsonParser
 `LTS-Map`のMap,Layer,Bundler,Atlas,Terrainのそれぞれの設定ファイル(`.json`)をパースして、各infoオブジェクトを作成する。  
 各infoオブジェクトの実体は`InfoJsonParser`オブジェクトが持ち、データを参照するときはアクセッサメソッドでポインタを受け取り、それを利用する。  
@@ -51,9 +51,9 @@
 
 #### 名前空間
 ```c++
-namespace lts_map
+namespace dlib_cc
 {
-	namespace unit
+	namespace lts_map_unit
 	{
 		class InfoJsonParser;
 	}

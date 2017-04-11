@@ -7,15 +7,15 @@
 #include <unordered_map>
 #include <vector>
 
-namespace lts_map
+namespace dlib_cc
 {
-	namespace unit
+	namespace lts_map_unit
 	{
 		class InfoJsonParser;
 	}
 }
 
-class lts_map::unit::InfoJsonParser : public cocos2d::Ref
+class dlib_cc::lts_map_unit::InfoJsonParser : public cocos2d::Ref
 {
 public:
 	static InfoJsonParser* Create();

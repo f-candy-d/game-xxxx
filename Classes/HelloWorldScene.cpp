@@ -80,32 +80,32 @@ bool HelloWorld::init()
 
     //NOTE : TEST
 
-    lts_map::unit::AtlasInfo mAtlas;
-    auto fBlock = lts_map::unit::Block::Create(dlib::size<size_t>(10, 10));
+    dlib_cc::lts_map_unit::AtlasInfo mAtlas;
+    auto fBlock = dlib_cc::lts_map_unit::Block::Create(dlib::size<size_t>(10, 10));
     std::cout << "fBlock::GridSize = " << fBlock->size() << '\n';
     std::cout << "fBlock::GridPoint = " << fBlock->position() << '\n';
 
-    auto parser = lts_map::unit::InfoJsonParser::Create();
+    auto parser = dlib_cc::lts_map_unit::InfoJsonParser::Create();
     parser->ParseJson("index.json");
     // // log map-info
-    // lts_map::unit::DebugLog(parser->map_info());
+    // dlib_cc::lts_map_unit::DebugLog(parser->map_info());
     // for(auto nameb : parser->map_info()->architecture)
     // {
     //     std::cout << "IN " << nameb << '\n';
     //     // log bundler-info
-    //     lts_map::unit::DebugLog(parser->bundler_info(nameb));
+    //     dlib_cc::lts_map_unit::DebugLog(parser->bundler_info(nameb));
     //     for(auto namel : parser->bundler_info(nameb)->architecture)
     //     {
     //         std::cout << "IN " << namel << '\n';
     //         // log layer-info
     //         auto layer = parser->layer_info(namel);
-    //         lts_map::unit::DebugLog(layer);
+    //         dlib_cc::lts_map_unit::DebugLog(layer);
     //         // log atlas-info
     //         auto namea = layer->atlas_name;
-    //         lts_map::unit::DebugLog(parser->atlas_info(namea));
+    //         dlib_cc::lts_map_unit::DebugLog(parser->atlas_info(namea));
     //         auto namet = layer->terrain_name;
     //         // log terrain-info
-    //         lts_map::unit::DebugLog(parser->terrain_info(namet));
+    //         dlib_cc::lts_map_unit::DebugLog(parser->terrain_info(namet));
     //
     //         std::cout << "END " << namel << '\n';
     //     }
@@ -114,7 +114,7 @@ bool HelloWorld::init()
     std::string layername("layer-A");
     std::string atlasname("atlas-A");
     std::string terrainname("terrain-A");
-    auto layer = lts_map::unit::LTSLayer::Create(
+    auto layer = dlib_cc::lts_map_unit::LTSLayer::Create(
         parser->layer_info(layername),
         parser->atlas_info(atlasname),
         parser->terrain_info(terrainname), false);

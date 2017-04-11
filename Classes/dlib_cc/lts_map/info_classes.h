@@ -6,9 +6,9 @@
 #include <unordered_map>
 #include <vector>
 
-namespace lts_map
+namespace dlib_cc
 {
-	namespace unit
+	namespace lts_map_unit
 	{
 		struct MapInfo;
 		struct LayerInfo;
@@ -25,7 +25,7 @@ namespace lts_map
 	}
 }
 
-struct lts_map::unit::MapInfo
+struct dlib_cc::lts_map_unit::MapInfo
 {
 public:
 	dlib::size<size_t> map_size;
@@ -41,7 +41,7 @@ public:
 	}
 };
 
-struct lts_map::unit::LayerInfo
+struct dlib_cc::lts_map_unit::LayerInfo
 {
 public:
 	std::string layer_name;
@@ -66,7 +66,7 @@ public:
 	}
 };
 
-struct lts_map::unit::BundlerInfo
+struct dlib_cc::lts_map_unit::BundlerInfo
 {
 public:
 	std::string bundler_name;
@@ -82,7 +82,7 @@ public:
 	}
 };
 
-struct lts_map::unit::AtlasInfo
+struct dlib_cc::lts_map_unit::AtlasInfo
 {
 public:
 	std::string atlas_name;
@@ -106,7 +106,7 @@ public:
 	}
 };
 
-struct lts_map::unit::TerrainInfo
+struct dlib_cc::lts_map_unit::TerrainInfo
 {
 public:
 	std::string terrain_name;
@@ -130,7 +130,7 @@ public:
 	}
 };
 
-inline void lts_map::unit::DebugLog(const lts_map::unit::MapInfo *info)
+inline void dlib_cc::lts_map_unit::DebugLog(const dlib_cc::lts_map_unit::MapInfo *info)
 {
 	std::cout << '\n' << "DEBUG LOG < MAP INFO >" << '\n';
 	std::cout << "map size => " << info->map_size << '\n';
@@ -139,7 +139,7 @@ inline void lts_map::unit::DebugLog(const lts_map::unit::MapInfo *info)
 	std::cout << "END < MAP INFO >" << "\n\n";
 }
 
-inline void lts_map::unit::DebugLog(const lts_map::unit::LayerInfo *info)
+inline void dlib_cc::lts_map_unit::DebugLog(const dlib_cc::lts_map_unit::LayerInfo *info)
 {
 	std::cout << '\n' << "DEBUG LOG < LAYER INFO >" << '\n';
 	std::cout << "layer name => " << info->layer_name << '\n';
@@ -150,7 +150,7 @@ inline void lts_map::unit::DebugLog(const lts_map::unit::LayerInfo *info)
 	std::cout << "END < LAYER INFO >" << "\n\n";
 }
 
-inline void lts_map::unit::DebugLog(const lts_map::unit::BundlerInfo *info)
+inline void dlib_cc::lts_map_unit::DebugLog(const dlib_cc::lts_map_unit::BundlerInfo *info)
 {
 	std::cout << '\n' << "DEBUG LOG < BUNDLER INFO >" << '\n';
 	std::cout << "bundler name => " << info->bundler_name << '\n';
@@ -159,7 +159,7 @@ inline void lts_map::unit::DebugLog(const lts_map::unit::BundlerInfo *info)
 	std::cout << "END < BUNDLER INFO >" << "\n\n";
 }
 
-inline void lts_map::unit::DebugLog(const lts_map::unit::AtlasInfo *info)
+inline void dlib_cc::lts_map_unit::DebugLog(const dlib_cc::lts_map_unit::AtlasInfo *info)
 {
 	std::cout << '\n' << "DEBUG LOG < ATLAS INFO >" << '\n';
 	std::cout << "atlas name => " << info->atlas_name << '\n';
@@ -172,7 +172,7 @@ inline void lts_map::unit::DebugLog(const lts_map::unit::AtlasInfo *info)
 	std::cout << "END < ATLAS INFO >" << "\n\n";
 }
 
-inline void lts_map::unit::DebugLog(const lts_map::unit::TerrainInfo *info)
+inline void dlib_cc::lts_map_unit::DebugLog(const dlib_cc::lts_map_unit::TerrainInfo *info)
 {
 	std::cout << '\n' << "DEBUG LOG < TERRAIN INFO >" << '\n';
 	std::cout << "terrain name => " << info->terrain_name << '\n';

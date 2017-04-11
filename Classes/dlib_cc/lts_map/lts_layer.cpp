@@ -1,15 +1,17 @@
 #include "lts_layer.h"
 #include "info_classes.h"
 #include "config.h"
+#include "../utils/binary_file_stream.h"
 #include <iostream>
 #include <fstream>
+#include <cstdio>
 
 /**
- * lts_map::unit::LTSLayer class
+ * dlib_cc::lts_map_unit::LTSLayer class
  */
 
 using namespace cocos2d;
-using namespace lts_map::unit;
+using namespace dlib_cc::lts_map_unit;
 
 /**
  * compile-time constants
@@ -162,6 +164,7 @@ void LTSLayer::OptimizeBlockSize(float pitch)
 		block_size_.height = options[static_cast<size_t>((options.size() - 1) * pitch)];
 	}
 	AdjustLoadingBlockArea();
+	AlignBlocksInStraightLineInFile();
 
 	std::cout << "block size => " << block_size_ << '\n';
 	std::cout << "loading block area => " << loading_block_area_size_ << '\n';
@@ -399,6 +402,31 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 	}
 
 	return true;
+}
+
+void LTSLayer::AlignBlocksInStraightLineInFile()
+{
+	const std::string path =
+		FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
+	const std::string path_tmp =
+		FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory) + kMapTmpFile;
+	std::ifstream ifs(path.c_str(), std::ios::binary);
+	std::ofstream ofs(path_tmp.c_str(), std::ios::out|std::ios::trunc);
+	std::cout << "tmp => " << path_tmp << '\n';
+	assert(ofs);
+	int a = 299;
+	// ofs.write((char*)&a, sizeof(int));
+	ofs << a;
+	ofs.close();
+
+	// if(!std::remove(path_tmp.c_str()))
+	// {
+	// 	std::cout << "file successfully deleted! => " << path_tmp << '\n';
+	// }
+	// else
+	// {
+	// 	std::cout << "error deleting file... => " << path_tmp << '\n';
+	// }
 }
 
 void LTSLayer::AllocateSpritesToBlock(Block* block)

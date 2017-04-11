@@ -4,9 +4,9 @@
 #include "../tools/include_lib_index.h"
 #include <vector>
 
-namespace lts_map
+namespace dlib_cc
 {
-	namespace unit
+	namespace lts_map_unit
 	{
 		class Block;
 
@@ -15,7 +15,7 @@ namespace lts_map
 	}
 }
 
-class lts_map::unit::Block : public cocos2d::Ref
+class dlib_cc::lts_map_unit::Block : public cocos2d::Ref
 {
 public:
 	static Block* Create(const dlib::size<size_t>& size);

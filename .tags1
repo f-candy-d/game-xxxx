@@ -4,6 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-createScene	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:11	class:HelloWorld	signature:()
-init	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:27	class:HelloWorld	signature:()
-menuCloseCallback	/home/daichi/dev/projects/cocos/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:147	class:HelloWorld	signature:(Ref* pSender)
+DLIB_CC_UTILS_BINARY_FILE_STREAM_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^#define DLIB_CC_UTILS_BINARY_FILE_STREAM_H$/;"	macro	line:2
+dlib_cc	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^namespace dlib_cc$/;"	namespace	line:9
+utils	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	namespace utils$/;"	namespace	line:11	namespace:dlib_cc
+FileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^class dlib_cc::utils::FileStream : public cocos2d::Ref$/;"	class	line:17	class:dlib_cc::utils
+kModeOverwrite	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	static constexpr int kModeOverwrite = 1 << 0;$/;"	member	line:22	class:dlib_cc::utils::FileStream
+kModeAppend	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	static constexpr int kModeAppend = 1 << 1;$/;"	member	line:23	class:dlib_cc::utils::FileStream
+kModeBinary	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	static constexpr int kModeBinary = 1 << 2;$/;"	member	line:24	class:dlib_cc::utils::FileStream
+kModeText	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	static constexpr int kModeText = 1 << 3;$/;"	member	line:25	class:dlib_cc::utils::FileStream
+ReadBySize	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	bool ReadBySize($/;"	function	line:30	class:dlib_cc::utils::FileStream	signature:( std::string filename, std::vector<T>& buff, int mode = kModeOverwrite | kModeText, std::streamoff ofset = 0, std::ios_base::seekdir way = std::ios::beg)

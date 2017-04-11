@@ -7,9 +7,9 @@
 #include <vector>
 #include <unordered_map>
 
-namespace lts_map
+namespace dlib_cc
 {
-	namespace unit
+	namespace lts_map_unit
 	{
 		class LTSLayer;
 
@@ -20,7 +20,7 @@ namespace lts_map
 	}
 }
 
-class lts_map::unit::LTSLayer : public cocos2d::Layer
+class dlib_cc::lts_map_unit::LTSLayer : public cocos2d::Layer
 {
 	using SpriteContainer = cocos2d::Vector<cocos2d::Sprite*>;
 
@@ -85,6 +85,7 @@ private:
 	Block* LoadTerrainIntoBlock(size_t x, size_t y, Block* used);
 	bool ReadTerrainDataBinary(Block* block);
 	bool WriteTerrainDataBinary(const Block* block);
+	void AlignBlocksInStraightLineInFile();
 	void AllocateSpritesToBlock(Block* block);
 	void MoveToRightNextColumn();
 	void MoveToLeftNextColumn();

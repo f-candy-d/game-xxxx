@@ -3,10 +3,10 @@
 #include "config.h"
 
 /**
- * lts_map::unit::Block class
+ * dlib_cc::lts_map_unit::Block class
  */
 using namespace cocos2d;
-using namespace lts_map::unit;
+using namespace dlib_cc::lts_map_unit;
 
 /**
  * public
