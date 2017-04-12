@@ -1538,19 +1538,14 @@ sprites_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/block.h
 tile_type_no_tile_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	int tile_type_no_tile_;$/;"	member	line:63	class:dlib_cc::lts_map_unit::Block
 position_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/block.h	/^	dlib::vec2<int> position_;$/;"	member	line:64	class:dlib_cc::lts_map_unit::Block
 DLIB_CC_UTILS_BINARY_FILE_STREAM_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^#define DLIB_CC_UTILS_BINARY_FILE_STREAM_H$/;"	macro	line:2
-dlib_cc	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^namespace dlib_cc$/;"	namespace	line:9
-utils	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	namespace utils$/;"	namespace	line:11	namespace:dlib_cc
-BinaryFileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^class dlib_cc::utils::BinaryFileStream : public cocos2d::Ref$/;"	class	line:17	class:dlib_cc::utils
-Read	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	bool Read($/;"	function	line:24	class:dlib_cc::utils::BinaryFileStream	signature:( const std::string& filename, std::vector<T>& buff, size_t size, size_t ofset = 0, std::ios_base::seekdir way = std::ios::beg)
+dlib_cc	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^namespace dlib_cc$/;"	namespace	line:10
+utils	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	namespace utils$/;"	namespace	line:12	namespace:dlib_cc
+BinaryFileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^class dlib_cc::utils::BinaryFileStream : public cocos2d::Ref$/;"	class	line:18	class:dlib_cc::utils
+Read	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	bool Read($/;"	function	line:25	class:dlib_cc::utils::BinaryFileStream	signature:( const std::string& filename, std::vector<T>& buff, size_t size, size_t ofset = 0, std::ios_base::seekdir way = std::ios::beg)
 Write	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	bool Write($/;"	function	line:55	class:dlib_cc::utils::BinaryFileStream	signature:( const std::string& filename, const std::vector<T>& buff, bool append = true, size_t ofset = 0, std::ios_base::seekdir way = std::ios::beg)
 tmpfile_extension_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	std::string tmpfile_extension_;$/;"	member	line:97	class:dlib_cc::utils::BinaryFileStream
 tmpfile_names_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	std::vector<std::string> tmpfile_names_;$/;"	member	line:98	class:dlib_cc::utils::BinaryFileStream
-Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^BinaryFileStream* BinaryFileStream::Create()$/;"	function	line:14	class:BinaryFileStream	signature:()
-MakeTmpFile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^std::string BinaryFileStream::MakeTmpFile()$/;"	function	line:27	class:BinaryFileStream	signature:()
-DeleteTmpFile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^void BinaryFileStream::DeleteTmpFile(const std::string &filename)$/;"	function	line:39	class:BinaryFileStream	signature:(const std::string &filename)
-Init	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^bool BinaryFileStream::Init()$/;"	function	line:55	class:BinaryFileStream	signature:()
-BinaryFileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^BinaryFileStream::BinaryFileStream()$/;"	function	line:60	class:BinaryFileStream	signature:()
-~BinaryFileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^BinaryFileStream::~BinaryFileStream()$/;"	function	line:64	class:BinaryFileStream	signature:()
+opening_streams_	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.h	/^	std::unordered_map<std::string, std::fstream> opening_streams_;$/;"	member	line:99	class:dlib_cc::utils::BinaryFileStream
 kDefaultPitch	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr float kDefaultPitch = 0.0;$/;"	member	line:22	namespace:__anon1	file:
 kMinLoadingBlockAreaWidth	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr size_t kMinLoadingBlockAreaWidth = 3;$/;"	member	line:24	namespace:__anon1	file:
 kMinLoadingBlockAreaHeight	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^	static constexpr size_t kMinLoadingBlockAreaHeight = 3;$/;"	member	line:25	namespace:__anon1	file:
@@ -1575,3 +1570,11 @@ MoveToRightNextColumn	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lt
 MoveToLeftNextColumn	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::MoveToLeftNextColumn()$/;"	function	line:483	class:LTSLayer	signature:()
 MoveToRowBelow	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::MoveToRowBelow()$/;"	function	line:509	class:LTSLayer	signature:()
 MoveToRowAbove	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/lts_map/lts_layer.cpp	/^void LTSLayer::MoveToRowAbove()$/;"	function	line:535	class:LTSLayer	signature:()
+Create	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^BinaryFileStream* BinaryFileStream::Create()$/;"	function	line:14	class:BinaryFileStream	signature:()
+MakeTmpFile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^std::string BinaryFileStream::MakeTmpFile()$/;"	function	line:27	class:BinaryFileStream	signature:()
+DeleteTmpFile	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^void BinaryFileStream::DeleteTmpFile(const std::string &filename)$/;"	function	line:39	class:BinaryFileStream	signature:(const std::string &filename)
+Close	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^void BinaryFileStream::Close(const std::string& filename)$/;"	function	line:52	class:BinaryFileStream	signature:(const std::string& filename)
+Init	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^bool BinaryFileStream::Init()$/;"	function	line:65	class:BinaryFileStream	signature:()
+BinaryFileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^BinaryFileStream::BinaryFileStream()$/;"	function	line:70	class:BinaryFileStream	signature:()
+~BinaryFileStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^BinaryFileStream::~BinaryFileStream()$/;"	function	line:74	class:BinaryFileStream	signature:()
+OpenStream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib_cc/utils/binary_file_stream.cpp	/^bool BinaryFileStream::OpenStream(const std::string &filename, std::ios_base::openmode mode)$/;"	function	line:89	class:BinaryFileStream	signature:(const std::string &filename, std::ios_base::openmode mode)

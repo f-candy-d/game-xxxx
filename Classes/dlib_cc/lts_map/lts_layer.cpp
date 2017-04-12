@@ -399,7 +399,7 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
 	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
-	assert(bfs->Write<int>(path, block->tiles(), true, index * block->size().area(), std::ios::beg));
+	assert(bfs->Write<int>(path, block->tiles(), true, index * block->size().area()));
 	std::cout << "write terrain data to " << path << '\n';
 
 	return true;

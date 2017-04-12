@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 namespace dlib_cc
 {
@@ -28,23 +29,22 @@ public:
 		size_t ofset = 0,
 		std::ios_base::seekdir way = std::ios::beg)
 	{
-		std::ifstream ifs(filename.c_str(), std::ios::binary);
-
-		if(!ifs)
+		if(!OpenStream(filename, std::ios::out|std::ios::in|std::ios::binary))
 		{
-			std::cout << "error opening file => " << filename << '\n';
 			return false;
 		}
 
+		auto fs = &opening_streams_[filename];
+
 		if(ofset != 0)
 		{
-			ifs.seekg(ofset * sizeof(T), way);
+			fs->seekg(ofset * sizeof(T), way);
 		}
 
 		for(size_t i = 0; i < size; ++i)
 		{
 			T data;
-			ifs.read((char*)&data, sizeof(data));
+			fs->read((char*)&data, sizeof(data));
 			buff.push_back(data);
 		}
 
@@ -62,24 +62,23 @@ public:
 		auto mode_flag =
 			(append)
 			? std::ios::in|std::ios::out|std::ios::binary|std::ios::app
-			: std::ios::out|std::ios::binary|std::ios::trunc;
+			: std::ios::in|std::ios::out|std::ios::binary|std::ios::trunc;
 
-		std::ofstream ofs(filename.c_str(), mode_flag);
-
-		if(!ofs)
+		if(!OpenStream(filename, mode_flag))
 		{
-			std::cout << "error opening file => " << filename << '\n';
 			return false;
 		}
 
+		auto fs = &opening_streams_[filename];
+
 		if(append)
 		{
-			ofs.seekp(ofset * sizeof(T), way);
+			fs->seekp(ofset * sizeof(T), way);
 		}
 
 		for(auto& data : buff)
 		{
-			ofs.write((char*)&data, sizeof(data));
+			fs->write((char*)&data, sizeof(data));
 		}
 
 		return true;
@@ -87,6 +86,7 @@ public:
 
 	std::string MakeTmpFile();
 	void DeleteTmpFile(const std::string& filename);
+	void Close(const std::string& filename);
 
 protected:
 	bool Init();
@@ -96,6 +96,9 @@ protected:
 private:
 	std::string tmpfile_extension_;
 	std::vector<std::string> tmpfile_names_;
+	std::unordered_map<std::string, std::fstream> opening_streams_;
+
+	bool OpenStream(const std::string& filename, std::ios_base::openmode mode);
 };
 
 #endif
