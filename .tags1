@@ -4,14 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-DLIB_BINARY_FILE_STREAM_BINARY_FILE_STREAM_IMPL_H	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^#define DLIB_BINARY_FILE_STREAM_BINARY_FILE_STREAM_IMPL_H$/;"	macro	line:2
-bfstream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^dlib::bfstream<T>::bfstream()$/;"	function	line:15	class:dlib::bfstream	signature:()
-bfstream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^dlib::bfstream<T>::bfstream$/;"	function	line:20	class:dlib::bfstream	signature:(const std::string& filename, const dlib::ios_f::open_mode openmode)
-~bfstream	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^dlib::bfstream<T>::~bfstream()$/;"	function	line:34	class:dlib::bfstream	signature:()
-open	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^void dlib::bfstream<T>::open$/;"	function	line:49	class:dlib::bfstream	signature:(const std::string& filename, const dlib::ios_f::open_mode openmode)
-write_from_buff	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^void dlib::bfstream<T>::write_from_buff(const std::vector<T>& buff)$/;"	function	line:63	class:dlib::bfstream	signature:(const std::vector<T>& buff)
-read_into_buff	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^void dlib::bfstream<T>::read_into_buff(std::vector<T>& buff, size_t size)$/;"	function	line:75	class:dlib::bfstream	signature:(std::vector<T>& buff, size_t size)
-seekg	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^void dlib::bfstream<T>::seekg(const size_t ofset, const dlib::ios_f::seek_dir way)$/;"	function	line:89	class:dlib::bfstream	signature:(const size_t ofset, const dlib::ios_f::seek_dir way)
-seekp	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^void dlib::bfstream<T>::seekp(const size_t ofset, const dlib::ios_f::seek_dir way)$/;"	function	line:98	class:dlib::bfstream	signature:(const size_t ofset, const dlib::ios_f::seek_dir way)
-to_ios_base_openmode	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^std::ios_base::openmode dlib::bfstream<T>::to_ios_base_openmode$/;"	function	line:110	class:dlib::bfstream	signature:(dlib::ios_f::open_mode flg)
-to_ios_base_seekdir	/home/daichi/dev/cocos-projects/GameXXX/Classes/dlib/binary_file_stream/binary_file_stream_impl.h	/^std::ios_base::seekdir dlib::bfstream<T>::to_ios_base_seekdir$/;"	function	line:130	class:dlib::bfstream	signature:(dlib::ios_f::seek_dir flg)
+createScene	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	function	line:11	class:HelloWorld	signature:()
+init	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	function	line:27	class:HelloWorld	signature:()
+menuCloseCallback	/home/daichi/dev/cocos-projects/GameXXX/Classes/HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	function	line:147	class:HelloWorld	signature:(Ref* pSender)

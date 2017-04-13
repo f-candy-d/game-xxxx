@@ -26,6 +26,7 @@ namespace
 	static const std::string kElmTerrainName("terrain_name");
 	static const std::string kElmAtlasSrcName("atlas_src_name");
 	static const std::string kElmTerrainSrcName("terrain_src_name");
+	static const std::string kElmTerrainRawSrcName("terrain_raw_src_name");
 	static const std::string kElmIsVisible("is_visible");
 	static const std::string kElmIsEditable("is_editable");
 	static const std::string kElmNumTileType("num_tile_type");
@@ -209,6 +210,7 @@ TerrainInfo InfoJsonParser::MakeTerrainInfo(picojson::value& obj)
 
 	info.terrain_name = elements[kElmTerrainName].get<std::string>();
 	info.terrain_src_name = elements[kElmTerrainSrcName].get<std::string>();
+	info.terrain_raw_src_name = elements[kElmTerrainRawSrcName].get<std::string>();
 	info.atlas_name = elements[kElmAtlasName].get<std::string>();
 	info.map_size = MakeDLibSize<size_t>(elements[kElmMapSize]);
 	info.block_size = MakeDLibSize<size_t>(elements[kElmBlockSize]);

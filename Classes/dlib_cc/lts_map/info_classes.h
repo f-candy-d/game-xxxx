@@ -111,6 +111,7 @@ struct dlib_cc::lts_map_unit::TerrainInfo
 public:
 	std::string terrain_name;
 	std::string terrain_src_name;
+	std::string terrain_raw_src_name;
 	std::string atlas_name;
 	dlib::size<size_t> map_size;
 	dlib::size<size_t> block_size;
@@ -119,6 +120,7 @@ public:
 	TerrainInfo()
 	:terrain_name("")
 	,terrain_src_name("")
+	,terrain_raw_src_name("")
 	,atlas_name("")
 	,map_size(0, 0)
 	,block_size(0, 0)
@@ -177,6 +179,7 @@ inline void dlib_cc::lts_map_unit::DebugLog(const dlib_cc::lts_map_unit::Terrain
 	std::cout << '\n' << "DEBUG LOG < TERRAIN INFO >" << '\n';
 	std::cout << "terrain name => " << info->terrain_name << '\n';
 	std::cout << "terrain src name => " << info->terrain_src_name << '\n';
+	std::cout << "terrain raw src name => " << info->terrain_raw_src_name << '\n';
 	std::cout << "atlas name => " << info->atlas_name << '\n';
 	std::cout << "map size => " << info->map_size << '\n';
 	std::cout << "block size => " << info->block_size << '\n';

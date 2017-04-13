@@ -86,6 +86,27 @@ void dlib::bfstream<T>::read_into_buff(std::vector<T>& buff, size_t size)
 }
 
 template<typename T>
+void dlib::bfstream<T>::write_one(const T data)
+{
+	assert(openmode_ & dlib::ios_f::out);
+	assert(is_open_);
+
+	stream_.write((char*)&data, sizeof(T));
+}
+
+template<typename T>
+T dlib::bfstream<T>::read_one()
+{
+	assert(openmode_ & dlib::ios_f::in);
+	assert(is_open_);
+
+	T data;
+	stream_.read((char*)&data, sizeof(T));
+
+	return data;
+}
+
+template<typename T>
 void dlib::bfstream<T>::seekg(const size_t ofset, const dlib::ios_f::seek_dir way)
 {
 	assert(openmode_ & dlib::ios_f::in);

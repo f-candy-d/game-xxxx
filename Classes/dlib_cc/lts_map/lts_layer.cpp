@@ -1,7 +1,6 @@
 #include "lts_layer.h"
 #include "info_classes.h"
 #include "config.h"
-#include "../utils/binary_file_stream.h"
 #include <iostream>
 #include <fstream>
 #include <cstdio>
@@ -164,7 +163,7 @@ void LTSLayer::OptimizeBlockSize(float pitch)
 		block_size_.height = options[static_cast<size_t>((options.size() - 1) * pitch)];
 	}
 	AdjustLoadingBlockArea();
-	AlignBlocksInStraightLineInFile();
+	ReflectChangeOfBlockSizeToTerrainFile();
 
 	std::cout << "block size => " << block_size_ << '\n';
 	std::cout << "loading block area => " << loading_block_area_size_ << '\n';
@@ -294,6 +293,7 @@ LTSLayer::LTSLayer(
 ,terrain_name_(terrain_info->terrain_name)
 ,atlas_src_name_(atlas_info->atlas_src_name)
 ,terrain_src_name_(terrain_info->terrain_src_name)
+,terrain_raw_src_name_(terrain_info->terrain_raw_src_name)
 ,num_tile_type_(atlas_info->num_tile_type)
 ,map_size_(terrain_info->map_size)
 ,texture_positions_(atlas_info->texture_positions)
@@ -376,7 +376,7 @@ bool LTSLayer::ReadTerrainDataBinary(Block* block)
 	bfs.read_into_buff(buff, block->size().area());
 	block->CopyTiles(std::move(buff));
 
-	std::cout << "read terrain from " << path << '\n';
+	// std::cout << "read terrain from " << path << '\n';
 
 	return true;
 }
@@ -387,20 +387,6 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 		return false;
 
 	const std::string path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
-	// std::ofstream ofs(path.c_str(), std::ios::in|std::ios::out|std::ios::binary|std::ios::app);
-	//
-	// assert(ofs);
-	// std::cout << "write terrain data to " << path << '\n';
-	//
-	// auto position = block->position();
-	// auto index = position.y * (map_size_.width / block_size_.width) + position.x;
-	// ofs.seekp(index * block->size().area() * sizeof(int), ofs.beg);
-	//
-	// for(auto type : block->tiles())
-	// {
-	// 	ofs.write((char*)&type, sizeof(int));
-	// }
-
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
 	dlib::bfstream<int> bfs(path, dlib::ios_f::in|dlib::ios_f::out|dlib::ios_f::app);
@@ -416,15 +402,45 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 	return true;
 }
 
-void LTSLayer::AlignBlocksInStraightLineInFile()
+void LTSLayer::ReflectChangeOfBlockSizeToTerrainFile()
 {
-	const std::string path =
-		FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
-	const std::string tmp_path("terraintmp.dat");
+	assert(map_size_.width % block_size_.width == 0 && map_size_.height % block_size_.height == 0);
 
-	std::cout << "cratea tmp file" << '\n';
-	dlib::bfstream<int> tmp_bfs(tmp_path, dlib::ios_f::out|dlib::ios_f::tmp|dlib::ios_f::trunc);
-	assert(tmp_bfs.is_open());
+	const std::string path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
+	const std::string path_raw = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_raw_src_name_);
+	dlib::bfstream<int> bfs(path, dlib::ios_f::out|dlib::ios_f::trunc);
+	dlib::bfstream<int> bfs_raw(path_raw, dlib::ios_f::in);
+
+	assert(bfs.is_open() && bfs_raw.is_open());
+
+	const auto div_width = map_size_.width / block_size_.width;
+	const auto div_height = map_size_.height / block_size_.height;
+	std::vector<int> block(block_size_.area(), tile_type_no_tile_);
+	block.reserve(block_size_.area());
+
+	for(size_t i = 0; i < div_height; ++i)
+	{
+		for(size_t j = 0; j < div_width; ++j)
+		{
+			// read one block from RAW terrain data file
+			for(size_t y = 0; y < block_size_.height; ++y)
+			{
+				bfs_raw.seekg((i * block_size_.height + y) * block_size_.width + j * block_size_.width, dlib::ios_f::beg);
+				for(size_t x = 0; x < block_size_.width; ++x)
+				{
+					block[y * block_size_.width + x] = bfs_raw.read_one();
+				}
+			}
+
+			bfs.seekp((i * div_width + j) * block_size_.area(), dlib::ios_f::beg);
+			bfs.write_from_buff(block);
+			// clear vector
+			for(auto& val : block)
+			{
+				val = tile_type_no_tile_;
+			}
+		}
+	}
 }
 
 void LTSLayer::AllocateSpritesToBlock(Block* block)
@@ -466,7 +482,7 @@ void LTSLayer::AllocateSpritesToBlock(Block* block)
 		}
 	}
 
-	std::cout << "allocated " << count << " sprites" << '\n';
+	// std::cout << "allocated " << count << " sprites" << '\n';
 }
 
 void LTSLayer::MoveToRightNextColumn()

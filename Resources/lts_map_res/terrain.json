@@ -4,6 +4,7 @@
 		{
 			"terrain_name" : "terrain-A",
 			"terrain_src_name" : "terrain_a_1024x5660.dat",
+			"terrain_raw_src_name" : "terrain_a_1024x5660_raw.dat",
 			"atlas_name" : "atlas-A",
 			"map_size" : [1024, 5660],
 			"block_size" : [1, 1],

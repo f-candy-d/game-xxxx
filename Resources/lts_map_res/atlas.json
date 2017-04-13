@@ -3,16 +3,15 @@
 	[
 		{
 			"atlas_name" : "atlas-A",
-			"atlas_src_name" : "tile_atlas_a.png",
-			"texture_size" : [64, 64],
-			"num_tile_type" : 4,
+			"atlas_src_name" : "glass_tiles.png",
+			"texture_size" : [32, 32],
+			"num_tile_type" : 3,
 			"tile_type_no_tile" : -1,
 			"texture_positions" :
 			[
 				[0, 0],
-				[64, 0],
-				[128, 0],
-				[192, 0]
+				[0, 128],
+				[0, 96]
 			]
 		}
 	]

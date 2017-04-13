@@ -67,6 +67,7 @@ private:
 	const std::string terrain_name_;
 	const std::string atlas_src_name_;
 	const std::string terrain_src_name_;
+	const std::string terrain_raw_src_name_;
 	const int num_tile_type_;
 	const dlib::size<size_t> map_size_;
 	const std::vector<dlib::vec2<float>> texture_positions_;
@@ -85,7 +86,7 @@ private:
 	Block* LoadTerrainIntoBlock(size_t x, size_t y, Block* used);
 	bool ReadTerrainDataBinary(Block* block);
 	bool WriteTerrainDataBinary(const Block* block);
-	void AlignBlocksInStraightLineInFile();
+	void ReflectChangeOfBlockSizeToTerrainFile();
 	void AllocateSpritesToBlock(Block* block);
 	void MoveToRightNextColumn();
 	void MoveToLeftNextColumn();

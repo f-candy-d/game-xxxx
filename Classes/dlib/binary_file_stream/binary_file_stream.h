@@ -39,6 +39,8 @@ public:
 	void open(const std::string& filename, const ios_f::open_mode openmode);
 	void write_from_buff(const std::vector<T>& buff);
 	void read_into_buff(std::vector<T>& buff, size_t size);
+	void write_one(const T data);
+	T read_one();
 	void seekg(const size_t ofset, const ios_f::seek_dir way);
 	void seekp(const size_t ofset, const ios_f::seek_dir way);
 	bool is_open() const { return is_open_; }
