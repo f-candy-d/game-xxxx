@@ -64,6 +64,7 @@ void BinaryFileStream::Close(const std::string& filename)
  */
 bool BinaryFileStream::Init()
 {
+	auto result = Mode::kApp & Mode::kIn;
 	return true;
 }
 
@@ -106,4 +107,29 @@ bool BinaryFileStream::OpenStream(const std::string &filename, std::ios_base::op
 	{
 		return true;
 	}
+}
+
+/**
+ * AND and OR operators for BinaryFileStream::Mode, BinaryFileStream::SeekDir
+ */
+inline enum_mode dlib_cc::utils::operator|(enum_mode l, enum_mode r)
+{
+	return static_cast<enum_mode>(static_cast<mode_type>(l) | static_cast<mode_type>(r));
+}
+
+enum_mode dlib_cc::utils::operator&(enum_mode l, enum_mode r)
+{
+	return static_cast<enum_mode>(static_cast<mode_type>(l) & static_cast<mode_type>(r));
+}
+
+enum_seek_dir dlib_cc::utils::operator|(enum_seek_dir l, enum_seek_dir r)
+{
+	return static_cast<enum_seek_dir>(
+		static_cast<seek_dir_type>(l) | static_cast<seek_dir_type>(r));
+}
+
+enum_seek_dir dlib_cc::utils::operator&(enum_seek_dir l, enum_seek_dir r)
+{
+	return static_cast<enum_seek_dir>(
+		static_cast<seek_dir_type>(l) & static_cast<seek_dir_type>(r));
 }

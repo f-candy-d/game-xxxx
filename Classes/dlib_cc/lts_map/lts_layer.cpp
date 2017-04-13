@@ -364,11 +364,16 @@ bool LTSLayer::ReadTerrainDataBinary(Block* block)
 	auto path = FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
-	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
+	dlib::bfstream<int> bfs(path, dlib::ios_f::in);
+
+	assert(bfs.is_open());
+
 	std::vector<int> buff;
 	buff.reserve(block->tiles().size());
 
-	assert(bfs->Read(path, buff, block->size().area(), index * block->size().area()));
+	// read terrain data
+	bfs.seekg(index * block->size().area(), dlib::ios_f::beg);
+	bfs.read_into_buff(buff, block->size().area());
 	block->CopyTiles(std::move(buff));
 
 	std::cout << "read terrain from " << path << '\n';
@@ -398,8 +403,14 @@ bool LTSLayer::WriteTerrainDataBinary(const Block* block)
 
 	auto position = block->position();
 	auto index = position.y * (map_size_.width / block_size_.width) + position.x;
-	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
-	assert(bfs->Write<int>(path, block->tiles(), true, index * block->size().area()));
+	dlib::bfstream<int> bfs(path, dlib::ios_f::in|dlib::ios_f::out|dlib::ios_f::app);
+
+	assert(bfs.is_open());
+
+	// write terrain data
+	bfs.seekp(index * block->size().area(), dlib::ios_f::beg);
+	bfs.write_from_buff(block->tiles());
+
 	std::cout << "write terrain data to " << path << '\n';
 
 	return true;
@@ -409,7 +420,11 @@ void LTSLayer::AlignBlocksInStraightLineInFile()
 {
 	const std::string path =
 		FileUtils::getInstance()->fullPathForFilename(kMapTerrainDirectory + terrain_src_name_);
-	auto bfs = dlib_cc::utils::BinaryFileStream::Create();
+	const std::string tmp_path("terraintmp.dat");
+
+	std::cout << "cratea tmp file" << '\n';
+	dlib::bfstream<int> tmp_bfs(tmp_path, dlib::ios_f::out|dlib::ios_f::tmp|dlib::ios_f::trunc);
+	assert(tmp_bfs.is_open());
 }
 
 void LTSLayer::AllocateSpritesToBlock(Block* block)

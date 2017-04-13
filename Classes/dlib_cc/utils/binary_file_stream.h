@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <type_traits>
 #include <unordered_map>
 
 namespace dlib_cc
@@ -17,8 +18,24 @@ namespace dlib_cc
 
 class dlib_cc::utils::BinaryFileStream : public cocos2d::Ref
 {
-
 public:
+	// openmodes
+	enum class Mode
+	{
+		kIn = 1 << 0,
+		kOut = 1 << 1,
+		kTrunc = 1 << 2,
+		kApp = 1 << 3,
+		kTmp = 1 << 4
+	};
+	// seek directions
+	enum class SeekDir
+	{
+		kBeg = 1 << 0,
+		kCur = 1 << 1,
+		kEnd = 1 << 2
+	};
+
 	static BinaryFileStream* Create();
 
 	template <typename T>
@@ -97,8 +114,26 @@ private:
 	std::string tmpfile_extension_;
 	std::vector<std::string> tmpfile_names_;
 	std::unordered_map<std::string, std::fstream> opening_streams_;
+	Mode open_mode_;
 
 	bool OpenStream(const std::string& filename, std::ios_base::openmode mode);
 };
+
+// AND and OR operators for BinaryFileStream::Mode, BinaryFileStream::SeekDir
+namespace dlib_cc
+{
+	namespace utils
+	{
+		using enum_mode = BinaryFileStream::Mode;
+		using enum_seek_dir = BinaryFileStream::SeekDir;
+		using mode_type = std::underlying_type<enum_mode>::type;
+		using seek_dir_type = std::underlying_type<enum_seek_dir>::type;
+
+		enum_mode operator|(enum_mode l, enum_mode r);
+		enum_mode operator&(enum_mode l, enum_mode r);
+		enum_seek_dir operator|(enum_seek_dir l, enum_seek_dir r);
+		enum_seek_dir operator&(enum_seek_dir l, enum_seek_dir r);
+	}
+}
 
 #endif

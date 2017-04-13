@@ -14,5 +14,6 @@
 #include "vec2.h"
 #include "grid_size.h"
 #include "grid_point.h"
+#include "binary_file_stream/binary_file_stream.h"
 
 #endif

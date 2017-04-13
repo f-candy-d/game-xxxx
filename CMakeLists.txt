@@ -154,6 +154,7 @@ set(GAME_HEADERS
 #  Classes/Tm2p5dLib/InfoClasses.h
 #  Classes/Tm2p5dLib/Pane.h
 #  Classes/Tm2p5dLib/TiledLayer.h
+  Classes/dlib/binary_file_stream/binary_file_stream.h
   Classes/dlib_cc/lts_map/block.h
   Classes/dlib_cc/lts_map/info_classes.h
   Classes/dlib_cc/lts_map/info_json_parser.h
