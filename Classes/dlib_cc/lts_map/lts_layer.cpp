@@ -425,7 +425,7 @@ void LTSLayer::ReflectChangeOfBlockSizeToTerrainFile()
 			// read one block from RAW terrain data file
 			for(size_t y = 0; y < block_size_.height; ++y)
 			{
-				bfs_raw.seekg((i * block_size_.height + y) * block_size_.width + j * block_size_.width, dlib::ios_f::beg);
+				bfs_raw.seekg((i * block_size_.height + y) * map_size_.width + j * block_size_.width, dlib::ios_f::beg);
 				for(size_t x = 0; x < block_size_.width; ++x)
 				{
 					block[y * block_size_.width + x] = bfs_raw.read_one();
@@ -459,6 +459,7 @@ void LTSLayer::AllocateSpritesToBlock(Block* block)
 		block->size().width * actual_tile_size_.width * block->position().x,
 		block->size().height * actual_tile_size_.height * block->position().y);
 
+	// TODO delete this line...
 	int count = 0;
 
 	for(int y = 0; y < block->size().height; ++y)

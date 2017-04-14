@@ -118,10 +118,10 @@ bool HelloWorld::init()
         parser->layer_info(layername),
         parser->atlas_info(atlasname),
         parser->terrain_info(terrainname), false);
-    layer->ScaleTile(1.5, false);
+    layer->ScaleTile(1.3, false);
     layer->OptimizeBlockSize();
     layer->InitLayer();
-    // layer->MoveTo(10,15);
+    layer->MoveTo(4,10);
     // layer->MoveTo(0, 0);
 
     this->addChild(layer);
