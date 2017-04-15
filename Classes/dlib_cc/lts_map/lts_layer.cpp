@@ -227,12 +227,16 @@ void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 
 	auto delta = new_center_block_position - center_block_position_;
 
+	std::cout << "delta => " << delta << '\n';
+	std::cout << "loading block area size => " << loading_block_area_size_ << '\n';
+
 	if(loading_block_area_size_.width <= delta.x
 		|| loading_block_area_size_.width <= -delta.x
 		|| loading_block_area_size_.height <= delta.y
 		|| loading_block_area_size_.height <= -delta.y)
 	{
 		// reload all blocks
+		std::cout << "reload all" << '\n';
 		auto itr_block = blocks_.begin();
 		for(size_t y = new_center_block_position.y - loading_block_area_size_.height / 2;
 			y <= new_center_block_position.y + loading_block_area_size_.height / 2;
@@ -242,6 +246,7 @@ void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 				x <= new_center_block_position.x + loading_block_area_size_.width / 2;
 				++x)
 			{
+				std::cout << "reload => " << x << "," << y << '\n';
 				LoadTerrainIntoBlock(x, y, *itr_block);
 				AllocateSpritesToBlock(*itr_block);
 			}
@@ -256,11 +261,13 @@ void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 	// x-coordinate
 	if(0 < delta.x && delta.x < loading_block_area_size_.width)
 	{
+		std::cout << "x only" << '\n';
 		for(int i = 0; i < delta.x; ++i)
 			MoveToRightNextColumn();
 	}
 	else if(delta.x < 0 && -delta.x < loading_block_area_size_.width)
 	{
+		std::cout << "x only" << '\n';
 		for(int i = 0; i < -delta.x; ++i)
 			MoveToLeftNextColumn();
 	}
@@ -268,11 +275,13 @@ void LTSLayer::MoveTo(dlib::vec2<int> new_center_block_position)
 	// y-coordinate
 	if(0 < delta.y && delta.y < loading_block_area_size_.height)
 	{
+		std::cout << "y only" << '\n';
 		for(int i = 0; i < delta.y; ++i)
 			MoveToRowAbove();
 	}
 	else if(delta.y < 0 && -delta.y < loading_block_area_size_.height)
 	{
+		std::cout << "y only" << '\n';
 		for(int i = 0; i < -delta.y; ++i)
 			MoveToRowBelow();
 	}
